@@ -1,0 +1,4 @@
+<div *ngFor="let item of issueList">
+    <div class="class-hint" *ngIf="!item.id">{{item.title}}</div>
+    <app-mobile-help-item *ngIf="item.id" [title]="item.title" [routerLink]="['/m/help/helpDetails', item.id, item.title]"></app-mobile-help-item>
+</div>

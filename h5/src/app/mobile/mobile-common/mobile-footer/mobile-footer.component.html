@@ -1,0 +1,18 @@
+<div class="footer">
+  <ul>
+    <li class="footer-nav" *ngFor="let item of footerLinks; let i = index">
+      <a *ngIf="item.title === '客服'" [href]="platform.onlineService">
+        <div direction="column">
+          <div class="img" [ngClass]="{'center-img': i === 2}" [ngStyle]="{backgroundImage: 'url(' + config.baseMobileImgUrl + 'image/common/' +  item.img + ')'}"></div>
+          <span class="text-title {{ i==2 ? 'center-margin' : ''}}">{{item.title}}</span>
+        </div>
+      </a>
+      <a *ngIf="item.title !== '客服'" [routerLink]="item.link" [routerLinkActive]="['active' + i, 'active']">
+        <div direction="column">
+          <div class="img" [ngClass]="{'center-img': i === 2}" [ngStyle]="{backgroundImage: 'url(' + config.baseMobileImgUrl + 'image/common/' +  item.img + ')'}"></div>
+          <span class="text-title {{ i==2 ? 'center-margin' : ''}}">{{item.title}}</span>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>

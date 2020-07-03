@@ -1,0 +1,7 @@
+<div class="adv-winners">
+    <ul [style.transform]="'translateY(-' + scroll + 'px)'" [class.winnersList]="isTransition" id="winnersList">
+        <li *ngFor="let val of options.scrollArr" [style.height]="options.height || ''">
+            <span [style.line-height]="options.lineHeight || ''">{{val}}</span>
+        </li>
+    </ul>
+</div>

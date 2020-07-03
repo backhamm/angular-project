@@ -1,0 +1,75 @@
+<div class="aboutUs">
+  <div class="topNav">
+    <ul>
+      <li *ngFor="let item of introduceList;let i = index" class="introItem" (click)=changeItem(i)
+        [ngClass]="{'current': i == currentIndex}">{{item}}</li>
+    </ul>
+  </div>
+  <div class="comProfile" *ngIf="currentIndex == 0">
+    <h1>{{service.companyProfile.title}}</h1>
+    <h2>{{service.companyProfile.introduction}}</h2>
+    <p class="infoImg"><img [src]="service.companyProfile.imgUrl" alt=""></p>
+    <p *ngFor="let item of service.companyProfile.companyText">{{item}}</p>
+    <div class="bottomTro">
+      <ul>
+        <li *ngFor="let item of service.companyProfile.slogan">
+          <b class="icon-desire">
+            <img [src]="item.imgLogo" alt="">
+          </b>
+          <h5>{{item.title}}</h5>
+          <p>{{item.text}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="devHistory" *ngIf="currentIndex == 1">
+    <div class="G_AboutOne ount_view ">
+      <div class="el-container" *ngFor="let item of service.historyDate">
+        <div class="el-aside">{{item.year}}</div>
+        <div class="el-main">
+          <div *ngFor="let items of item.event">
+            <p class="title">{{items.date}}</p>
+            <div class="text">{{items.text}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="membership" *ngIf="currentIndex == 2">
+    <div class="G_About_Three ount_view">
+      <div *ngFor="let item of service.membershipDate.hotel">
+        <div class="membershipMain">
+          <div class="membershipImg">
+            <img width="134" height="60" [src]="item.logImg" alt="" class="logImg">
+            <img [src]="item.bigImg" alt="" class="bigImg">
+            <div class="centerImg">
+              <div class="leftImg">
+                <img [src]="imgItems" alt="" class="G_img_sup" *ngFor="let imgItems of item.leftImg">
+              </div>
+              <img [src]="item.rightImg" alt="" class="rightImg">
+            </div>
+          </div>
+          <div *ngFor="let items of item.introduce" class="introduce">
+            <p>{{items}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="entertainment">
+        <h1 class="entertainment_title">{{service.membershipDate.entertainmentDescro[0]}}</h1>
+        <p class="entertainmentTop">{{service.membershipDate.entertainmentDescro[1]}}</p>
+        <div class="entertainmentList">
+          <ul>
+            <li *ngFor="let item of service.membershipDate.entertainment">
+              <img [src]="item.imgUrl" alt="">
+              <div class="text">
+                <p class="fontTitle">{{item.titleCn}}{{item.titleEn}}</p>
+                <p class="description">{{item.description}}</p>
+              </div>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

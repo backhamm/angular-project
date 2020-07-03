@@ -1,0 +1,28 @@
+<!-- 手风琴展示 -->
+<div class="collapse" *ngIf="showType === 'collapse'">
+    <nz-collapse>
+        <nz-collapse-panel *ngFor="let panel of showData;let i = index" [nzHeader]="panel.title" [nzActive]="i === 0">
+            <div class="collapse-item" *ngFor="let cnt of panel.content">
+                <p>{{ cnt.text }}</p>
+                <ul *ngIf="cnt.children && cnt.children.length > 0">
+                    <li *ngFor="let list of cnt.children">{{ list }}</li>
+                </ul>
+            </div>
+        </nz-collapse-panel>
+    </nz-collapse>
+</div>
+<!-- 普通展示 -->
+<div class="common" *ngIf="showType === 'common'">
+    <div class="common-item" *ngFor="let panel of showData">
+        <h3>{{ panel.title }}</h3>
+        <p *ngIf="panel.description">{{ panel.description }}</p>
+        <ul>
+            <li *ngFor="let cnt of panel.content; let i = index;">
+                <p>{{ (panel.content.length > 1 ? ((i + 1) + '、') : '') + cnt.text }}</p>
+                <ol *ngIf="cnt.children && cnt.children.length > 0">
+                    <li *ngFor="let list of cnt.children">{{ list }}</li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+</div>

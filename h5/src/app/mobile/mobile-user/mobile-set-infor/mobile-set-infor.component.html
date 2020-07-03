@@ -1,0 +1,16 @@
+<app-mobile-header [leftIcon]="true" [headerText]="headerText[type - 1]"></app-mobile-header>
+
+<div class="set-Infors">
+  <div>
+    <div class="set-input">
+      <input nz-input class="set-inputs" [placeholder]="reg?.placeholder" nzSize="large" [(ngModel)]="userSetContent"/>
+    </div>
+    <div *ngIf="type == 1" style="text-align: left;margin-top: .3rem;padding-left: 14px;line-height: 0.4rem;">
+      <p style="color:#D20D0D; font-size:0.24rem;">温馨提醒:</p>
+      <p style="font-size:0.24rem;">姓名仅能设置一次且需要与提款银行卡开户人一致，请谨慎填写。</p>
+    </div>
+    <div class="submit-btns btn-image-big">
+      <button type="button" class="primary-btn btn-image-big" (click)="next()">提交</button>
+    </div>
+  </div>
+</div>

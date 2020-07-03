@@ -1,0 +1,55 @@
+<div class="adventures-wrapper">
+  <div class="adventures">
+    <i nz-icon nzType="arrow-left" nzTheme="outline" class="adv-return" (click)="returns()"></i>
+    <div class="adv-title">
+      <div class="adv-wrapper">
+        <div class="adv-prize" [style.transform]="'rotate(' + rotate + 'deg)'" [style.background-image]="'url(' + baseActivity.discData.imgUrl + ')'"></div>
+        <div class="adv-main">
+          <span class="adv-btn" [style.background-image]="'url(//192.168.106.140:82/mobileTXW/turntable/' + btnImages[btnImage] + '.png)'" (click)="getGameResult()"></span>
+        </div>
+      </div>
+      <div class="adv-qualification">
+        <p>抽奖所需有效投注额：{{baseActivity.discData.neededAmount}}</p>
+        <p>抽奖机会：{{baseActivity.discData.remainingCount}}</p>
+      </div>
+      <div class="adv-list">
+        <div class="adv-record">
+          <p>领取记录</p>
+          <div>
+            <div>
+              <span>奖品名称</span>
+              <span>领取时间</span>
+              <span>是否派彩</span>
+            </div>
+            <ul>
+              <li *ngFor="let item of baseActivity.discRecive">
+                <span>{{item.prizeName}}</span>
+                <span>{{item.addTimes}}</span>
+                <span>{{item.checkStatus ? (item.checkStatus === 1 ? '审核通过' : '审核失败') : '待审核'}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <p>中奖名单</p>
+          <div class="adv-winners">
+            <ul [style.transform]="'translateY(-' + scroll + 'px)'" [class.winnersList]="isTransition" id="winnersList">
+              <li *ngFor="let val of arr">
+                <span>{{val.username}}</span>
+                <span>抽中</span>
+                <span>{{val.prizeName}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="adv-introduce"></div>
+    <div class="adv-result" (click)="closeResult($event)" *ngIf="showResult">
+      <div [class]="'adv-result-main result' + resultType + ''">
+        <span *ngIf="resultType === 2" class="adv-prizeName">{{prizeName}}</span>
+        <img *ngIf="resultType !== 3" class="adv-result-text" [src]="'//192.168.106.140:82/mobileTXW/turntable/bet_0' + resultType + '.png'" (click)="resultClick()" alt="">
+      </div>
+    </div>
+  </div>
+</div>

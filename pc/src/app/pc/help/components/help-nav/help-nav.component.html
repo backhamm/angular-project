@@ -1,0 +1,10 @@
+<div class="nav">
+    <ul>
+        <div *ngFor="let nav of service.navList">
+            <li [class.active]="curRouter.indexOf(nav.params) > -1">
+                <a *ngIf="nav.params!=='download'" [routerLink]="'/help/problem/' + nav.params">{{ nav.title }}</a>
+                <a *ngIf="nav.params==='download'" [routerLink]="'/home/' + nav.params">{{ nav.title }}</a>
+            </li>
+        </div>
+    </ul>
+</div>

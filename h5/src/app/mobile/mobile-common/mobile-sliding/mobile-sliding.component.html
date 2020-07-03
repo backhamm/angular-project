@@ -1,0 +1,10 @@
+<div @openClose class="slide-wrapper" [ngClass]="{'success': leftVal === maxLeft}" #slideWrapper>
+  <div class="slide-success" [ngStyle]="{width: leftVal + 'px', transition: isBreak ? 'all .7s' : ''}">
+    <span style="margin-left: .8rem">{{leftVal === maxLeft ? '验证成功' : ''}}</span>
+  </div>
+  <div class="slide-block" (touchstart)="touchDown($event)" (touchmove)="touchMove($event)" (touchend)="touchEnd()" [ngStyle]="{left: leftVal + 'px', transition: isBreak ? 'all .7s' : ''}" #slideBlock>
+    <i *ngIf="leftVal !== maxLeft" nz-icon nzType="double-right" nzTheme="outline"></i>
+    <i *ngIf="leftVal === maxLeft" nz-icon nzType="check" nzTheme="outline"></i>
+  </div>
+  拖动滑块验证
+</div>

@@ -1,0 +1,15 @@
+<!--主布局-->
+<nz-layout>
+    <!--顶部router 加载条-->
+    <ngx-loading-bar color="#C25D35" height="1px" [includeSpinner]="false"></ngx-loading-bar>
+    <!--公共头部-->
+    <app-header></app-header>
+    <!-- 滚动公告 -->
+    <app-page-rolling style="height: 0px;"></app-page-rolling>
+    <nz-content>
+        <router-outlet></router-outlet>
+    </nz-content>
+  
+    <app-footer></app-footer>
+    <app-notice-alert *ngIf="common.noticeConfig.show"></app-notice-alert>
+</nz-layout>

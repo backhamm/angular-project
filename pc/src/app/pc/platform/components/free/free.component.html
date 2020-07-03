@@ -1,0 +1,22 @@
+<!-- banner -->
+<div class="banner" [style.background-image]="'url('+ bannerImage + ')'"></div>
+<!-- content -->
+<div class="content-bg">
+    <div class="content">
+        <ul class="clearfix content-left" >
+            <li class="gaming-content" *ngFor="let list of currentGameList">
+                <div class="img">
+                    <img [src]="list.imgs[0]?.img" alt="">
+                </div>
+                <p class="bottom-bg">
+                    <span (click)="list.gameCode !== 'WAITFOR' ? service.tryGame({ gameCode: list.gameCode, gameId: list.gameId}) : null">立即进入</span>
+                </p>
+                <p class="top-bg">
+                    <img [src]="list.icons[0]?.img" alt="">
+                </p>
+            </li>
+            <!-- 数据为空 -->
+            <nz-empty *ngIf="currentGameList.length === 0"></nz-empty>
+        </ul>
+    </div>
+</div>

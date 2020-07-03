@@ -1,0 +1,82 @@
+@import "../../../../config/config-mobile";
+
+.content() {
+    width: 100%;
+    height: 1.24rem;
+    border: 1px solid @border-color;
+    box-sizing: border-box;
+    padding: 0 0.1rem;
+    .text {
+        border-bottom: 1px solid @border-color;
+        color: @btn-primary;
+        text-align: center;
+        font-size: .26rem;
+        line-height: .62rem;
+        .upDown {
+            background: url("@{base-url}image/up.png");
+            width: .16rem;
+            height: .19rem;
+            background-size: 100% 100%;
+            display: inline-block;
+        }
+    }
+    .h1 {
+        color: @font-color;
+        border: none;
+    }
+}
+
+/*.ant-row {
+    background: @deep-main-color;
+}*/
+.banner-pic {
+    img {
+        width: 100%;
+    }
+}
+
+//轮播名称
+.index-notice {
+    background: @deep-main-color;
+    .notice-volume {
+        height: 0.35rem;
+        line-height: 0.35rem;
+        i {
+            font-size: 0.36rem;
+            color: @font-color;
+            padding-left: 0.5rem;
+            padding-right: 0.1rem;
+            display: inline-block;
+        }
+    }
+
+    .notice-news {
+        width: 80%;
+        height: 0.8rem;
+        cursor: pointer;
+        overflow: hidden;
+
+        li {
+            width: 7rem;
+            height: 0.8rem;
+            line-height: 0.8rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: @font-color;
+        }
+
+    }
+}
+
+//数据文本框
+.before-join {
+    padding: 0.4rem 0.2rem;
+    box-sizing: border-box;
+    margin: 0 !important;
+    //border-top: 2px solid @btn-primary;
+
+    .content {
+        .content()
+    }
+}

@@ -1,0 +1,130 @@
+@import "../../../config/config-mobile";
+
+.transfer-account-info {
+  font-size: 0.18rem;
+  color: @font-color;
+  text-align: center;
+
+  .title {
+    height: .8rem;
+    color: @font-color;
+    box-sizing: border-box;
+    padding-left: .3rem;
+    font-size: .32rem;
+    text-align: left;
+    line-height: .8rem;
+  }
+
+  .transfer-amount {
+    box-sizing: border-box;
+    border-bottom: 1px solid @main-color;
+    background: @deep-main-color;
+    overflow: hidden;
+
+    .transfer-item {
+      margin: .15rem 0;
+      height: .6rem;
+
+      .plate-group {
+        margin-top: .1rem;
+      }
+
+      .selected-plate {
+        color: @btn-primary;
+        text-align: right;
+        display: inline-block;
+        float: right;
+        margin-right: .2rem;
+      }
+    }
+
+    .amount {
+      height: 0.88rem;
+    }
+  }
+
+  .transfer-acount {
+    border-bottom: 1px solid @main-color;
+  }
+
+  .submit {
+    margin: .3rem;
+    padding: 0 2rem;
+  }
+
+  .transfer-tips {
+    padding: 0 .3rem;
+    text-align: left;
+
+    .tips-title {
+      line-height: 2.5;
+      font-size: .24rem;
+      color: @tooltip-color;
+    }
+
+    .tips-text {
+      line-height: 1.3;
+      font-size: .2rem;
+      color: @second-font-color;
+    }
+  }
+}
+
+.gamebox {
+  height: 1.1rem;
+  line-height: 1.1rem;
+  box-sizing: border-box;
+  padding: 0 .3rem;
+  text-align: left;
+  //font-size: 0.18rem;
+  //color: @main-color;
+  border-bottom: 1px solid @btn-primary;
+
+  i {
+    display: inline-block;
+    float: left;
+  }
+
+  .icon-pic {
+    width: 0.92rem;
+    height: 0.92rem;
+    margin-top: .07rem;
+    margin-right: .3rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .gameMoney {
+    float: right;
+  }
+}
+
+::ng-deep {
+  .goCapital {
+    position: absolute;
+    right: .2rem;
+    top: 0;
+    font-size: .28rem;
+    color: @btn-primary;
+  }
+  .transfer-item .ant-input-group-addon {
+    color: @second-font-color;
+  }
+
+  .transfer-account-info .ant-input-group-wrapper {
+    padding-top: 0;
+  }
+
+  .ant-drawer .ant-drawer-content {
+    overflow-y: scroll;
+  }
+
+  .ant-drawer-bottom .ant-drawer-content-wrapper {
+    height: 9rem !important;
+  }
+}
+
+

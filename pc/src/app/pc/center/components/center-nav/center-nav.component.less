@@ -1,0 +1,111 @@
+@import "../../../../config/config";
+
+.user-detail {
+    margin: 20px auto 20px;
+
+    .avatar {
+        width: 90px;
+        height: 90px;
+        display: block;
+        border-radius: 100%;
+        border: 5px solid #e7e3e3;
+        margin: auto;
+        background: 50% #fff url("@{base-url}user_img/login_logo.png") no-repeat;
+        background-size: 85%;
+    }
+
+    .username {
+        margin: 10px;
+        color: #666;
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .verify {
+        padding: 5px 15px;
+        text-align: center;
+        line-height: 15px;
+        font-size: 12px;
+
+        nz-avatar {
+            vertical-align: center;
+            /* width: 24px;
+             height: 24px;*/
+            //font-size: 20px;
+            margin-right: 10px;
+            //color: #cccccc;
+            background-color: #aaaaaa;
+        }
+
+
+        .verify-active {
+            background: @theme-color;
+        }
+    }
+}
+
+.nav-meau {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    border-top: 1px solid #ddd;
+
+    .nav-list {
+        li {
+            cursor: pointer;
+            text-align: left;
+            background-color: #fff;
+            transition: all .3s;
+
+            .active {
+                color: #c9a675;
+                transition: all .3s;
+                background-color: #f2f2f2;
+
+                i {
+                    color: @theme-color;
+                }
+            }
+
+            a {
+                display: block;
+                padding-left: 40px;
+                height: 45px;
+                line-height: 45px;
+                font-size: 14px;
+                color: #666;
+
+                i {
+                    margin-right: 10px;
+                    font-size: 15px;
+                }
+
+                span:hover {
+                    color: @main-color;
+                }
+            }
+
+        }
+
+    }
+}
+
+.qr-code {
+    padding: 20px 0;
+    text-align: center;
+
+    canvas {
+        width: 180px;
+        height: 180px;
+    }
+
+    .text {
+        font-size: 12px;
+        color: #666;
+    }
+
+}
+
+
+
+

@@ -1,0 +1,270 @@
+@import "~src/app/config/config-mobile";
+
+
+.record, .rule, .detail {
+  font-size: 0;
+}
+
+.record {
+  .header {
+    padding: 0 .24rem;
+    line-height: .7rem;
+    font-size: .29rem;
+    background-color: @second-color;
+    color: @font-color;
+
+    .data-picker {
+      display: inline-block;
+      margin: 0 .25rem;
+
+      i {
+        margin: 0 .1rem;
+      }
+
+      ::ng-deep {
+        .ant-calendar-picker {
+          width: 1.86rem;
+
+        }
+        .ant-calendar-picker-clear, .ant-calendar-picker-icon {
+          display: none;
+        }
+
+        .ant-input {
+          text-align: center;
+        }
+      }
+    }
+
+    .btn {
+      width: 1.05rem;
+      line-height: .41rem;
+      font-size: .24rem;
+      border: none;
+      border-radius: .06rem;
+      background-color: @btn-primary;
+      color: @font-color;
+    }
+  }
+
+  .record-content {
+    height: 1rem;
+    font-size: .24rem;
+    color: @third-font-color;
+    overflow: hidden;
+    transition: all .3s;
+
+    &.active {
+      height: 3.2rem;
+
+      .item-icon i {
+        transform: rotate(90deg);
+      }
+    }
+
+    .record-item {
+      padding: .07rem .2rem 0 .1rem;
+      height: 1rem;
+      border-bottom: 1px solid @second-color;
+      background: @deep-main-color;
+      .item-state {
+        margin-top: .1rem;
+        line-height: 1.5;
+        text-align: center;
+        letter-spacing: .1rem;
+        //border-right: 1px solid @border-color;
+        img {
+          width: .3rem;
+        }
+        &.state0 {
+          color: #FF6600;
+        }
+
+        &.state1 {
+          color: #01F94D;
+        }
+
+        &.state2 {
+          color: #F60000;
+        }
+      }
+
+      .item-info {
+        padding-left: .05rem;
+
+        .name {
+          line-height: .5rem;
+          font-size: .3rem;
+          color: @font-color;
+        }
+        .time {
+          color: @second-font-color;
+        }
+      }
+
+      .item-icon {
+        line-height: .85rem;
+        font-size: .4rem;
+        text-align: right;
+
+        i {
+          transition: all .3s;
+          color: @second-font-color;
+        }
+      }
+    }
+
+    .record-main {
+      padding: 0.1rem 0 0.1rem 0.2rem;
+      height: 2.2rem;
+      line-height: calc(2rem / 5);
+      white-space: nowrap;
+      background-color: @main-color;
+      color: @integral-font-color;
+      .remake {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .isLoading {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  ::ng-deep {
+    .ant-empty-description {
+      color: @second-font-color;
+    }
+  }
+}
+
+.detail {
+  padding: 0 .28rem .3rem;
+  font-size: .24rem;
+  color: @second-font-color;
+
+  .title {
+    padding: .4rem 0 .2rem;
+    font-size: .3rem;
+    font-weight: bold;
+    color: @font-color;
+  }
+
+  .goods-name {
+    padding: .23rem .16rem;
+    height: 2rem;
+    background-color: @deep-main-color;
+  }
+
+  .conversion-info {
+    background: @deep-main-color;
+
+    border-top: 1px solid @border-color;
+    border-left: 1px solid @border-color;
+    text-align: center;
+    line-height: .5rem;
+
+    .goods-count {
+      input {
+        padding: .05rem 0;
+        width: 50%;
+        text-align: center;
+        border: none;
+        background: @main-color;
+        border-radius: .25rem;
+        color: @second-font-color;
+      }
+    }
+
+
+    &>div {
+      border-right: 1px solid @border-color;
+
+      &>p {
+        border-bottom: 1px solid @border-color;
+      }
+    }
+  }
+
+  .site-info {
+    .left-content {
+      padding-right: .5rem;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .left-content, .right-content {
+      &>div {
+        margin-bottom: .15rem;
+        height: 1.15rem;
+        line-height: .5rem;
+
+        .district {
+          margin-top: .1rem;
+          width: 100% !important;
+        }
+
+        ::ng-deep {
+          .ant-select {
+            width: 49%;
+          }
+          .ant-select-selection {
+            background: @deep-main-color;
+            border: 1px solid @second-color;
+            color: @second-font-color;
+          }
+
+          .ant-select-arrow {
+            color: @second-font-color;
+          }
+        }
+
+        .consignee-input {
+          padding: 0 .1rem;
+          width: 100%;
+          height: 100%;
+          background: @deep-main-color;
+          border: 1px solid @second-color;
+          resize: none;
+        }
+
+        textarea {
+          padding: .1rem !important;
+        }
+      }
+
+      &>div:nth-child(3), &>div:nth-child(4) {
+        height: .5rem;
+      }
+    }
+  }
+
+  .submit-btn {
+    margin-top: .2rem;
+    text-align: center;
+
+    button {
+      width: 3.25rem;
+      height: .75rem;
+      font-size: .34rem;
+      background: transparent;
+      color: @font-color;
+      border: 0;
+      border-radius: .375rem;
+
+      &:first-child {
+        margin-right: .25rem;
+        background: @btn-primary;
+      }
+    }
+    .btn-image-normal {
+      background: url('@{base-url}image/common/shape_theme_btn_normal.png') no-repeat center / 100% 100% !important;
+    }
+
+    .btn-image-hover {
+      background: url('@{base-url}image/common/shape_theme_btn_hover.png') no-repeat center / 100% 100% !important;
+    }
+  }
+}

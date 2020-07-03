@@ -1,0 +1,80 @@
+@import '../../../../../config/config.less';
+
+.content {
+    .title {
+        width: 30%;
+        height: 40px;
+        padding: 0 30px;
+        margin: 30px 0;
+        background: linear-gradient(90deg, #f2f2f2, #fff);
+        line-height: 40px;
+        font-weight: 700;
+        color: #666;
+    }
+
+    .search {
+        margin: 20px;
+        padding: 10px;
+        border-radius: 3px;
+
+        ::ng-deep {
+            .ant-calendar-range-picker-input {
+                font-size: 14px;
+            }
+
+        }
+
+        nz-select, button, nz-range-picker {
+            font-size: 14px;
+        }
+
+    }
+
+    .table-box {
+        margin: 20px;
+        border: 1px solid #eee;
+    }
+
+    .page-box {
+        text-align: center;
+        margin: 25px 0;
+    }
+}
+
+.green {
+    color: green!important;
+}
+
+.red {
+    color: red !important;
+}
+
+:host {
+    ::ng-deep {
+        .ant-table-content {
+            min-height: 604px;
+        }
+
+        .ant-table-placeholder {
+            border-bottom: none;
+        }
+
+        .ant-empty-normal {
+            margin: 196px 0;
+        }
+        .ant-table-thead > tr > th {
+            font-weight: bold;
+            color: #909399;
+        }
+        .ant-table-tbody td {
+            color: #909399;
+        }
+        .ant-table-thead > tr > th, .ant-table-tbody > tr > td{
+            text-align: center;
+        }
+        .ant-table-thead > tr > th:first-child, .ant-table-tbody > tr > td:first-child{
+            max-width: 210px;
+            word-wrap: break-word;
+        }
+    }
+}

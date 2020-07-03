@@ -1,0 +1,86 @@
+<nz-modal [(nzVisible)]="openModal"
+          [nzClosable] = "false"
+          [nzMaskClosable] = "false"
+          nzWrapClassName="vertical-center-modal"
+          (nzOnOk)="jumpPage()"
+          (nzOnCancel)="cancelJump()">
+  <p>{{ user.user.hasWithdrawPassword ?
+    '您还没有绑定银行卡，请先前往绑定银行卡页面' :
+    '您还没有设置提款密码，请先前往设置提款密码页面'}}</p>
+</nz-modal>
+
+<!--取款-->
+<div class="withdraw">
+    <div class="withdraw-title">取款专区</div>
+    <div class="pay-steps">
+        <nz-steps [nzCurrent]="currentStep" [nzSize]="'small'">
+            <nz-step nzTitle="输入金额"></nz-step>
+            <nz-step nzTitle="申请成功"></nz-step>
+        </nz-steps>
+    </div>
+    <div class="withdraw-warp">
+        <div class="withdraw-main">
+            <div *ngIf="currentStep === 0">
+                <div class="el clear">
+                    <div class="fl prefix">姓名：</div>
+                    <div class="content fl">
+                        <p>{{bankCardInfo?.cardUsername}}</p>
+                    </div>
+                </div>
+                <div class="el card clear">
+                    <div class="fl prefix">银行卡：</div>
+                    <div class="content fl">
+                        <nz-card *ngIf="user.user.hasBankCard"
+                                 [nzTitle]="bankCardInfo?.bankName">
+                            <p>{{bankCardInfo?.cardNum}}</p>
+                        </nz-card>
+                        <nz-empty *ngIf="!user.user.hasBankCard"></nz-empty>
+                    </div>
+                </div>
+                <div class="el clear">
+                    <div class="fl prefix">可提金额：</div>
+                    <div class="content fl">
+                        <p>{{user.user?.wallet}}元</p>
+                    </div>
+                </div>
+                <div class="el clear">
+                    <div class="fl prefix">提款金额：</div>
+                    <div class="content fl">
+                        <nz-input-number
+                            [(ngModel)]="params.amount"
+                            [nzMin]="100"
+                            [nzMax]="500000"
+                            [nzPlaceHolder]="'请输入金额'"
+                            [nzStep]="10"
+                        ></nz-input-number>
+                        <div class="tip-div">单笔提款限额(元): {{withDrawConfig?.minWithdrawMoney}} - {{withDrawConfig?.maxWithdrawMoney}}</div>
+                    </div>
+                </div>
+                <div class="el clear">
+                    <div class="fl prefix">提款密码：</div>
+                    <div class="content fl">
+                        <input nz-input [(ngModel)]="params.password"
+                               appLimitInput [limitType]="'number'"
+                               autocomplete  name="pass" type="password" maxlength="4"
+                               placeholder="请输入提款密码"/>
+                    </div>
+                    <a [href]="platformService.onlineService.href" [target]="platformService.onlineService.target" class="forget fl">忘记密码</a>
+                </div>
+                <div class="el">
+                    <button class="submit" [nzLoading]="isLoading"
+                            (click)="validateSub()" nz-button nzType="primary"
+                    >下一步</button>
+                </div>
+            </div>
+            <div class="tips" *ngIf="currentStep === 1">
+                <h2 class="title">提交成功</h2>
+                <p class="text1">我们会在2小时内完成资金核查，完成出款！ </p>
+                <p class="text2">注：首次出款客服人员将会核对身份之后再进行出款，请确保您的通讯畅通，以便客服与您联系。</p>
+                <button (click)="toPrev()" nz-button nzType="default">
+                    返 回
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

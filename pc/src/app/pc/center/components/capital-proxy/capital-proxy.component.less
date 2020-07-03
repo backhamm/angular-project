@@ -1,0 +1,229 @@
+@import '../../../../config/config.less';
+
+.content{
+    .title{
+        width: 30%;
+        height: 40px;
+        padding: 0 30px;
+        margin: 30px 0;
+        background: linear-gradient(90deg,#f2f2f2,#fff);
+        line-height: 40px;
+        font-weight: 700;
+        color: #666;
+    }
+    .proxy-box{
+        padding: 0 28px;
+    }
+    .proxy-intr{
+        padding-top: 20px;
+        h3{
+            height: 30px;
+            border: 1px solid #eaeaea;
+            border-bottom: none;
+            background: #F5F5F5;
+            font-size: 16px;
+            line-height: 30px;
+            text-indent: .5em;
+            color: #666;
+        }
+        .img-box{
+            border: 1px solid #eaeaea;
+            margin-bottom: 20px;
+            img{
+                width: 100%;
+            }
+
+        }
+    }
+
+    .carousel{
+      padding-left: 20px;
+      height: 38px;
+      border: 1px solid #ccc;
+      background: #F6F6F6;
+      line-height: 38px;
+      color: #999;
+      margin-top: 12px;
+      .crl-left{
+        .icon-notices{
+          display: inline-block;
+          width: 25px;
+          height: 24px;
+          margin: 8px 15px 0 0;
+          background: url("@{base-url}wxdl/gg.png") no-repeat;
+          background-size: cover;
+          vertical-align: top;
+        }
+
+      }
+
+      .crl-right{
+        position: relative;
+        width: calc(100% - 115px);
+        height: 100%;
+        overflow: hidden;
+
+        .scroll-box{
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          white-space : nowrap;
+          animation: scrollHorizontal 60s linear infinite;
+          cursor: pointer;
+          &:hover{
+            animation-play-state: paused;
+          }
+
+          ul{
+            display: inline-block;
+            height: 100%;
+            white-space : nowrap;
+            li{
+              display: inline-block;
+              margin-right: 20px;
+            }
+          }
+        }
+      }
+    }
+    .list{
+      margin-top: 20px;
+      overflow: hidden;
+
+      ul{
+        float: left;
+        width: 296px;
+        height: 120px;
+        margin-right: 27px;
+        border: 1px solid #eaeaea;
+        text-align: center;
+        line-height: 60px;
+        &:last-child{
+          margin-right:0;
+        }
+
+        li{
+          float: left;
+          font-size: 14px;
+
+          i{
+            display: inline-block;
+            width: 57px;
+            height: 57px;
+            margin-right: 6px;
+            vertical-align: middle;
+            &.yty{
+              background:url("@{base-url}wxdl2/icon_xzdl.png") no-repeat;
+            }
+            &.sum{
+              background:url("@{base-url}wxdl2/icon_tybs.png") no-repeat;
+            }
+            &.total{
+              background:url("@{base-url}wxdl2/icon_fwdl.png") no-repeat;
+            }
+          }
+          span{
+            height: 40px;
+            line-height: 40px;
+          }
+          span:first-child{
+            color: @main-font-color;
+            font-size: 22px;
+            display: inline-block;
+          }
+          span:last-of-type{
+            display: block;
+            color: @main-color;
+            b{
+              display: inline-block;
+              font-size: 28px;
+            }
+          }
+        }
+        li:first-child{
+          height: 110px;
+          line-height: 110px;
+          margin-left: 35px;
+          margin-top: 5px;
+        }
+        li:last-of-type{
+          margin-top: 7px;
+          margin-left: 20px;
+        }
+      }
+    }
+    .agent-grade{
+      text-align: center;
+      h2{
+        height: 70px;
+        line-height: 70px;
+        font-size: 30px;
+      }
+      p{
+        height: 20px;
+        line-height: 20px;
+        font-size: 18px;
+      }
+      .infors{
+        margin-top: 10px;
+      }
+      img{
+        width: 100%;
+        margin-top: 12px;
+      }
+      img.agent-grade-img{
+        height: 130px;
+      }
+      img.count-img{
+        width: 564px;
+        height: 175px;
+      }
+    }
+    .btn-box{
+      margin-top: 20px;
+      text-align: center;
+    }
+    button.ant-btn.ant-btn-primary.ant-btn-lg {
+      width: 300px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 24px;
+    }
+    .proxy-intr{
+      padding-top: 20px;
+      h3{
+        height: 60px;
+        border-bottom: none;
+        font-size: 30px;
+        line-height: 60px;
+        text-indent: .5em;
+        color: #666;
+      }
+      .img-box{
+        margin-bottom: 20px;
+        img{
+          width: 100%;
+        }
+        p{
+          text-indent: 2em;
+          line-height: 27px;
+          font-size: 18px;
+          padding: 0 10px 0 10px;
+          margin-top: 7px;
+        }
+        .red-color{
+          color: @red-color;
+        }
+      }
+    }
+
+    @keyframes scrollHorizontal {
+      from {
+        transform: translateX( 0 );
+      }
+      to {
+        transform: translateX( -50% );
+      }
+    }
+}

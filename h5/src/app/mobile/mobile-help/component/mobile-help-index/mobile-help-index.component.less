@@ -1,0 +1,67 @@
+@import '../../../../config/config-mobile';
+
+.help-container {
+    padding: .1rem .2rem;
+    background: @deep-main-color;
+
+    .help-title {
+        position: relative;
+        margin: .3rem 0;
+        line-height: .6rem;
+        text-align: center;
+        font-size: .26rem;
+        color: @font-color;
+
+        &:before, &:after {
+            position: absolute;
+            content: "";
+            right: 0;
+            border-bottom: 1px solid @btn-primary;
+            bottom: .3rem;
+            width: 40%;
+        }
+
+        &:after {
+            left: 0;
+        }
+    }
+
+    .help-class {
+        text-align: center;
+        font-size: 0;
+        color: @font-color;
+
+        li {
+            display: inline-block;
+            margin-bottom: .4rem;
+            width: 25%;
+            font-size: .24rem;
+
+            .class-img {
+                width: 45px;
+                height: 45px;
+                margin: 0 auto;
+                background: url('@{base-url}image/icon.png');
+                background-size: 500px 500px;
+            }
+
+            .class-title {
+                line-height: .9rem;
+            }
+        }
+    }
+}
+
+::ng-deep .ant-tabs-nav {
+    .ant-tabs-tab {
+        color: @font-color !important;
+    }
+
+    .ant-tabs-tab-active {
+        color: @btn-primary !important;
+    }
+
+    .ant-tabs-ink-bar {
+        background-color: @btn-primary;
+    }
+}

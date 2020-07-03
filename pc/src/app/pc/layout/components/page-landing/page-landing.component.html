@@ -1,0 +1,124 @@
+<div class="login_dw" *ngIf="Pagehide">
+    <!-- 登录后 -->
+    <div class="login" *ngIf="auth.isAuth" [ngStyle]="{backgroundImage: 'url(' + config.baseImgUrl+'/images/account_bg.png' + ')'}">
+        <div class="Username">
+            -&nbsp;帐号 : <span class="account" title="abcwyx" id="loginUsername">{{user.userInfo?.username}}</span>
+            <a id="mailbox" ng-controller="StationMailCountCtrl" routerLink="/center/news"  title="站内信" class="ng-scope">
+                <span class="ng-binding ng-hide" id="MsgNotReadCount">{{user.userInfo?.unread }}</span>
+            </a>
+        </div>
+        <div class="Money">
+            -&nbsp;账户余额 : <span class="account ng-binding" id="Credit">{{user.userInfo?.wallet}}</span> <a
+                onclick="showBlance('Credit',true);" title="更新">
+                <i ng-if="!updatingBalance" class="fa fa-refresh ng-scope"></i>
+            </a>
+            <div id="callBackAllWallet" ng-click="showBlance('Credit',true);"></div>
+        </div>
+        <form nz-form [formGroup]="validateForm" class="login-form">
+            <nz-form-item >
+                <nz-form-control>
+                    <div class="free_forget">
+                        <div class="free">
+                            <button nz-button class="login-form-button" [nzType]="'primary'"
+                                (click)="loginOut()">登出</button>
+                        </div>
+                        <div class="forget">
+                            <!-- <button nz-button class="login-form-button" [nzType]="'primary'"> -->
+                                <a class="forget_pass" nz-button class="login-form-button" [nzType]="'primary'" [href]="service.onlineService.href"
+                                    [target]="service.onlineService.target">
+                                    修改密码
+                                </a>
+                            <!-- </button> -->
+                        </div>
+                    </div>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+        <div class="login_text">
+            <ul>
+                <li>
+                    <a routerLink="/center">
+                        会员中心
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/center/news">
+                        站内信
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/center/betting">
+                        投注记录
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/center/withdraw">
+                        线上取款
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/center/deposit">线上存款</a>
+                </li>
+                <li>
+                    <a routerLink="/center/funds">
+                        交易记录
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/center/modify_password">修改取款密码</a>
+                </li>
+                <li>
+                    <a routerLink="/center/interchange-auto">
+                        额度转换
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- 未登录 -->
+    <div class="login" *ngIf="!auth.isAuth" [ngStyle]="{backgroundImage: 'url(' + config.baseImgUrl+'/images/account_bg.png' + ')'}">
+        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+            <nz-form-item >
+                <nz-form-control nzErrorTip="请输入用户名!">
+                    <nz-input-group nzPrefixIcon="user">
+                        <input type="text" nz-input formControlName="username" placeholder="请输入账号"  appLimitInput [limitType]="'number|letter'"/>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item >
+                <nz-form-control nzErrorTip="请输入密码!">
+                    <nz-input-group nzPrefixIcon="lock">
+                        <input type="password" nz-input formControlName="password" placeholder="请输入密码"  appLimitInput [limitType]="'number|letter'"/>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item >
+                <nz-form-control>
+                    <div class="free_forget">
+                        <div class="free">
+                            <a routerLink="/home/free">
+                                免费试玩
+                            </a>
+                        </div>
+                        <div class="forget">
+                            <a [href]="service.onlineService.href" [target]="service.onlineService.target">
+                                忘记密码
+                            </a>
+                        </div>
+                    </div>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item >
+                <nz-form-control>
+                    <button nz-button [disabled]="validateForm.invalid" class="login-form-button"
+                        [nzType]="'primary'">登入</button>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+        <a class="free_registered" routerLink="/register" class="pact">
+
+        </a>
+
+    </div>
+</div>

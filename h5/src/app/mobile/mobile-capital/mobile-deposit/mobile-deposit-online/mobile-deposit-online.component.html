@@ -1,0 +1,52 @@
+<div class='depost-animation' *ngIf="!!type">
+    <div class="no-way flex" *ngIf="!payList?.length">
+        没有可用支付商列表!
+        <a [href]="plat.onlineService" class="customer icon">在线客服</a>
+
+    </div>
+    <div *ngIf="payList?.length">
+        <section class="deposit-payer">
+            <div class="lottery">
+                <ng-container *ngFor="let item of payList; let i = index;">
+                    <div (click)="dealPayment(i)"
+                         [ngClass]="{'deposit-list': true, 'active': i=== deposit.payIndex }">
+                        <span class="circle"></span>支付{{i+1}}
+                    </div>
+                </ng-container>
+
+            </div>
+        </section>
+        <div class="title">存款金额</div>
+        <section class="deposit-amount">
+            <div nz-row style="margin-top: .2rem;" *ngIf="!payList[deposit.payIndex]?.solidStatus">
+                <div nz-col>
+                    <nz-input-group nzAddOnBefore="￥">
+                        <input type="number" nz-input [(ngModel)]="params.amount"
+                               [placeholder]="'单笔限额'+payList[deposit.payIndex].minquota+ '-'
+                                +payList[deposit.payIndex].maxquota+  '(元)'" maxlength="7" [nzSize]="'large'"/>
+                    </nz-input-group>
+                </div>
+            </div>
+            <div class="fixed-amount" nz-row *ngIf="payList[deposit.payIndex]?.solidStatus">
+                <ng-container *ngFor="let amount of payList[deposit.payIndex]?.solidAmount; let i = index;">
+                    <div nz-col nzSpan="6" class="amount" (click)="amountIndex = i">
+                        <button nz-button nzType="default"
+                                [ngClass]="{'btn-active': amountIndex === i, 'amount-btn': true}">
+                            {{amount}}
+                        </button>
+                    </div>
+                </ng-container>
+            </div>
+        </section>
+
+        <div class="next">
+            <!--<div Button [type]="'primary'" [disabled]="false">下一步</div>-->
+            <button class="deposit-submit btn-image-big" nz-button
+                    nzType="primary" (click)="submit()" nzSize="large">下一步
+            </button>
+        </div>
+
+        <app-mobile-deposit-text-tooltip></app-mobile-deposit-text-tooltip>
+    </div>
+
+</div>

@@ -1,0 +1,82 @@
+<div class="home-index">
+  <app-mobile-header [leftIcon]="true"></app-mobile-header>
+
+  <div class="h-container">
+    <!--未设置提款密码-->
+    <div class="no-set-password" *ngIf="!user.user?.hasWithdrawPassword">
+      <app-mobile-setting-withdraw-password [isGoBack]="false"></app-mobile-setting-withdraw-password>
+    </div>
+
+    <!--未设定银行卡-->
+    <div class="no-set-bank" *ngIf="user.user?.hasWithdrawPassword && !user.user?.hasBankCard">
+      <!--<p>请先添加银行卡,添加后即可进行转出提款</p>-->
+      <app-mobile-setting-withdraw-bankcard [isGoBack]="false"
+                                            (getCardInfo)="getCardInfo()"></app-mobile-setting-withdraw-bankcard>
+    </div>
+    <nz-spin [nzSpinning]="loading" nzTip="加载中" *ngIf="user.user?.hasBankCard">
+      <div class="withdraw-info">
+        <div class="title">
+          银行卡信息
+        </div>
+        <div class="bank-card" nz-row>
+          <div nzSpan="16" nzOffset="4" nz-col>
+            <div class="bank-card-right">
+              <div class="bank-card-name">{{bankInfo?.bankName}}</div>
+              <div class="bank-card-num ">{{bankInfo?.cardNum}}</div>
+              <div class="bank-card-num wallet">钱包余额：{{user.user?.wallet}}元</div>
+            </div>
+          </div>
+        </div>
+        <div class="title">
+          打码量信息
+        </div>
+        <div class="quantity">
+          <div class="content">
+            要求打码量
+          </div>
+          <div class="number">
+            {{withddrawConfig?.markingQuantity}}
+          </div>
+        </div>
+        <div class="quantity">
+          <div class="content">
+            完成打码量
+          </div>
+          <div class="number">
+            {{withddrawConfig?.userQuantity}}
+          </div>
+        </div>
+        <div class="title">
+          提款信息
+        </div>
+        <div nz-row *ngIf="true">
+          <div nz-col class="withdraw">
+            <nz-input-group nzAddOnBefore="提款金额">
+              <input type="number" nz-input [(ngModel)]="params.amount"
+                     [placeholder]="'请输入'+(withddrawConfig?.minWithdrawMoney || 0)+ '-'+(withddrawConfig?.maxWithdrawMoney || 0)+'金额'"
+                     maxlength="7"
+                     [nzSize]="'large'"/>
+            </nz-input-group>
+          </div>
+          <div nz-col class="withdraw">
+            <nz-input-group nzAddOnBefore="提款密码">
+              <input type="password" nz-input [(ngModel)]="params.password" placeholder="请输入提款密码" maxlength="4"
+                     [nzSize]="'large'"/>
+            </nz-input-group>
+          </div>
+        </div>
+        <button class="submit btn-image-big btn-image-big" nz-button nzSize="large"
+                nzType="primary" (click)="submitFn()">下一步
+        </button>
+        <div class="withdraw-tips">
+          <p class="tips-title">温馨提醒：</p>
+          <p class="tips-text">
+            若您在取款过程中遇到困难，请您随时联系我们的
+            <a class="red-text" [href]="platformService.onlineService"> 在线客服 </a>
+            来获得帮助。
+          </p>
+        </div>
+      </div>
+    </nz-spin>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+@import '../../../config/config-mobile.less';
+
+.set-phones {
+  width: 100%;
+}
+
+.set-phones p {
+  font-size: 0.24rem;
+  color: @font-color;
+}
+
+.submit-btns {
+  width: 5rem;
+  margin: .4rem auto;
+  font-size: 0;
+}
+
+button.primary-btn {
+  width: 5rem;
+  height: 0.8rem;
+  margin: 0 auto;
+  font-size: 0.32rem;
+  border-radius: 1rem;
+  color: @font-color;
+  background-color: @btn-primary;
+  border: none;
+}
+
+.G-Warm {
+  margin: 0 .3rem;
+}
+
+.G-Warm p {
+  line-height: 0.4rem;
+  font-size: .24rem;
+  text-align: left;
+  color: @second-font-color;
+}
+
+:host ::ng-deep {
+  input.phone.ant-input.ng-pristine.ng-valid.ng-touched {
+    height: 1rem;
+    line-height: 1rem;
+  }
+
+  .set-input {
+    height: 1rem;
+    line-height: 1rem;
+    padding: 0 0.3rem;
+    border-bottom: 1px solid @border-color;
+    font-size: 0.3rem;
+    background: @deep-main-color;
+  }
+
+  .set-input label {
+    font-size: 0.3rem;
+    color: @font-color;
+  }
+
+  .set-input input {
+    width: 45%;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    float: right;
+    text-align: right;
+    border: none;
+    outline: none;
+    color: @font-color;
+    padding: 0 11px;
+    margin-top: 0.1rem;
+    border-radius: 5px;
+    background: none;
+    font-size: 0.24rem;
+    margin-right: 0.08rem;
+  }
+
+  .phone-codes {
+    float: right;
+    width: 22%;
+    margin-top: 0.15rem;
+    padding: 0 !important;
+    font-size: 0.24rem;
+    background: none;
+    border-color: @btn-primary;
+    color: @btn-primary;
+  }
+}

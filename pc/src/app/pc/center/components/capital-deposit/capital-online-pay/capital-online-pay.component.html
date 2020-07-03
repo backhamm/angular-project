@@ -1,0 +1,72 @@
+<div class="online-wrap">
+  <div class="pay-steps" *ngIf="payList.length !== 0">
+    <nz-steps [nzCurrent]="deposit.currentStep" [nzSize]="'small'">
+      <nz-step nzTitle="输入金额"></nz-step>
+      <nz-step nzTitle="存款成功"></nz-step>
+    </nz-steps>
+  </div>
+  <div class="pay-channel">
+        <span [class.list_on]="i == deposit.payIndex"
+              *ngFor="let item of payList, let i= index"
+              (click)="switchPayment(i)"
+              [style.backgroundImage]="'url('+ currentBg +')'"
+        >支付{{i+1}}</span>
+    <nz-empty *ngIf="payList.length === 0" [nzNotFoundContent]="'无可用支付渠道'"></nz-empty>
+  </div>
+  <div class="form" *ngIf="payList.length !== 0">
+    <!-- 网银支付 => 选择银行 -->
+    <div class="banklist el clear" *ngIf="currentPayment?.scancode === 'wy' && currentPayment?.banks.length > 0">
+      <div class="prefix fl"> 选择银行：</div>
+      <div class="content fl">
+        <div [class.active]="i == bankSelected" class="bank-type-item"
+             *ngFor="let item of  currentPayment.banks,let i= index"
+             [title]="item.bankName" (click)="bankSwitch(i)"
+        >
+          <img [src]="item.bankImg" alt="">
+        </div>
+      </div>
+    </div>
+    <!-- 输入金额 -->
+    <div class="amount el clear" *ngIf="!currentPayment?.solidStatus">
+      <div class="fl prefix"> 存款金额：</div>
+      <div class="content fl">
+        <nz-input-number
+          [(ngModel)]="amountValue" [nzMin]="currentPayment?.minquota" [nzMax]="currentPayment?.maxquota"
+          [nzStep]="10" [disabled]="!currentPayment"
+        ></nz-input-number>
+        <div class="tip-div">单笔限额{{currentPayment?.minquota+'-'+currentPayment?.maxquota}}(元)</div>
+      </div>
+    </div>
+    <!-- 固定金额 -->
+    <div class="el clear" *ngIf="!!currentPayment?.solidStatus">
+      <div class="fl prefix"> 选择金额：</div>
+      <div class="content fl">
+        <nz-radio-group [(ngModel)]="amountValue" [nzButtonStyle]="'solid'">
+          <label *ngFor="let item of currentPayment?.solidAmount"
+                 nz-radio-button
+                 [nzValue]="item">{{item}}</label>
+        </nz-radio-group>
+      </div>
+    </div>
+
+    <div class="el">
+      <button class="submit" [disabled]="!currentPayment" [nzLoading]="isLoading" (click)="submit()" nz-button
+              nzType="primary">下一步
+      </button>
+    </div>
+  </div>
+  <app-deposit-reminder></app-deposit-reminder>
+</div>
+
+
+<nz-drawer
+    [nzMaskClosable]="false"
+    [nzKeyboard] = "false"
+    [nzVisible]="drawerVisible"
+    nzPlacement="right"
+    [nzWidth]="'100%'"
+    nzTitle="线上支付"
+    (nzOnClose)="toggleDrawer()"
+>
+    <app-scan-pay-result *ngIf="drawerVisible" [scanPayment]="scanPayment"></app-scan-pay-result>
+</nz-drawer>

@@ -1,0 +1,135 @@
+<div class="home-index">
+  <app-mobile-header [leftIcon]="true"></app-mobile-header>
+
+  <div class="h-container">
+    <div id="user-personal">
+      <div class="publicpage">
+        <div class="gameLimit publicpage_view">
+          <nz-spin [nzSpinning]="isLoading" nzTip="加载中">
+            <div class="persobal-title">
+              <span>个人基本信息</span>
+            </div>
+
+            <div class="personal-img">
+              <div class="grid-content ">
+                <span class="white-colors img-title">头像</span>
+                <span class="x-icon-Mem-logo x-icon infos"></span>
+              </div>
+            </div>
+
+            <div class="personal-lists">
+              <div class="grid-content bg-purple-dark">
+                <span class="white-colors">用户名</span>
+                <span class="info">{{username}}</span>
+              </div>
+            </div>
+
+            <div class="personal-lists">
+              <div class="grid-content bg-purple-dark">
+                <span class="white-colors">真实姓名</span>
+                <div *ngIf="userinfo?.realname != '' && userinfo?.realname != '会员' ;then suceessRName else noRName"></div>
+                <ng-template #suceessRName>
+              <span class="info">
+                <span class="success-set">{{userinfo.realname}}
+                </span>
+              </span>
+                </ng-template>
+
+                <ng-template #noRName>
+              <span class="info" [routerLink]="src.name">
+                <span class="no-set">{{userinfo?.realname ? userinfo?.realname : '未设定'}}
+                  <i nz-icon nzType="right" nzTheme="outline"></i>
+                </span>
+              </span>
+                </ng-template>
+              </div>
+            </div>
+
+            <div class="personal-lists">
+              <div class="grid-content bg-purple-dark">
+                <span class="white-colors">手机号</span>
+                <div *ngIf="userinfo?.hasMobile ;then suceessPhone else noPhone"></div>
+                <ng-template #suceessPhone>
+              <span class="info">
+                <span class="no-set">
+                  {{userinfo?.mobile}} (已验证)
+                </span>
+              </span>
+                </ng-template>
+
+                <ng-template #noPhone>
+              <span class="info" [routerLink]="userinfo?.loginmobile ? '' : src.phone">
+                <span class="no-set">
+                  {{userinfo?.mobile}} (未验证)
+                  <i nz-icon nzType="right" nzTheme="outline"></i>
+                </span>
+              </span>
+                </ng-template>
+              </div>
+            </div>
+
+            <div class="personal-lists">
+              <div class="grid-content bg-purple-dark">
+                <span class="white-colors">微信号</span>
+                <span class="info" [routerLink]="src.weixin">
+              <span class="no-set">
+                {{userinfo?.weixin ? userinfo.weixin : '未设置'}}
+                <i nz-icon nzType="right" nzTheme="outline"></i>
+              </span>
+            </span>
+
+
+              </div>
+            </div>
+
+            <div class="personal-lists">
+              <div class="grid-content bg-purple-dark">
+                <span class="white-colors">QQ号</span>
+                <span class="info" [routerLink]="src.qq">
+              <span class="no-set">
+                {{userinfo.qq ? userinfo.qq : '未设置'}}
+                <i nz-icon nzType="right" nzTheme="outline"></i>
+              </span>
+            </span>
+              </div>
+            </div>
+
+            <div class="persobal-title">
+              <span>账号信息</span>
+            </div>
+
+            <div class="personal-lists">
+              <div class="grid-content bg-purple-dark">
+                <span class="white-colors">注册时间</span>
+                <span class="info">
+              <span>
+                {{userinfo?.regDate}}
+              </span>
+            </span>
+              </div>
+            </div>
+
+            <div class="personal-lists">
+              <div class="grid-content bg-purple-dark">
+                <span class="white-colors">最后登录时间</span>
+                <span class="info">
+              <span>
+                {{userinfo?.loginDate}}
+              </span>
+            </span>
+              </div>
+            </div>
+
+            <button type="button" class="primary-btn btn-image-big" (click)="isVisible = true">
+              退出登录
+            </button>
+          </nz-spin>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nz-modal class="personal-modal" [(nzVisible)]="isVisible" nzTitle="提示" (nzOnCancel)="isVisible = false" (nzOnOk)="isVisible = false; auth.logout();">
+  <p>是否退出账户</p>
+</nz-modal>

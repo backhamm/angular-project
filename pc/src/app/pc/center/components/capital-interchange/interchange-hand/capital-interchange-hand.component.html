@@ -1,0 +1,154 @@
+<div class="interchange-hand">
+    <button class="switch-auto interchange-button-default" routerLink="/center/interchange-auto" nz-button
+            nzType="default">切换至自动转账
+    </button>
+    <div class="capital-title">我的资产</div>
+    <div class="interchange-container clear">
+        <div class="capital fl">
+            <div class="assets">
+                <div>
+                    <span class="assets-title">总资产</span>
+                    <!--<span class="eye"></span>-->
+                </div>
+                <div class="total-balance">￥{{userInfo?.totalBalance | number:'1.2-2'}}</div>
+            </div>
+            <div class="assets-items clear">
+                <div class="item" [class.item-no-proxy]="userInfo?.agencyStatus">
+                    <h1>钱包余额</h1>
+                    <p>￥{{userInfo?.wallet | number:'1.2-2'}}</p>
+                    <div>
+                        <button routerLink="/center/deposit" class="buttons" nz-button nzType="primary">存款</button>
+                        <button routerLink="/center/withdraw" class="buttons" nz-button nzType="default">提款</button>
+                    </div>
+                </div>
+                <!--<div *ngIf="!userInfo?.agencyStatus" class="item divider">-->
+                    <!--<h1>未结佣金</h1>-->
+                    <!--<p>￥{{userInfo?.outstandingCommissions | number:'1.2-2'}}</p>-->
+                    <!--<button class="buttons" nz-button nzType="primary" *ngIf="userInfo?.withdraw"-->
+                            <!--(click)="commissionVisible = true;">提取佣金-->
+                    <!--</button>-->
+                <!--</div>-->
+                <div class="item divider" [class.item-no-proxy]="userInfo?.agencyStatus">
+                    <h1>积分余额</h1>
+                    <p>{{userInfo?.integral}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="interchange-hand fr">
+            <div class="transfer">
+                <ul class="row-container">
+                    <li class="row clear">
+                        <h1>转出：</h1>
+                        <div class="transfer-select">
+                            <nz-select [(ngModel)]="selectedOutValue"
+                                       (ngModelChange)="transferSelectChange($event,'out')" [nzCustomTemplate]="custom">
+                                <nz-option *ngFor="let item of allGameListInfo" nzCustomContent
+                                           [nzLabel]="item.gameName+';'+item.balance+';'+ item.gameImg"
+                                           [nzValue]="item.gameCode">
+                                    <div class="select-option">
+                                        <div class="detail fl" style="font-size: 12px;">
+                                            <img class="img" style="width: 31px;
+                                        height: 26px;
+                                        vertical-align: middle;
+                                        padding-right: 5px;" [src]="item.gameImg">
+                                            {{item.gameName}}
+                                        </div>
+                                        <div class="balance fr" style="font-size: 12px;">¥ {{item.balance | number:'1.2-2'}}</div>
+                                    </div>
+                                </nz-option>
+                            </nz-select>
+
+                        </div>
+                    </li>
+                    <li class="row clear">
+                        <h1>转入：</h1>
+                        <div class="transfer-select">
+                            <nz-select [(ngModel)]="selectedInValue"
+                                       (ngModelChange)="transferSelectChange($event,'in')" [nzCustomTemplate]="custom">
+                                <nz-option *ngFor="let item of allGameListInfo" nzCustomContent
+                                           [nzLabel]="item.gameName+';'+ item.balance +';'+ item.gameImg"
+                                           [nzValue]="item.gameCode">
+                                    <div class="select-option clear">
+                                        <div class="detail fl" style="font-size: 12px;">
+                                            <img class="img" style="width: 31px;
+                                        height: 26px;
+                                        vertical-align: middle;
+                                        padding-right: 5px;" [src]="item.gameImg">
+                                            {{item.gameName}}
+                                        </div>
+                                        <div class="balance fr" style="font-size: 12px;">¥ {{item.balance| number:'1.2-2'}}</div>
+                                    </div>
+                                </nz-option>
+                            </nz-select>
+                        </div>
+                    </li>
+                    <li class="row clear">
+                        <h1>金额：</h1>
+                        <div class="transfer-select">
+                            <nz-input-number [(ngModel)]="transferBalance" [nzMin]="1" [nzMax]="100000"
+                                             [nzStep]="10"></nz-input-number>
+                        </div>
+                    </li>
+                    <li class="row clear">
+                        <div class="transfer-select">
+                            <button (click)="transferValidate()" [nzLoading]="isLoading" class="transfer-submit"
+                                    nz-button nzType="primary">
+                                确定转账
+                            </button>
+                        </div>
+                    </li>
+                    <ng-template #custom let-selected>
+                        <div class="select-option clear" style="position: relative;width: 267px;">
+                            <div class="detail fl transferWidth">
+                                <img style="width: 31px;
+                                height: 26px;
+                                vertical-align: middle;
+                                padding-right: 5px;" [src]="selected.nzLabel.split(';')[2]">
+                                <span>{{selected.nzLabel.split(';')[0]}}</span>
+                            </div>
+                            <div style="position: absolute;right:18px;" class="balance">¥
+                                {{selected.nzLabel.split(';')[1] | number:'1.2-2'}}
+                            </div>
+                        </div>
+                    </ng-template>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="assets-hand">
+    <div class="capital-title">资产分布</div>
+    <div class="assets-container">
+        <ul *ngIf="playedGameList" [class.assets-much]="playedGameList.length > 12" class="assets-container clear">
+            <li *ngFor="let item of playedGameList;"
+                class="assets-items fl clear">
+                <div [style.background-image]="'url('+item.gameImg+')'"
+                     class="logo fl"></div>
+                <div class="detail fl">
+                    <p>{{item.gameName}}</p>
+                    <p>{{item.balance | number:'1.2-2'}}</p>
+                </div>
+            </li>
+        </ul>
+        <nz-empty *ngIf="!playedGameList?.length"></nz-empty>
+    </div>
+</div>
+
+
+<!-- 提取佣金弹窗 -->
+<!-- <nz-modal
+    [(nzVisible)]="commissionVisible"
+    nzTitle="佣金提取申请"
+    (nzOnCancel)="commissionVisible = false;"
+    (nzOnOk)="getWithdrawComm()"
+    [nzStyle]="{ top: '25vh'}"
+>
+    <div class="get-item">当前未结佣金&nbsp;:&nbsp;&nbsp;<span>￥{{ userInfo?.outstandingCommissions | number:'1.2-2'}}</span>
+    </div>
+    <div class="get-item">计佣周期&nbsp;:&nbsp;&nbsp;<i>{{ userInfo?.commissionBeginDate + '~' + userInfo?.commissionEndDate
+        }}</i></div>
+    <p>需先提交平台审核，审核通过后将下发到您提供的银行卡内，详情请咨询客服，是否确认提交？</p>
+</nz-modal> -->
+
+

@@ -1,0 +1,353 @@
+@import "../../../../config/config.less";
+
+#main {
+    min-height: 500px;
+    overflow: hidden;
+    #banner {
+        background: url("@{base-url}images/games_banner/registered_banner.jpg") no-repeat center center;
+        height: 350px;
+        .wrapper {
+            position: relative;
+            width: 1000px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+    }
+
+    .noticeScrollText_Span {
+        cursor: pointer;
+    }
+
+    #content {
+        position: relative;
+        margin: 50px auto 30px;
+        text-align: center;
+        background-color: #242424;
+
+        .wrapper {
+            position: relative;
+            width: 940px;
+            margin: 0 auto;
+
+            // padding: 0 30px;
+            // 滚动公告
+            nz-radio-group {
+                margin-bottom: 8px;
+            }
+
+            [nz-carousel-content] {
+                text-align: center;
+                height: 130px;
+                line-height: 130px;
+                color: @main-font-active-color;
+                overflow: hidden;
+            }
+
+            .ng-star-inserted {
+                background: none;
+                left: 14px;
+                top: 10px;
+
+                #hot-news {
+                    display: inline-block;
+                    width: 650px;
+                    // overflow: hidden;
+                    vertical-align: middle;
+                    white-space: nowrap;
+
+                    a {
+                        width: 168px;
+                        line-height: 20px;
+                        text-align: left;
+                        font-size: 12px;
+                        display: block;
+                        height: 100px;
+
+                    }
+                }
+
+            }
+
+            h3 {
+                color: @main-font-active-color;
+
+            }
+
+            ::ng-deep .ant-carousel-vertical {
+                .slick-dots {
+                    right: 97%;
+
+                    li {
+                        button {
+                            height: 10px !important;
+                            width: 10px !important;
+                            border-radius: 4px;
+                        }
+                    }
+                }
+            }
+        }
+
+        #hot-news {
+            display: inline-block;
+            width: 650px;
+            overflow: hidden;
+            vertical-align: middle;
+            white-space: nowrap;
+
+            a {
+                font-size: 12px;
+                line-height: 30px;
+                text-decoration: none;
+            }
+        }
+
+        .register_login {
+            width: 940px;
+            display: flex;
+            margin: 0 auto;
+            .tab-list {
+                //width: 100%;
+                height: 50px;
+                text-align: center;
+                display: table;
+                margin: 0 auto;
+                div {
+                    padding-left: 0;
+                    font-size: 16px;
+                    color: @white-color;
+                    float: left;
+                    line-height: 50px;
+                    cursor: pointer;
+                    &:hover {
+                        color:#fee300;
+                    }
+                }
+                #tab-0 {
+                    padding-right: 20px;
+                }
+                #tab-1 {
+                    padding-left: 20px;
+                }
+                .active {
+                    color: #fee300;
+                }
+            }
+            .register_login_left {
+                text-align: left;
+                flex: 3;
+                background: @main-color2;
+                margin-bottom: 20px;
+
+                h2 {
+                    height: 42px;
+                    border-bottom: 1px solid @main-color;
+                    line-height: 40px;
+                    color: @nav-active-color;
+                    font-weight: 700;
+                    padding-left: 8px;
+                    margin-bottom: 10px;
+					font-size: 15px;
+
+                }
+
+                .register_login_left_ing {
+                    width: 100%;
+                    h3{
+                        color: @nav-active-color;
+                        width: 100%;
+                        text-align: center;
+                        line-height: 60px;
+                        font-weight: 700;
+                    }
+                    .phone-register {
+                        // margin: 15px auto;
+                        .ant-input{
+                        //   width: 250px!important;
+                        }
+                      .verificationPhone{
+                        position: absolute;
+                        top:5px;
+                        right: 271px;
+                        width: 125px;
+                        height: 30px;
+                        .refresh-button {
+                          width: 100%;
+                          height: 100%;
+                          border-radius: 3px;
+                          display: block;
+                          color:@main-color2;
+                        }
+                        .countdown {
+                          position: relative;
+                          left: 7px;
+                          width: 100%;
+                          height: 30px;
+                          background: #ddd;
+                          color: #6c6c6c;
+                          text-align: center;
+                          line-height: 30px;
+                          cursor: pointer;
+                          border-radius: 3px;
+                        }
+                      }
+                    }
+                    [nz-form] {
+                        // max-width: 600px;
+
+                        ::ng-deep .ant-form-item-control {
+                            height: 40px;
+
+                            .ant-form-explain {
+                                position: relative;
+                                left: 272px;
+                                top: -39px;
+                            }
+                        }
+
+                        ::ng-deep .ant-form-item-label>label {
+                            color: @main-font-color;
+                        }
+
+                        ::ng-deep .ant-checkbox+span {
+                            color: @main-font-color;
+                        }
+
+                        //滚动验证  验证成功后的背景色 边框
+                        ::ng-deep #verify-warp.slided #slider {
+                            background: #60b14c;
+                            border: 1px solid #e1e3ec;
+                        }
+
+                        //滚动验证  滑块按钮
+                        // ::ng-deep #verify-warp.slided #slider #slider-btn{
+                        //     background-color: chartreuse !important;
+                        // }
+                        // 滑动验证  验证前的背景色 边框
+                        // ::ng-deep #verify-warp{
+                        //     background: blue;
+                        //     border: 1px solid #e1e3ec;
+                        // }
+                        //滑动验证  滑动过程中的背景色 边框
+                        ::ng-deep #verify-warp.sliding #slider {
+                            background: #60b14c;
+                            border: 1px solid #e1e3ec;
+                        }
+
+                        //验证成功后的按钮背景色 边框
+                        ::ng-deep #verify-warp.slided #slider #slider-btn {
+                            background-color: #77e24b;
+                        }
+                    }
+
+                    button {
+                        margin-left: 8px;
+                    }
+
+                    .login_text {
+                        width: 200px;
+                        font-size: 14px;
+                        line-height: 18px;
+                        word-wrap: break-word;
+                        word-break: normal;
+                        height: 30px;
+                        display: inline-block;
+                        margin-left: 10px;
+                        color: red;
+                    }
+
+                    .ant-form-item {
+                        margin-bottom: 40px;
+                    }
+
+                    .phone-select {
+                        width: 70px;
+                    }
+
+                    .register-are {
+                        margin-bottom: 8px;
+                    }
+
+                }
+            }
+
+            .register_login_right {
+                flex: 1;
+                background: @main-color1;
+                margin-left: 10px;
+            }
+        }
+    }
+
+}
+
+//协议
+.zz_agree {
+    width: 100%;
+    height: 100%;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    -khtml-opacity: 0.8;
+    opacity: 0.8;
+    background: #000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 999998;
+
+}
+
+#ywxy {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 940px;
+    height: 500px;
+    background: #d4d4d4;
+    z-index: 999999;
+
+    .close {
+        position: absolute;
+        right: 17px;
+        top: 10px;
+        width: 14px;
+        height: 14px;
+        background: url(https://2s138a.com/theme/plugins/ui/1.9.2/themes/base/images/close.png) top center no-repeat;
+        transition: All 0.4s ease-in-out;
+        &:hover {
+            webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    h2 {
+        height: 36px;
+        line-height: 36px;
+        color: #08F;
+        font-weight: bold;
+        padding-left: 20px;
+        font-size: 20px;
+    }
+
+    #Div1 {
+        margin: 0 5px 5px 5px;
+        padding: 10px 20px;
+        background: #fff;
+
+        ul, p {
+			font-size: 14px;
+			color: @main-color;
+            li {
+                line-height: 24px;
+				list-style: disc;
+            }
+        }
+    }
+
+}

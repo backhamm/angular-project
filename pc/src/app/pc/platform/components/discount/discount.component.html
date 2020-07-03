@@ -1,0 +1,22 @@
+<div class="discount">
+    <div class="banner"></div>
+    <div class="discount-container">
+
+        <div class="item-container" *ngIf="discountList.length">
+            <div class="dis-tabs-item" *ngFor="let item of discountList,index as id">
+                <!--<a [routerLink]="['/home/discount-detail', id]">-->
+                <a  (click)="showDetail(item, id)">
+                    <img [src]="item.bigImg" alt="discount">
+                </a>
+                <img [src]="item.htmlImg" alt="" *ngIf="item.show">
+            </div>
+        </div>
+        <div class="empty" *ngIf="!discountList.length">
+            <nz-empty></nz-empty>
+        </div>
+        <div class="content-right">
+            <app-game-hot></app-game-hot>
+        </div>
+    </div>
+
+</div>

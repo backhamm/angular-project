@@ -1,0 +1,89 @@
+<div class="index">
+    <div class="index_top">
+        <!-- 轮播图 -->
+        <div class="index-banner">
+            <nz-carousel style="overflow: hidden" [nzEffect]="'scrollx'" [nzEnableSwipe]="false" [nzAutoPlay]='true'>
+                <div nz-carousel-content *ngFor="let carousel of carouselList">
+                    <img [src]="carousel.data" width="100%" height="450px" alt="">
+                </div>
+            </nz-carousel>
+        </div>
+
+    </div>
+    <!-- 首页底部优惠活动部分 -->
+    <div class="index_bottom">
+        <ul>
+            <li [ngStyle]="{backgroundImage: 'url(' + config.baseImgUrl+'images/index/001.jpg' + ')'}">
+                <a [routerLink]="[ '/game/live' ]"></a>
+            </li>
+            <li [ngStyle]="{backgroundImage: 'url(' + config.baseImgUrl+'images/index/002_2.jpg' + ')'}">
+                <a [routerLink]="[ '/home/discount' ]"></a>
+            </li>
+            <li [ngStyle]="{backgroundImage: 'url(' + config.baseImgUrl+'images/index/03.png' + ')'}"
+                class="index_bottom_text">
+                <nz-carousel nzDotPosition="right" style="background: none;" [nzEffect]="'fade'">
+                    <div nz-carousel-content *ngFor="let index of noticeList">
+                        <div class="pagesgonggao" id="newsBar">
+                            <!--公告栏 start-->
+                            <div id="hot-news" class="marqueen" style="width: 170px;">
+                                <div class="js-marquee-wrapper"
+                                    style="animation: marqueeAnimation-7959470 309.75s linear 0s infinite;">
+                                    <div class="js-marquee" style="margin-right: 0px; float: none; margin-bottom: 0px;">
+                                        <marquee scrollamount="4" scrolldelay="140" direction="up" nowarp=""
+                                            onmouseover="this.stop();" onmouseout="this.start();"
+                                            style="height: 150px;">
+                                            <a class="noticeScrollText_Span" id="noticeText" style="color: #fff;"
+                                            (click)="clickStart(index.data)" >{{index.data}}</a>
+                                        </marquee>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--公告栏 end-->
+                        </div>
+                    </div>
+                </nz-carousel>
+            </li>
+            <li [ngStyle]="{backgroundImage: 'url(' + config.baseImgUrl+'images/index/04.png' + ')'}">
+                <a [routerLink]="[ '/game/live' ]"></a>
+            </li>
+            <li [ngStyle]="{backgroundImage: 'url(' + config.baseImgUrl+'images/index/05.png' + ')'}">
+                <a [routerLink]="[ '/game/electronic' ]"></a>
+            </li>
+            <li [ngStyle]="{backgroundImage: 'url(' + config.baseImgUrl+'images/index/06.png' + ')'}">
+                <a [routerLink]="[ '/game/sports' ]"></a>
+            </li>
+            <li [ngStyle]="{backgroundImage: 'url(' + config.baseImgUrl+'images/index/07.png' + ')'}">
+                <a [routerLink]="[ '/game/lottery' ]"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- 红包活动 -->
+<app-red-packet></app-red-packet>
+<!-- 刮刮乐 -->
+<app-scratch *ngIf="auth.isAuth"></app-scratch>
+
+<!--首页弹窗-->
+<div *ngIf="indexDailoglList.length > 0">
+    <div id="index-dailog-bg" *ngIf="isVisible"></div>
+    <div id="index-dailog" *ngIf="isVisible">
+        <div class="nav-tabs-header">
+            <p>平台公告</p>
+            <img (click)="handleCancel()" [src]="config.baseImgUrl+'images/icon_close.png'" alt="">
+        </div>
+        <div class="nav-tabs">
+            <nz-tabset style="height:220px;" [nzTabPosition]="nzTabPosition" [(nzSelectedIndex)]="selectedIndex"
+                (nzSelectChange)="log([$event])">
+                <nz-tab *ngFor="let tab of indexDailoglList" [nzTitle]="tab.title" (nzSelect)="log(['select', tab])"
+                    (nzClick)="log(['click', tab])" (nzDeselect)="log(['deselect', tab])">
+                    <img [src]="tab.data" alt="">
+                </nz-tab>
+            </nz-tabset>
+        </div>
+        <div class="nav-tabs-footer">
+            <input type="checkbox" [(ngModel)]='isChecked'>
+            <span (click)="closeIndexDailog()">不再提示</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="center-right fl">
+    <div class="page-header">
+       站内消息
+    </div>
+    <div class="news-date">
+        <ul nz-menu nzMode="horizontal">
+            <li nz-menu-item nzSelected (click)="getMessageByType('date', 0)">
+                <i nz-icon nzType="calendar"></i>
+                今天
+            </li>
+            <li nz-menu-item (click)="getMessageByType('date', -2)">
+                <i nz-icon nzType="calendar"></i>
+              3天
+            </li>
+            <li nz-menu-item (click)="getMessageByType('date', -6)">
+                <i nz-icon nzType="calendar"></i>
+               一周
+            </li>
+            <li nz-menu-item  (click)="getMessageByType('date', -29)">
+                <i nz-icon nzType="calendar"></i>
+                一个月
+            </li>
+        </ul>
+    </div>
+    <div class="news-type">
+        <nz-breadcrumb nzSeparator="|">
+            <nz-breadcrumb-item (click)="getMessageByType('type', 0)" [class]="newsIndex === 0 ? 'active' : ''">
+                <span>
+                    <i nz-icon nzType="mail"></i>
+                    全部({{ msgData?.extendBean.allread }})
+                </span>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item  (click)="getMessageByType('type', 1)" [class]="newsIndex === 1 ? 'active' : ''">
+                <span>
+                     <i nz-icon nzType="mail"></i>
+                    未读({{msgData?.extendBean.noread}})
+                </span>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item  (click)="getMessageByType('type', 2)" [class]="newsIndex === 2 ? 'active' : ''">
+                <span>
+                     <i nz-icon nzType="mail"></i>
+                    已读({{msgData?.extendBean.isread}})
+                </span>
+            </nz-breadcrumb-item>
+        </nz-breadcrumb>
+    </div>
+    <nz-spin  nzTip="Loading..." [nzSpinning]="loading">
+        <div class="news-content">
+            <nz-table #basicTable
+                      [nzData]="msgData?.list"
+                      [nzPageSize]="params.pageSize"
+                      [nzPageIndex]="params.pageNo"
+                      [nzTotal]="msgData?.total"
+                      [nzFrontPagination] = "false"
+                      (nzPageIndexChange)="getMessageByType('page', $event)">
+                <thead>
+                <tr>
+                    <th class="content-type">类型</th>
+                    <th class="center-title">标题</th>
+                    <th class="center-time">时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of basicTable.data;let i = index" (click)="showMessage(item.id)">
+                    <td>{{ i+1 }}</td>
+                    <td ><p  class="text">{{ item.title }}</p></td>
+                    <td>{{ item.addtime }}</td>
+                </tr>
+                </tbody>
+            </nz-table>
+            <nz-modal [(nzVisible)]="showMsg" nzTitle="消息"  (nzOnOk)="handleOk()" [nzClosable]="false" [nzCancelText]="null">
+                <p>{{ alertMsg?.message }}</p>
+            </nz-modal>
+        </div>
+
+    </nz-spin>
+
+
+</div>

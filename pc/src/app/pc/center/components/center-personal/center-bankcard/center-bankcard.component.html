@@ -1,0 +1,102 @@
+<div class="center-right fl">
+    <div class="page-header">
+        绑定银行卡
+    </div>
+
+    <div class="setting" [ngStyle]="{'margin': current === 0 ?'80px auto 100px' : '80px auto 40px'}">
+        <nz-steps [nzCurrent]="current" nzSize="small">
+            <nz-step nzTitle="设定卡片"></nz-step>
+            <nz-step nzTitle="确认信息"></nz-step>
+            <nz-step nzTitle="设定成功"></nz-step>
+        </nz-steps>
+    </div>
+
+    <nz-modal [(nzVisible)]="isDrawal"
+              [nzClosable] = "false"
+              [nzMaskClosable] = "false"
+              nzWrapClassName="vertical-center-modal"
+              (nzOnOk)="jumpPage()"
+              (nzOnCancel)="cancelJump()">
+      <p>您还没有设置提款密码，请先前往设置提款密码页面</p>
+    </nz-modal>
+
+    <!--第一步-->
+
+    <div class="step1" *ngIf="current === 0">
+      <div class="set-input">
+        <span>持卡人：</span>
+        <input nz-input placeholder="请输入持卡人姓名" nzSize="large" type="text" maxlength="10"
+               appLimitInput [limitType]="'chinese'"
+               [(ngModel)]="bankInfo.cardUsername"/>
+      </div>
+      <div class="set-input">
+        <span>银行卡号：</span>
+        <input nz-input placeholder="请输入储蓄银行卡号" nzSize="large"  type="text" maxlength="20"
+               appLimitInput [limitType]="'number'"
+               [(ngModel)]="bankInfo.cardNum"/>
+      </div>
+      <div class="set-input">
+        <span>银行名称：</span>
+        <nz-select [(ngModel)]="bankInfo.bankId"
+                   nzPlaceHolder="请选择银行卡"
+                   nzSize="large" class="bankname" nzAllowClear >
+          <nz-option *ngFor="let item of BankList"  [nzValue]="item.bankId" [nzLabel]="item.bankName" ></nz-option>
+        </nz-select>
+      </div>
+      <div class="tips">
+        <p>温馨提示：如无开户银行，请选择其他银行，点击提交将银行名填入开户行地址。</p>
+      </div>
+      <div class="bank-btn">
+        <button nz-button nzType="primary" class="submit" nzSize="large"  (click)="next1()">提交</button>
+        <button nz-button nzType="primary" class="submit reset" nzSize="large"  (click)="reset()">重置</button>
+      </div>
+    </div>
+
+    <!--第二步-->
+
+    <div class="step2" *ngIf="current === 1">
+      <ul class="info-top">
+        <li>
+          <span>持卡人:</span>
+          <span>{{bankInfo.cardUsername}}</span>
+        </li>
+        <li>
+          <span>开户银行:</span>
+          <span>{{bankName}}</span>
+        </li>
+        <li>
+          <span>银行卡号:</span>
+          <span>{{bankInfo.cardNum}}</span>
+        </li>
+      </ul>
+      <div>
+        <div class="set-input">
+          <span>开户行所在地：</span>
+          <nz-cascader [nzOptions]="nzOptions"
+                       [(ngModel)]="bankAddress"
+                       nzPlaceHolder="请选择开户行地址" nzSize="large"
+                       style="width: 280px;font-size: 14px"></nz-cascader>
+        </div>
+        <div class="set-input">
+          <span>开户支行：</span>
+          <input nz-input placeholder="请输入开户支行名称"
+                 nzSize="large" type="text" maxlength="12" [(ngModel)]="bankInfo.cardAddress"/>
+        </div>
+        <div class="set-input">
+          <span>取款密码：</span>
+          <input nz-input placeholder="请输入取款密码"
+                 appLimitInput [limitType]="'number'"
+                 nzSize="large" type="password" maxlength="4" [(ngModel)]="bankInfo.password"/>
+        </div>
+      </div>
+      <div class="bank-btn">
+        <button nz-button nzType="primary" class="banksubmit" nzSize="large"  (click)="next2()">下一步</button>
+      </div>
+    </div>
+
+    <div class="set-success" *ngIf="current === 2">
+        <p class="big-title">恭喜您添加银行卡成功!</p>
+        <p>贴心提醒</p>
+        <p>当您完成设定后,若有疑问,可联系<a [href]="platform.onlineService.href" [target]="platform.onlineService.target">线上客服</a>获得帮助</p>
+    </div>
+</div>

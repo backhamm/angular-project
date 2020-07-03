@@ -1,0 +1,44 @@
+<div class="home-index">
+  <app-mobile-header [leftIcon]="true"></app-mobile-header>
+  <div class="h-container">
+    <nz-spin [nzSpinning]="isSpinning" nzTip="加载中">
+      <div class="nav-content" nz-row *ngIf="allGameListInfo">
+        <div nz-col>
+          <h1 class="all-assets amount">{{userInfo?.totalBalance | number:'1.2-2'}}</h1>
+          <div class="all-assets">总资产(元)</div>
+        </div>
+      </div>
+
+      <div class="transition-game" *ngIf="allGameListInfo">
+        <h2 class="">
+          <!--资金明细-->
+          <span (click)="oneRecycling()" class="receive">一键回收</span>
+          <div style="clear:both"></div>
+        </h2>
+        <ng-container *ngFor="let item of allGameListInfo; let i = index;">
+          <div class="gamebox" [ngStyle]="{opacity: !item.balance ? '.5' : '1'}">
+            <i class="icon-pic"><img [src]="item.gameImg" alt=""></i>
+            <i class="plate">{{item.gameName}}</i>
+            <span class="gameMoney">{{item.balance | number:'1.2-2'}}</span>
+          </div>
+        </ng-container>
+
+        <!--<b v-if="v.Money === '维护中'"></b>-->
+      </div>
+      <div class="footerNav">
+        <nz-row>
+          <nz-col nzSpan="12">
+            <a style="" class="withdraw btn-image-big" routerLink="/m/capital/withdraw">
+              取款
+            </a>
+          </nz-col>
+          <nz-col nzSpan="12">
+            <a class="deposit btn-image-big2" routerLink="/m/capital/deposit">
+              存款
+            </a>
+          </nz-col>
+        </nz-row>
+      </div>
+    </nz-spin>
+  </div>
+</div>

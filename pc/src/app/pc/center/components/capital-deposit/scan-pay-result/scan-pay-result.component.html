@@ -1,0 +1,43 @@
+<!--viewType == form 表单提交-->
+<div id="form"></div>
+
+<!--viewType == qrcode 二维码-->
+<div class="body" *ngIf="scanPayment?.viewType == 'qrcode'">
+    <h1 class="mod-title">
+        <span class="text"></span>
+    </h1>
+    <div class="mod-ct">
+        <div class="order">
+        </div>
+        <div class="amount">
+            <span>￥</span><span id="aliAmount">{{scanPayment?.amount| number:'1.2-2'}}</span></div>
+        <div class="qr-image" style="width: 200px;height: 200px;margin: 20px auto 0;">
+            <!--二维码生成-->
+            <!--<qr-code [value]="scanPayment?.data" size="200"
+                     background="#ffffff"></qr-code>-->
+            <!--二维码图片-->
+            <img width="100%" height="100%" [src]="scanPayment?.data"/>
+        </div>
+        <p style="text-align: center; color:#bf1810; margin-top: 10px;">温馨提示:二维码仅本次支付有效,不可重复使用</p>
+        <div class="detail detail-open" id="orderDetail" style=" padding-bottom:20px;">
+            <dl class="detail-ct" style="display: block;">
+                <dt>交易单号</dt>
+                <dd id="billId">{{scanPayment?.orderNo}}</dd>
+                <dt>用户名</dt>
+                <dd id="createTime">{{scanPayment?.username}}</dd>
+            </dl>
+        </div>
+    </div>
+    <div class="foot">
+        <div class="inner">
+            <p></p>
+        </div>
+    </div>
+</div>
+
+<!-- viewType === link 跳转地址-->
+<div *ngIf="scanPayment?.viewType == 'link'" style="width: 100%;height: 100%">
+    <iframe width="100%" height="100%" [src]="scanPayment?.data | safe: 'resourceUrl'" frameborder="0"></iframe>
+</div>
+
+

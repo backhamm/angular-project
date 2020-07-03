@@ -1,0 +1,116 @@
+<div class="integral-bg">
+  <div class="integral-banner">
+    <nz-carousel style="overflow: hidden" [nzEffect]="'scrollx'" [nzEnableSwipe]="false" [nzAutoPlay]='true'>
+      <div nz-carousel-content *ngFor="let item of bannerList">
+        <img [src]="item.imgUrl" width="100%" height="350px;">
+      </div>
+    </nz-carousel>
+  </div>
+
+  <div class="integral clearfix">
+    <div class="title-nav">
+      <div *ngIf='!auth.isAuth; then noAuth else isAuth'></div>
+      <ng-template #noAuth>
+        <span class="intagral-color">我的积分:<a (click)="routerRecod()">请登录</a></span>
+      </ng-template>
+      <ng-template #isAuth>
+        <span class="intagral-color">我的积分: <span>{{myIntegral}}</span></span>
+      </ng-template>
+      <div class="title-right-list">
+        <a (click)="routerRecod()">
+          <!--<img [src]="config.baseImgUrl+'/jfsc/jfsc_icon_ddjl.png'">-->
+          <i nz-icon nzType="solution" nzTheme="outline"></i>
+          订单记录
+        </a>
+        <div class="clear-boxed"></div>
+        <a routerLink="/integral/integralRule"  target="_blank">
+          <i nz-icon nzType="read" nzTheme="outline"></i>
+          兑换规则
+        </a>
+      </div>
+    </div>
+    <div class="integral-left">
+      <div class="title title-list">
+        <h2>精品商品</h2> <span>/SELECTED COMMODITIES</span>
+      </div>
+      <div class="scrollbox-right">
+        <p>兑换热榜清单</p>
+        <div class="scrollbox">
+          <div class="keyframe-box">
+            <ul *ngFor="let xx of [1, 2]">
+              <li *ngFor="let list of leftData">
+                <span class="tt">{{ list.name }}</span>
+                <span class="ml5">{{ list.user }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="recommend">
+        <nz-carousel #carousel [nzEffect]="'scrollx'" [nzAutoPlaySpeed]="5000" [nzDots]="false" [nzEnableSwipe]="false"
+          [nzAutoPlay]='true'>
+          <div nz-carousel-content *ngFor="let carousel of hotData; let i = index">
+            <img *ngIf="carousel.icon" [src]="carousel.icon" alt="">
+            <div *ngIf="carousel.icon" class="integral-right-msg">
+              <ul>
+                <li>{{carousel.pluname}}</li>
+                <li><b class="pt">礼品价值: ¥{{carousel.oprice}}</b></li>
+                <li><b class="pt">兑换积分: {{carousel.price}}积分</b></li>
+              </ul>
+              <span class="btn" (click)="getGoodHots(i)">立即兑换</span>
+            </div>
+          </div>
+        </nz-carousel>
+
+        <button clear-btn class="p-left-btn" (click)="carousel.pre()"><i nz-icon type="left"></i></button>
+        <button clear-btn class="p-right-btn" (click)="carousel.next()"><i nz-icon type="right"></i></button>
+
+        <!-- 数据为空 -->
+        <nz-empty *ngIf="!hotData"></nz-empty>
+      </div>
+    </div>
+
+    <div class="integral-right">
+      <div class="title title-list">
+        <h2>热门商品</h2> <span>/SELECTED COMMODITIES</span>
+      </div>
+      <div class="integral-content">
+        <ul class="integral-list clearfix">
+          <li *ngFor="let good of goodList; let i = index">
+            <img [src]="good.icon" alt="">
+            <div class="integral-msg">
+              <p class="clearfix">
+                <span>{{ good.pluname }}</span>
+                <span>礼品价值: <b class="pt">¥ {{ good.oprice }}</b></span>
+              </p>
+              <p class="btn-box clearfix">
+                <span class="integral-count">积分兑换: <b class="pt">{{ good.cprice }}积分</b></span>
+                <span class="btn fr" (click)="getGoodDetail(i)">立即兑换</span>
+              </p>
+            </div>
+          </li>
+        </ul>
+
+        <!-- 数据为空 -->
+        <nz-empty *ngIf="goodList.length == 0"></nz-empty>
+      </div>
+
+      <div class="page-box">
+        <nz-pagination [(nzPageIndex)]="pageData.current" [nzTotal]="pageData.total" [nzItemRender]="renderItemTemplate" [nzPageSize]="pageData.size" [nzHideOnSinglePage]="true" (nzPageIndexChange)="getGoods()" nzShowQuickJumper></nz-pagination>
+        <ng-template #renderItemTemplate let-type let-page="page">
+          <a *ngIf="type === 'pre'">上一页</a>
+          <a *ngIf="type === 'next'">下一页</a>
+          <a *ngIf="type === 'page'">{{ page}}</a>
+        </ng-template>
+        <!-- <nz-pagination [(nzPageIndex)]="pageData.current" [nzPageSize]="pageData.size" [nzTotal]="pageData.total"
+          [nzHideOnSinglePage]="true" (nzPageIndexChange)="getGoods()" nzShowQuickJumper>
+        </nz-pagination> -->
+      </div>
+    </div>
+  </div>
+
+  <nz-modal [(nzVisible)]="detailModalShow" class="detailSty" [nzStyle]="{ top: '15vh',backgroundColor:'transparent',borderRadius:'10px'}"
+    [nzFooter]="null" [nzTitle]="" (nzOnCancel)="detailModalShow = false" [nzWidth]=720 [nzZIndex]=100>
+    <app-integral-detail [goodData]="goodData" (childOuter)="hideModal($event)"></app-integral-detail>
+  </nz-modal>
+</div>

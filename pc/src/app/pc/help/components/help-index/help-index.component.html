@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="navTop">
+        <div class="aboutposition"></div>
+    </div>
+    <!--<div class="wrapper">
+        &lt;!&ndash;公告栏 start&ndash;&gt;
+        <nz-carousel nzDotPosition="right" style="background: none;" [nzEffect]="'fade'">
+            <div nz-carousel-content *ngFor="let index of noticeList">
+                <div class="pagesgonggao" id="newsBar">
+                    <div id="hot-news" class="marqueen" style="width: 170px;position: absolute;left: 50%;transform: translateX(-50%);">
+                        <div class="js-marquee-wrapper"
+                            style="animation: marqueeAnimation-7959470 309.75s linear 0s infinite;">
+                            <div class="js-marquee" style="margin-right: 0px; float: none; margin-bottom: 0px;">
+                                <marquee scrollamount="4" scrolldelay="140" direction="up" nowarp=""
+                                    onmouseover="this.stop();" onmouseout="this.start();"
+                                    style="height: 150px;">
+                                    <a class="noticeScrollText_Span" id="noticeText" style="color: #fff;" (click)="clickStart(index.data)" >{{index.data}}</a>
+                                </marquee>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nz-carousel>
+        &lt;!&ndash;公告栏 end&ndash;&gt;
+    </div>-->
+    <div class="content">
+        <div class="nav">
+            <app-help-nav></app-help-nav>
+        </div>
+        <div class="main">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="help-container">
+    <h2 class="help-title">热门分类</h2>
+    <ul class="help-class">
+        <li *ngFor="let item of helpClass"
+            [routerLink]="[defaultSkip(item.title) ? '/m/help/helpClass' : '/m/help/helpDetails', item.id, item.title]"
+        >
+            <div class="class-img" [ngStyle]="{backgroundPosition: item.position}"></div>
+            <p class="class-title">{{item.title}}</p>
+        </li>
+    </ul>
+</div>
+<nz-tabset [nzTabBarGutter]="15" [nzTabBarStyle]="{margin: 0}">
+    <nz-tab *ngFor="let item of homePageIssue" [nzTitle]="item.title">
+        <app-mobile-help-item *ngFor="let item of item.issue" [title]="item.title" [routerLink]="['/m/help/helpDetails', item.id, item.title]"></app-mobile-help-item>
+    </nz-tab>
+</nz-tabset>

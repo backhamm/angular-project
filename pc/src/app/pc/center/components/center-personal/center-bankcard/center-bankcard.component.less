@@ -1,0 +1,134 @@
+@import '../../../../../config/config.less';
+.center-right{
+    width: 100%;
+    .page-header{
+        width: 30%;
+        height: 40px;
+        padding: 0 30px;
+        margin: 30px 0;
+        background: linear-gradient(90deg, #f2f2f2, #fff);
+        line-height: 40px;
+        font-weight: 700;
+        color: #666;
+    }
+
+    .setting{
+        width: calc(100% - 300px);
+        color: @main-color;
+    }
+    .set-input{
+        width: calc(100% - 400px);
+        margin: 20px auto 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span{
+            display: inline-block;
+            text-align: right;
+            width: 108px;
+        }
+        input{
+            width: 280px;
+            font-size: 14px;
+            padding-left: 15px;
+        }
+        .bankname{
+            width: 280px;
+            font-size: 14px;
+        }
+    }
+    .tips {
+        margin-top: 20px;
+        p{
+            font-size: 14px;
+            color: @main-color;
+            text-align: center;
+        }
+    }
+
+    .bank-btn{
+        display: flex;
+        justify-content: center;
+        .submit{
+            width: 110px;
+            margin-top: 20px;
+            margin-left: 60px;
+            font-size: 14px;
+        }
+        .reset{
+            border: 1px solid @main-color;
+            background: @white-color;
+            color: @main-color;
+            font-size: 14px;
+        }
+        .banksubmit{
+            width: 110px;
+            margin-left: -50px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    }
+    .step2 {
+        .info-top{
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-flow: wrap;
+            padding: 40px 0 20px 32%;
+            li{
+                margin-bottom: 26px;
+                width: 100%;
+                span:nth-child(1){
+                    text-align: right;
+                    width: 80px;
+                    display: inline-block;
+                    margin-left: 40px;
+                }
+                span:nth-child(2){
+                    display: inline-block;
+                    margin-left: 40px;
+                }
+            }
+        }
+        .line{
+            border:1px solid #eaeaea;
+            width: calc(100% - 400px);
+            margin-bottom: 30px;
+        }
+
+    }
+  .set-success{
+    width: 600px;
+    margin: 0 auto;
+    .big-title{
+      font-size: 18px;
+      font-weight: bold;
+      padding: 50px 0;
+      color: @main-color;
+    }
+    p{
+      padding: 14px 0;
+      a{
+        color: @main-color;
+      }
+    }
+  }
+
+}
+:host{
+    ::ng-deep{
+        .ant-input-lg{
+            font-size: 14px;
+        }
+    }
+}
+
+::ng-deep .vertical-center-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+::ng-deep .vertical-center-modal .ant-modal {
+  top: 0;
+}

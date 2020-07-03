@@ -1,0 +1,64 @@
+<div class="footer-box">
+
+    <div class="footer">
+        <div class="container">
+            <div class="footer-logo"></div>
+            <div class="footer-container">
+                <div class="abouts">
+                    <a routerLink="/help/problem/aboutUs">关于我们</a>
+                    <a routerLink="/help/problem/contactUs">联络我们</a>
+                    <a routerLink="/help/problem/agency" class="color-red">代理合作</a>
+                    <a routerLink="/help/problem/deposit">如何存款</a>
+                    <a routerLink="/help/problem/drawing">如何取款</a>
+                    <a routerLink="/help/problem/commonProblem">常见问题</a>
+                    <a routerLink="/home/download" class="color-red">下载专区</a>
+                </div>
+                <div class="footer-logo"></div>
+                <div id="footer-suggest">
+                    <span> 系统要求:本站浏览最佳分辨率为1024x768 建议您使用火狐或谷歌浏览器进行游戏 <br>
+                        2016 太阳城集团 版权所有
+                    </span>
+                    <ul class="sunbet">
+                        <li class="tel"><span ng-bind="ContactInfo.TEL" class="ng-binding">{{platform.phoneValue}}</span></li>
+                        <li class="mail"><span ng-bind="ContactInfo.Email" class="ng-binding" id="footer_emails">{{platform.emailValue}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- <div class="footer-icon">
+                <p>友情提示：博彩有风险，量力乐其中</p>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<div class="slide-bar-left">
+    <ul class="left">
+        <li title="大唐棋牌"><a routerLink="/game/dtqp"></a></li>
+        <li id="trial" title="免费试玩"><a routerLink="/home/free"></a></li>
+        <li id="agent" title="代理加盟"><a routerLink="/help/problem/agency"></a></li>
+    </ul>
+</div>
+<div class="slide-bar-right">
+    <ul class="right">
+        <li id="chat2" title="在线客服"><a [href]="platform.onlineService.href" [target]="platform.onlineService.target"></a></li>
+        <li id="tel" title="投诉建议"><a href="http://55hg5.co:8081/black" target="_blank"></a></li>
+        <li id="qq" title="QQ">
+          <a [href]="platform.qqService.href" [target]="platform.qqService.target">
+            {{platform.qqService.value}}
+          </a>
+        </li>
+        <li id="website" title="易记域名"><a id="floatL9" href="http://www.s138.com/" target="_blank"></a></li>
+    </ul>
+</div>
+<div class="slide-app-download" [class.app-download-up]="appDownLoad">
+    <i class="close" (click)="qrCodeToggle()" nz-icon nzType="close" nzTheme="outline"></i>
+    <canvas id="download"></canvas>
+</div>
+
+<div class="p3">
+    <img [src]="config.baseImgUrl+'/images/p3.png'">
+</div>
+<div class="slide-bar-proxy"  id="slide-bar-proxy">
+    <a class="service-chat" [href]="platform.agencyService.href" [target]="platform.agencyService.target"></a>
+</div>

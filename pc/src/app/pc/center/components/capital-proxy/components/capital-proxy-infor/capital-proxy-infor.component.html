@@ -1,0 +1,119 @@
+<div class="agent-join-banner">
+  <img [src]="config.baseImgUrl+'/wxdl2/banner.jpg'" alt="">
+</div>
+<!-- 佣金轮播 -->
+<div class="carousel clearfix">
+  <div class="crl-left fl">
+    <i class="icon-notices"></i>
+    <span>最新公告:</span>
+  </div>
+  <div class="crl-right fr">
+    <div class="scroll-box">
+      <ul *ngFor="let xx of [1,2]">
+        <li *ngFor="let cms of commissionList">{{ cms.username + '提取佣金' + cms.amount + '元'}}</li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+<!-- 统计数据 -->
+<div class="list">
+  <ul>
+    <li>
+      <i class="yty"></i>
+    </li>
+    <li>
+      <span>昨日新增代理</span>
+      <span><b>{{ agentData.yesterdayAgent }}</b>人</span>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <i class="sum"></i>
+    </li>
+    <li>
+      <span>累积提佣笔数</span>
+      <span><b>{{ agentData.totalOfCommission }}</b>笔</span>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <i class="total"></i>
+    </li>
+    <li>
+      <span>总共服务代理</span>
+      <span><b>{{ agentData.totalAgent }}</b>人</span>
+    </li>
+  </ul>
+</div>
+<!--代理等级-->
+<div class="list agent-grade">
+  <h2>合作计划</h2>
+  <p>自主开通 邀请便捷 佣金计算二级 更加丰厚</p>
+  <img [src]="config.baseImgUrl+'/wxdl2/hzjh.png'">
+</div>
+<!-- 加入代理 -->
+<div class="btn-box">
+  <button nz-button nzType="primary" nzSize="large" (click)="joinAgent()">我的代理</button>
+</div>
+<!--代理晋升-->
+<div class="list agent-grade">
+  <h2>代理晋升</h2>
+  <p>满足业绩条件 晋升代理等级 更高提佣比例</p>
+  <img class="agent-grade-img" [src]="config.baseImgUrl+'wxdl2/dldj.png'">
+  <p class="infors">注：以上代理等级名称和综合提佣比例仅做示例，可能与当前执行规则不符，具体等级细节请咨询客服</p>
+</div>
+<!--计算方式-->
+<div class="list agent-grade">
+  <h2>计算方式</h2>
+  <img class="count-img" [src]="config.baseImgUrl+'/wxdl2/jsfs.png'">
+</div>
+<!-- 底部图文介绍 -->
+<div class="proxy-intr">
+  <h3>公式说明</h3>
+  <div class="img-box">
+    <p>
+      1，佣金结算为每日凌晨结算昨日佣金，系统将会自动根据您的旗下会员昨日游玩数据计算出每个会员的理论产出佣金，扣除相关承担费用，
+      行政费用（若有）后， 再乘以对应平台分成比例，即为您实际获得的佣金，会累计进您的佣金账户，满足提取条件后即可进行提取。
+    </p>
+    <p>
+      2.公式 <br>
+      <img [src]="config.baseImgUrl+'/wxdl2/gongshi.png'">
+    </p>
+    <p>
+      例：您的直属会员A，昨日游玩大唐棋牌，有效投注额10000，输赢为-3000（取绝对值），假设平台设置大唐棋牌的退水比例为1%，
+      退佣比例为5%，直属分成比例为80%，团队分成比例为20%，则会员A昨日实际为您提供佣金：<br>
+      [退水（有效投注10000*退水比例1%）+退佣（输赢额3000*退佣比例5%）]*直属分成比例80%=200 元
+    </p>
+    <p class="red-color">
+      注: <br>
+    </p>
+    <p class="red-color">
+      1，若该会员昨日有充值并赠送优惠和彩金，以及游戏返水，则还需要扣除对应赠送金额中您需要承担的比例，具体承担比例请咨询客服；<br>
+    </p>
+    <p class="red-color">
+      2，若会员赢钱，则退佣比例将按平台设置的该游戏最低退水比例计算退佣，具体比例请咨询客服；
+    </p>
+
+  </div>
+  <h3>其他说明</h3>
+  <div class="img-box">
+    <p>
+      1，提取方式：可绑定银行卡，在满足提取条件后，直接从官网或APP个人中心未结佣金位置发起提取申请，也可以联系客服， 通过线下转账方式申请提取；
+    </p>
+    <p>
+      2，提取周期：2 天，即从上次提取完成开始，至少需要超过2 天，才可以发起下次提取；
+    </p>
+    <p>
+      3，最小提佣金额：100 元，即本次未结佣金提取金额需大于100，才能发起提取，若小于该金额，请等待佣金累积至该金额后再次申请提取；
+    </p>
+    <p>
+      4，如有任何疑问，请咨询客服；
+    </p>
+    <p>
+      5，本活动最终解释权归<span>{{config.platformName}}</span>所有。
+    </p>
+  </div>
+</div>

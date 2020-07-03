@@ -1,0 +1,153 @@
+@import "../../../../../config/config";
+
+.capital-title {
+     height: 40px;
+     background: linear-gradient(90deg, #f2f2f2, #fff);
+     line-height: 40px;
+     padding: 0 30px;
+     width: 30%;
+     margin: 30px 0;
+     font-weight: 700;
+     color: @color-second;
+ }
+
+.capital {
+    padding-top: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    .interchange-button-default {
+        color: @theme-color;
+        border: 1px solid @theme-color;
+        &:hover {
+            color: @theme-color;
+        }
+    }
+    .switch-hand {
+        position: absolute;
+        right: 40px;
+        top: 15px;
+        padding: 0 30px;
+        margin-top: 5px;
+        line-height: 30px;
+        border-radius: 4px;
+        cursor: pointer;
+
+    }
+    .refresh {
+        color: #5b9fe2;
+        position: absolute;
+        right: 40px;
+        cursor: pointer;
+        top: 120px;
+        line-height: 30px;
+    }
+    .capital-container {
+        .left {
+            position: relative;
+            padding: 20px 40px;
+            width: 480px;
+          border-right: 1px solid @border-line;
+            h1 {
+                font: bolder 46px/50px Arial;
+                height: 80px;
+                &:before {
+                    content: "\FFE5";
+                    opacity: .7;
+                }
+            }
+            .buttons {
+                [nz-button] {
+                    width: 130px;
+                    height: 40px;
+                    margin-right: 30px;
+                }
+            }
+            .eye {
+                position: absolute;
+                top: 5px;
+                right: 10px;
+                //width: 36px;
+                //height: 36px;
+                //background: url("@{base-url}user_img/eye.png");
+                //background-size: cover;
+                //opacity: .7;
+            }
+        }
+        .right {
+            padding-left: 36px;
+            padding-top: 7px;
+            .item {
+                height: 50px;
+                line-height: 50px;
+                vertical-align: bottom;
+                span {
+                    margin-right: 30px;
+                }
+            }
+            .wallet {
+                button {
+                    font-size: 12px;
+                    height: 28px;
+                    //width: 80px;
+                }
+                .one-click {
+
+                }
+            }
+        }
+    }
+}
+
+.assets {
+    border: 1px dashed @border-line;
+    margin-top: 30px;
+    min-height: 300px;
+    .assets-container {
+        padding: 0 15px 35px;
+        li {
+            width: 33.33%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 14px;
+            transition: .3s ease-in-out;
+            padding-left: 40px;
+            position: relative;
+            &:hover {
+                background: linear-gradient(180deg, #f9f9f9, #f2f2f2);
+                border-radius: 4px;
+                transform: translateY(-3px);
+            }
+            .logo {
+                width: 66px;
+                height: 66px;
+                text-align: center;
+                vertical-align: middle;
+                border-radius: 100%;
+                border: 3px solid #e7e3e3;
+                background-size: contain;
+                margin: auto;
+                cursor: pointer;
+                &:hover {
+                    background-image: url("@{base-url}user_img/recover.png")!important;
+                }
+            }
+            .detail {
+                width: calc(100% - 85px);
+                height: 60px;
+                margin-left: 15px;
+                position: relative;
+                padding-top: 17px;
+                p {
+                    padding-bottom: 8px;
+                }
+            }
+        }
+    }
+    // 数量超过 12个
+    .assets-much {
+        li {
+            width: 25%;
+            padding-left: 15px;
+        }
+    }
+}

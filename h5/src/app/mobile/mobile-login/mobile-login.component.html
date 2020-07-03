@@ -1,0 +1,266 @@
+<app-mobile-header iconLogo="true" [leftIcon]="true"></app-mobile-header>
+<div class="home-index">
+  <div class="h-container">
+    <div class="login">
+      <!-- 轮播 -->
+      <nz-carousel class="carousel" nzAutoPlay>
+        <div nz-carousel-content *ngFor="let item of carouselList">
+          <img src="{{item.data}}">
+        </div>
+      </nz-carousel>
+      <!-- <div class="login-logo">
+        账号登录
+      </div> -->
+      <div class="component-content">
+        <div class="login-tabs">
+          <div class="tabs-scroll">
+            <div class="tab-list" [ngClass]="{active: !isQuick}">
+              <div id="tab-0" class="tab-item" [class.active]="isQuick" (click)="isQuickRegistration($event)">
+                账号登录
+              </div>
+              <div id="tab-1" class="tab-item" [class.active]="!isQuick" (click)="isQuickRegistration($event)">
+                手机登录
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="login-content">
+          <div class="quick-register" [style.display]="isQuick?'block':'none'">
+            <form nz-form [formGroup]="loginValidateForm" (ngSubmit)="loginSubmit()">
+
+              <div class="form-item clear">
+                <div class="form-input">
+                  <div class="prepend">
+                    <img class="img" [src]="config.baseMobileImgUrl+'image/login/login_name.png'" alt="">
+                  </div>
+                  <div class="after">
+                    <nz-form-control nzHasFeedback>
+                      <input nz-input type="text" formControlName="username" appLimitInput [limitType]="'number|letter'"
+                        [placeholder]="_Reg?.username.placeholder" required>
+                    </nz-form-control>
+                  </div>
+                </div>
+                <nz-form-explain *ngIf="username.errors && username.dirty ">
+                  <ng-container *ngIf="username.hasError('required')">
+                    <span class="form-item-error"> 用户名(6-20位数字与字母组合)</span>
+                  </ng-container>
+                  <ng-container *ngIf="username.hasError('pattern')">
+                    <span class="form-item-error">对不起,{{_Reg.username.message}}</span>
+                  </ng-container>
+                </nz-form-explain>
+              </div>
+
+              <div class="form-item clear">
+                <div class="form-input">
+                  <div class="prepend">
+                    <img class="img" [src]="config.baseMobileImgUrl+'image/login/login_pass.png'" alt="">
+                  </div>
+                  <div class="after">
+                    <nz-form-control nzHasFeedback>
+                      <input nz-input formControlName="password" [placeholder]="_Reg?.password.placeholder"
+                        [type]="eyes ? 'password' : 'text'" required>
+                    </nz-form-control>
+                  </div>
+                  <div class="eyes-icon" (click)="eyes = !eyes">
+                    <img class="icon" [src]="eyesImg()" alt="">
+                  </div>
+                </div>
+                <nz-form-explain *ngIf="password.errors && password.dirty">
+                  <ng-container *ngIf="password.hasError('required')">
+                    <span class="form-item-error">密码(6-12位数字与字母组合)</span>
+                  </ng-container>
+                  <ng-container *ngIf="password.hasError('pattern')">
+                    <span class="form-item-error">
+                      对不起,{{_Reg.password.message}}
+                    </span>
+                  </ng-container>
+                </nz-form-explain>
+
+              </div>
+
+              <div nz-row>
+                <div nz-col nzSpan="12">
+                  <label nz-checkbox [ngModelOptions]="{standalone: true}" [(ngModel)]="checkedRemember">
+                    <span>记住密码</span>
+                  </label>
+                </div>
+                <div nz-col nzSpan="12" style="text-align: right">
+                  <a [href]="platformService.onlineService" class="forget-passwod">忘记密码?</a>
+                </div>
+              </div>
+
+              <button [disabled]="!loginValidateForm.valid" [nzLoading]="loading" class="login-submit btn-image-big"
+                nz-button nzType="primary">登录
+              </button>
+              <button routerLink="/m/register" class="rejster-btns btn-image-big2" nz-button>注册
+              </button>
+            </form>
+          </div>
+
+          <div class="phone-login" [style.display]="isQuick?'none':'block'">
+            <form nz-form [formGroup]="phoneValidateForm">
+
+              <div class="form-item clear">
+                <div class="form-input">
+                  <div class="item-prep fl">
+                    <i class="form-icon form-icon2"></i>
+                  </div>
+
+                  <div class="item-after fl">
+                    <nz-form-control nzHasFeedback>
+                      <input nz-input formControlName="mobileNo" type="text" appLimitInput [limitType]="'number'"
+                        maxlength="11" placeholder="请输入手机号码">
+                    </nz-form-control>
+                  </div>
+                </div>
+                <nz-form-explain *ngIf="pMobileNo?.dirty  && pMobileNo?.errors">
+                  <ng-container *ngIf="pMobileNo.hasError('required')">
+                    <span class="form-item-error">请输入手机号</span>
+                  </ng-container>
+                  <ng-container *ngIf="pMobileNo.hasError('pattern')">
+                    <span class="form-item-error">
+                      对不起,{{_Reg.mobileLogin.message}}
+                    </span>
+                  </ng-container>
+                </nz-form-explain>
+              </div>
+
+              <div class="form-item clear">
+                <div class="form-input">
+                  <div class="item-prep fl">
+                    <i class="form-icon form-icon4"></i>
+                  </div>
+                  <div class="item-after fl" style="width: 54%">
+                    <nz-form-control nzHasFeedback>
+                      <input style="border-radius: 0;" nz-input formControlName="msgCode" type="text" appLimitInput
+                        [limitType]="'number'" maxlength="4" [placeholder]="_Reg?.codeLogin.placeholder">
+                    </nz-form-control>
+                  </div>
+                  <div class="verificationPhone fl">
+                    <button (click)="sendMessageCode(3)" *ngIf="!deadline" [disabled]="pMobileNo.invalid"
+                      class="refresh-button" nz-button nzType="primary">发送验证码
+                    </button>
+                    <div class="countdown" *ngIf="deadline">
+                      倒计时 {{deadline / 1000}} s
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div nz-row>
+                <div nz-col nzSpan="24">
+                  <p class="phone-login-infors">
+                    *请查阅您的信息，短信5分钟内有效
+                  </p>
+                </div>
+              </div>
+              <button [disabled]="!phoneValidateForm.valid" [nzLoading]="loading" class="login-submit btn-image-big"
+                nz-button nzType="primary" (click)="loginPhoneSubmit()">登录
+              </button>
+
+              <button routerLink="/m/register" class="rejster-btns btn-image-big2" nz-button>注册
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- 激活登录框 -->
+
+      <div class="Login-reviving-zz" *ngIf="auth.reviving">
+        <!-- 绑定了号码 -->
+        <div class="Login-reviving" *ngIf="auth.reviving && auth.revivingPhone !== ''">
+          <div class="Login-reviving-top">
+            <h3>登录验证</h3>
+            <span class="close-reviving" (click)="revivingClick()">X</span>
+          </div>
+          <div class="Login-reviving-top-bottom">
+            <div class="Login-reviving-box1">
+              <span>平台系统升级，为保证您的账户安全，请验 证您的绑定手机。</span>
+              <form nz-form [formGroup]="revivingValidateForm">
+
+                <div class="form-item clear">
+                  <div class="form-input">
+                    <div class="item-prep fl">
+                      <svg t="1585132675857" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="1374" width="32" height="32">
+                        <path
+                          d="M700.462814 80.190367 322.790172 80.190367c-44.511773 0-80.929194 36.418444-80.929194 80.930217l0 701.393511c0 44.511773 36.417421 80.930217 80.929194 80.930217l377.672642 0c44.512796 0 80.930217-36.418444 80.930217-80.930217L781.393032 161.120584C781.393032 116.608811 744.975611 80.190367 700.462814 80.190367zM437.146687 121.180943l148.95859 0c7.355525 0 13.31833 5.962805 13.31833 13.31833 0 7.355525-5.961782 13.317307-13.31833 13.317307L437.146687 147.81658c-7.355525 0-13.317307-5.961782-13.317307-13.317307C423.82938 127.142725 429.791162 121.180943 437.146687 121.180943zM511.627005 889.491517c-29.797653 0-53.952796-24.157189-53.952796-53.954843 0-29.797653 24.155143-53.951773 53.952796-53.951773 29.79663 0 53.954843 24.15412 53.954843 53.951773C565.580824 865.333304 541.423635 889.491517 511.627005 889.491517zM727.440236 727.632105 295.813774 727.632105 295.813774 188.098006l431.626461 0L727.440236 727.632105z"
+                          p-id="1375" fill="#999999"></path>
+                      </svg>
+                    </div>
+
+                    <div class="item-after fl">
+                      <nz-form-control nzHasFeedback>
+                        <input nz-input formControlName="mobileNo" type="text" appLimitInput maxlength="11"
+                          [placeholder]="auth?.revivingPhone" disabled="disabled">
+                      </nz-form-control>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-item clear">
+                  <div class="form-input">
+                    <div class="item-prep fl">
+                      <svg t="1585132817687" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="3735" width="32" height="24">
+                        <path
+                          d="M887.044 267.194H135.36c-39.56 0-71.631 32.07-71.631 71.632v463.536c0 39.561 32.07 71.632 71.631 71.632h751.685c39.561 0 71.632-32.07 71.632-71.632V338.826c0-39.562-32.07-71.632-71.632-71.632z m12.733 100.255v406.715c0 0.039-0.003 0.077-0.003 0.116L683.68 580.338l216.097-212.89zM383.103 620.616c70.996 50.776 191.38 54.63 258.105 0.748L857.07 815.095H166.406l216.697-194.48z m471.412-294.523l-218.34 215.055c-77.786 80.175-179.434 75.4-252.906-1.627L171.962 326.093h682.553z m-731.889 40.932c0-2.023 0.153-4.01 0.436-5.953l216.892 219.127-217.3 195.023c-0.01-0.353-0.027-0.704-0.027-1.058V367.025z"
+                          p-id="3736" fill="#999999"></path>
+                      </svg>
+                    </div>
+                    <div class="item-after fl" style="width: 54%">
+                      <nz-form-control nzHasFeedback>
+                        <input style="border-radius: 0;" nz-input formControlName="msgCode" type="text" appLimitInput
+                          [limitType]="'number'" [(ngModel)]='msgCode' maxlength="4" placeholder="请输入短信验证码">
+                      </nz-form-control>
+                    </div>
+                    <div class="verificationPhone fl">
+                      <button (click)="sendMessageCode(5)" *ngIf="!revivingDeadline" class="refresh-button" nz-button
+                        nzType="primary">发送验证码
+                      </button>
+                      <div class="countdown" *ngIf="revivingDeadline">
+                        倒计时 {{revivingDeadline / 1000}} s
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div nz-row>
+                  <div nz-col nzSpan="24">
+                    <p style="color:#b7b4b4">如有任何问题,请联系 <a style="color:darkorange"
+                        [href]="platformService.onlineService"> 在线客服
+                      </a></p>
+                  </div>
+                </div>
+                <button (click)="revivingPhoneSubmit()" [nzLoading]="loading" class="btn-uncertain" nz-button
+                  nzType="primary">确定
+                </button>
+
+                <button (click)="revivingClick()" class="btn-cancel" nz-button>取消
+                </button>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- 没有绑定号码 -->
+        <div class="Login-reviving" *ngIf="auth.reviving && auth.revivingPhone === ''">
+          <div class="Login-reviving-top">
+            <h3>提示</h3>
+            <span class="close-reviving" (click)="revivingClick()">X</span>
+          </div>
+          <div class="Login-reviving-top-bottom">
+            <div class="Login-reviving-box2">
+              <span style="color:#e4dddd">
+                平台系统升级，因您还未绑定手机，无法进行验证，请联系
+                <a style="color:darkorange" [href]="platformService.onlineService"> 在线客服 </a></span>
+              <button (click)="revivingClick()" class="btn-uncertain " nz-button>确定
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

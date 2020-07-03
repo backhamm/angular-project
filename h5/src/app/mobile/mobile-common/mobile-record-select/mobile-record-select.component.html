@@ -1,0 +1,82 @@
+<div class="search" nz-row>
+  <!-- 快捷选时 -->
+  <div class="time-tables">
+    <div (click)="quickChange(quick.value)"
+         [ngClass]="dateTimeSelect == quick.value ? 'active' : '' " *ngFor="let quick of quickArr"
+         class="sealect">
+      {{quick.date}}
+    </div>
+  </div>
+</div>
+<div class="selct-params" [ngStyle]="{left: isSelect ?  '0' : '100vw'}">
+  <div class="select-container">
+    <div class="scree-left" (click)="close.emit()"></div>
+    <div class="scree-right">
+      <div class="scree-select">
+        <h3>筛选排序</h3>
+        <p class="right-title">起止时间</p>
+        <!-- 时间段选择 -->
+        <div class="time start-time">
+          <nz-date-picker
+            [nzDisabledDate]="disabledStartDate"
+            nzSize="small"
+            nzFormat="yyyy/MM/dd"
+            nzPlaceHolder="开始日期"
+            [(ngModel)]="params.bdate"
+            (ngModelChange)="changeDate($event, 'bdate')">
+          </nz-date-picker>
+        </div>
+        <!--<div class="time line-date"></div>-->
+        <div class="time">
+          <div class="label-txt"></div>
+          <nz-date-picker
+            [nzDisabledDate]="disabledEndDate"
+            nzSize="small"
+            nzFormat="yyyy/MM/dd"
+            nzPlaceHolder="结束日期"
+            [(ngModel)]="params.edate"
+            (ngModelChange)="changeDate($event, 'edate')">
+          </nz-date-picker>
+        </div>
+        <ng-container *ngIf="!isBet">
+          <p class="right-title">交易状态</p>
+          <div class="status" *ngIf="stateList.length">
+            <div class="sealect" *ngFor="let item of stateList; let i = index" (click)="changeParams(true, i)"
+                 [ngClass]="oneLevel === i ? 'active' : ''">{{item.desc}}
+            </div>
+          </div>
+          <p class="right-title">交易类型</p>
+          <div class="type" *ngIf="stateList[oneLevel]">
+            <div class="sealect" *ngFor="let item of stateList[oneLevel].types; let i = index"
+                 (click)="changeParams(false, i)"
+                 [ngClass]="twoLevel === i ? 'active' : ''">{{item.desc}}
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isBet">
+          <p class="right-title">游戏类型</p>
+          <div class="status" *ngIf="stateList.length">
+            <div class="sealect" *ngFor="let item of stateList; let i = index" (click)="changeParams(true, i)"
+                 [ngClass]="oneLevel === i ? 'active' : ''">{{item.desc}}
+            </div>
+          </div>
+          <p class="right-title">游戏平台</p>
+          <div class="type" *ngIf="stateList[oneLevel]">
+            <div class="sealect" *ngFor="let item of stateList[oneLevel].bets; let i = index"
+                 (click)="changeParams(false, i)"
+                 [ngClass]="twoLevel === i ? 'active' : ''">{{item.gameName}}
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="footer">
+               <span class="reset btn-image-big" (click)="reset()" nzSize="large">重置并取消
+               </span>
+
+        <span class="reset confirm btn-image-big2" (click)="submit()" nzSize="large">筛选
+               </span>
+      </div>
+
+    </div>
+  </div>
+</div>

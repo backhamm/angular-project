@@ -1,0 +1,362 @@
+@import '../../config/config-mobile.less';
+
+.h-container {
+  padding-bottom: 1rem;
+  background: @deep-main-color;
+}
+
+.carousel {
+  height: 3.7rem;
+}
+
+.index-notice {
+  .notice-volume {
+    width: 12%;
+    text-align: center;
+    padding-top: .1rem;
+  }
+
+  .notice-news {
+    width: 86%;
+    height: 40px;
+    cursor: pointer;
+    overflow: hidden;
+
+    li {
+      width: 7rem;
+      height: 40px;
+      line-height: 40px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: @font-color;
+    }
+
+  }
+}
+
+.home-container {
+  width: 100%;
+  margin: .15rem 0;
+  padding: 0 .2rem .2rem;
+  box-sizing: border-box;
+  background: @main-color;
+
+  &.recommend {
+    min-height: 2.1rem;
+    font-size: 0;
+    color: @font-color;
+
+    .recommend-carousel {
+      height: 4.2rem;
+      color: @font-color;
+
+      .loading {
+        margin-top: 1rem;
+        text-align: center;
+      }
+    }
+
+    .title {
+      height: .8rem;
+      line-height: 0.8rem;
+      white-space: nowrap;
+      font-size: .24rem;
+      border-bottom: 1px solid @deep-main-color;
+
+      .item-content {
+        display: inline-block;
+        vertical-align: top;
+        width: 88%;
+        overflow: hidden;
+
+        .title-item {
+          position: relative;
+          display: inline-block;
+          width: calc(100% / 7);
+          text-align: center;
+          color: @second-font-color;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: @btn-primary;
+            transition: all .3s;
+          }
+
+          &.active {
+            color: @btn-primary;
+
+            &::after {
+              width: 100%;
+              left: 0;
+            }
+          }
+        }
+      }
+
+      .more {
+        display: inline-block;
+        vertical-align: top;
+        width: 12%;
+        text-align: right;
+        color: @btn-primary;
+      }
+    }
+
+    .recommend-item {
+      display: inline-block;
+      padding-top: .3rem;
+      width: 25%;
+      height: 2.1rem;
+      font-size: .22rem;
+      text-align: center;
+      overflow: hidden;
+
+      .recommend-img {
+        position: relative;
+        min-height: 1rem;
+        font-size: 0;
+
+        .img {
+          display: inline-block;
+        }
+
+        .hot {
+          position: absolute;
+          right: .2rem;
+          top: -.2rem;
+          width: .35rem;
+          line-height: .35rem;
+          border-radius: 50%;
+          background: red;
+          font-size: .15rem;
+        }
+      }
+
+      .recommend-title {
+        white-space: nowrap;
+        vertical-align: top;
+        line-height: .9rem;
+      }
+    }
+  }
+
+  .introduce-title {
+    display: block;
+    font-size: 0.32rem;
+    color: @btn-primary;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    margin-left: 0.1rem;
+
+    .tips {
+      font-size: .2rem;
+      color: @second-font-color;
+    }
+
+    .more {
+      font-size: .24rem;
+      text-align: right;
+    }
+  }
+
+  .discount-container {
+    height: 3.8rem;
+    overflow: hidden;
+    font-size: 0;
+
+    .discount1 {
+      display: inline-block;
+      width: 49%;
+      height: 100%;
+      margin-right: 2%;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+
+    .right-img {
+      display: inline-block;
+      width: 49%;
+      height: 100%;
+
+      .discount2 {
+        height: 48%;
+        margin-bottom: 4%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .discount3 {
+        height: 48%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+  }
+}
+
+.kefu-fixed, .daili-fixed {
+  position: fixed;
+  z-index: 999;
+  font-size: 0;
+
+  .img {
+    width: 100%;
+  }
+}
+
+.kefu-fixed {
+  bottom: 1.1rem;
+  right: 0;
+  width: 2.2rem;
+  height: .55rem;
+  background: url("@{base-url}image/icon_kfxjj_h.png") no-repeat center / 100% 100%;
+  transition: all .3s;
+
+  //&.noClick {
+  //  width: 2.5rem;
+  //  background: url("@{base-url}image/icon_kfxjj_h.png") no-repeat center / 100% 100%;
+  //}
+}
+
+.daili-fixed {
+  top: 57%;
+  right: 0;
+  width: 0.55rem;
+  height: 1.7rem;
+  background: url("@{base-url}image/icon_dlzx.png") no-repeat center / 100% 100%;
+}
+
+@keyframes gradientChange {
+  100% {
+    background: linear-gradient(90deg, #e91e1e 0%, #6f27b0 100%);
+  }
+}
+
+.download-main {
+  position: fixed;
+  bottom: 2rem;
+  z-index: 1000;
+  left: 3%;
+  width: 94%;
+  min-height: 3.2rem;
+  border: 1px solid @main-color;
+  border-radius: .1rem;
+  background: @download-background;
+
+  .main-title {
+    margin: .1rem;
+    padding: 0 .2rem;
+    line-height: .6rem;
+    font-size: .32rem;
+    border-radius: .1rem;
+    background: @main-color;
+    color: @title-color;
+
+    .close-main {
+      float: right;
+      line-height: .6rem;
+    }
+  }
+
+  .main-text {
+    padding: 0 .2rem;
+    line-height: .3rem;
+    font-size: .26rem;
+    color: @download-text;
+  }
+
+  .download {
+    float: right;
+    padding: 0 .14rem;
+    margin: .2rem .2rem .15rem;
+    line-height: .48rem;
+    font-size: .28rem;
+    color: #fff;
+    border-radius: .06rem;
+    background: linear-gradient(90deg, #a01f0a, #e91e1e);
+    animation: gradientChange 2s infinite;
+  }
+}
+
+::ng-deep {
+  .ant-modal-confirm-content {
+    max-height: 50vh;
+    overflow: auto;
+  }
+
+  .index-modal {
+    .ant-modal-content {
+      background: @main-color;
+
+      .ant-modal-body {
+        max-height: 5rem;
+        overflow: auto;
+        color: @second-font-color;
+      }
+
+      .ant-modal-title {
+        color: @font-color;
+      }
+
+      .ant-modal-header {
+        padding: .2rem 0;
+        text-align: center;
+        border: none;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(35, 35, 35, 1), rgba(71, 71, 71, 1));
+      }
+
+      .ant-modal-close-x {
+        height: .8rem;
+        line-height: .8rem;
+        color: @font-color;
+      }
+      .ant-modal-footer {
+        border: none;
+
+        .ant-btn {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .header-download {
+    position: absolute;
+    top: 0.16rem;
+    left: 0.15rem;
+    width: 1.5rem;
+    height: .5rem;
+    background: url('@{base-url}image/app_download.png');
+    background-size: 100% 100%;
+  }
+
+  .carousel .slick-initialized.slick-slider {
+    width: 100%;
+    height: 100%;
+  }
+
+  .carousel .slick-slide img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .recommend-carousel .slick-slide:first-child, .recommend-carousel .slick-slide:last-child {
+    left: 0 !important;
+  }
+
+  .index-notice.clear {
+    height: 40px;
+    line-height: 40px;
+    background: @main-color;
+  }
+
+  .fl {
+    line-height: 0.25rem;
+  }
+}

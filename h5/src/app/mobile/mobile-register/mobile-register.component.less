@@ -1,0 +1,349 @@
+@import "../../config/config-mobile";
+
+.component-content {
+  padding: 0.5rem;
+
+  .component-container {
+    overflow: hidden;
+    margin: 0 auto;
+
+    .register-container {
+      position: relative;
+
+      .text {
+        font-size: 0.14rem;
+        margin-bottom: 0.1rem;
+        color: @second-font-color;
+        line-height: 1.5;
+
+        a {
+          color: @btn-primary;
+        }
+      }
+
+      .register-item {
+        .register-tabs {
+          padding: 0;
+          position: relative;
+          margin: 0 0 15px;
+
+          .tabs-scroll {
+            position: relative;
+
+            .active-bar-transform {
+              transform: translateX(2.1rem);
+            }
+
+            .tab-list {
+              width: 100%;
+              text-align: center;
+              display: table;
+
+              .tab-item {
+                width: 50%;
+                font-size: 0.32rem;
+                color: @font-color;
+                float: left;
+                line-height: .75rem;
+                cursor: pointer;
+              }
+
+              #tab-0 {
+                background: url("@{base-url}image/login/shape_login_reg_switch_left_bg_selected.png") no-repeat center / 100% 100%;
+              }
+
+              #tab-1 {
+                background: url("@{base-url}image/login/shape_login_reg_switch_right_bg_unselected.png") no-repeat center / 100% 100%;
+              }
+
+              &.active {
+                #tab-0 {
+                  background: url("@{base-url}image/login/shape_login_reg_switch_left_bg_unselected.png") no-repeat center / 100% 100%;
+                }
+
+                #tab-1 {
+                  background: url("@{base-url}image/login/shape_login_reg_switch_right_bg_selected.png") no-repeat center / 100% 100%;
+                }
+              }
+            }
+          }
+        }
+
+        .register-content {
+          form {
+            .register-form-item {
+              margin-bottom: 22px;
+
+              .item-prep {
+                height: 0.8rem;
+                width: 16%;
+                text-align: center;
+                line-height: 40px;
+                border-radius: 4px 0 0 4px;
+
+                .form-icon {
+                  font-size: 18px;
+                  color: @second-font-color;
+                }
+
+                .img {
+                  vertical-align: middle;
+                  width: .42rem;
+                }
+              }
+
+              .item-after {
+                width: 84%;
+                height: .8rem;
+
+                input {
+                  padding: 0 0.15rem;
+                  height: 0.8rem;
+                  color: @font-color5;
+                }
+              }
+
+              .phone-select {
+                width: 106px;
+                height: 40px;
+
+                nz-select {
+                  font-size: 14px;
+                  color: @main-color;
+                }
+
+                ::ng-deep .ant-select-selection {
+                  border-top-left-radius: 0;
+                  border-bottom-left-radius: 0;
+                }
+              }
+
+              .verificationImg {
+                width: 30%;
+                height: 0.8rem;
+                padding: 1px;
+                border: 1px solid @border-color;
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+
+                img {
+                  width: 100%;
+                  height: 35px;
+                }
+              }
+
+              .verificationPhone {
+                width: 30%;
+                line-height: 0.8rem;
+
+                .refresh-button {
+                  width: 1.6rem;
+                  height: .5rem;
+                  margin-left: .2rem;
+                  padding: 0;
+                  font-size: .22rem;
+                  text-align: center;
+                  border-radius: .48rem;
+                  background: @btn-primary;
+                }
+              }
+
+              .countdown {
+                height: 0.8rem;;
+                background: @btn-primary;
+                color: @font-color;
+                text-align: center;
+                line-height: 40px;
+                cursor: pointer;
+              }
+            }
+
+            .form-item-error {
+              margin-left: .3rem;
+              color: @tooltip-color;
+              font-size: 0.26rem;
+              line-height: 1;
+              padding-top: 0.1rem;
+
+              &.isArgee {
+                margin-top: -.3rem;
+              }
+            }
+
+            .form-input {
+              border-radius: 1rem;
+              overflow: hidden;
+              background: @input-color;
+            }
+
+            nz-form-item {
+              margin-bottom: 22px;
+
+              span {
+                font-size: .22rem;
+                color: @second-font-color;
+              }
+
+              .quick-login-form-button {
+                width: 100%;
+                height: 0.8rem;
+                margin-top: .8rem;
+                border-radius: 1rem;
+                color: @font-color;
+              }
+
+              .pact {
+                font-size: .22rem;
+                color: @btn-primary;
+              }
+            }
+          }
+        }
+
+        .quick-register {
+          .notice {
+            padding: 10px;
+            color: #6c6c6c;
+            margin: 15px 0;
+            background: #fef5e3;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 20px;
+            font-size: .2rem;
+          }
+        }
+
+        .phone-register {
+
+        }
+
+        .go-login {
+          margin-top: -.4rem;
+          text-align: center;
+          font-size: .3rem;
+          color: @second-font-color;
+
+          a {
+            color: @btn-primary;
+          }
+        }
+
+      }
+
+    }
+  }
+}
+
+.register-help {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: @main-color;
+  font-size: .24rem;
+  color: @font-color;
+  line-height: .4rem;
+  z-index: 9999;
+  transition: all .4s;
+  overflow: hidden;
+
+  .header {
+    position: relative;
+    color: @font-color;
+    height: .85rem;
+    line-height: .85rem;
+    background: linear-gradient(0deg, #000000, #232323, #474747);
+    width: 100%;
+    font-size: .36rem;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: monospace;
+    border-bottom: 1px solid @btn-primary;
+
+    .inline-blocks {
+      display: inline-block;
+
+      div {
+        font-weight: 600;
+      }
+    }
+
+    .right {
+      position: absolute;
+      right: .2rem;
+      top: 0;
+      z-index: 1;
+    }
+  }
+
+  .content {
+    margin: .3rem .2rem;
+    height: calc(100vh - 1.4rem);
+    border-radius: 0.3rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    color: @font-color;
+    box-sizing: border-box;
+    padding: 0 .2rem;
+
+    .title {
+      text-align: center;
+      font-size: .36rem;
+      line-height: .8rem;
+      color: @font-color;
+      font-weight: bold;
+    }
+  }
+
+  .issue-title {
+    line-height: .6rem;
+    font-size: .28rem;
+    font-weight: 700;
+  }
+
+  .detail {
+    margin-bottom: .06rem;
+    text-indent: .24rem;
+    color: @second-font-color;
+  }
+
+  &.active {
+    height: 100vh;
+
+  }
+}
+
+:host ::ng-deep {
+  .ant-input-affix-wrapper .ant-input-prefix, .ant-input-affix-wrapper .ant-input-suffix {
+    font-size: .36rem;
+    color: @second-font-color;
+  }
+
+  .ant-input {
+    background: transparent;
+    border: none !important;
+    outline: none !important;
+    color: @second-font-color;
+    text-align: left;
+  }
+
+  .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {
+    border: none !important;
+    outline: none !important;
+  }
+
+  .ant-btn-primary {
+    background: @btn-primary;
+    border: none;
+  }
+
+  .ant-btn-disabled, .ant-btn.disabled, .ant-btn[disabled], .ant-btn-disabled:hover, .ant-btn.disabled:hover, .ant-btn[disabled]:hover, .ant-btn-disabled:focus, .ant-btn.disabled:focus, .ant-btn[disabled]:focus, .ant-btn-disabled:active, .ant-btn.disabled:active, .ant-btn[disabled]:active, .ant-btn-disabled.active, .ant-btn.disabled.active, .ant-btn[disabled].active {
+    background: @second-font-color;
+  }
+
+  .ant-btn-loading {
+    background: @btn-primary;
+  }
+}

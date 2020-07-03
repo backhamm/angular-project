@@ -1,0 +1,75 @@
+<div class="integral-detail clearfix">
+    <div class="detail-left">
+        <div class="img-box">
+            <img *ngIf="goodData.smallimg" [src]="goodData.smallimg" alt="">
+        </div>
+        <h3>{{ goodData.pluname }}</h3>
+        <div class="descripte">{{ goodData.describe }}</div>
+    </div>
+    <div class="detail-right">
+        <h2>商品兑换信息</h2>
+        <p class="clearfix">
+          <span>商品价值:<i>￥{{ goodData.oprice }}</i></span>
+          <span>兑换积分:<i>{{ goodData.price * goodNumber }}</i></span>
+        </p>
+        <div class="exchange-box clearfix">
+          <span class="pl">可用积分:<i>{{ goodData.integral}}</i></span>
+          <span class="pr">兑换数量:</span>
+          <div class="exchange-number fr">
+            <span class="noselect" (click)="changeNum(false)">-</span>
+            <input type="text" appLimitInput [limitType]="'number'" [(ngModel)]="goodNumber">
+            <span class="noselect" (click)="changeNum(true)">+</span>
+          </div>
+        </div>
+        <h3>地址信息:</h3>
+        <form nz-form [formGroup]="validateForm">
+            <nz-form-item nz-row>
+                <nz-form-label nzSpan="5">配送至</nz-form-label>
+
+                <nz-form-control nzSpan="18" nzOffset="1" nzErrorTip="请填写详细地址!">
+                    <nz-cascader [nzOptions]="nzOptions" formControlName="area" nzPlaceHolder="请选择配送地址"></nz-cascader>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label nzSpan="5">详细地址</nz-form-label>
+                <nz-form-control nzSpan="18" nzOffset="1" nzErrorTip="请填写详细地址!">
+                    <nz-input-group>
+                        <textarea nz-input formControlName="address" rows="3" maxlength="100"
+                            placeholder="建议您如实填写详细收货地址，例如街道名称，门牌号码，楼层和房间号等信息"></textarea>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+
+
+            <nz-form-item>
+                <nz-form-label nzSpan="5">收货人姓名</nz-form-label>
+                <nz-form-control nzSpan="18" nzOffset="1" nzErrorTip="请填写收货人姓名!">
+                    <nz-input-group>
+                        <input nz-input appLimitInput [limitType]="'chinese'" maxlength="15" formControlName="receiver" placeholder="请填写收货人姓名"/>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+
+
+            <nz-form-item>
+                <nz-form-label nzSpan="5">手机号码</nz-form-label>
+                <nz-form-control nzSpan="18" nzOffset="1" nzErrorTip="请填写真实的手机号码!">
+                    <nz-input-group>
+                        <input nz-input appLimitInput [limitType]="'number'" formControlName="phoneNum" maxlength="11" placeholder="请填写真实的手机号码"/>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label nzSpan="5">备注</nz-form-label>
+                <nz-form-control nzSpan="18" nzOffset="1">
+                    <nz-input-group>
+                        <textarea nz-input formControlName="mark" rows="3" maxlength="200" placeholder="请填写备注信息"></textarea>
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+        <button nz-button nzSize="large" (click)="submitForm()">立即兑换</button>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div id="articles">
+    <h2>联络我们</h2>
+    <div>客户联络</div>
+    <ol>
+        <li>
+            在线客服：<br>
+            <a class="service-chat" [href]="platform.onlineService.href" [target]="platform.onlineService.target"></a>
+        </li>
+        <li>
+            <span>太阳城集团</span>热线: <span class="subtitle " >{{platform.phoneValue}}</span>
+        </li>
+        <li>
+            投诉邮箱：<span class="subtitle " ng-bind="ContactInfo.ComplaintEmail" id="ts-email">{{platform.emailValue}}</span><br>
+            客服邮箱：<span class="subtitle" ng-bind="ContactInfo.WinEmail" id="kf-email">{{platform.emailValue}}</span>
+        </li>
+        <li>客服QQ：<a id="floatL55" class="subtitle" [href]="platform.qqService.href" target="_blank">{{platform.qqService.value}}</a></li>
+    </ol>
+
+
+</div>

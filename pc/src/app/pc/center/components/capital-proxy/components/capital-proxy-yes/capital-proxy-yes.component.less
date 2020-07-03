@@ -1,0 +1,353 @@
+@import '../../../../../../config/config.less';
+
+.agent-list{
+    margin-top: 20px;
+    overflow: hidden;
+    dl{
+        float: left;
+        width: 296px;
+        height: 140px;
+        padding: 0 15px;
+        margin-right: 27px;
+        border: 1px solid #eaeaea;
+        line-height: 40px;
+        &:last-child{
+            margin-right:0;
+        }
+        dt{
+            height: 40px;
+            font-size: 14px;
+            p{
+              height: 30px;
+              line-height: 30px;
+              border: 1px solid #eaeaea;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              cursor: pointer;
+              color: @main-color;
+            }
+            a{
+              color: @main-color;
+            }
+            span{
+                b{
+                    color: @main-color;
+                    margin-left: 12px;
+                    cursor: pointer;
+                }
+            }
+            i{
+                margin-right: 6px;
+                vertical-align: middle;
+                font-size: 22px;
+                color: @main-color;
+
+                &.fr{
+                    color: #cccccc;
+                    font-size: 14px;
+                    margin-top: 13px;
+                    cursor: pointer;
+                }
+            }
+        }
+        .dt-team{
+          height: 36px;
+          padding-top: 5px;
+        }
+        .agent-commission-list{
+          height: 68px;
+          line-height: 34px;
+          text-align: center;
+          border-bottom: 1px solid #F7F7F7;
+        }
+        dd{
+            span{
+                color: @main-font-color;
+                font-size: 12px;
+                height: 18px;
+                line-height: 18px;
+            }
+            .fl-agent-img{
+              margin-top: 4px;
+              margin-left: 12px;
+              text-align: center;
+              span{
+                display: block;
+                margin-top: -4px;
+              }
+            }
+            .fl-account-img{
+              margin-left: 12px;
+              height: 57px;
+              img{
+                margin-top: 5px;
+              }
+            }
+            .fr-content{
+              width: 180px;
+              padding-left: 12px;
+              span{
+                display: block;
+              }
+            }
+          .fl-oldcommissin, .fr-newcommissin{
+            height: 30px;
+            line-height: 30px;
+          }
+            .fr-account-content{
+              width: 194px;
+              padding-left: 8px;
+              span{
+                display: inline-block;
+                font-size: 14px;
+                margin-left: 5px;
+                cursor: pointer;
+              }
+              .commission-money{
+                display: block;
+                font-size: 20px;
+              }
+              .red-color{
+                color: @red-color;
+              }
+            }
+            p{
+                font-size: 12px;
+                .fr-copy-content{
+                  display: inline-block;
+                  width: 150px;
+                  height: 94px;
+                  padding-top: 4px;
+                  display: -webkit-box;
+                  -webkit-box-orient: vertical;
+                  text-overflow: ellipsis;
+                  word-break: break-all;
+                  overflow: hidden;
+                  cursor: pointer;
+                }
+                i{
+                    font-size: 10px;
+
+                    &.anticon-caret-up{
+                        color: green;
+                    }
+                    &.anticon-caret-down{
+                        color: red;
+                        display: none;
+                    }
+                }
+
+                &.down{
+                    .anticon-caret-up{
+                        display: none;
+                    }
+                    .anticon-caret-down{
+                        display: inline;
+                    }
+                }
+                img.agent-vip{
+                  width: 57px;
+                  height: 57px;
+                }
+            }
+        }
+    }
+}
+.echarts-list{
+  margin-top: 20px;
+  height: 300px;
+  .echarts-left, .echarts-right{
+    width: 457px;
+    height: 300px;
+    border: 1px solid #eaeaea;
+    float: left;
+  }
+  .echarts-left{
+    .charts-right-contents{
+      float: right;
+      margin-top: 60px;
+      width: 250px;
+      height: 128px;
+      font-size: 12px;
+    }
+    .charts-right-contents table{
+      width: 250px;
+      height: 128px;
+    }
+    .charts-right-contents table td{
+      width: 80px;
+      height: 30px;
+      line-height: 30px;
+    }
+    .charts-right-contents table td:nth-child(2){
+      width: 50px!important;
+      text-align: center;
+    }
+    .charts-right-contents table td:nth-child(3){
+      width: 80px!important;
+    }
+    img.munber_imgs{
+      width: 14px;
+      height: 16px;
+      vertical-align: sub;
+    }
+  }
+  .echarts-right{
+    margin-left: 27px;
+  }
+  .charts-nav-titles{
+    height: 30px;
+    line-height: 30px;
+    text-indent: 2em;
+  }
+}
+.tab-list{
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eaeaea;
+    ul{
+      display: inline-block;
+    }
+    ul li{
+      float: left;
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+      margin-left: 5px;
+    }
+    .team-nav-title{
+      float: left;
+      display: inline-block;
+      height: 40px;
+      line-height: 40px;
+    }
+    .team-type-list li span{
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border: 1px solid @main-color;
+      text-align: center;
+      cursor: pointer;
+      margin-left: 6px;
+    }
+    .team-type-list li span.active {
+      color: @white-color;
+      background: @main-color;
+      border-bottom: 1px solid @main-color;
+    }
+    .invite-type{
+        height: 320px;
+        padding-top: 20px;
+
+        .type-left{
+            width: 25%;
+            text-align: center;
+            h3{
+                text-align: left;
+                font-size: @f-16;
+            }
+            .code-box{
+                margin: 14px 0;
+                height: 190px;
+                overflow: hidden;
+            }
+            p{
+                font-size: 12px;
+                line-height: 16px;
+                color: #999;
+            }
+        }
+
+        .type-right{
+            width: 60%;
+            margin-right: 90px;
+            color: #666;
+
+            h3{
+                font-size: @f-16;
+
+                p{
+                    cursor: pointer;
+                    i{
+                        color: #70abe6;
+                        margin-right: 4px;
+                    }
+
+                }
+            }
+
+            .type-link{
+                height: 44px;
+                border: 1px solid #eaeaea;
+                margin-top: 20px;
+                line-height: 44px;
+
+                p{
+                    float: left;
+                    width: 438px;
+                    margin-right: 20px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-indent: 12px;
+                }
+            }
+
+            .type-link-large{
+                height: 120px;
+                margin-top: 8px;
+                line-height: 14px;
+                border: 1px solid #eaeaea;
+
+                p{
+                    width: 100%;
+                    height: 74px;
+                    padding: 6px;
+                    text-indent: 12px;
+                }
+                .txt-r{
+                    text-align: right;
+                    padding-right: 16px;
+                }
+            }
+
+            .type-txt{
+                margin-top: 20px;
+            }
+        }
+    }
+}
+.page-box{
+    margin-top: 18px;
+    text-align: center;
+}
+.get-item{
+    span{
+        color: @main-color1;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    i{
+        font-size: 20px;
+    }
+}
+
+.green{
+    color: green;
+}
+.red{
+    color: red;
+}
+
+:host{
+    ::ng-deep{
+        .ant-table-placeholder{
+            border-bottom: none;
+        }
+        .ant-calendar-picker{
+            //margin-bottom: 7px;
+          float: right;
+        }
+    }
+}

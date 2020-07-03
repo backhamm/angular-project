@@ -1,0 +1,95 @@
+@import '../../config/config-mobile';
+
+.customer-wrapper {
+    padding: .4rem;
+    margin: 20% auto 0;
+    width: 75%;
+    line-height: .8rem;
+    white-space: nowrap;
+    font-size: .25rem;
+    border-radius: .1rem;
+    background: #fff;
+    color: @customer-text;
+
+    a {
+        color: @customer-text;
+    }
+
+    img {
+        vertical-align: middle;
+    }
+
+    .customer-title {
+        line-height: 1rem;
+        text-align: center;
+        font-size: .3rem;
+        font-weight: bold;
+    }
+
+    .customer-icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 .4rem 0 .5rem;
+        width: .5rem;
+        height: .5rem;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+.customer-wrapper-new {
+	width: 100%;
+	overflow: scroll;
+	overflow-x: hidden;
+  padding-bottom: 1rem;
+	img {
+		width: 100%;
+		display: inline-block;
+	}
+	.contact{
+		margin: .6rem 0 .5rem;
+		.contact-content{
+			cursor: pointer;
+			display: flex;
+			margin:0 0.2rem 0.4rem 0.2rem;
+			.icon{
+				flex: 1;
+				height: 1rem;
+				display: flex;
+				justify-content: flex-end;
+				.icon-img{
+					width: 1rem;
+					height: 1rem;
+					background: @btn-primary;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					border-radius: 0.1rem;
+				}
+				img{
+					width: 0.6rem;
+				}
+			}
+			.icon-title{
+				flex: 4;
+				display: flex;
+				align-items: center;
+				padding-left: 0.6rem;
+				text-align: center;
+			}
+			.link-qqserver{
+				width: 4.5rem;
+				height: 1rem;
+				font-size: 0.33rem;
+				display: block;
+				line-height: 1rem;
+				border-radius: 0.5rem;
+				border: 2px solid @btn-primary;
+				color: @font-color;
+			}
+			.link-server{
+				background: @btn-primary;
+			}
+
+		}
+	}
+}

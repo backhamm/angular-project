@@ -1,0 +1,27 @@
+<div class="scratches" [hidden]="!service.hasScavenger" [ngStyle]="isShow ? {'opacity': 1, 'z-index': 1000} : {'opacity': 0, 'z-index': -1}">
+    <div class="scratches-wrapper">
+        <div class="scratches-step">{{scratch.scratchText[scratch.step]}}</div>
+        <div class="scratches-main">
+            <div class="scratches-begin" *ngIf="isScratch">
+                <span>恭喜您</span>
+                <span>获得彩金</span>
+                <span>{{scratchesMonery}}元</span>
+                <canvas id="canvas" width="205" height="115">您的浏览器不支持canvas！</canvas>
+            </div>
+            <div class="scratches-end" *ngIf="!isScratch">
+                <div class="phone-input">
+                    <input appLimitInput [limitType]="'number'" type="text" maxlength="11" placeholder="手机号" [(ngModel)]="mobile">
+                    <span (click)="clearPhone()">更换手机号</span>
+                </div>
+                <div class="code-input">
+                    <input appLimitInput [limitType]="'number'" type="text" maxlength="4" placeholder="验证码" [(ngModel)]="msgCode">
+                    <span *ngIf="!scratch.leaveShow" (click)="scratch.senMsgCode(mobile)">获取验证码</span>
+                    <span *ngIf="scratch.leaveShow" style="color: #777;">{{scratch.leaveTime}}s后获取</span>
+                </div>
+            </div>
+        </div>
+        <div class="scratches-honoree"></div>
+        <span class="scratches-btn" *ngIf="scratch.step > 0" (click)="scratchesBtn(mobile)">{{btnText}}</span>
+        <span class="scratches-close" (click)="close()"></span>
+    </div>
+</div>

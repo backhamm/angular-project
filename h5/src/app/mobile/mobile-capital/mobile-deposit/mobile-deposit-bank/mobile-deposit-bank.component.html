@@ -1,0 +1,78 @@
+<div class='depost-animation'>
+    <div class="no-way flex" *ngIf="!payList?.length">
+        没有可用支付商列表!
+        <a href="" class="customer icon">在线客服</a>
+
+    </div>
+    <div *ngIf="payList?.length">
+        <section class="deposit-payer">
+            <div class="lottery">
+                <ng-container *ngFor="let item of payList; let i = index;">
+                    <div (click)="dealPayment(i)"
+                         [ngClass]="{'deposit-list': true, 'active': i=== deposit.payIndex }">
+                        <span class="circle"></span>支付{{i+1}}
+                    </div>
+                </ng-container>
+
+            </div>
+        </section>
+
+        <div class="title">存款金额</div>
+        <section class="deposit-amount">
+            <div nz-row style="margin-top: .2rem;" *ngIf="!payList[deposit.payIndex]?.solidStatus" class="deposit-item">
+                <div nz-col>
+                    <nz-input-group nzAddOnBefore="￥">
+                        <input type="number" nz-input [(ngModel)]="params.amount"
+                               [placeholder]="'单笔限额'+payList[deposit.payIndex].minquota+ '-'
+                               +payList[deposit.payIndex].maxquota+ '(元)'" maxlength="7" [nzSize]="'large'"/>
+                    </nz-input-group>
+                </div>
+            </div>
+            <div class="fixed-amount" nz-row *ngIf="payList[deposit.payIndex]?.solidStatus">
+                <ng-container *ngFor="let amount of payList[deposit.payIndex]?.solidAmount; let i = index;">
+                    <div nz-col nzSpan="6" class="amount" (click)="amountIndex = i">
+                        <button nz-button nzType="default"
+                                [ngClass]="{'btn-active': amountIndex === i, 'amount-btn': true}">
+                            {{amount}}
+                        </button>
+                    </div>
+                </ng-container>
+
+            </div>
+        </section>
+        <section class="deposit-amount">
+            <div class="deposit-item">
+                <div>
+                    <nz-input-group nzAddOnBefore="银行列表" class="bank-group">
+                        <div class="selected-bank" (click)="openToggleDraw()">{{currentSelectItem}}
+                            <i nz-icon
+                               nzType="right"
+                               nzTheme="outline"></i>
+                        </div>
+                    </nz-input-group>
+                </div>
+            </div>
+
+        </section>
+        <div class="next">
+            <button class="deposit-submit btn-image-big" nz-button nzSize="large"
+                    nzType="primary" (click)="submit()">下一步
+            </button>
+        </div>
+
+        <app-mobile-deposit-text-tooltip></app-mobile-deposit-text-tooltip>
+    </div>
+    <nz-drawer
+            [nzVisible]="visible"
+            [nzPlacement]="'bottom'"
+            [nzHeight]="500"
+            nzTitle="银行列表"
+            (nzOnClose)="openToggleDraw()">
+        <ng-container *ngFor="let item of payList[deposit.payIndex]?.banks, let i=index">
+            <p [ngClass]="{'select-deposit-way': true, 'select-active': i===bankIndex }"
+               (click)="changeSelectedBank(item,i)">{{item.bankName}} <i nz-icon nzType="check" nzTheme="outline"
+                                                                         class="checked"></i></p>
+        </ng-container>
+    </nz-drawer>
+
+</div>

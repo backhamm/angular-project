@@ -1,0 +1,29 @@
+<app-mobile-header [leftIcon]="true">
+  <div class="goCapital" routerLink="/m/user/capital-funds">资金记录</div>
+</app-mobile-header>
+<nz-spin [nzSpinning]="deposit.isSpinning" nzTip="加载中">
+  <div class="home-index">
+    <div class="h-container">
+      <section class="deposit-container">
+        <!--<app-mobile-deposit-common></app-mobile-deposit-common>-->
+        <div class="title">存款方式</div>
+        <div class="lottery">
+          <ng-container *ngFor="let item of payChannel; let i = index">
+            <div class="deposit-way" [ngClass]="{'active': selectIndex === i}" (click)="changeChannel(item, i)">
+              <div>
+                <span class="imgae-pic"><img [src]="item.icon" alt=""></span>
+                <span>{{item.scanname }}</span>
+                <i class="active-icon"></i>
+              </div>
+            </div>
+          </ng-container>
+
+        </div>
+        <app-mobile-deposit-bank *ngIf="type === 1"></app-mobile-deposit-bank>
+        <app-mobile-deposit-online *ngIf="type === 2" [type]="type"></app-mobile-deposit-online>
+        <app-mobile-deposit-scan *ngIf="type === 3"></app-mobile-deposit-scan>
+        <app-mobile-deposit-obank *ngIf="type === 4"></app-mobile-deposit-obank>
+      </section>
+    </div>
+  </div>
+</nz-spin>

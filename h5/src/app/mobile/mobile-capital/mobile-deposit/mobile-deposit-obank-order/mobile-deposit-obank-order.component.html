@@ -1,0 +1,85 @@
+<div class="home-index">
+  <app-mobile-header [leftIcon]="true"></app-mobile-header>
+  <div class="h-container obank-order">
+    <div class="order-title">
+      <p>网银转账（元）</p>
+      <p>{{orderData?.amount}}</p>
+    </div>
+    <div class="order-bankCard">
+      <div class="bankCard-main">
+        <p class="bankCard-name">{{orderData?.bankname}}</p>
+        <p class="bankCard-ID" nz-row>
+          <nz-col [nzSpan]="20">
+            <span>{{orderData?.cardno.slice(0,4)}}</span>
+            <span>{{orderData?.cardno.slice(4,8)}}</span>
+            <span>{{orderData?.cardno.slice(8,12)}}</span>
+            <span>{{orderData?.cardno.slice(12,16)}}</span>
+            <span>{{orderData?.cardno.slice(16)}}</span>
+          </nz-col>
+          <nz-col [nzSpan]="4" ngxClipboard [cbContent]="orderData?.cardno"
+                  (cbOnSuccess)="copied($event)" class="copy">复制
+          </nz-col>
+        </p>
+        <p  nz-row>
+          <nz-col [nzSpan]="20">
+            开户名：<span>{{orderData?.bankname}}</span>
+          </nz-col>
+          <nz-col [nzSpan]="4" ngxClipboard [cbContent]="orderData?.bankname"
+                  (cbOnSuccess)="copied($event)" class="copy">复制
+          </nz-col>
+
+        </p>
+        <p  nz-row>
+          <nz-col [nzSpan]="20">
+            开户行：<span>{{orderData?.bankaddress}}</span>
+          </nz-col>
+          <nz-col [nzSpan]="4" ngxClipboard [cbContent]="orderData?.bankaddress"
+                  (cbOnSuccess)="copied($event)" class="copy">复制
+          </nz-col>
+
+        </p>
+      </div>
+    </div>
+    <div class="order-info">
+      <div>
+        <span class="info-title">下单时间</span>
+        <span>{{ orderData.createTime }}</span>
+      </div>
+      <div nz-row nzType="flex" nzJustify="space-between" nzAlign="middle">
+        <nz-col [nzSpan]="20">
+          <span class="info-title">订单编号</span>
+          <span class="info-order-number">{{orderData?.orderNo}}</span>
+        </nz-col>
+        <nz-col [nzSpan]="4" ngxClipboard [cbContent]="orderData?.orderNo"
+                (cbOnSuccess)="copied($event)" class="copy">复制
+        </nz-col>
+      </div>
+      <div>
+        <span class="info-title">订单失效时间</span>
+        <span class="order-time">{{minutes}}分{{seconds}}秒</span>
+      </div>
+    </div>
+    <div class="order-button">
+      <button nz-button nzType="primary" nzBlock (click)="confirm(1)"  nzSize="large">完成存款</button>
+      <button nz-button nzType="default" nzBlock (click)="confirm(0)"  nzSize="large">取消订单</button>
+    </div>
+    <div class="order-tips">
+      <p>温馨提示</p>
+      <p>为确保您的款项及时到帐，请您留意以下几点：</p>
+      <p> 1.在输入您的存款金额时确保您提交的金额在限额范围之内；</p>
+      <p> 2.若您支付过程中遇到问题未完成支付，请重新下单；</p>
+      <p> 3.支付遇到困难？联系<a [href]="plat.onlineService" class="online-service">在线客服</a>获得帮助；</p>
+    </div>
+  </div>
+</div>
+<nz-modal
+    [(nzVisible)]="isVisible"
+    nzTitle="系统提示"
+    nzOkText="确定"
+    nzCancelText="取消"
+    (nzOnOk)="goBack()"
+    (nzOnCancel)="goBack()"
+>
+    <p *ngIf="type"> 提交成功,系统审核通过后，将会及时到账，请确保您的通讯畅通，以便客服与您联系。</p>
+    <p *ngIf="!type">您是否确定取消订单?若已完成支付,取消订单将会造成资金无法入账</p>
+</nz-modal>

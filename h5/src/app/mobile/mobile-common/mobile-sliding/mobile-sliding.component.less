@@ -1,0 +1,43 @@
+@import "~src/app/config/config-mobile";
+
+.slide-wrapper {
+  position: relative;
+  width: 100%;
+  line-height: .8rem;
+  text-align: center;
+  font-size: .24rem;
+  border: 1px solid @border-color;
+  border-radius: 10px;
+  color: @second-font-color;
+  overflow: hidden;
+
+  &.success .slide-block {
+    font-size: .3rem;
+    background: @btn-primary;
+    color: #fff;
+  }
+
+  .slide-success {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: .8rem;
+    line-height: .8rem;
+    text-align: center;
+    background: @deep-btn-primary;
+    color: @font-color;
+  }
+
+  .slide-block {
+    position: absolute;
+    width: .8rem;
+    line-height: .8rem;
+    top: 0;
+    left: 0;
+    font-size: .24rem;
+    border-radius: 0 7px 7px 0;
+    background: @second-font-color;
+    color: @second-color;
+  }
+}

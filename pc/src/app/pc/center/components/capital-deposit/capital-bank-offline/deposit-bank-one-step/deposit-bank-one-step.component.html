@@ -1,0 +1,42 @@
+<div class="forms">
+    <div class="el clear">
+        <div class="item-label fl">存款人姓名:</div>
+        <div class="content fl">
+            <input [(ngModel)]="params.name"
+                   appLimitInput [limitType]="'chinese'" nz-input placeholder="请输入存款人姓名"/>
+        </div>
+    </div>
+    <div class="el clear">
+        <div class="item-label fl">存入金额:</div>
+        <div class="content fl">
+            <nz-input-number
+                [(ngModel)]="params.amount" [nzMin]="currentPayment?.minquota"
+                [nzMax]="currentPayment?.maxquota"
+                [nzStep]="10"
+                [nzPlaceHolder]="'请输入金额'"
+            ></nz-input-number>
+            <div class="tip-div">单笔限额{{currentPayment?.minquota+'-'+ currentPayment?.maxquota}}(元)
+            </div>
+        </div>
+    </div>
+    <div class="el clear">
+        <div class="item-label fl">存款方式:</div>
+        <div class="content fl" style="width: 500px;">
+            <nz-radio-group [(ngModel)]="params.channel">
+                <label nz-radio-button
+                       *ngFor="let item of currentPayment?.channels"
+                       [nzValue]="item.type"
+                >{{item.name}}</label>
+            </nz-radio-group>
+        </div>
+    </div>
+    <div class="el clear">
+        <div class="item-label fl">申请入款彩金:</div>
+        <div class="content fl">
+            <nz-switch [(ngModel)]="handsel"></nz-switch>
+        </div>
+    </div>
+    <div class="el clear">
+        <button class="submit" nz-button nzType="primary" [nzLoading]="isLoading" (click)="validateSub()">下一步</button>
+    </div>
+</div>

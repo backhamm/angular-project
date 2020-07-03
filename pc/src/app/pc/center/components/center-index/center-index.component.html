@@ -1,0 +1,25 @@
+<div class="center">
+    <div class="center-container clear">
+        <div class="center-left">
+            <app-center-nav></app-center-nav>
+        </div>
+        <div class="center-right fr">
+            <div class="center-notice clear">
+              <div class="notice-volume fl">
+                <i nz-icon nzType="sound" nzTheme="outline"></i>
+              </div>
+              <div class="notice-main fl">
+                <nz-carousel [nzDotPosition]="'left'" [nzEnableSwipe]="false"
+                             [nzAutoPlaySpeed]="5000" [nzAutoPlay]="true" [nzDots]="false">
+                  <ul class="news-container">
+                    <li nz-carousel-content *ngFor="let item of noticeList" (click)="noticeAlert(item)">
+                      {{item.data}}
+                    </li>
+                  </ul>
+                </nz-carousel>
+              </div>
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

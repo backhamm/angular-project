@@ -1,0 +1,19 @@
+<div class="news">
+    <div class="banner"></div>
+    <div class="news-container">
+        <div class="news-head">
+            <h2>公告中心</h2>
+        </div>
+        <div class="news-content">
+            <div class="news-item" *ngFor="let item of newsList">
+                <div class="head">
+                    <span style="margin-right: 10px">{{item.title}}</span>
+                    <span class="time"></span>
+                </div>
+                <div class="content">
+                    <p class="describe">{{item.data}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

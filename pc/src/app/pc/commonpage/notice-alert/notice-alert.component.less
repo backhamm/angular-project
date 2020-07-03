@@ -1,0 +1,104 @@
+@import "../../../config/config";
+#notice-dailog-container {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .6);
+	z-index: 9999999;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+#notice-dailog {
+    width: 360px;
+    height: auto;
+    min-height: 200px;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    margin-left: -180px;
+    margin-top: -140px;
+    z-index: 100000;
+    padding: 5px 15px 10px 15px;
+    background: #fff;
+
+    .nav-tabs-header {
+        height: 24px;
+        line-height: 24px;
+        font-weight: 500;
+        text-align: left;
+        border-radius: 8px 8px 0 0;
+
+        p {
+            display: block;
+            font-weight: bold;
+            height: 26px;
+            color: #08F;
+            line-height: 26px;
+            background: none;
+            font-size: 18px;
+            padding-left: 12px;
+        }
+
+        span {
+            position: absolute;
+            right: 8px;
+            top: 11px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 22px;
+			padding: 4px 10px;
+			width: 14px;
+			height: 14px;
+            background: url(https://2s138a.com/theme/plugins/ui/1.9.2/themes/base/images/close.png) top center no-repeat;
+            transition: All 0.4s ease-in-out;
+
+            &:hover {
+                webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    .nav-tabs {
+        padding: 20px;
+        margin-top: 12px;
+        font-size: 14px;
+        letter-spacing: 1px;
+        line-height: 28px;
+        margin-bottom: 30px;
+    }
+
+    .bottom-btn {
+        text-align: center;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        #confirm-btn {
+            border-radius: 3px;
+            letter-spacing: 1px;
+            background-color: #5184de;
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(#3982dc), to(#1550b3));
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3982dc', endColorstr='#1550b3');
+            background: -moz-linear-gradient(#3982dc, #1550b3);
+            background: -o-linear-gradient(#3982dc, #1550b3);
+            background: linear-gradient(#3982dc, #1550b3);
+            width: 80px;
+            // margin-top: 10px;
+            // margin-bottom: 10px;
+            // margin-left: 24px;
+            font-size: 14px;
+            height: 28px;
+            color: @white-color;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+
+}

@@ -1,0 +1,227 @@
+@import "../../../../../config/config";
+
+.capital-title {
+    height: 40px;
+    background: linear-gradient(90deg, #f2f2f2, #fff);
+    line-height: 40px;
+    padding: 0 30px;
+    width: 30%;
+    margin: 30px 0;
+    font-weight: 700;
+    color: #666;
+}
+
+.interchange-hand {
+    padding-top: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    .interchange-button-default {
+        color: @theme-color;
+        border: 1px solid @theme-color;
+        &:hover {
+            color: @theme-color;
+        }
+    }
+    .switch-auto {
+        position: absolute;
+        right: 40px;
+        top: 15px;
+        padding: 0 30px;
+        margin-top: 5px;
+        line-height: 30px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .interchange-container {
+        .capital {
+            position: relative;
+            padding: 20px 40px;
+            width: 480px;
+            border-right: 1px dashed #eee;
+            .assets {
+                display: table;
+                margin: 0 auto 32px;
+                .assets-title {
+                    line-height: 32px;
+                    font-size: 16px;
+                    margin-left: 5px;
+                }
+                .total-balance {
+                    font-size: 24px;
+                    font-weight: 600;
+                }
+            }
+            .assets-items {
+                .item {
+                    float: left;
+                    width: 50%;
+                    text-align: center;
+                    h1 {
+                        font-size: 14px;
+                    }
+                    p {
+                        margin-top: 14px;
+                        font-size: 16px;
+                        font-weight: 700;
+                        margin-bottom: 14px;
+                    }
+                    .buttons {
+                        //width: 50px;
+                        height: 30px;
+                        font-size: 14px;
+                        &:nth-child(1) {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+                .item-no-proxy {
+                    width: 50%;
+                    .buttons {
+                        &:nth-child(1) {
+                            margin-right: 10px;
+                        }
+                    }
+                }
+                .divider {
+                    border-left: 1px solid #ccc;
+                    height: 89px;
+                }
+            }
+        }
+        // 手动转账
+        .interchange-hand {
+            padding: 0 40px;
+            .transfer {
+                position: relative;
+                margin-top: 10px;
+                width: 435px;
+                .row-container {
+                    .row {
+                        margin-bottom: 19px;
+                        position: relative;
+                        h1 {
+                            float: left;
+                            height: 44px;
+                            width: 50px;
+                            line-height: 44px;
+                            font-size: 14px;
+                            text-align: left;
+                            color: #666;
+                            vertical-align: middle;
+                            //border: 1px solid #dddee1;
+                        }
+                        .transfer-select {
+                            float: left;
+                            //height: 44px;
+                            line-height: 44px;
+                            //border: 1px solid #dddee1;
+                            padding: 0 30px 0 5px;
+                            color: #495060;
+                            nz-select {
+                                line-height: 40px;
+                                width: 291px;
+                                ::ng-deep .ant-select-selection__rendered {
+                                    line-height: 40px;
+                                }
+                                ::ng-deep .ant-select-selection--single {
+                                    height: 40px;
+                                }
+                                ::ng-deep .ant-select-selection {
+                                    //border-radius: 0;
+                                }
+                            }
+                            nz-input-number {
+                                width: 291px;
+                                height: 40px;
+                                ::ng-deep .ant-input-number-input-wrap {
+                                    line-height: 40px;
+                                    //width: 291px;
+                                    //height: 40px;
+                                }
+
+                            }
+                            .transfer-submit {
+                                margin-left: 50px;
+                                padding: 0 50px;
+                                line-height: 40px;
+                                height: 40px;
+                                color: #fff;
+                                font-weight: 700;
+                            }
+
+                        }
+                    }
+                }
+                .transferWidth{
+                    width: 170px;
+                    overflow: hidden;
+				    white-space: nowrap;
+				    text-overflow: ellipsis;
+                    
+                }
+            }
+        }
+    }
+}
+
+.assets-hand {
+    border: 1px dashed #eaeaea;
+    margin-top: 30px;
+    min-height: 300px;
+    .assets-container {
+        padding: 0 15px 35px;
+        li {
+            width: 33.33%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 14px;
+            transition: .3s ease-in-out;
+            padding-left: 40px;
+            position: relative;
+            &:hover {
+                background: linear-gradient(180deg, #f9f9f9, #f2f2f2);
+                border-radius: 4px;
+                transform: translateY(-3px);
+            }
+            .logo {
+                width: 66px;
+                height: 66px;
+                text-align: center;
+                vertical-align: middle;
+                border-radius: 100%;
+                border: 3px solid #e7e3e3;
+                background-size: contain;
+                margin: auto;
+                cursor: pointer;
+            }
+            .detail {
+                width: calc(100% - 85px);
+                height: 60px;
+                margin-left: 15px;
+                position: relative;
+                padding-top: 17px;
+                p {
+                    padding-bottom: 8px;
+                }
+            }
+        }
+    }
+    // 数量超过 12个
+    .assets-much {
+        li {
+            width: 25%;
+            padding-left: 15px;
+        }
+    }
+}
+
+.get-item {
+    span {
+        color: @main-color1;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    i {
+        font-size: 20px;
+    }
+}

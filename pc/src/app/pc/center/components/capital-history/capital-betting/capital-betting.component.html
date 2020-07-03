@@ -1,0 +1,101 @@
+<div class="content">
+    <!-- title -->
+    <div class="title">投注记录</div>
+    <div class="search">
+        <div nz-row>
+            <!-- 时间段选择 -->
+            <div class="time" nz-col nzSpan="10">
+                <nz-range-picker
+                    nzSize="large"
+                    nzFormat="yyyy/MM/dd"
+                    [(ngModel)]="rangeTime"
+                    (ngModelChange)="rangeChange()">
+                </nz-range-picker>
+            </div>
+            <!-- 快捷选时 -->
+            <div nz-col nzSpan="4">
+                <nz-select
+                    style="width: 120px;"
+                    [(ngModel)]="quickTime"
+                    (ngModelChange)="quickChange()"
+                    nzSize="large"
+                    nzPlaceHolder="快捷选时">
+                    <nz-option *ngFor="let quick of quickArr"
+                               [nzValue]="quick.value" [nzLabel]="quick.label">
+                        {{ quick.label }}
+                    </nz-option>
+                </nz-select>
+            </div>
+            <div nz-col nzSpan="4" nzOffset="6">
+                <button nz-button nzType="primary" nzSize="large"
+                        (click)="showPlatform = !showPlatform">选择游戏平台</button>
+            </div>
+        </div>
+        <!-- 平台显示框 -->
+        <div class="platform-box">
+            <div nz-col nzSpan="24" class="platform">
+                <span>当前平台:</span>
+                <span>{{ currentSelectPlat.gameName }}</span>
+            </div>
+            <div class="drop" [class.show]="showPlatform">
+                <div class="drop-title">
+                    <span class="fl">请选择查询游戏平台：</span>
+                    <i nz-icon nzType="close" nzTheme="outline" class="close fr" (click)="showPlatform = false"></i>
+                </div>
+                <ul>
+                    <li *ngFor="let item of platformList">
+                        <div class="fl type">
+                            <i>{{ item.desc }}</i>
+                        </div>
+                        <div class="fl list">
+                            <span *ngFor="let list of item.bets"
+                                  [class.active]="item.type === currentSelectPlat.type &&
+                                                  list.gameCode === currentSelectPlat.gameCode"
+                                  (click)="platformClick(item, list)">
+                              {{ list.gameName }}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="table-box">
+      <nz-spin [nzSpinning]="loading" nzTip="加载中">
+        <nz-table #columnTable
+                  [nzData]="tableData?.list"
+                  [nzPageSize]="params.pageSize"
+                  [nzPageIndex]="params.pageNo"
+                  [nzTotal]="tableData?.total"
+                  [nzFrontPagination] = "false"
+                  (nzPageIndexChange)="changePageIndex($event)">
+            <thead>
+                <tr>
+                    <th>游戏平台</th>
+                    <th>日期</th>
+                    <th>下注金额</th>
+                    <th>派彩金额</th>
+                    <th>输赢金额</th>
+                    <th>有效投注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of columnTable.data">
+                    <td>{{ data.gameType }}</td>
+                    <td>{{ data.bettime }}</td>
+                    <td [ngClass]="{'green': data.betAmount > 0, 'red': data.betAmount < 0}">{{ data.betAmount }}</td>
+                    <td>{{ data.payout }}</td>
+                    <td [ngClass]="{'green': data.netAmount > 0, 'red': data.netAmount < 0}">{{ data.netAmount }}</td>
+                    <td>{{ data.validBetAmount }}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+      </nz-spin>
+    </div>
+    <div class="show-all">
+        <span>当前页总投注：总计{{ tableData?.extendBean.currBetAmount || 0}}元</span>
+        <span>当前页派彩： 总计{{ tableData?.extendBean.currPayout || 0 }}元</span>
+        <span>当前页输赢： 总计{{ tableData?.extendBean.currNetAmount || 0 }}元</span>
+        <span>当前页有效投注： 总计{{ tableData?.extendBean.currValidBetAmount || 0 }}元</span>
+    </div>
+</div>

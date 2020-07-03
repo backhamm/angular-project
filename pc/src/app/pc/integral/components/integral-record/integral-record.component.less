@@ -1,0 +1,123 @@
+@import '../../../../config/config.less';
+
+.integral-bg{
+  width: 100%;
+  height: auto;
+  background: @integral-bg;
+  .record-infor{
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 60px;
+    border: 1px solid @integral-bg;
+    background:@main-color2;
+    padding: 10px;
+    .nav-title{
+      height: 60px;
+      line-height: 60px;
+      font-size: 22px;
+      font-weight: bold;
+      border-bottom: 1px solid #eaeaea;
+      text-indent: 1em;
+      color:@white-color;
+    }
+    .record-nav-head {
+      height: 60px;
+      line-height: 60px;
+      background:@main-color2;
+    }
+    .recod-title{
+      float: left;
+      margin-left: 36px;
+      font-weight: bold;
+      color:@white-color;
+      span{
+        color: @nav-active-color;
+      }
+    }
+    //日期字体颜色
+    ::ng-deep .ant-input {
+      color:@white-color;
+      background-color: @integral-bg;
+    }
+    // 日期中间横线颜色
+    ::ng-deep .ant-calendar-range-picker-separator{
+      color:@white-color;
+    }
+    //日期图标颜色
+    ::ng-deep .ant-calendar-picker-icon{
+      color:@white-color;
+    }
+    //数据显示背景色
+    ::ng-deep .ant-table-placeholder{
+      background: @main-color2;
+      border: none;
+    }
+    //数据头部栏背景色  字体色
+    ::ng-deep .ant-table-thead > tr > th{
+      background: @integral-bg;
+      color:@white-color;
+      font-size: 16px;
+    }
+    //订单记录里面的文字颜色
+    ::ng-deep .ant-table-tbody > tr > td{
+      color:@main-font-color;
+    }
+    .orange{
+      color:@integral-color;
+    }
+    .green{
+      color:@green-color;
+    }
+    .red{
+      color: @red-color;
+    }
+  }
+}
+.integral-banner{
+  background: url("@{base-url}images/games_banner/PointsMall_banner.jpg") no-repeat center;
+  min-width: 1200px;
+  height: 350px;
+}
+.clearBox{
+  height: 80px;
+}
+
+td.green{
+  color: @green-color;
+}
+
+td.orange{
+  color: @main-color;
+}
+
+td.red{
+  color: @red-color;
+}
+
+:host{
+  ::ng-deep{
+    .ant-calendar-picker{
+      float: right;
+      line-height: 60px;
+      margin-right: 12px;
+    }
+    ul.ant-pagination.ng-star-inserted {
+      text-align: right;
+      margin-top: 12px;
+    }
+    .ant-table table th, td{
+      text-align: center!important;
+    }
+  }
+}
+//右边下一页按钮
+::ng-deep .ant-pagination-next .ant-pagination-item-link{
+  background: @background-second;
+  color:@main-font-active-color;
+}
+//左边上一页按钮
+::ng-deep .ant-pagination-prev .ant-pagination-item-link{
+  background: @background-second;
+  color:@main-font-active-color;
+}
+

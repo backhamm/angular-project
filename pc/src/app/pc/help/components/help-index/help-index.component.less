@@ -1,0 +1,131 @@
+@import '../../../../config/config.less';
+
+body {
+  background: #1e0103 !important;
+}
+
+.container {
+  .navTop {
+    width: 100%;
+    margin: 0 auto;
+    .aboutposition {
+      height: 350px;
+      background-color: #000;
+      background: url("@{base-url}images/games_banner/registered_banner.jpg") no-repeat center;
+      background-size: cover;
+    }
+  }
+
+  .wrapper {
+    position: relative;
+    width: 940px;
+    margin: 0 auto;
+    height: 114px;
+    // padding: 0 30px;
+    // 滚动公告
+    nz-radio-group {
+      margin-bottom: 8px;
+    }
+
+    [nz-carousel-content] {
+      text-align: center;
+      height: 130px;
+      line-height: 130px;
+      color: @main-font-active-color;
+      overflow: hidden;
+    }
+
+    .ng-star-inserted {
+      background: none;
+      left: 14px;
+      top: 10px;
+
+      #hot-news {
+        display: inline-block;
+        width: 650px;
+        // overflow: hidden;
+        vertical-align: middle;
+        white-space: nowrap;
+        a {
+          width: 168px;
+          line-height: 20px;
+          text-align: left;
+          font-size: 12px;
+          display: block;
+          height: 100px;
+
+        }
+      }
+
+    }
+
+    h3 {
+      color: @main-font-active-color;
+
+    }
+
+    ::ng-deep .ant-carousel-vertical {
+      .slick-dots {
+        right: 97%;
+
+        li {
+          button {
+            height: 10px !important;
+            width: 10px !important;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    width: 940px;
+    margin: 50px auto 0;
+    background: @help-bg-color;
+    height: auto;
+    overflow: hidden;
+    color: #7c7c7c;
+    line-height: 24px;
+    letter-spacing: 2px;
+    font-size: 12px;
+    .nav {
+      width: 234px;
+      float: left;
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        height: 28px;
+      }
+    }
+    .main {
+      background: #2a2a2a;
+      width: 706px;
+      text-align: left;
+      height: auto;
+      padding: 20px;
+      min-height: 700px;
+      line-height: 24px;
+      float: right;
+      &:before {
+        content: '';
+        position: absolute;
+        width: 735px;
+        left: 0;
+        top: 0;
+        height: 1px;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        width: 735px;
+        left: 0;
+        bottom: 0;
+        height: 10px;
+      }
+    }
+  }
+}

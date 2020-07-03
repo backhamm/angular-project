@@ -1,0 +1,92 @@
+<div class="content">
+    <!-- title -->
+    <div class="title">资金记录</div>
+    <!-- search -->
+    <div class="search" nz-row>
+        <!-- 时间段选择 -->
+        <div class="time" nz-col nzSpan="10">
+            <nz-range-picker
+                nzSize="large"
+                [nzFormat]="'yyyy/MM/dd'"
+                [(ngModel)]="rangeTime"
+                (ngModelChange)="rangeChange()">
+            </nz-range-picker>
+        </div>
+        <!-- 快捷选时 -->
+        <div nz-col nzSpan="4">
+            <nz-select
+                style="width: 120px;"
+                [(ngModel)]="quickTime"
+                (ngModelChange)="quickChange()"
+                nzSize="large"
+                nzPlaceHolder="快捷选时">
+                <nz-option *ngFor="let quick of quickArr" [nzValue]="quick.value" [nzLabel]="quick.label">
+                    {{ quick.label }}</nz-option>
+            </nz-select>
+        </div>
+
+        <div nz-col nzSpan="7">
+            <!-- 状态筛选 -->
+            <nz-select
+                style="width: 120px;"
+                nzSize="large"
+                [(ngModel)]="params.status"
+                (ngModelChange)="statusChange()"
+                nzPlaceHolder="状态筛选">
+                <nz-option *ngFor="let tp of configData" [nzValue]="tp.status" [nzLabel]="tp.desc"></nz-option>
+            </nz-select>
+            <!-- 类型筛选 -->
+            <nz-select
+                *ngIf="configData.length > 0"
+                style="width: 120px;"
+                nzSize="large"
+                [(ngModel)]="params.type"
+                (ngModelChange)="typeChange()"
+                nzPlaceHolder="类型筛选">
+                <nz-option *ngFor="let tt of configData[params.status].types"
+                           [nzValue]="tt.type" [nzLabel]="tt.desc"></nz-option>
+            </nz-select>
+        </div>
+
+        <div nz-col nzSpan="3">
+            <button nz-button nzType="primary" nzSize="large" (click)="reset()">重置筛选</button>
+        </div>
+    </div>
+    <!-- 表格 -->
+    <div class="table-box">
+      <nz-spin [nzSpinning]="loading" nzTip="加载中">
+        <nz-table #columnTable
+                  [nzData]="tableData?.list"
+                  [nzPageSize]="params.pageSize"
+                  [nzPageIndex]="params.pageNo"
+                  [nzTotal]="tableData?.total"
+                  [nzFrontPagination] = "false"
+                  (nzPageIndexChange)="changePageIndex($event)">
+            <thead>
+                <tr>
+                    <th>订单号</th>
+                    <th>创建时间</th>
+                    <th>订单类型</th>
+                    <th>金额(元)</th>
+                    <th>订单状态</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                  <tr *ngFor="let data of columnTable.data">
+                      <td>{{ data.orderNo }}</td>
+                      <td>{{ data.createTime }}</td>
+                      <td>{{ data.typeName }}</td>
+                      <td [ngClass]="{'green': data.amount > 0, 'red': data.amount < 0}">{{ data.amount }}</td>
+                      <td [ngClass]="{'green': data.status === 1, 'red': data.status !== 1}">
+                        {{ data.statusName}}
+                      </td>
+                      <td>{{ data.remark }}</td>
+                  </tr>
+
+            </tbody>
+        </nz-table>
+      </nz-spin>
+    </div>
+</div>

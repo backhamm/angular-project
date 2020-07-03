@@ -1,0 +1,69 @@
+@import "../../../../config/config.less";
+
+.notice-content {
+	width: 100%;
+	background: @main-color;
+	color: @white-color;
+	line-height: 26px;
+	height: 26px;
+	position: relative;
+	top: 343px;
+}
+.index-notice {
+	width: 940px;
+	margin: 0 auto;
+	line-height: 26px;
+	height: 26px;
+	.notice-news {
+		width: 85%;
+		height: 26px;
+		line-height: 26px;
+		cursor: pointer;
+		overflow: hidden;
+		marquee {
+
+			letter-spacing: 1px;
+			cursor: pointer;
+			z-index: 999;
+			font-size: 12px;
+			ul {
+				width: 4000px;
+				li {
+					float: left;
+					margin-left: 250px;
+					span {
+						font-size: 12px;
+					}
+				}
+				li:nth-last-child(2) {
+					margin-left: 0;
+				}
+			}
+
+		}
+
+	}
+	.marquee-dots {
+		width: 15%;
+		height: 26px;
+		float: right;
+		ul {
+			overflow: hidden;
+			display: flex;
+			justify-content: flex-end;
+			li {
+				float: left;
+				margin-right: 15px;
+				margin-top: 10px;
+				height: 8px;
+				width: 8px;
+				border-radius: 4px;
+				cursor: pointer;
+				background-color: @nav-active-color;
+			}
+			.active-bg {
+				background: @white-color !important;
+			}
+		}
+	}
+}

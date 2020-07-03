@@ -1,0 +1,41 @@
+<div class=" home-index game-container">
+  <app-mobile-header leftIcon="true"></app-mobile-header>
+  <div class="h-container">
+    <ul class="sidebar" *ngIf="gameService.navGameList.length">
+      <li *ngFor="let item of gameService.navGameList;">
+        <div *ngIf="!isKeep(item.url)"
+             [routerLink]="routerLink(item.url)"
+             class="left-drawer">
+          {{item.menuNameCn}}
+        </div>
+        <div *ngIf="isKeep(item.url)"
+             class="left-drawer"
+             [ngClass]="item.url === link ? 'active' : ''"
+             (click)="changeGame(item.url, item.menuNameCn)">
+          {{item.menuNameCn}}
+        </div>
+      </li>
+    </ul>
+    <div class="gamelist-main" *ngIf="gameArr.length">
+      <ng-container *ngIf="gameTemplate(); else imageTemplate">
+        <div *ngFor="let item of gameArr" class="game-pic game-pic-margin">
+          <div class="game-img">
+            <img style="width: 100%; height: 100%;" [src]="item.imgs.length && item.imgs[0].img" alt="">
+          </div>
+          <div class="game-info">
+            <p class="game-title">{{item.menuNameCn}}</p>
+            <p class="game-introduce">{{item.remark}}</p>
+            <!--<span class="start-game" (click)="loadGame(item)">开始游戏</span>-->
+            <img class="start-game" (click)="loadGame(item)" [src]="config.baseMobileImgUrl+'image/common/games_star.png'" alt="">
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #imageTemplate>
+        <div *ngFor="let item of gameArr" class="image-template" (click)="loadGame(item)">
+          <img style="width: 100%;" [src]="item.imgs.length && item.imgs[0].img" alt="">
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <app-mobile-footer></app-mobile-footer>
+</div>

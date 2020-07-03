@@ -1,0 +1,72 @@
+@import "../../../../../../config/config";
+.forms {
+    min-height: 200px;
+    padding: 50px 80px;
+    white-space: normal;
+    .order{
+        border-top: 1px solid @border-color-proxy;
+        margin-top: 20px;
+        li{
+            label,span{
+                display: inline-block;
+                width: 50%;
+                height: 50px;
+                line-height: 50px;
+                border-right: 1px solid @border-color-proxy;
+                border-bottom: 1px solid @border-color-proxy;
+                text-align: center;
+                background: @white-color;
+            }
+            label{
+                border-left: 1px solid @border-color-proxy;
+            }
+            span{
+                color:@main-color;
+            }
+            p{
+                height: 60px;
+                line-height: 60px;
+                font-size: 16px;
+                text-align: center;
+                background: @main-color;
+                color: #fff;
+            }
+        }
+    }
+    .bankInfo{
+        li{
+            width: 50%;
+            padding-left: 4%;
+            border-bottom: 1px solid @border-color-proxy;
+            display: inline-block;
+            height: 60px;
+            line-height: 60px;
+            background: @center-personal-bg;
+            label,span{
+                display: inline-block;
+            }
+            label{
+                width: 20%;
+            }
+            span{
+                width: 60%;
+            }
+        }
+    }
+    .buttons{
+        padding-top: 30px;
+        text-align: right;
+        button{
+            margin-left: 20px;
+            height: 46px;
+            padding: 0 40px;
+            &.interchange-button-default {
+                color: @main-color;
+                border: 1px solid @main-color;
+                &:hover {
+                    color: #8c6831;
+                }
+            }
+        }
+    }
+}

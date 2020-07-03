@@ -1,0 +1,86 @@
+<div class="content-bg">
+    <div class="content">
+        <!-- 倒计时 -->
+        <div class="time">
+            <div *ngIf="red.isWaiting">
+                <p>活动倒计时...</p>
+                <div class="count-time">
+                    <div class="time-item day">
+                        <img 
+                            [ngClass]="{'hideNum': red.animate[0][0], 'showNum': red.animate[0][1]}"
+                            [src]="red.redImage[red.leaveTime[0]]" 
+                            alt="">
+                    </div>
+                    <div class="time-item hours">
+                        <img 
+                            [ngClass]="{'hideNum': red.animate[1][0], 'showNum': red.animate[1][1]}"
+                            [src]="red.redImage[red.leaveTime[1]]" 
+                            alt="">
+
+                        <img 
+                            [ngClass]="{'hideNum': red.animate[2][0], 'showNum': red.animate[2][1]}"
+                            [src]="red.redImage[red.leaveTime[2]]" 
+                            alt="">
+                    </div>
+                    <div class="time-item minute">
+                        <img 
+                            [ngClass]="{'hideNum': red.animate[3][0], 'showNum': red.animate[3][1]}"
+                            [src]="red.redImage[red.leaveTime[3]]" 
+                            alt="">
+
+                        <img 
+                            [ngClass]="{'hideNum': red.animate[4][0], 'showNum': red.animate[4][1]}"
+                            [src]="red.redImage[red.leaveTime[4]]" 
+                            alt="">
+                    </div>
+                    <div class="time-item second">
+                        <img 
+                            [ngClass]="{'hideNum': red.animate[5][0], 'showNum': red.animate[5][1]}"
+                            [src]="red.redImage[red.leaveTime[5]]" 
+                            alt="">
+
+                        <img 
+                            [ngClass]="{'hideNum': red.animate[6][0], 'showNum': red.animate[6][1]}"
+                            [src]="red.redImage[red.leaveTime[6]]" 
+                            alt="">
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="red.isGoing">
+                <p>活动正在进行中....</p>
+                <h3 (click)="getRed()"></h3>
+            </div>
+        </div>
+
+        <!-- 中奖滚动 -->
+        <div class="winning">
+            <div class="winning-box">
+                <div class="scroll-box" *ngIf="winning.length">
+                    <ul *ngFor="let xx of [1,2]">
+                        <li *ngFor="let list of winning">玩家***在红包雨中抢得￥{{ list }} 元</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 红包框子 -->
+        <div class="red-box">
+            <img *ngFor="let packet of redPacket" [class]="'animate' + packet.animate"
+                [style.width]="packet.width + 'px'" [src]="config.baseImgUrl + '/hongbao/hby0'+  packet.img+'.png'"
+                alt="" (click)="grabRed()">
+        </div>
+    </div>
+    <!-- 介绍 -->
+    <div class="intr">
+        <img [src]="config.baseImgUrl + '/hongbao/hb_js.jpg'" alt="">
+    </div>
+</div>
+<!-- 抽奖成功 -->
+<div class="show-money" *ngIf="redMoney>0">
+    <div class="money-cnt">
+        <p>{{ redMoney }}</p>
+    </div>
+    <div class="close-money">
+        <span (click)="redMoney=0"></span>
+    </div>
+</div>

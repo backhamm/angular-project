@@ -1,0 +1,114 @@
+@import '../../../../config/config.less';
+.center-right{
+    background: @white-color;
+    width: 100%;
+    .page-header{
+        width: 30%;
+        height: 40px;
+        padding: 0 30px;
+        margin: 30px 0;
+        background: linear-gradient(90deg, #f2f2f2, #fff);
+        line-height: 40px;
+        font-weight: 700;
+        color: @main-font-color;
+    }
+    .baseinfo{
+        display: flex;
+        justify-content: flex-start;
+        height: 165px;
+        align-items: center;
+        padding-left: 100px;
+        margin-top: 30px;
+        .avatar{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: 50% #fff url("@{base-url}user_img/login_logo.png") no-repeat;
+            background-size: 75%;
+            border: 1px solid #eaeaea;
+        }
+        .baseInfoUser{
+            height: 100px;
+            display: flex;
+            align-items: center;
+            width: 300px;
+            flex-flow: wrap;
+            margin-left: 40px;
+            .name{
+                span{
+                    color: @main-font-color;
+                    font-weight: bold;
+                    font-size: 16px;
+                }
+                .change-login-psw{
+                    display: inline-block;
+                    width: 88px;
+                    margin-left: 32px;
+                    height: 30px;
+                    line-height: 30px;
+                    color: @white-color;
+                    font-size: 16px;
+                    background: @theme-color;
+                    font-weight: 400;
+                    text-align: center;
+                    border-radius: 5px;
+                }
+            }
+            .last{
+                font-size: 14px;
+            }
+
+        }
+    }
+    .title-content{
+        background: -webkit-gradient(linear,0 0,100% 0 ,from(#F2F2F2),to(#fff));
+        width: 236px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 18px;
+        box-sizing: border-box;
+        padding-left: 28px;
+        margin-top: 30px;
+        margin-left: 30px;
+    }
+    .yjTabel{
+        width: 800px;
+        border: 1px solid @border-color-proxy;
+        border-collapse: collapse;
+        text-align: center;
+        margin: 40px auto 20px;
+        .bg-color{
+            background: @center-personal-bg;
+            width: 120px;
+        }
+        .tr,td {
+            border: 1px solid @border-color-proxy;
+            padding: 16px 13px;
+            .txta{
+                cursor: pointer;
+                color: @color-blue;
+                padding: 3px;
+            }
+            .set{
+               color:@main-color;
+                font-size: 14px;
+                margin-left: 15px;
+            }
+        }
+
+    }
+    .bottom-line{
+        border:1px solid @border-line;
+        margin: 150px auto 0px;
+        width: calc(100% - 100px);
+    }
+
+}
+
+//:host{
+//    ::ng-deep{
+//        .yjTabel{
+//            font-size: 14px;
+//        }
+//    }
+//}

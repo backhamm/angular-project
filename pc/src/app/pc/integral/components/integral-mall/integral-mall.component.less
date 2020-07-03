@@ -1,0 +1,550 @@
+@import '../../../../config/config.less';
+
+@title-bg-color: #eee;
+
+.integral-bg {
+  width: 100%;
+  height: auto;
+  background: @integral-bg;
+
+}
+
+.integral-banner {
+  //background: url("@{base-url}images/jfsc/banner01.jpg") no-repeat center;
+  min-width: 940px;
+  height: 350px;
+}
+::ng-deep .integral-banner .ant-carousel .slick-initialized .slick-list{
+  height: 343px !important;
+}
+.integral {
+  width: 940px;
+  margin: 0 auto;
+  padding: 60px 0;
+  padding-bottom: 15px;
+  .title {
+    position: relative;
+    height: 48px;
+    // padding: 0 15px 0 0px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: @main-font-color;
+    line-height: 48px;
+
+    // &:before {
+    //   position: absolute;
+    //   top: 12px;
+    //   left: 9px;
+    //   height: 63%;
+    //   width: 5px;
+    //   background: @main-color;
+    //   content: "";
+    // }
+  }
+  .title-nav {
+    position: relative;
+    height: 60px;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: @main-font-color;
+    line-height: 48px;
+    border-bottom: 2px solid @border-color-proxy;
+    .intagral-color {
+      display: inline-block;
+      font-family: MicrosoftYaHei;
+      font-size: 20px;
+      font-weight: 500;
+      a, span {
+        margin-left: 12px;
+        color: @nav-active-color;
+      }
+    }
+  }
+  .title-right-list {
+    float: right;
+    .clear-boxed {
+      display: inline-block;
+      width: 12px;
+    }
+    a {
+      display: inline-block;
+      width: 124px;
+      height: 32px;
+      line-height: 28px;
+      font-size: 14px;
+      border-radius: 16px;
+      text-align: center;
+      i {
+        vertical-align: middle;
+        margin-right: 0 !important;
+      }
+    }
+    a:first-of-type {
+      color: @bth-record;
+      border: 2px solid @bth-record;
+      text-align: center;
+      margin: 0 auto;
+      cursor: pointer;
+      position: relative;
+      i{
+        color: @bth-record;
+      }
+    }
+    a:first-of-type:after, a:first-of-type:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 100%;
+      z-index: -2;
+      border-radius: 16px;
+    }
+
+    a:first-of-type:hover {
+      z-index: 1;
+      background: transparent;
+      color: @white-color;
+      i {
+        color: @white-color;
+      }
+    }
+    a:first-of-type:before {
+      transition: .3s;
+      background: @bth-record;
+      color: @white-color;
+      z-index: -1;
+    }
+    a:first-of-type:hover:after, a:first-of-type:hover:before {
+      width: 100%;
+    }
+
+    a:last-of-type {
+      color: @nav-active-color;
+      border: 2px solid @nav-active-color;
+      text-align: center;
+      margin: 0 auto;
+      cursor: pointer;
+      position: relative;
+      i {
+        color: @nav-active-color;
+      }
+    }
+    a:last-of-type:after, a:last-of-type:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0;
+      height: 100%;
+      z-index: -2;
+      border-radius: 16px;
+    }
+    a:last-of-type:hover {
+      z-index: 1;
+      background: transparent;
+      color: @main-color1;
+      i {
+        color: @main-color1;
+      }
+    }
+    a:last-of-type:before {
+      transition: .3s;
+      background: @nav-active-color;
+      color: @main-color1;
+      z-index: -1;
+    }
+    a:last-of-type:hover:after, a:last-of-type:hover:before {
+      width: 100%;
+    }
+  }
+  .integral-left {
+    float: left;
+    width: 940px;
+    font-size: 13px;
+    margin-top: 40px;
+    .scrollbox-right {
+      float: right;
+      width: 236px;
+      // height: 490px;
+      margin-top: 18px;
+      /*-webkit-box-shadow: 1px 1px 1px 1px @background-second;
+      -moz-box-shadow: 1px 1px 1px 1px @background-second;
+      box-shadow: 1px 1px 1px 1px @background-second;*/
+      p {
+        height: 50px;
+        line-height: 50px;
+        font-size: 25px;
+        background: @background-second;
+        color: @white-color;
+        text-align: center;
+      }
+    }
+    .scrollbox {
+      width: 236px;
+      height: 350px;
+      margin: 0px 0 19px;
+      padding: 0 8px;
+      overflow: hidden;
+      border: 1px solid @background-second;
+      .keyframe-box {
+        animation: scrollVertical 20s linear infinite;
+
+        &:hover {
+          animation-play-state: paused;
+        }
+
+
+        li {
+          border-bottom: 1px dashed #d2c0c0;
+          width: 236px;
+          height: 36px;
+          line-height: 36px;
+          display: inline-block;
+          cursor: pointer;
+          text-align: center;
+			    color: @color-second;
+          &:hover {
+            color: @main-font-active-color;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    .recommend {
+      width: 694px;
+      height: 400px;
+      float: left;
+      margin-top: 18px;
+      background: @main-color;
+      overflow: hidden;
+      position: relative;
+      button.p-left-btn{
+        position: absolute;
+        top: 50%;
+        left: -5px;
+        width: 30px;
+        height: 30px;
+        border-radius: 0px 15px 15px 0px;
+        border: none;
+        background: @main-font-color;
+        opacity: 0.5;
+        outline: none;
+        transform: translateY(-50%);
+      }
+      button.p-right-btn{
+        position: absolute;
+        top: 50%;
+        right: -5px;
+        width: 30px;
+        height: 30px;
+        border-radius: 15px 0px 0px 15px;
+        border: none;
+        outline: none;
+        background: @main-font-color;
+        opacity: 0.5;
+        transform: translateY(-50%);
+      }
+      &:hover {
+        opacity: .9;
+        .integral-right-msg {
+          opacity: .7;
+          transform: translateY(-104px);
+        }
+        .integral-right-msg {
+          width: 870px;
+          height: 120px;
+          line-height: 120px;
+          font-size: 20px;
+          text-align: center;
+          font-weight: 700;
+          background: @main-color;
+          cursor: pointer;
+          position: absolute;
+          left: 0;
+          bottom: -104px;
+          opacity: 0.8;
+          transition: all .4s;
+
+          ul{
+            float: left;
+            width: 70%;
+            height: 120px;
+            text-align: left;
+            li{
+              height: 30px;
+              line-height: 30px;
+              padding-left: 30px;
+              margin-top: 7px;
+              color: #fff;
+            }
+          }
+          span.btn {
+            // border: 1px solid @main-color;
+            color: @white-color;
+            display: inline-block;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin: 40px 50px;
+            cursor: pointer;
+            position: relative;
+            top: 0px;
+            right: 15%;
+            background:  @main-color;
+          }
+          span.btn:after, span.btn:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: @white-color;
+            color: @white-color;
+            z-index: -2;
+            // border-radius: 4px;
+          }
+
+          span.btn:hover {
+            z-index: 1;
+            background: transparent;
+            color:  @main-color;
+          }
+          span.btn:before {
+            transition: .3s;
+            background:@game-elec-active;
+            color: @main-color;
+            z-index: -1;
+          }
+          span.btn:hover:after, .btn:hover:before {
+            width: 100%;
+          }
+        }
+      }
+
+      img.ng-star-inserted {
+        width: 100%;
+        // height: 500px;
+      }
+    }
+    .tt {
+      width: 120px;
+      text-align: left;
+      float: left;
+      // padding-left: 56px;
+      /* overflow: hidden; */
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .ml5 {
+      margin-left: 18px;
+    }
+  }
+  .integral-right {
+    float: right;
+    width: 940px;
+    margin-top: 40px;
+    .title {
+      input {
+        position: relative;
+        top: -4px;
+        width: 210px;
+        height: 30px;
+        margin-right: -12px;
+        padding: 0 31px 0 15px;
+        border: 0;
+        border-radius: 16px;
+        font-size: 13px;
+        color: @main-font-color;
+        line-height: 30px;
+        outline: none;
+      }
+      .search-icon {
+        position: relative;
+        left: -12px;
+      }
+    }
+    .integral-list {
+      padding: 16px 0;
+      font-size: 14px;
+      li {
+        float: left;
+        width: 224px;
+        height: 342px;
+        margin-top: 10px;
+        margin-left: 10px;
+        overflow: hidden;
+        background: @main-color2;
+        // box-shadow: 1px 1px 1px 1px #eee;
+        transition: all 0.3s ease-in-out;
+        border-radius: 4px;
+        &:hover {
+          transform: translate3d(0, -3px, 0);
+          box-shadow: 0 2px 20px 0 @main-color;
+        }
+        img {
+          display: block;
+          display: block;
+          width: 100%;
+          // height: 280px;
+          // margin-left: 4px;
+          // margin-top: 4px;
+          padding: 5px 5px;
+        }
+      }
+    }
+    .page-box {
+      text-align: center;
+    }
+  }
+
+  .title-list {
+    text-align: left;
+    font-family: MicrosoftYaHei;
+    h2 {
+      font-size: 32px;
+      display: inline-block;
+      color: @nav-active-color;
+      font-weight: 500;
+    }
+    span {
+      display: inline-block;
+      font-size: 18px;
+      color: @bth-record;
+      margin-left: 10px;
+    }
+  }
+  .integral-msg {
+    // margin-top: 28px;
+    p:first-child{
+      span:first-child{
+        color:@main-font-active-color;
+        // font-size: 12px;
+        // width: 100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;
+      }
+    }
+    p:last-of-type {
+      padding-bottom: 8px;
+    }
+    p {
+
+      span {
+        display: block;
+        // height: 22px;
+        line-height: 19px;
+        margin-left: 12px;
+        color:@main-font-color;
+      }
+      span.integral-count {
+        display: inline-block;
+      }
+      &.btn-box {
+        span:first-child {
+          line-height: 22px;
+        }
+        .btn {
+          display: inline-block;
+          width:148px;
+          height: 24px;
+          color: @integral-color;
+          border: 1px solid @integral-color;
+          text-align: center;
+          line-height: 22px;
+          border-radius: 50px;
+          font-size: 12px;
+          transition: all .3s;
+          cursor: pointer;
+          margin-right: 50%;
+          transform: translateX(50%);
+          margin-top: 10px;
+          &:hover {
+            background: @integral-color;
+            color: @white-color;
+          }
+        }
+      }
+    }
+  }
+  .pt {
+    color: @integral-color;
+    // font-weight: 700;
+    font-size: 14px;
+  }
+}
+
+[nz-icon] {
+  margin-right: 6px;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+@keyframes scrollVertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+:host {
+  ::ng-deep {
+    ul.ant-pagination.ng-star-inserted {
+      text-align: right;
+      margin-top: 12px;
+    }
+    .recommend nz-empty.ant-empty.ng-star-inserted {
+      padding-top: 128px !important;
+    }
+  }
+}
+//分页按钮背景色
+/*::ng-deep .ant-pagination-item-active a{
+  background: @main-secondary-color;
+  color:@main-font-active-color;
+}*/
+
+//下一页
+::ng-deep .ant-pagination-next{
+  color:@main-font-active-color;
+  display: inline-block;
+  background: @nav-active;
+  width: 65px;
+  border-radius: 4px;
+  a{
+    color:@main-font-active-color;
+  }
+}
+//上一页
+::ng-deep .ant-pagination-prev{
+  color:@main-font-active-color;
+  display: inline-block;
+  background: @nav-active;
+  width: 65px;
+  border-radius: 4px;
+
+  a{
+    color:@main-font-active-color;
+  }
+}
+//禁止点击的下一页上一页
+::ng-deep .ant-pagination-disabled{
+  display: none;
+}
+//页数省略号
+::ng-deep .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis{
+  color:@main-font-active-color;
+}
+::ng-deep .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis{
+  color:@main-font-active-color;
+}
+//跳转文字颜色
+::ng-deep .ant-pagination-options-quick-jumper{
+  color:@main-font-active-color;
+}
+

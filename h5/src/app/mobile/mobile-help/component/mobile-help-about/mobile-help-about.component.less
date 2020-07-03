@@ -1,0 +1,257 @@
+@import '../../../../config/config-mobile';
+
+.about-title {
+  line-height: .8rem;
+  font-size: .3rem;
+  color: @btn-primary;
+
+  .about-circle {
+    display: inline-block;
+    position: relative;
+    top: .07rem;
+    margin-left: -.5rem;
+    width: .36rem;
+    height: .36rem;
+    border-radius: 50%;
+    background: rgba(208, 146, 21, .3);
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: .1rem;
+      left: .1rem;
+      width: .16rem;
+      height: .16rem;
+      border-radius: 50%;
+      background: #d09215;
+    }
+  }
+}
+
+.aboutUs {
+  padding-bottom: .3rem;
+  text-align: left;
+  font-size: 0;
+  color: @font-color;
+
+  .red-text {
+    color: @tooltip-color;
+  }
+
+  .about-item {
+    padding: .1rem .3rem;
+    line-height: 2;
+    text-indent: .4rem;
+    font-size: .28rem;
+
+    .img {
+      width: 100%;
+    }
+
+    .second-title {
+      margin: .1rem 0;
+      text-indent: .1rem;
+    }
+
+    .about-item-detail {
+      line-height: 1.5;
+      margin: .2rem 0;
+      text-align: justify;
+
+      &.bold {
+        font-weight: bold;
+      }
+    }
+
+    .card_info {
+      margin: .6rem 0;
+      padding: .6rem .3rem .3rem;
+      border: 1px solid @border-color;
+      text-indent: 0;
+
+      b {
+        display: block;
+        width: .6rem;
+        height: .6rem;
+        margin: 0 auto;
+      }
+
+      span {
+        display: block;
+        width: 1.2rem;
+        height: 1.2rem;
+        background-color: @btn-primary;
+        border-radius: 50%;
+        margin: 0 auto;
+        padding-top: .3rem;
+      }
+
+      .x-icon-help-mission {
+        background: url("@{base-url}image/help/abou_icon01.png") no-repeat center / cover;
+      }
+
+      .x-icon-help-desire {
+        background: url("@{base-url}image/help/abou_icon02.png") no-repeat center / cover;
+      }
+
+      .x-icon-help-value {
+        height: .9rem;
+        margin: -.1rem auto;
+        background: url("@{base-url}image/help/abou_icon03.png") no-repeat center / cover;
+      }
+
+      h5 {
+        height: .8rem;
+        line-height: .8rem;
+        color: @btn-primary;
+        text-align: center;
+        font-size: .36rem;
+        font-weight: 700;
+      }
+
+      .para {
+        font-size: .28rem;
+        line-height: .32rem;
+        text-align: left;
+        margin: .2rem 0;
+      }
+    }
+  }
+}
+
+.develop {
+  font-size: .24rem;
+  padding: .1rem .3rem;
+
+  .develop-item {
+    display: flex;
+
+    .left-content {
+      position: relative;
+      width: 1.6rem;
+      text-align: center;
+      color: @btn-primary;
+      border-right: 1px solid @btn-primary;
+
+      .red-dot {
+        position: absolute;
+        top: 0;
+        right: -.1rem;
+        width: .2rem;
+        height: .2rem;
+        border-radius: 50%;
+        background: @btn-primary;
+      }
+    }
+
+    .right-content {
+      flex: 1;
+      padding: 0 .2rem;
+
+      .item {
+        line-height: .4rem;
+        padding-bottom: .3rem;
+
+        .title {
+          color: @btn-primary;
+        }
+      }
+    }
+  }
+}
+
+.subordinate-vip {
+  padding: .1rem .3rem;
+
+  .wrapper {
+    margin-bottom: .3rem;
+    border-bottom: 1px solid @border-color;
+
+    .header-img {
+      font-size: 0;
+
+      .img1 {
+        width: 2.6rem;
+        margin-bottom: .12rem;
+      }
+
+      .img2 {
+        width: 100%;
+        margin-bottom: .12rem;
+      }
+
+      .img-list {
+        display: flex;
+        justify-content: space-between;
+
+        .left-img {
+          width: 49%;
+
+          .left-img1 {
+            width: 100%;
+            margin-bottom: .12rem;
+          }
+
+          .left-img2 {
+            width: 100%;
+          }
+        }
+
+        .right-img {
+          width: 49%;
+
+          .right-img1 {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    .about-title {
+      text-indent: .4rem;
+    }
+
+    .footer-card {
+      margin: .3rem 0;
+      border: 1px solid @border-color;
+
+      .img {
+        width: 100%;
+      }
+
+      .cart-text {
+        padding: .2rem;
+
+        .title {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.img-info {
+  margin: .2rem 0;
+  text-indent: .3rem;
+  text-align: justify;
+}
+
+::ng-deep {
+  .ant-tabs {
+    color: @font-color;
+
+    .ant-tabs-nav {
+      .ant-tabs-tab-active {
+        color: @btn-primary;
+      }
+
+      .ant-tabs-tab {
+        width: 33.33vw;
+        margin: 0;
+        text-align: center;
+      }
+    }
+  }
+}

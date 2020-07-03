@@ -1,0 +1,73 @@
+<app-mobile-header [leftIcon]="true">
+  <div class="goCapital" routerLink="/m/capital/deposit">先去存款</div>
+</app-mobile-header>
+<nz-spin [nzSpinning]="isLoading" nzTip="加载中">
+  <div class="transfer-account-info">
+    <div class="title">
+      平台选择
+    </div>
+    <section class="transfer-amount">
+      <div class="transfer-item">
+        <div>
+          <nz-input-group nzAddOnBefore="转出平台" class="plate-group">
+            <div class="selected-plate" (click)="openToggleDraw('out')">
+              {{selectedOutValue?.gameName}}(￥{{selectedOutValue?.balance | number:'1.2-2'}})
+              <i nz-icon
+                 nzType="right"
+                 nzTheme="outline"></i>
+            </div>
+          </nz-input-group>
+        </div>
+      </div>
+
+    </section>
+    <section class="transfer-amount">
+      <div class="transfer-item">
+        <div>
+          <nz-input-group nzAddOnBefore="转入平台" class="plate-group">
+            <div class="selected-plate" (click)="openToggleDraw('in')">
+              {{selectedInValue?.gameName}}(￥{{selectedInValue?.balance | number:'1.2-2'}})
+              <i nz-icon
+                 nzType="right"
+                 nzTheme="outline"></i>
+            </div>
+          </nz-input-group>
+        </div>
+      </div>
+
+    </section>
+    <div class="title">
+      转账金额
+    </div>
+    <div nz-row *ngIf="true">
+      <div nz-col class="transfer-amount">
+        <nz-input-group nzAddOnBefore="￥">
+          <input type="number" nz-input [(ngModel)]="transferBalance" placeholder="请输入至少1元整数" maxlength="7"
+                 [nzSize]="'large'" class="amount"/>
+        </nz-input-group>
+      </div>
+    </div>
+    <button class="submit btn-image-big" nz-button nzSize="large"
+            nzType="primary" (click)="submit()">确定转账
+    </button>
+    <div class="transfer-tips">
+      <p class="tips-title">温馨提醒：</p>
+      <p class="tips-text">
+        平台转账只允许输入整数金额。
+      </p>
+    </div>
+  </div>
+</nz-spin>
+<nz-drawer
+  [nzVisible]="visible"
+  [nzClosable]="false"
+  [nzPlacement]="'bottom'"
+  (nzOnClose)="openToggleDraw('out')">
+  <ng-container *ngFor="let item of allGameListInfo; let i = index;">
+    <div class="gamebox active" (click)="changeSelectedPlate(item,i)">
+      <i class="icon-pic"><img [src]="item.gameImg" alt=""></i>
+      <i class="plate">{{item.gameName}}</i>
+      <span class="gameMoney">{{item.balance | number:'1.2-2'}}</span>
+    </div>
+  </ng-container>
+</nz-drawer>

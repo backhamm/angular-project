@@ -1,0 +1,6 @@
+<app-mobile-header [leftIcon]="true">
+  <b *ngIf="isJoin === 2" class="top-link" (click)="joinAgent()" name="link">立即加入</b>
+  <b *ngIf="!isJoin" class="top-link" name="link">详细规则</b>
+</app-mobile-header>
+<app-mobile-proxy-notjoin *ngIf="isJoin === 2"></app-mobile-proxy-notjoin>
+<app-mobile-proxy-join *ngIf="isJoin === 0"></app-mobile-proxy-join>

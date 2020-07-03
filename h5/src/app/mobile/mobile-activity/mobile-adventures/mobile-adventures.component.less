@@ -1,0 +1,190 @@
+@import '../../../config/config-mobile';
+
+.adventures-wrapper {
+  height: calc(100% + .85rem);
+  margin-top: -.85rem;
+  overflow: auto;
+}
+.adventures {
+    position: relative;
+    text-align: center;
+    font-size: 0;
+    color: @font-color;
+
+    .adv-return {
+        position: absolute;
+        top: .3rem;
+        left: .3rem;
+        font-size: .5rem;
+        z-index: 99;
+    }
+
+    .adv-title {
+        padding-top: 4.7rem;
+        height: 15.76rem;
+        background: url('//192.168.106.140:82/mobileTXW/turntable/dzp_bg.png') no-repeat center / cover;
+
+        .adv-wrapper {
+            position: relative;
+            width: 5.8rem;
+            height: 5.8rem;
+            margin: 0 auto;
+
+            .adv-prize {
+                height: 100%;
+                border-radius: 50%;
+                background-repeat: no-repeat;
+                background-size: cover;
+                transition: all 8s;
+            }
+
+            .adv-main {
+                position: absolute;
+                top: -.05rem;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('//192.168.106.140:82/mobileTXW/turntable/dzp_zp_wk.png') no-repeat center / cover;
+
+                .adv-btn {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -47%);
+                    display: inline-block;
+                    width: 1.76rem;
+                    height: 1.76rem;
+                    background-image: url('//192.168.106.140:82/mobileTXW/turntable/dzp_btn_n.png');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            }
+        }
+
+        .adv-qualification {
+            margin-top: .23rem;
+            transform: scale(.8);
+            font-size: .2rem;
+        }
+
+        .adv-list {
+            margin-top: .4rem;
+
+            p {
+                margin-bottom: .2rem;
+                font-size: .26rem;
+                font-weight: bold;
+            }
+
+            span {
+                display: inline-block;
+                font-size: .24rem;
+            }
+
+            .adv-record {
+                width: 80%;
+                min-height: 2rem;
+                margin: 0 auto .5rem;
+
+                span {
+                    width: 33.33%;
+                }
+
+                ul {
+                    margin-top: .16rem;
+
+                    li {
+                        padding-top: .1rem;
+                    }
+                }
+            }
+
+            .adv-winners {
+                padding: 0 .12rem;
+                height: 1.04rem;
+                overflow: hidden;
+
+                .winnersList {
+                    transition: all .3s;
+                }
+
+                li {
+                    display: inline-block;
+                    line-height: .3rem;
+                    width: 50%;
+
+                    :first-child {
+                        width: 40%;
+                    }
+
+                    :nth-child(2) {
+                        width: 20%;
+                    }
+
+                    :last-child {
+                        width: 40%;
+                    }
+                }
+            }
+        }
+    }
+
+    .adv-introduce {
+        height: 17.56rem;
+        background: url('//192.168.106.140:82/mobileTXW/turntable/dzp_js.png') no-repeat 0 / cover;
+    }
+
+    .adv-result {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .5);
+        z-index: 100;
+
+        .adv-result-main {
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -70%);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+
+            .adv-result-text {
+                position: absolute;
+                left: 50%;
+                bottom: 1.2rem;
+                transform: translateX(-50%);
+                height: .56rem;
+            }
+
+        }
+
+        .result1 {
+            width: 4.1rem;
+            height: 6.9rem;
+            background-image: url('//192.168.106.140:82/mobileTXW/turntable/panel_01.png');
+        }
+
+        .result2, .result3 {
+            width: 5.5rem;
+            height: 5.8rem;
+        }
+
+        .result2 {
+            background-image: url('//192.168.106.140:82/mobileTXW/turntable/panel_02.png');
+
+            .adv-prizeName {
+                line-height: 6.1rem;
+                font-size: .5rem;
+                font-weight: bold;
+                color: #c03b3b;
+            }
+        }
+
+        .result3 {
+            background-image: url('//192.168.106.140:82/mobileTXW/turntable/panel_03.png');
+        }
+    }
+}

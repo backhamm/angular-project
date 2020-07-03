@@ -1,0 +1,23 @@
+//左侧滚动数据
+export const leftData: Object[] = [
+    {name: '500元全网通话费', user: 'lkjk'},
+    {name: '迪奥香水', user: '1545'},
+    {name: 'Apple MacBook Pro', user: 'a154'},
+    {name: '288元免费投注', user: 's666'},
+    {name: '宝马5系', user: '1467'},
+    {name: 'iphoneX', user: 'asas'},
+    {name: '空投美女', user: '9741'},
+    {name: '200元全网通话费', user: 'alal'},
+    {name: '携程全球游飞机套票', user: 'w555'},
+    {name: '388元免费投注', user: 'q188'},
+    {name: '迪奥(dior)口红', user: '3312'},
+    {name: '沙驰(SATCHI)皮带', user: '5714'},
+    {name: '平安黄金20克', user: 's566'},
+    {name: '100元全网通话费', user: 'k5k5'},
+    {name: '200元全网通话费', user: 'j666'},
+    {name: '五星级酒店兑换券', user: 'e132'},
+    {name: '华为快充充电宝', user: '9899'},
+    {name: '588元免费投注', user: '8888'},
+    {name: 'iphone11', user: '3g3w'},
+    {name: '阿玛尼手提包', user: 'h777'},
+];

@@ -1,0 +1,285 @@
+<app-mobile-header [leftIcon]="true" iconLogo="true"></app-mobile-header>
+<nz-spin [nzSpinning]="isLoading" nzTip="加载中">
+  <div class="component-content" nz-row>
+    <div class="component-container clear">
+      <div class="register-container" nz-col="24">
+        <div class="register-item">
+          <div class="register-tabs">
+            <div class="tabs-scroll">
+              <div class="tab-list" [ngClass]="{active: !isQuick}">
+                <div id="tab-0" class="tab-item" [class.active]="isQuick" (click)="isQuickRegistration($event)">
+                  快速注册
+                </div>
+                <div id="tab-1" class="tab-item" [class.active]="!isQuick" (click)="isQuickRegistration($event)">
+                  手机注册
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="register-content">
+            <div class="quick-register" [style.display]="isQuick?'block':'none'">
+              <!--<div class="notice">-->
+              <!--<span>手机注册每日随机产生最高</span>-->
+              <!--<span style="color: red">888元</span>-->
+              <!--<span>现金大奖</span>-->
+              <!--</div>-->
+
+              <!--快速注册-->
+
+              <form nz-form [formGroup]="quickValidateForm" (ngSubmit)="quickSubmitForm()"
+                    class="quick-register-form">
+
+                <div class="register-form-item clear">
+                  <div class="form-input">
+                    <div class="item-prep fl">
+                      <!--<i class="form-icon" nz-icon nzType="user" nzTheme="outline"></i>-->
+                      <img class="img" [src]="config.baseMobileImgUrl+'image/login/login_name.png'" alt="">
+                    </div>
+                    <div class="item-after fl">
+                      <nz-form-control nzHasFeedback>
+                        <input formControlName="username" nz-input type="text" appLimitInput
+                               [limitType]="'number|letter'"
+                               maxlength="11"
+                               placeholder="用户名(6-11位数字与字母组合)">
+                      </nz-form-control>
+                    </div>
+                  </div>
+                  <nz-form-explain *ngIf="username?.dirty  && username?.errors">
+                    <ng-container *ngIf="username.hasError('required')">
+                      <span class="form-item-error">请输入用户名</span>
+                    </ng-container>
+                    <ng-container *ngIf="username.hasError('pattern')">
+                                        <span class="form-item-error">
+                                             对不起,{{_Reg.username.message}}
+                                        </span>
+                    </ng-container>
+                  </nz-form-explain>
+                </div>
+
+                <div class="register-form-item clear">
+                  <div class="form-input">
+                    <div class="item-prep fl">
+                      <!--<i class="form-icon" nz-icon nzType="lock" nzTheme="outline"></i>-->
+                      <img class="img" [src]="config.baseMobileImgUrl+'image/login/login_pass.png'" alt="">
+                    </div>
+                    <div class="item-after fl">
+                      <nz-form-control nzHasFeedback>
+                        <input formControlName="password" nz-input type="password" appLimitInput
+                               [limitType]="'number|letter'"
+                               maxlength="12"
+                               [placeholder]="_Reg?.password.placeholder">
+                      </nz-form-control>
+                    </div>
+                  </div>
+                  <nz-form-explain *ngIf="password?.dirty  && password?.errors">
+                    <ng-container *ngIf="password.hasError('required')">
+                      <span class="form-item-error">请输入密码</span>
+                    </ng-container>
+                    <ng-container *ngIf="password.hasError('pattern')">
+                                        <span class="form-item-error">
+                                             对不起,{{_Reg.password.message}}
+                                        </span>
+                    </ng-container>
+                  </nz-form-explain>
+                </div>
+
+                <div class="register-form-item clear">
+                  <div class="form-input">
+                    <div class="item-prep fl">
+                      <!--<i class="form-icon" nz-icon nzType="shake" nzTheme="outline"></i>-->
+                      <img class="img" [src]="config.baseMobileImgUrl+'image/login/reg_phone.png'" alt="">
+                    </div>
+
+                    <div class="item-after fl">
+                      <nz-form-control nzHasFeedback>
+                        <input nz-input formControlName="mobileNo" type="text" maxlength="11"
+                               appLimitInput [limitType]="'number'"
+                               [placeholder]="_Reg?.mobileLogin.placeholder">
+                      </nz-form-control>
+                    </div>
+                  </div>
+                  <nz-form-explain *ngIf="mobileNo?.dirty && mobileNo?.errors">
+                    <ng-container *ngIf="mobileNo.hasError('required')">
+                      <span class="form-item-error">请输入手机号</span>
+                    </ng-container>
+                    <ng-container *ngIf="mobileNo.hasError('pattern')">
+                                        <span class="form-item-error">
+                                             对不起,{{_Reg.mobileLogin.message}}
+                                        </span>
+                    </ng-container>
+                  </nz-form-explain>
+                </div>
+
+                <div class="register-form-item clear">
+                  <div class="form-input">
+                    <div class="item-prep fl">
+                      <!--<i class="form-icon" nz-icon nzType="usergroup-add" nzTheme="outline"></i>-->
+                      <img class="img" [src]="config.baseMobileImgUrl+'image/login/login_tjm.png'" alt="">
+                    </div>
+
+                    <div class="item-after fl">
+                      <nz-form-control nzHasFeedback>
+                        <input nz-input formControlName="recommendCode" type="text"
+                               [placeholder]="_Reg?.recommendCode.placeholder">
+                      </nz-form-control>
+                    </div>
+                  </div>
+                </div>
+
+                <lib-npx-slider-verify
+                  [width]="'100%'"
+                  [height]="'40px'"
+                  [btnWidth]="40"
+                  (verify)="isVerify($event)"
+                  *ngIf="quickValidateForm.valid"
+                  class="register-form-item"
+                ></lib-npx-slider-verify>
+
+                <nz-form-item>
+                  <nz-form-control>
+                    <label nz-checkbox formControlName="agree">
+                      <span>我已经届满合法博彩年龄,且同意各项</span>
+                    </label>
+                    <a (click)="agreement = true;" class="pact">"开户条约"</a>
+                    <p *ngIf="!isAgree.value" class="form-item-error isArgee">
+                      请阅读并勾选开户协议
+                    </p>
+                  </nz-form-control>
+                  <button nz-button class="quick-login-form-button btn-image-big"
+                          [nzLoading]="loading" [disabled]="!quickValidateForm.valid || !sliderVerify"
+                          [nzType]="'primary'">立即注册
+                  </button>
+                </nz-form-item>
+
+              </form>
+
+            </div>
+            <div class="phone-register" [style.display]="isQuick? 'none':'block'">
+              <!--*ngIf="!isQuick"-->
+              <!--手机注册-->
+
+              <form nz-form [formGroup]="phoneValidateForm" (ngSubmit)="phoneSubmitForm()"
+                    class="quick-register-form">
+
+                <div class="register-form-item clear">
+                  <div class="form-input">
+                    <div class="item-prep fl">
+                      <!--<i class="form-icon" nz-icon nzType="shake" nzTheme="outline"></i>-->
+                      <img class="img" [src]="config.baseMobileImgUrl+'image/login/reg_phone.png'" alt="">
+                    </div>
+
+                    <div class="item-after fl">
+                      <nz-form-control nzHasFeedback>
+                        <input nz-input formControlName="mobileNo" type="text" appLimitInput [limitType]="'number'"
+                               maxlength="11"
+                               [placeholder]="_Reg?.mobileLogin.placeholder">
+                      </nz-form-control>
+                    </div>
+                  </div>
+                  <nz-form-explain *ngIf="pMobileNo?.dirty  && pMobileNo?.errors">
+                    <ng-container *ngIf="pMobileNo.hasError('required')">
+                      <span class="form-item-error">请输入手机号</span>
+                    </ng-container>
+                    <ng-container *ngIf="pMobileNo.hasError('pattern')">
+                                        <span class="form-item-error">
+                                             对不起,{{_Reg.mobileLogin.message}}
+                                        </span>
+                    </ng-container>
+                  </nz-form-explain>
+                </div>
+
+                <div class="register-form-item clear">
+                  <div class="form-input">
+                    <div class="item-prep fl">
+                      <!--<i class="form-icon" nz-icon nzType="safety-certificate" nzTheme="outline"></i>-->
+                      <img class="img" [src]="config.baseMobileImgUrl+'image/login/reg_msgcode.png'" alt="">
+                    </div>
+                    <div class="item-after fl" style="width: 54%">
+                      <nz-form-control nzHasFeedback>
+                        <input style="border-radius: 0;" nz-input formControlName="msgCode" type="text" appLimitInput
+                               [limitType]="'number'" maxlength="4" [placeholder]="_Reg?.codeLogin.placeholder">
+                      </nz-form-control>
+                    </div>
+                    <div class="verificationPhone fl">
+                      <button (click)="sendMessageCode()" *ngIf="!deadline" [disabled]="pMobileNo.invalid"
+                              class="refresh-button"
+                              nz-button
+                              nzType="primary"
+                      >发送验证码
+                      </button>
+                      <div class="countdown" *ngIf="deadline">
+                        倒计时 {{deadline / 1000}} s
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="register-form-item clear">
+                  <div class="form-input">
+                    <div class="item-prep fl">
+                      <!--<i class="form-icon" nz-icon nzType="usergroup-add" nzTheme="outline"></i>-->
+                      <img class="img" [src]="config.baseMobileImgUrl+'image/login/login_tjm.png'" alt="">
+                    </div>
+
+                    <div class="item-after fl">
+                      <nz-form-control nzHasFeedback>
+                        <input nz-input formControlName="recommendCode" type="text"
+                               [placeholder]="_Reg?.recommendCode.placeholder">
+                      </nz-form-control>
+                    </div>
+                  </div>
+                </div>
+
+                <lib-npx-slider-verify
+                  [width]="'100%'"
+                  [height]="'40px'"
+                  [btnWidth]="40"
+                  (verify)="isVerifyPhone($event)"
+                  *ngIf="phoneValidateForm.valid"
+                  class="register-form-item"
+                ></lib-npx-slider-verify>
+                <nz-form-item>
+                  <!-- [nzLoading]="phoneLoading" -->
+                  <nz-form-control>
+                    <label nz-checkbox formControlName="agree" class="check-rule">
+                      <span>我已经届满合法博彩年龄,且同意各项</span>
+                    </label>
+                    <a (click)="agreement = true;" class="pact">"开户条约"</a>
+                    <p *ngIf="!pIsAgree.value" class="form-item-error isArgee">
+                      请阅读并勾选开户协议
+                    </p>
+                  </nz-form-control>
+                  <button nz-button class="quick-login-form-button btn-image-big"
+                          [disabled]="!phoneValidateForm.valid || !sliderVerifyPhone"
+                          [nzType]="'primary'">立即注册
+                  </button>
+                </nz-form-item>
+              </form>
+            </div>
+
+          </div>
+          <!--<div class="go-login">-->
+          <!--已有账户: <a routerLink="/m/login" class="goto-register free-play">请登录</a>-->
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</nz-spin>
+<div class="register-help" [class.active]="agreement">
+  <div class="header">
+    <div class="inline-blocks">
+      开户协议
+    </div>
+    <div class="right">
+      <i nz-icon nzType="close" nzTheme="outline" (click)="agreement = false;"></i>
+    </div>
+  </div>
+  <div class="content">
+    <h3 class="title">《通用条款》</h3>
+    <div *ngFor="let items of issueDetails">
+      <p class="issue-title">{{items.title}}</p>
+      <div *ngFor="let item of items.main" [innerHTML]="item" class="detail"></div>
+    </div>
+  </div>
+</div>

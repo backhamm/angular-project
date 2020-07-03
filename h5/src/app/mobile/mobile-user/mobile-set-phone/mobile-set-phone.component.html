@@ -1,0 +1,32 @@
+<app-mobile-header [leftIcon]="true"></app-mobile-header>
+<div class="set-phones">
+  <div>
+    <div class="set-input">
+      <label>手机号：</label>
+      <input placeholder="请输入手机号" type="text" class="phone" maxlength="11" autocomplete="off" appLimitInput [limitType]="'number'"
+        [(ngModel)]="userInfo.mobileNo" />
+    </div>
+    <div class="set-input">
+      <label>登陆密码：</label>
+      <input nz-input placeholder="请输入登陆密码" nzSize="large" type="password" maxlength="12" autocomplete="off"
+        [(ngModel)]="userInfo.password" />
+    </div>
+    <div class="set-input">
+      <label>验证码：</label>
+      <button nz-button class="phone-codes"
+              (click)="getPhone()">{{isGeting ? '发送验证码': "倒计时"+ timeConunt + "秒"}}</button>
+      <input placeholder="请输入验证码" nzSize="large" type="text" maxlength="4" class="sendcode" autocomplete="off" appLimitInput [limitType]="'number'"
+             [(ngModel)]="userInfo.msgCode" />
+    </div>
+    <div class="submit-btns btn-image-big">
+      <button type="button" class="primary-btn btn-image-big" (click)="next()">提交</button>
+    </div>
+
+  </div>
+  <div class="G-Warm">
+    <p> 1.更换手机号后,下次登录可使用新手机号登录</p>
+    <p> 2.如您无法自助修改手机号,请联系 <a [href]="plat.onlineService" class="" style="color: rgb(210, 13, 13);">
+        在线客服
+      </a></p>
+  </div>
+</div>

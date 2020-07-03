@@ -1,0 +1,120 @@
+<div class="home-index">
+  <app-mobile-header [leftIcon]="true" [headerText]="header[pageType]"></app-mobile-header>
+  <div class="h-container">
+    <div *ngIf="!pageType" class="record fade-animation">
+      <div class="header">
+        起止时间
+        <div class="data-picker">
+          <nz-date-picker nzSize="small" nzPlaceHolder="开始日期" [nzDisabledDate]="disabledStartDate" [(ngModel)]="startValue"></nz-date-picker>
+          <i nz-icon nzType="line" nzTheme="outline"></i>
+          <nz-date-picker nzSize="small" nzPlaceHolder="结束日期" [nzDisabledDate]="disabledEndDate" [(ngModel)]="endValue"></nz-date-picker>
+        </div>
+        <button class="btn" (click)="query()">查询</button>
+      </div>
+      <div *ngIf="recordList.length">
+        <div class="record-content" *ngFor="let item of recordList; let i = index" [ngClass]="i === openIndex ? 'active' : ''" (click)="openIndex === i ? openIndex = -1 : openIndex = i">
+          <div class="record-item" nz-row nzType="flex">
+            <div class="item-state" [ngClass]="'state' + item.orderState" nz-col nzSpan="2"><img [src]="config.baseMobileImgUrl + 'image/user_img/navCheck_01.png'" alt=""></div>
+            <div class="item-info" nz-col nzSpan="19">
+              <p class="name">{{item.pluname}}</p>
+              <p class="time">{{item.orderTime}}</p>
+            </div>
+            <div class="item-icon" nz-col nzSpan="3">
+              <i nz-icon nzType="right" nzTheme="outline"></i>
+            </div>
+          </div>
+          <div class="record-main">
+            <div nz-row nzType="flex">
+              <div nz-col nzSpan="6">
+                <p>兑换数量</p>
+                <p>发货状态</p>
+                <p>收货人姓名</p>
+                <p>收货人手机号</p>
+                <p>备注</p>
+              </div>
+              <div nz-col nzSpan="18">
+                <p>{{item.pluNumber}}</p>
+                <p>{{item.deliverStatus ? '已发货' : '代发货'}}</p>
+                <p>{{item.deliverName}}</p>
+                <p>{{item.deliverPhone}}</p>
+                <p class="remake">{{item.rmk}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nz-list *ngIf="!isRequest && !recordList.length" [nzDataSource]="[]"></nz-list>
+      <nz-spin *ngIf="isRequest" class="isLoading" nzSimple></nz-spin>
+    </div>
+
+    <div *ngIf="pageType === 1" class="rule fade-animation">
+      <img style="width: 100%;" [src]="config.baseMobileImgUrl + 'image/jfsc/rule_right_01.jpg'" alt="">
+    </div>
+
+    <div *ngIf="pageType === 2" class="detail fade-animation">
+      <p class="title">{{urlParams[1]}}</p>
+      <div class="goods-name">
+        {{urlParams[4] === 'undefined' ? urlParams[1] : urlParams[4]}}
+      </div>
+      <p class="title">商品兑换信息</p>
+      <div class="conversion-info" nz-row>
+        <div nz-col nzSpan="8">
+          <p>商品价值</p>
+          <p>兑换积分</p>
+          <p>您的积分</p>
+          <p>兑换数量</p>
+        </div>
+        <div nz-col nzSpan="16">
+          <p>¥ {{urlParams[2] * count}}</p>
+          <p>{{urlParams[3] * count}}</p>
+          <p style="color: #EE950F;">{{!!user.userInfo ? user.userInfo.integral : 0}}</p>
+          <p class="goods-count">
+            <input type="number" [(ngModel)]="count" placeholder="请输入兑换数量">
+          </p>
+        </div>
+      </div>
+      <p class="title">配送地址信息</p>
+      <div class="site-info" nz-row>
+        <div class="left-content" nz-col nzSpan="7">
+          <div>配送地址：</div>
+          <div>详细地址：</div>
+          <div>收货人姓名：</div>
+          <div>手机号码：</div>
+          <div>备注信息：</div>
+        </div>
+        <div class="right-content" nz-col nzSpan="17">
+          <div>
+            <nz-select style="margin-right: 2%" nzShowSearch nzPlaceHolder="省" [(ngModel)]="province" nzSize="small" (ngModelChange)="city = 0; district = null">
+              <nz-option *ngFor="let item of addressOptions.options; let i = index" [nzLabel]="item.label" [nzValue]="i"></nz-option>
+            </nz-select>
+            <nz-select nzShowSearch nzPlaceHolder="市" [(ngModel)]="city" nzSize="small" (ngModelChange)="district = null">
+              <nz-option *ngFor="let item of addressOptions.options[province].children; let i = index" [nzLabel]="item.label" [nzValue]="i"></nz-option>
+            </nz-select>
+            <nz-select class="district" nzShowSearch nzPlaceHolder="区/县" [(ngModel)]="district" nzSize="small">
+              <nz-option *ngFor="let item of addressOptions.options[province].children[city].children; let i = index" [nzLabel]="item.label" [nzValue]="i"></nz-option>
+            </nz-select>
+          </div>
+          <div>
+            <textarea class="consignee-input" [(ngModel)]="detailedAddress" maxlength="100"></textarea>
+          </div>
+          <div>
+            <input class="consignee-input" [(ngModel)]="username"  appLimitInput [limitType]="'chinese'" maxlength="15" type="text">
+          </div>
+          <div>
+            <input class="consignee-input" [(ngModel)]="phone" maxlength="11" appLimitInput [limitType]="'number'">
+          </div>
+          <div>
+            <textarea class="consignee-input" [(ngModel)]="remark"  maxlength="200"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="submit-btn">
+        <button nz-button (click)="confirm()" class="btn-image-hover">
+          <i *ngIf="isRequest" nz-icon nzType="loading" nzTheme="outline"></i>
+          确定
+        </button>
+        <button routerLink="/m/integral" nz-button class="btn-image-normal">返回</button>
+      </div>
+    </div>
+  </div>
+</div>

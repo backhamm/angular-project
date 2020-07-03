@@ -1,0 +1,55 @@
+<div class="forms">
+    <p>尊敬的客户您好，您的存款订单已生成，请记录以下官方账户信息及存款金额，在1小时内登录您的网上银行/手机银行进行转账。转账完成后，请保留银行回执，以便确认转账信息。</p>
+    <ul class="order">
+        <li>
+            <label>订单编号</label>
+            <span>{{depositInfo?.orderNo}}</span>
+        </li>
+        <li>
+            <label>存款金额</label>
+            <span>{{depositInfo?.amount}}元</span>
+        </li>
+        <li>
+            <p>订单失效时间还剩 {{ countDownString }}</p>
+        </li>
+    </ul>
+    <ul class="bankInfo">
+        <li>
+            <label>银行</label>
+            <span>{{currentPayment?.bankname}}</span>
+            <button nz-button nzType="primary" nzSize="small"
+                    ngxClipboard [cbContent]="currentPayment?.bankname"
+                    (cbOnSuccess)="copied($event)"
+            >复制</button>
+        </li>
+        <li>
+            <label>账号</label>
+            <span>{{currentPayment?.cardno}}</span>
+            <button nz-button nzType="primary" nzSize="small"
+                    ngxClipboard [cbContent]="currentPayment?.cardno"
+                    (cbOnSuccess)="copied($event)"
+            >复制</button>
+        </li>
+        <li>
+            <label>开户名</label>
+            <span>{{currentPayment?.realname}}</span>
+            <button nz-button nzType="primary" nzSize="small"
+                    ngxClipboard [cbContent]="currentPayment?.realname"
+                    (cbOnSuccess)="copied($event)"
+            >复制</button>
+        </li>
+        <li>
+            <label>分行名称</label>
+            <span>{{currentPayment?.bankaddress}}</span>
+            <button nz-button nzType="primary" nzSize="small"
+                    ngxClipboard [cbContent]="currentPayment?.bankaddress"
+                    (cbOnSuccess)="copied($event)"
+            >复制</button>
+        </li>
+    </ul>
+    <div class="buttons">
+        <button class="interchange-button-default"
+                nz-button nzType="default" nzSize="large" (click)="doNext(0)">取消订单</button>
+        <button nz-button nzType="primary" nzSize="large" (click)="doNext(2)">完成存款,下一步</button>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="coupon-wrapper">
+  <div class="coupon">
+    <i class="coupon-return" nz-icon nzType="arrow-left" nzTheme="outline" (click)="returns()"></i>
+    <div class="coupon-title">
+      <div class="coupon-info">
+        <app-count-down [diff]="diff" (isAppear)="isAppear()"></app-count-down>
+        <span class="coupon-btn" (click)="appear()"></span>
+      </div>
+      <img width="100%" [src]="baseConfig.baseMobileImgUrl + 'image/hongbao/dis_01.png'" alt="">
+      <div class="winning-wrapper">
+        <app-notice [options]="options"></app-notice>
+      </div>
+      <img width="100%" [src]="baseConfig.baseMobileImgUrl + 'image/hongbao/dis_02.png'" alt="">
+    </div>
+    <img width="100%" [src]="baseConfig.baseMobileImgUrl + 'image/hongbao/hb_js.png'" alt="">
+    <div class="coupon-rain" *ngIf="openRain">
+      <ul class="coupon-rain-list">
+        <li class="coupon-rain-item" (animationend)="removeDom($event)" *ngFor="let item of liParams" [ngStyle]="{left: item.left, transform: item.transforms, animationDuration: item.durTime}" (click)="getAward()"></li>
+      </ul>
+    </div>
+    <div class="coupon-result" *ngIf="openResult && getprices">
+      <div class="result-success">
+        <div class="result-main">
+          <img [src]="baseConfig.baseMobileImgUrl + 'image/hongbao/hb_01.png'" width="100%" alt="">
+          <span class="result-money">{{getprices}}</span>
+        </div>
+        <span class="result-close" (click)="openResult = false"></span>
+      </div>
+    </div>
+  </div>
+</div>

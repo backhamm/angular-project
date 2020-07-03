@@ -1,0 +1,9 @@
+<!--主布局-->
+<nz-layout class="mobile-layout-container">
+    <!--顶部router 加载条-->
+    <ngx-loading-bar height="3px" [includeSpinner]="false"></ngx-loading-bar>
+    <!--路由切换模块-->
+    <nz-content class="top-header">
+        <router-outlet></router-outlet>
+    </nz-content>
+</nz-layout>

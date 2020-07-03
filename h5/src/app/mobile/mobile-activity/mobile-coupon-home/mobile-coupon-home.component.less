@@ -1,0 +1,133 @@
+@import url('../../../config/config-mobile');
+
+.coupon-wrapper {
+  height: calc(100% + .85rem);
+  margin-top: -.85rem;
+  overflow: auto;
+}
+.coupon {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    font-size: 0;
+    color: @font-color;
+    // 红包单独页面颜色
+    background: #390606;
+
+    .coupon-return {
+        display: inline-block;
+        position: absolute;
+        left: .3rem;
+        top: .3rem;
+        font-size: .5rem;
+        z-index: 99;
+    }
+
+    .coupon-title {
+        height: 13.34rem;
+        background: url('@{base-url}image/hongbao/hb_banner.jpg') no-repeat 0 / cover;
+
+        .coupon-info {
+            padding: 7.3rem 0 .3rem;
+            text-align: center;
+            font-size: .36rem;
+
+            .coupon-btn {
+                display: inline-block;
+                margin-top: .4rem;
+                width: 2.5rem;
+                height: .6rem;
+                background: url('@{base-url}image/hongbao/qianghb.png') no-repeat 0 / cover;
+            }
+
+        }
+
+        .winning-wrapper {
+            height: 2.72rem;
+            margin: .2rem 0 .3rem;
+            overflow: hidden;
+            font-size: .2rem;
+
+            .carousel-container {
+                width: 100%;
+
+                .winning-item {
+                    float: left;
+                    width: 50vw;
+                    height: .6rem;
+                    padding: .1rem;
+                    text-align: center;
+                    font-size: .2rem;
+                    box-sizing: border-box;
+                }
+            }
+        }
+    }
+
+    .coupon-result {
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding-top: 30%;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        background: rgba(0, 0, 0, .5);
+        z-index: 999;
+
+        .result-main {
+            position: relative;
+
+            .result-money{
+                position: absolute;
+                left: 50%;
+                bottom: 20.8%;
+                transform: translateX(-50%);
+                font-size: .3rem;
+                font-weight: bold;
+                color: #EEB011;
+            }
+        }
+
+        .result-close {
+            display: inline-block;
+            width: .6rem;
+            height: .65rem;
+            background: url('@{base-url}image/hongbao/back.png') no-repeat center / cover;
+        }
+    }
+}
+
+@keyframes drop {
+    70% {
+        opacity: 1;
+    }
+    100% {
+        top: 100%;
+        opacity: .1;
+    }
+}
+
+.coupon-rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+
+    .coupon-rain-list {
+        position: relative;
+        height: 60vh;
+
+        .coupon-rain-item {
+            position: absolute;
+            top: -1.6rem;
+            display: inline-block;
+            width: .96rem;
+            height: 1.2rem;
+            background: url('@{base-url}image/hongbao/hby01.png') no-repeat 0 / contain;
+            animation: drop linear;
+        }
+    }
+}

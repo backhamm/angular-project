@@ -1,0 +1,121 @@
+@import "../../../config/config-mobile";
+
+.search-container {
+  height: 1.6rem;
+  width: 100%;
+  padding: 0.2rem 0;
+  box-sizing: border-box;
+  display: flex;
+
+  .game-pic {
+    height: 100%;
+    display: table-cell;
+
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  .my-search {
+    position: absolute;
+    right: 0.44rem;
+    top: 0.26rem;
+    z-index: 99;
+  }
+
+}
+
+.tab-container {
+  box-sizing: border-box;
+  padding: 0 .3rem 0.3rem;
+
+  .game-container {
+    .game {
+      width: 2.1rem;
+      padding: 0.1rem 0.2rem .22rem;
+      margin: .1rem;
+      float: left;
+      background: url("@{base-url}image/Home/BBIN/bg.png") no-repeat;
+      background-size: 100% 100%;
+
+      .text {
+        text-align: center;
+        color: #fff;
+        font-size: .2rem;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .img-wrapper {
+        margin-top: .22rem;
+        height: 1.5rem;
+
+        img {
+          width: 100%;
+          height: 100%;
+          display: block;
+          margin: 0 auto;
+        }
+      }
+      .bg-img {
+        width: 100%;
+        height: 1.3rem;
+      }
+
+      .lotteryClass {
+        background-size: 80% 100% !important;
+        background-position-x: 40% !important;
+      }
+    }
+  }
+}
+
+:host ::ng-deep {
+  .am-list-item .am-input-control input {
+    background: @second-color;
+    border-radius: 0.1rem;
+    font-size: .2rem;
+    padding: .1rem;
+  }
+
+  .am-grid .am-flexbox, .am-tabs-default-bar-top {
+    background: none !important;
+  }
+
+  .am-tabs-default-bar-tab, .am-tabs-default-bar-tab-active, .am-tabs-default-bar-underline {
+    width: 33.33% !important;
+  }
+
+  .ant-tabs-bar {
+    border-bottom: 1px solid @font-color;
+  }
+
+  .ant-tabs-nav {
+    color: @font-color;
+  }
+
+  .ant-tabs-tab-prev-icon, .ant-tabs-tab-next-icon {
+    color: @font-color;
+  }
+
+  .ant-input-affix-wrapper .ant-input-prefix, .ant-input-affix-wrapper .ant-input-suffix {
+    font-size: .36rem;
+    color: @second-font-color;
+    right: 0.1rem;
+    top: 55%;
+  }
+
+  .ant-input {
+    background: @second-color;
+    border: none !important;
+    outline: none !important;
+    color: @second-font-color;
+  }
+
+  .ant-input-affix-wrapper:hover .ant-input:not(.ant-input-disabled) {
+    border: none !important;
+    outline: none !important;
+  }
+}

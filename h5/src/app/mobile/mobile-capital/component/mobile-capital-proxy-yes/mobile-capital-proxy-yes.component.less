@@ -1,0 +1,89 @@
+@import "../../../../config/config-mobile";
+
+.content() {
+    width: 100%;
+    height: 1.24rem;
+    border: 1px solid @border-color;
+    box-sizing: border-box;
+    padding: 0 0.1rem;
+    .text {
+        border-bottom: 1px solid @border-color;
+        color: @btn-primary;
+        text-align: center;
+        font-size: .26rem;
+        line-height: .62rem;
+        .upDown {
+            background: url("@{base-url}image/up.png");
+            width: .16rem;
+            height: .19rem;
+            background-size: 100% 100%;
+            display: inline-block;
+        }
+    }
+    .h1 {
+        color: @font-color;
+        border: none;
+    }
+}
+
+.after-join {
+    text-align: center;
+    margin: .3rem 0;
+    .top-one {
+        padding: .22rem 0.15rem;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 0.26rem;
+        line-height: .48rem;
+        margin-bottom: 0.1rem;
+        background: @second-color;
+        .title-content {
+            color: @font-color;
+            position: relative;
+            .draw-money {
+                padding: 0.02rem .3rem;
+                position: absolute;
+                margin-left: .4rem;
+                background: @btn-primary;
+                color: @font-color;
+                border-radius: 0.1rem;
+            }
+        }
+        p {
+            color: @btn-primary
+        }
+        .content {
+            .content();
+            height: .4rem;
+            border: none;
+            .text {
+                border: none;
+                color: #666;
+            }
+        }
+
+    }
+    .share-btn {
+        padding: .3rem;
+        box-sizing: border-box;
+        .share-bg {
+            height: 1.16rem;
+            padding-top: .16rem;
+            background: linear-gradient(90deg, #ddbf84, #c8a675);
+            /*background:linear-gradient(90deg,#131210,#464137,#131210);*/
+            border-radius: 0.06rem;
+            font-size: .24rem;
+            p, h3 {
+                line-height: 0.4rem;
+                color: #fff;
+            }
+            h3 {
+                font-weight: 600;
+                font-size: .3rem;
+            }
+        }
+        .data-bg {
+            background: linear-gradient(90deg, #61b3ff, #4f8ffc);
+        }
+    }
+}

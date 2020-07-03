@@ -1,0 +1,44 @@
+@import url('../../../config/config-mobile');
+
+.coupon-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 1rem;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    background: rgba(0, 0, 0, .5);
+    font-size: 0;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+
+    .coupon-main {
+        padding-top: 5.9rem;
+        height: 7.5rem;
+        text-align: center;
+        font-size: .26rem;
+        background: url('@{base-url}image/hongbao/index_hb_01.png') no-repeat center / cover;
+        color: @font-color;
+
+        .coupon-countDown {
+            line-height: .35rem;
+        }
+
+        .coupon-enter {
+            display: inline-block;
+            margin-top: .2rem;
+            width: 2rem;
+            height: .48rem;
+            background: url('@{base-url}image/hongbao/qianghb.png') no-repeat center / 100% 100%;
+        }
+    }
+
+    .coupon-close {
+        display: inline-block;
+        width: .6rem;
+        height: .6rem;
+        background: url('@{base-url}image/hongbao/back.png') no-repeat center / 100% 100%;
+    }
+}
+

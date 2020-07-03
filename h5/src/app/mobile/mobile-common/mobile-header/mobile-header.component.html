@@ -1,0 +1,25 @@
+<div class="header">
+  <div class="inline-blocks">
+    <div *ngIf="!iconLogo">{{common.commonRouteTitle || headerTitle || headerText }}</div>
+    <img [src]="configService.baseMobileImgUrl+'image/logo.png'" *ngIf="iconLogo" class="logo-img" />
+  </div>
+  <div class="inline-blocks text-left">
+    <i nz-icon nzType="left" nzTheme="outline" *ngIf="leftIcon" (click)='onLeftClick()'></i>
+  </div>
+
+  <div *ngIf="tryGame" class="try-game">
+    <div class="try-icon">
+      <a routerLink="/m/free">
+        <img *ngIf="!auth.isAuth" class="icon" [src]="configService.baseMobileImgUrl+'image/common/icon_free.png'"
+          alt="">
+      </a>
+      <a routerLink="/m/user/stationLetter">
+        <img *ngIf="auth.isAuth" class="icon" [src]="configService.baseMobileImgUrl+'image/common/icon_systemInfo.png'"
+          alt="">
+      </a>
+    </div>
+  </div>
+
+  <ng-content selector="[name=link]"></ng-content>
+  <ng-content selector="[name=deposit]"></ng-content>
+</div>

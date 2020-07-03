@@ -1,0 +1,51 @@
+@import "../../config/config-mobile";
+
+.game-container {
+	width: 100%;
+	box-sizing: border-box;
+	//padding-bottom:0.2rem;
+	overflow: hidden;
+	
+	.game-pic {
+		width: 100%;
+		float: left;
+		box-sizing: border-box;
+		padding: .2rem;
+		margin-bottom: .2rem;
+		min-height: 3rem;
+		position: relative;
+		.itemImg{
+			position: absolute;
+			left: 10px;
+			top: 10px;
+			width: 19%;
+		}
+	}
+	img {
+		width: 100%;
+	}
+	.game-title {
+		color: @btn-primary;
+		height: .4rem;
+		line-height: 0.4rem;
+		padding-left: .1rem;
+		font-size: .3rem;
+	}
+	.game-introduce {
+		font-size: 0.2rem;
+		color: @font-color;
+		padding-left: 0.1rem;
+		/* margin-top: 0.1rem; */
+		line-height: .34rem;
+		height: .34rem;
+	}
+
+}
+
+.end {
+	width: 92%;
+	margin: 0 auto;
+	color: @second-font-color;
+	font-size: .26rem;
+	text-align: center;
+}

@@ -1,0 +1,252 @@
+@import '../../../../config/config.less';
+
+.aboutUs {
+  .topNav {
+    margin-bottom: 20px;
+
+    ul {
+      display: flex;
+      justify-content: flex-start;
+
+      li {
+		  display: inline;
+		  margin-right: 8px;
+		  padding: 0 10px;
+		  font-size: 12px;
+		  color: @white-color;
+		  line-height: 24px;
+		  border: 1px @nav-active-color solid;
+		  cursor: pointer;
+      }
+
+      .current {
+		  color: @main-color;
+		  background-color: @nav-active-color;
+      }
+    }
+  }
+
+  .comProfile {
+    h1 {
+      height: 30px;
+      line-height: 30px;
+      color: #f6df94;
+      font-size: @f-12;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: 14px;
+      text-align: left;
+      font-weight: 900;
+      color: @nav-active-color;
+    }
+
+    p {
+      line-height: 22px;
+      font-size: @f-12;
+      margin-bottom: 10px;
+    }
+
+    .infoImg {
+      img {
+        width: 628px;
+        height: 400px
+      }
+    }
+
+    .bottomTro {
+      ul {
+        li {
+          margin: 30px 0;
+          padding: 30px 15px 15px;
+          border: 1px solid #dedede;
+          display: flex;
+          flex-direction: column;
+
+          .icon-desire {
+            width: 60px;
+            height: 60px;
+            background-color: #fe4445;
+            border-radius: 50%;
+            margin: auto;
+            text-align: center;
+            padding: 5px;
+            img{
+              width: 60%;
+              margin-top: 8px;
+            }
+          }
+
+          h5 {
+            height: 40px;
+            line-height: 40px;
+            color: #fe4445;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+          }
+
+          p {
+            font-size: 14px;
+            line-height: 16px;
+            text-align: left;
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+  }
+
+  .devHistory {
+    .el-container {
+      display: flex;
+      flex-direction: row;
+      ;
+      flex: 1;
+      flex-basis: auto;
+      box-sizing: border-box;
+      min-width: 0;
+
+      &:last-child .el-aside {
+        border: none;
+      }
+
+      .el-aside {
+        position: relative;
+        border-right: 1px solid #fe4445;
+        font-size: 15px;
+        font-weight: 900;
+        color: #fe4445;
+        padding: 5px 10px;
+
+        &:after {
+          content: "";
+          position: absolute;
+          background: #fe4445;
+          border-radius: 4px;
+          top: 0;
+          right: -4px;
+          width: 8px;
+          height: 8px;
+        }
+      }
+
+      .el-main {
+        position: relative;
+        padding: 0 10px;
+        text-align: left;
+
+        .title {
+          line-height: 22px;
+          font-size: 14px;
+          height: 20px;
+          color: #fff;
+        }
+
+        .text {
+          line-height: 18px;
+          padding-bottom: 15px;
+          font-size: @f-12;
+        }
+      }
+    }
+  }
+
+  .membership {
+    .membershipMain {
+      .membershipImg {
+        font-size: 0;
+
+        .bigImg {
+          width: 628px;
+          height: 350px;
+        }
+
+        img {
+          display: block;
+          margin-top: 10px;
+        }
+
+        .centerImg {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 10px;
+
+          .leftImg {
+            display: flex;
+            flex-direction: column;
+
+            img {
+              width: 300px;
+              height: 170px;
+            }
+          }
+
+          .rightImg {
+            width: 300px;
+          }
+        }
+      }
+    }
+
+    .introduce {
+      p {
+        text-indent: 24px;
+        font-size: @f-12;
+        line-height: 22px;
+        margin-top: 16px;
+      }
+    }
+
+    .entertainment {
+      .entertainment_title {
+        line-height: 40px;
+        height: 40px;
+        font-size: 15px;
+        padding-left: 25px;
+        border-top: 1px solid #dedede;
+        color: #fe4445;
+        text-align: left;
+        margin-top: 16px;
+      }
+
+      .entertainmentTop {
+        text-indent: 24px;
+        font-size: @f-12;
+        line-height: 22px;
+      }
+
+      .entertainmentList {
+        ul {
+          display: flex;
+          flex-direction: column;
+
+          li {
+            border: 1px solid #fff;
+            margin-top: 16px;
+
+            img {
+              width: 624px;
+              height: 350px;
+            }
+
+            .text {
+              text-indent: 10px;
+
+              .fontTitle {
+                font-size: 13px;
+              }
+
+              .description {
+                font-size: @f-12;
+              }
+            }
+
+          }
+        }
+      }
+    }
+
+  }
+}

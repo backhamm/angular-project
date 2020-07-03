@@ -1,0 +1,72 @@
+<div class="proxy-index">
+  <div class="header">
+    <div>欢迎您！</div>
+    <div class="unclaimed-money">
+      <p class="money">¥ 0</p>
+      未结佣金
+    </div>
+    <div class="header-intro" nz-row nzType="flex" nzJustify="space-around">
+      <div nz-col nzSpan="8">
+        <p class="intro-info">青铜代理</p>
+        <p class="intro-name">代理等级</p>
+      </div>
+      <div nz-col nzSpan="8">
+        <p class="intro-info">0</p>
+        <p class="intro-name">团队人数</p>
+      </div>
+      <div nz-col nzSpan="8">
+        <p class="intro-info">0</p>
+        <p class="intro-name">累计提佣</p>
+      </div>
+    </div>
+    <div class="link-menu" nz-row nzType="flex" nzJustify="space-around">
+      <div nz-col nzSpan="6" *ngFor="let item of headerLink">
+        <div class="link-icon">
+          <img [src]="config.baseMobileImgUrl + item.icon" alt="">
+        </div>
+        <p class="link-name">{{item.name}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="invite">
+    <p class="title">邀请方式</p>
+    <div class="invite-main">
+      <div class="left-wrapper">
+        <div class="qr-code"></div>
+      </div>
+      <div class="right-wrapper">
+        <div class="invite-link">
+          <span class="name">推广链接：</span>
+          <span>http://192.168.107.144:1888/?p=N22ATXWA686284</span>
+        </div>
+        <div class="invite-text">
+          <span class="name">推广文案：</span>
+          <span>超爽游戏,流畅手感,极致体验,赶紧注册和我一起玩吧! 点击链接直接注册:http://192.168.107.144:1888/?p=N22ATXWA686284</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="tips">
+    长按二维码可保存邀请图至相册，点击推广链接或者推广文案复制到剪贴板
+  </p>
+
+  <div class="chart-wrapper">
+    <p class="title">
+      团队组成
+      <span>详情<i nz-icon nzType="right" nzTheme="outline"></i></span>
+    </p>
+    <div class="team-form" nz-row nzType="flex" nzJustify="start">
+      <div nz-col nzSpan="13">
+        <div class="teamCanvas" echarts [options]="teamOption"></div>
+      </div>
+      <div nz-col nzSpan="11">col-4</div>
+    </div>
+    <p class="title">
+      近期佣金
+      <span>详情<i nz-icon nzType="right" nzTheme="outline"></i></span>
+    </p>
+    <div class="brokerage" echarts [options]="brokerageOption"></div>
+  </div>
+</div>

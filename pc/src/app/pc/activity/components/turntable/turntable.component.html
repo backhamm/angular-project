@@ -1,0 +1,65 @@
+<div class="content">
+    <div class="disc-bg">
+        <div class="disc">
+            <div class="disc-left">
+                <h3>中奖名单</h3>
+                <div class="wraper">
+                    <div class="scroll-box">
+                        <ul>
+                            <li *ngFor="let win of service.discWinning">
+                                <span>恭喜{{ win.username }}</span>
+                                <span>抽中</span>
+                                <span>{{ win.prizeName }}</span>
+                            </li>
+                        </ul>
+                        <ul *ngIf="service.discWinning.length > 9">
+                            <li *ngFor="let win of service.discWinning">
+                                <span>恭喜{{ win.username }}</span>
+                                <span>抽中</span>
+                                <span>{{ win.prizeName }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="disc-cnt"
+                [style.backgroundImage]="'url('+ (service.discData.imgUrl ? service.discData.imgUrl : '//img1.txwimage.com/hc/2019/05/30/32558096-8280-11e9-863f-3ffa9a513267.jpeg') +')'">
+                <div class="dis-box" id="disBox">
+                </div>
+                <div class="btn" *ngIf="service.discData.remainingCount > 0" (click)="doLottery()"></div>
+                <div class="btn disabled" *ngIf="service.discData.remainingCount < 1"></div>
+            </div>
+            <div class="disc-right">
+                <h3>领取记录</h3>
+                <ul>
+                    <li class="table-header">
+                        <span>领取时间</span>
+                        <span>精品名称</span>
+                        <span>是否派彩</span>
+                    </li>
+                    <li *ngFor="let recive of service.discRecive">
+                        <span>{{ recive.addTimes }}</span>
+                        <span>{{ recive.prizeName }}</span>
+                        <span>{{ recive.shippingStatus == 0 ? '否' : '是' }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="disc-info">
+            <p>当日有效投注额：{{ service.discData.neededAmount }}</p>
+            <p>抽奖机会：{{ service.discData.remainingCount }}次</p>
+        </div>
+    </div>
+    <div class="rule"></div>
+</div>
+
+<div class="mask" *ngIf="show != -1">
+    <div class="lottery">
+        <div class="close" (click)="hideLottery()"></div>
+        <div class="show yes" *ngIf="show === 0">
+            <div class="name">{{ prizeName }}</div>
+            <div class="btn" (click)="hideLottery()"></div>
+        </div>
+        <div class="show no" *ngIf="show === 1"></div>
+    </div>
+</div>

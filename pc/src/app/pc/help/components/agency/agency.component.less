@@ -1,0 +1,47 @@
+@import '../../../../config/config.less';
+
+.agency {
+	ul.mtab-menual {
+		padding-bottom: 15px;
+		padding-left: 0;
+		text-align: left;
+		li {
+			display: inline;
+			margin-right: 13px;
+			padding: 2px 5px;
+
+			color: @white-color;
+			line-height: 30px;
+			border: 1px #e0caa5 solid;
+			cursor: pointer;
+		}
+		.mtab {
+			color: @main-color;
+			background-color: @nav-active-color;
+		}
+	}
+	h4 {
+		color: #e0caa5;
+		font-size: 14px;
+		text-align: left;
+		margin: 13px 0;
+	}
+	p {
+		margin: 1em 0;
+	}
+	.highlight {
+		color: @main-indicated-color;
+		font-weight: bolder;
+	}
+	.highlight-center {
+		.highlight;
+		text-align: center;
+		display: block;
+	}
+	table tr, table th, table td {
+		color: @white-color;
+		line-height: 25px;
+		text-align: center;
+		border: 1px solid @nav-active-color;
+	}
+}

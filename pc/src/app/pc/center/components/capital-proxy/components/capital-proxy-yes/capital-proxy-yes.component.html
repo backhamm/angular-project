@@ -1,0 +1,520 @@
+<!-- 统计数据 -->
+<div class="agent-list" >
+    <!-- 当前未结佣金 -->
+    <dl>
+        <dt>
+            <span>尊敬的: <span>{{username}}</span></span>
+            <a class="fr"  routerLink="/center/proxy-infor" >详细规则</a>
+        </dt>
+        <dd>
+            <p class="fl fl-agent-img" >
+              <img class="agent-vip" [src]="config.baseImgUrl+'/wxdl2/icon_vip.png'" alt="">
+              <span>青铜代理</span>
+            </p>
+            <p class="fr fr-content" >
+                <span>代理等级: 黄金</span>
+                <span>加入时间：2019-11-19</span>
+                <span>邀请好友：12</span>
+                <span>团队总人数：30</span>
+                <span>累计获得佣金：28530.00</span>
+            </p>
+        </dd>
+    </dl>
+    <!-- 已邀请会员 -->
+    <dl>
+        <dt>
+            <i nz-icon nzType="info-circle" nzTheme="outline"
+            [nzTitle]="'计佣周期： ' + agentData.commissionBeginDate + '~' + agentData.commissionEndDate" nz-tooltip
+            class="fr"></i>
+        </dt>
+        <dd class="agent-commission-list">
+            <p class="fl fl-account-img" >
+                <img class="agent-vip" [src]="config.baseImgUrl+'/wxdl2/icon_wjyj.png'" alt="">
+            </p>
+            <p class="fr fr-account-content" >
+                <span>当前未结佣金</span>
+                <span class="red-color">转存</span>
+                <span>提佣</span>
+                <span class="commission-money">￥ 262325.00</span>
+            </p>
+        </dd>
+        <dd>
+            <p class="fl fl-oldcommissin" [class.down]="agentData.yesterdayCommissions < 0">
+                昨日
+                <i nz-icon nzType="caret-up" nzTheme="outline"></i>
+                <i nz-icon nzType="caret-down" nzTheme="outline"></i>
+                ￥{{ agentData.yesterdayCommissions }}2022.20
+            </p>
+            <p class="fr fr-newcommissin" [class.down]="agentData.weekCommissions < 0">
+                本周
+                <i nz-icon nzType="caret-up" nzTheme="outline"></i>
+                <i nz-icon nzType="caret-down" nzTheme="outline"></i>
+                ￥{{ agentData.weekCommissions }}5063.26
+            </p>
+        </dd>
+    </dl>
+    <!-- 总团队会员数 -->
+    <dl>
+        <dt class="dt-team">
+            <p ngxClipboard [cbContent]="inviteType?.inviteLink" (cbOnSuccess)="copied($event)">
+              {{ inviteType?.inviteLink }}https://www.baidu.com?p156215asd152621565216asdas261
+            </p>
+        </dt>
+        <dd>
+          <p class="fl">
+            <qr-code [value]="inviteType?.inviteLink" size="100" background="#ffffff"></qr-code>
+          </p>
+          <p class="fr">
+            <span class="fr-copy-content">
+              {{ inviteType?.agencyShare }}超爽游戏,流畅手感,极致体验,赶紧注册和我一起玩吧!阿萨德阿萨德阿萨德阿萨德
+              点击链接直接注册:http://192.168.107.144:1888/?p=N22ATXWA697580
+            </span>
+          </p>
+        </dd>
+    </dl>
+</div>
+
+<!--图展示-->
+<div class="echarts-list">
+  <div class="echarts-left">
+    <p class="charts-nav-titles">团队组成</p>
+    <div echarts [options]="chartOption" class="demo-chart" style="width: 200px;height: 250px;float: left;"></div>
+    <div class="charts-right-contents">
+      <table>
+        <tr>
+          <td><img class="munber_imgs" [src]="config.baseImgUrl+'/wxdl2/icon_02.png'" alt=""> 直属会员</td>
+          <td><span id="direct_point">25</span>%</td>
+          <td><span id="directNum_count">20</span>人</td>
+        </tr>
+        <tr>
+          <td>昨日  +<span id="yesterdayDirectNum_count"></span></td>
+          <td></td>
+          <td>本周  +<span id="weekDirectNum_count"></span></td>
+        </tr>
+        <tr>
+          <td><img class="munber_imgs" [src]="config.baseImgUrl+'/wxdl2/icon_01.png'" alt=""> 团队会员</td>
+          <td><span id="team_point">75</span>%</td>
+          <td><span id="teamNum_count">60</span>人</td>
+        </tr>
+        <tr>
+          <td>  <p>昨日  +<span id="yesterdayTeamNum_count">5</span></p></td>
+          <td></td>
+          <td> <p>本周  +<span id="weekTeamNum_count">16</span></p></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="echarts-right">
+    <p class="charts-nav-titles">近期佣金</p>
+    <div echarts [options]="option" class="demo-chart" style="width: 450px;height: 250px;"></div>
+  </div>
+</div>
+<!-- tab切换 -->
+<div class="tab-list">
+    <nz-tabset>
+        <!-- 邀请记录 -->
+        <nz-tab nzTitle="邀请记录">
+            <nz-table [nzData]="inviteData" [nzShowPagination]="false" [nzLoading]="inviteLoading">
+                <thead>
+                    <tr>
+                        <th>注册时间</th>
+                        <th>会员状态</th>
+                        <th>会员账号</th>
+                        <th>会员姓名</th>
+                        <th>代理等级</th>
+                        <th>最后登录时间</th>
+                        <th>累计产生佣金</th>
+                        <th>团队会员数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ivt of inviteData">
+                        <td>{{ ivt.registerTime }}</td>
+                        <td>{{ ivt.isStoped == 0 ? '正常' : '停用' }}</td>
+                        <td>{{ ivt.agencyUserName }}</td>
+                        <td>{{ ivt.agencyRealName }}</td>
+                        <td>{{ ivt.agencyRealName }}</td>
+                        <td>{{ ivt.lastLonginTime }}</td>
+                        <td>{{ ivt.accumulatedCommission }}</td>
+                        <td>{{ ivt.teamNum }}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <div class="page-box" *ngIf="invitePage.total>0">
+                <nz-pagination [(nzPageIndex)]="invitePage.page" [nzPageSize]="invitePage.size"
+                    [nzTotal]="invitePage.total" (nzPageIndexChange)="getInviteList()">
+                </nz-pagination>
+            </div>
+        </nz-tab>
+        <!-- 团队管理 -->
+        <nz-tab nzTitle="团队管理">
+          <span class="team-nav-title">层级类型:</span>
+          <ul class="team-type-list">
+            <li *ngFor="let tm of quickSeletArr" >
+              <span (click)="quickTypeChange(tm.type)" [ngClass]="typeSelect == tm.type ? 'active' : '' ">{{tm.value}}</span>
+            </li>
+          </ul>
+          <nz-range-picker
+            nzSize="large"
+            nzFormat="yyyy/MM/dd"
+            [(ngModel)]="teamTimes"
+            (ngModelChange)="onChange($event)">
+          </nz-range-picker>
+          <nz-table [nzData]="teamData" [nzShowPagination]="false" [nzLoading]="teamLoading">
+            <thead>
+            <tr>
+              <th>会员账号</th>
+              <th>代理关系</th>
+              <th>{{teamDataType}}</th>
+              <th>累计提供佣金</th>
+              <th>佣金详情</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let ivt of teamData">
+              <td>{{ ivt.registerTime }}</td>
+              <td>{{ ivt.isStoped == 0 ? '正常' : '停用' }}</td>
+              <td>{{ ivt.agencyUserName }}</td>
+              <td>{{ ivt.agencyRealName }}</td>
+              <td>{{ ivt.agencyRealName }}</td>
+            </tr>
+            </tbody>
+          </nz-table>
+          <div class="page-box" *ngIf="teamPage.total>0">
+            <nz-pagination [(nzPageIndex)]="teamPage.page" [nzPageSize]="teamPage.size"
+                           [nzTotal]="teamPage.total" (nzPageIndexChange)="getInviteList()">
+            </nz-pagination>
+          </div>
+        </nz-tab>
+        <!-- 佣金流水 -->
+        <nz-tab nzTitle="佣金流水">
+            <ul>
+              <li>当前未结：2032.00</li>
+              <li>已提款：2次</li>
+              <li>累计提款：5232.00</li>
+            </ul>
+            <nz-range-picker
+                nzSize="large"
+                nzFormat="yyyy/MM/dd"
+                [(ngModel)]="dailyTimes"
+                (ngModelChange)="onChange($event)">
+            </nz-range-picker>
+            <nz-table [nzData]="dailyData" [nzShowPagination]="false" [nzLoading]="dailyLoading">
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>直属提供佣金</th>
+                        <th>团队提供佣金</th>
+                        <th>合计结佣</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let daily of dailyData">
+                        <td>{{ daily.date }}</td>
+                        <td>{{ daily.directCommissions }}</td>
+                        <td>{{ daily.teamCommissions }}</td>
+                        <td>{{ daily.outstandingCommissions }}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <div class="page-box" *ngIf="dailyPage.total>0">
+                <nz-pagination [(nzPageIndex)]="dailyPage.page" [nzPageSize]="dailyPage.size"
+                    [nzTotal]="dailyPage.total" (nzPageIndexChange)="getDailyData()">
+                </nz-pagination>
+            </div>
+        </nz-tab>
+        <!-- 提佣记录 -->
+        <nz-tab nzTitle="提佣记录">
+            <nz-range-picker
+                nzSize="large"
+                nzFormat="yyyy/MM/dd"
+                [(ngModel)]="recordTimes"
+                (ngModelChange)="onChange1($event)">
+            </nz-range-picker>
+            <nz-table [nzData]="recordData" [nzShowPagination]="false" [nzLoading]="recordLoading">
+                <thead>
+                    <tr>
+                        <th>提取状态</th>
+                        <th>提取金额</th>
+                        <th>提取类型</th>
+                        <th>提取时间</th>
+                        <th>计佣周期</th>
+                        <th>消息</th>
+                        <th>操作人</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let record of recordData">
+                        <td [ngClass]="{'green':  record.status == 1,'red': record.status == 0}">{{ record.status == 0 ? '审核中' : '已提款' }}</td>
+                        <td>{{ record.amount }}</td>
+                        <td>{{ record.orderCreateTime }}</td>
+                        <td>{{ record.issuedTime }}</td>
+                        <td>{{ record.timeCircle }}</td>
+                        <td>{{ record.remark }}</td>
+                        <td>{{ record.operator }}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <div class="page-box" *ngIf="recordPage.total>0">
+                <nz-pagination [(nzPageIndex)]="recordPage.page" [nzPageSize]="recordPage.size"
+                    [nzTotal]="recordPage.total" (nzPageIndexChange)="getRecordData()">
+                </nz-pagination>
+            </div>
+        </nz-tab>
+    </nz-tabset>
+</div>
+<!-- 提取佣金弹窗 -->
+<nz-modal
+    [(nzVisible)]="dailyVisible"
+    nzTitle="佣金提取申请"
+    (nzOnCancel)="dailyVisible = false;"
+    (nzOnOk)="getWithdrawlComm()"
+    [nzStyle]="{ top: '25vh'}"
+>
+    <div class="get-item">当前未结佣金&nbsp;:&nbsp;&nbsp;<span>￥{{ agentData.outstandingCommissions | number:'1.2-2' }}</span></div>
+    <div class="get-item">计佣周期&nbsp;:&nbsp;&nbsp;<i>{{ agentData.commissionBeginDate + '~' + agentData.commissionEndDate }}</i></div>
+    <p>需先提交平台审核，审核通过后将下发到您提供的银行卡内，详情请咨询客
+        服，是否确认提交？</p>
+</nz-modal>
+
+
+
+
+<!--&lt;!&ndash; 统计数据 &ndash;&gt;-->
+<!--<div class="agent-list" *ngIf="agentData.regDate">-->
+  <!--&lt;!&ndash; 当前未结佣金 &ndash;&gt;-->
+  <!--<dl>-->
+    <!--<dt>-->
+      <!--<i nz-icon nzType="money-collect" nzTheme="outline"></i>-->
+      <!--<span>当前未结佣金<b *ngIf="dailyTxt" (click)="dailyVisible = true;">提取</b></span>-->
+      <!--<i nz-icon nzType="info-circle" nzTheme="outline"-->
+         <!--[nzTitle]="'计佣周期： ' + agentData.commissionBeginDate + '~' + agentData.commissionEndDate" nz-tooltip-->
+         <!--class="fr"></i>-->
+    <!--</dt>-->
+    <!--<dd><span>{{ agentData.outstandingCommissions | number:'1.2-2'}}</span></dd>-->
+    <!--<dd>-->
+      <!--<p class="fl" [class.down]="agentData.yesterdayCommissions < 0">-->
+        <!--昨日-->
+        <!--<i nz-icon nzType="caret-up" nzTheme="outline"></i>-->
+        <!--<i nz-icon nzType="caret-down" nzTheme="outline"></i>-->
+        <!--￥{{ agentData.yesterdayCommissions }}-->
+      <!--</p>-->
+      <!--<p class="fr" [class.down]="agentData.weekCommissions < 0">-->
+        <!--本周-->
+        <!--<i nz-icon nzType="caret-up" nzTheme="outline"></i>-->
+        <!--<i nz-icon nzType="caret-down" nzTheme="outline"></i>-->
+        <!--￥{{ agentData.weekCommissions }}-->
+      <!--</p>-->
+    <!--</dd>-->
+  <!--</dl>-->
+  <!--&lt;!&ndash; 已邀请会员 &ndash;&gt;-->
+  <!--<dl>-->
+    <!--<dt>-->
+      <!--<i nz-icon nzType="usergroup-add" nzTheme="outline"></i>-->
+      <!--<span>已邀请会员</span>-->
+      <!--<i nz-icon nzType="info-circle" nzTheme="outline" nzTitle="通过您的邀请链接注册的会员数" nz-tooltip class="fr"></i>-->
+    <!--</dt>-->
+    <!--<dd><span>{{ agentData.integernviteMembers }}</span></dd>-->
+    <!--<dd>-->
+      <!--<p class="fl" [class.down]="agentData.yesterdayInviteMembers < 0">-->
+        <!--昨日-->
+        <!--<i nz-icon nzType="caret-up" nzTheme="outline"></i>-->
+        <!--<i nz-icon nzType="caret-down" nzTheme="outline"></i>-->
+        <!--{{ agentData.yesterdayInviteMembers }}-->
+      <!--</p>-->
+      <!--<p class="fr" [class.down]="agentData.weekInviteMembers < 0">-->
+        <!--本周-->
+        <!--<i nz-icon nzType="caret-up" nzTheme="outline"></i>-->
+        <!--<i nz-icon nzType="caret-down" nzTheme="outline"></i>-->
+        <!--{{ agentData.weekInviteMembers }}-->
+      <!--</p>-->
+    <!--</dd>-->
+  <!--</dl>-->
+  <!--&lt;!&ndash; 总团队会员数 &ndash;&gt;-->
+  <!--<dl>-->
+    <!--<dt>-->
+      <!--<i nz-icon nzType="user" nzTheme="outline"></i>-->
+      <!--<span>总团队会员数</span>-->
+      <!--<i nz-icon nzType="info-circle" nzTheme="outline" nzTitle="您的直属+团队总人数" nz-tooltip class="fr"></i>-->
+    <!--</dt>-->
+    <!--<dd><span>{{ agentData.teamNum }}</span></dd>-->
+    <!--<dd>-->
+      <!--<p class="fl" [class.down]="agentData.yesterdayTeamNum < 0">-->
+        <!--昨日-->
+        <!--<i nz-icon nzType="caret-up" nzTheme="outline"></i>-->
+        <!--<i nz-icon nzType="caret-down" nzTheme="outline"></i>-->
+        <!--{{ agentData.yesterdayTeamNum }}-->
+      <!--</p>-->
+      <!--<p class="fr" [class.down]="agentData.weekTeamNum < 0">-->
+        <!--本周-->
+        <!--<i nz-icon nzType="caret-up" nzTheme="outline"></i>-->
+        <!--<i nz-icon nzType="caret-down" nzTheme="outline"></i>-->
+        <!--{{ agentData.weekTeamNum }}-->
+      <!--</p>-->
+    <!--</dd>-->
+  <!--</dl>-->
+<!--</div>-->
+<!--&lt;!&ndash; tab切换 &ndash;&gt;-->
+<!--<div class="tab-list">-->
+  <!--<nz-tabset>-->
+    <!--&lt;!&ndash; 邀请方式 &ndash;&gt;-->
+    <!--<nz-tab nzTitle="邀请方式">-->
+      <!--<nz-spin class="invite-type" nzTip="加载中..." [nzSpinning]="typeLoading">-->
+        <!--<div class="type-left fl">-->
+          <!--<h3>您的专属邀请二维码</h3>-->
+          <!--<div class="code-box">-->
+            <!--<qr-code [value]="inviteType?.inviteLink" size="190" background="#ffffff"></qr-code>-->
+          <!--</div>-->
+          <!--<p>手机扫码通过浏览器分享<br>或直接发送给好友扫码</p>-->
+        <!--</div>-->
+        <!--<div class="type-right fr">-->
+          <!--<h3 class="clearfix">-->
+            <!--<span class="fl">您的专属邀请链接</span>-->
+            <!--<p class="fr" (click)="getInviteType()">-->
+              <!--<i nz-icon nzType="reload" nzTheme="outline"></i>-->
+              <!--刷新链接&二维码-->
+            <!--</p>-->
+          <!--</h3>-->
+          <!--<div class="type-link">-->
+            <!--<p>{{ inviteType?.inviteLink }}</p>-->
+            <!--<button nz-button nzType="primary" ngxClipboard [cbContent]="inviteType?.inviteLink"-->
+                    <!--(cbOnSuccess)="copied($event)">复制链接</button>-->
+          <!--</div>-->
+          <!--<div class="type-link-large">-->
+            <!--<p>{{ inviteType?.agencyShare }}</p>-->
+            <!--<div class="txt-r">-->
+              <!--<button nz-button nzType="primary" ngxClipboard [cbContent]="inviteType?.agencyShare"-->
+                      <!--(cbOnSuccess)="copied($event)">复制链接</button>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<p class="type-txt">直接复制链接或推广文案发送给好友、QQ群、微信群、微博、贴吧等社交平台。</p>-->
+        <!--</div>-->
+      <!--</nz-spin>-->
+    <!--</nz-tab>-->
+    <!--&lt;!&ndash; 邀请记录 &ndash;&gt;-->
+    <!--<nz-tab nzTitle="邀请记录">-->
+      <!--<nz-table [nzData]="inviteData" [nzShowPagination]="false" [nzLoading]="inviteLoading">-->
+        <!--<thead>-->
+        <!--<tr>-->
+          <!--<th>注册时间</th>-->
+          <!--<th>会员状态</th>-->
+          <!--<th>会员账号</th>-->
+          <!--<th>会员姓名</th>-->
+          <!--<th>最后登录时间</th>-->
+          <!--<th>累计产生佣金</th>-->
+          <!--<th>团队会员数</th>-->
+          <!--<th>团队产生佣金</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr *ngFor="let ivt of inviteData">-->
+          <!--<td>{{ ivt.registerTime }}</td>-->
+          <!--<td>{{ ivt.isStoped == 0 ? '正常' : '停用' }}</td>-->
+          <!--<td>{{ ivt.agencyUserName }}</td>-->
+          <!--<td>{{ ivt.agencyRealName }}</td>-->
+          <!--<td>{{ ivt.lastLonginTime }}</td>-->
+          <!--<td>{{ ivt.accumulatedCommission }}</td>-->
+          <!--<td>{{ ivt.teamNum }}</td>-->
+          <!--<td>{{ ivt.teamCumulative }}</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+      <!--</nz-table>-->
+      <!--<div class="page-box" *ngIf="invitePage.total>0">-->
+        <!--<nz-pagination [(nzPageIndex)]="invitePage.page" [nzPageSize]="invitePage.size"-->
+                       <!--[nzTotal]="invitePage.total" (nzPageIndexChange)="getInviteList()">-->
+        <!--</nz-pagination>-->
+      <!--</div>-->
+    <!--</nz-tab>-->
+    <!--&lt;!&ndash; 每日佣金 &ndash;&gt;-->
+    <!--<nz-tab nzTitle="每日佣金">-->
+      <!--<nz-range-picker-->
+        <!--nzSize="large"-->
+        <!--nzFormat="yyyy/MM/dd"-->
+        <!--[(ngModel)]="dailyTimes"-->
+        <!--(ngModelChange)="onChange($event)">-->
+      <!--</nz-range-picker>-->
+      <!--<nz-table [nzData]="dailyData" [nzShowPagination]="false" [nzLoading]="dailyLoading">-->
+        <!--<thead>-->
+        <!--<tr>-->
+          <!--<th>日期</th>-->
+          <!--<th>直属会员人数</th>-->
+          <!--<th>直属分成比例</th>-->
+          <!--<th>直属产佣</th>-->
+          <!--<th>团队会员人数</th>-->
+          <!--<th>团队分成比例</th>-->
+          <!--<th>团队产佣</th>-->
+          <!--<th>合计结佣</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr *ngFor="let daily of dailyData">-->
+          <!--<td>{{ daily.date }}</td>-->
+          <!--<td>{{ daily.directNum }}</td>-->
+          <!--<td>{{ daily.platDirectProportion }}</td>-->
+          <!--<td>{{ daily.directCommissions }}</td>-->
+          <!--<td>{{ daily.teamNum }}</td>-->
+          <!--<td>{{ daily.platTeamProportion }}</td>-->
+          <!--<td>{{ daily.teamCommissions }}</td>-->
+          <!--<td>{{ daily.outstandingCommissions }}</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+      <!--</nz-table>-->
+      <!--<div class="page-box" *ngIf="dailyPage.total>0">-->
+        <!--<nz-pagination [(nzPageIndex)]="dailyPage.page" [nzPageSize]="dailyPage.size"-->
+                       <!--[nzTotal]="dailyPage.total" (nzPageIndexChange)="getDailyData()">-->
+        <!--</nz-pagination>-->
+      <!--</div>-->
+    <!--</nz-tab>-->
+    <!--&lt;!&ndash; 提佣记录 &ndash;&gt;-->
+    <!--<nz-tab nzTitle="提佣记录">-->
+      <!--<nz-range-picker-->
+        <!--nzSize="large"-->
+        <!--nzFormat="yyyy/MM/dd"-->
+        <!--[(ngModel)]="recordTimes"-->
+        <!--(ngModelChange)="onChange1($event)">-->
+      <!--</nz-range-picker>-->
+      <!--<nz-table [nzData]="recordData" [nzShowPagination]="false" [nzLoading]="recordLoading">-->
+        <!--<thead>-->
+        <!--<tr>-->
+          <!--<th>提取状态</th>-->
+          <!--<th>提取金额</th>-->
+          <!--<th>申请时间</th>-->
+          <!--<th>完成时间</th>-->
+          <!--<th>计佣周期</th>-->
+          <!--<th>消息</th>-->
+          <!--<th>操作人</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr *ngFor="let record of recordData">-->
+          <!--<td [ngClass]="{'green':  record.status == 1,'red': record.status == 0}">{{ record.status == 0 ? '审核中' : '已提款' }}</td>-->
+          <!--<td>{{ record.amount }}</td>-->
+          <!--<td>{{ record.orderCreateTime }}</td>-->
+          <!--<td>{{ record.issuedTime }}</td>-->
+          <!--<td>{{ record.timeCircle }}</td>-->
+          <!--<td>{{ record.remark }}</td>-->
+          <!--<td>{{ record.operator }}</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+      <!--</nz-table>-->
+      <!--<div class="page-box" *ngIf="recordPage.total>0">-->
+        <!--<nz-pagination [(nzPageIndex)]="recordPage.page" [nzPageSize]="recordPage.size"-->
+                       <!--[nzTotal]="recordPage.total" (nzPageIndexChange)="getRecordData()">-->
+        <!--</nz-pagination>-->
+      <!--</div>-->
+    <!--</nz-tab>-->
+  <!--</nz-tabset>-->
+<!--</div>-->
+<!--&lt;!&ndash; 提取佣金弹窗 &ndash;&gt;-->
+<!--<nz-modal-->
+  <!--[(nzVisible)]="dailyVisible"-->
+  <!--nzTitle="佣金提取申请"-->
+  <!--(nzOnCancel)="dailyVisible = false;"-->
+  <!--(nzOnOk)="getWithdrawlComm()"-->
+  <!--[nzStyle]="{ top: '25vh'}"-->
+<!--&gt;-->
+  <!--<div class="get-item">当前未结佣金&nbsp;:&nbsp;&nbsp;<span>￥{{ agentData.outstandingCommissions | number:'1.2-2' }}</span></div>-->
+  <!--<div class="get-item">计佣周期&nbsp;:&nbsp;&nbsp;<i>{{ agentData.commissionBeginDate + '~' + agentData.commissionEndDate }}</i></div>-->
+  <!--<p>需先提交平台审核，审核通过后将下发到您提供的银行卡内，详情请咨询客-->
+    <!--服，是否确认提交？</p>-->
+<!--</nz-modal>-->

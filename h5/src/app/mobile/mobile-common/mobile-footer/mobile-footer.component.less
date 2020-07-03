@@ -1,0 +1,77 @@
+@import "../../../config/config-mobile.less";
+
+.footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  height: 1rem;
+  box-sizing: border-box;
+  font-size: 0.24rem;
+  padding-top: .1rem;
+  background: linear-gradient(0deg, rgba(43, 43, 43, 1), rgba(61, 61, 61, 1), rgba(72, 72, 72, 1));
+  color: @second-font-color;
+
+  .footer ul {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: .24rem;
+  }
+
+  .footer-nav {
+    float: left;
+    width: 20%;
+    text-align: center;
+
+    .img {
+      margin: 0 auto;
+      width: .54rem;
+      height: .54rem;
+      background-size: 100% 100%;
+
+
+      &.center-img {
+        margin: -.5rem auto .18rem;
+        width: .85rem;
+        height: .85rem;
+      }
+    }
+
+    .active {
+      .text-title {
+        color: #BD978C;
+      }
+    }
+
+    .active0 .img {
+      background-image: url("@{base-url}image/common/di_index_h.png") !important;
+    }
+
+    .active1 .img {
+      background-image: url("@{base-url}image/common/di_more_h.png") !important;
+    }
+
+    .active3 .img {
+      background-image: url("@{base-url}image/common/di_kf_h.png") !important;
+    }
+
+    .active4 .img {
+      background-image: url("@{base-url}image/common/di_user_h.png") !important;
+    }
+  }
+
+  a {
+    width: 100%;
+    display: block;
+  }
+
+  .text-title {
+    color: @third-font-color;
+  }
+}

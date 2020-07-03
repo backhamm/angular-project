@@ -1,0 +1,102 @@
+<div class="after-join">
+    <nz-row class="top-one">
+        <div>
+            <div class="title-content">未结佣金
+                <span class="draw-money" *ngIf="dailyTxt">提取佣金</span>
+            </div>
+            <p>{{agentData?.outstandingCommissions }}</p>
+            <nz-row>
+                <nz-col nzSpan="12">
+                    <div class="content">
+                        <div class="text">
+                            昨日
+                            <span class="upDown"></span>
+                            {{agentData?.yesterdayCommissions }}
+                        </div>
+                    </div>
+                </nz-col>
+                <nz-col nzSpan="12">
+                    <div class="content">
+                        <div class="text">
+                            本周
+                            <span class="upDown"></span>
+                            {{agentData?.weekCommissions }}
+                        </div>
+                    </div>
+                </nz-col>
+            </nz-row>
+        </div>
+    </nz-row>
+    <nz-row class="top-two" nzGutter="5">
+        <nz-col nzSpan="12">
+            <div class="top-one">
+                <div class="title-content">已邀请会员</div>
+                <p>{{agentData?.integernviteMembers }}</p>
+                <nz-row>
+                    <nz-col nzSpan="12">
+                        <div class="content">
+                            <div class="text">
+                                昨日
+                                <span class="upDown"></span>
+                                {{agentData?.yesterdayInviteMembers}}
+                            </div>
+                        </div>
+                    </nz-col>
+                    <nz-col nzSpan="12">
+                        <div class="content">
+                            <div class="text">
+                                本周
+                                <span class="upDown"></span>
+                                {{agentData?.weekInviteMembers}}
+                            </div>
+                        </div>
+                    </nz-col>
+                </nz-row>
+            </div>
+        </nz-col>
+        <nz-col nzSpan="12">
+            <div class="top-one">
+                <div class="title-content">团队总人数</div>
+                <p>{{agentData?.teamNum }}</p>
+                <nz-row>
+                    <nz-col nzSpan="12">
+                        <div class="content">
+                            <div class="text">
+                                昨日
+                                <span class="upDown"></span>
+                                {{agentData?.yesterdayTeamNum }}
+                            </div>
+                        </div>
+                    </nz-col>
+                    <nz-col nzSpan="12">
+                        <div class="content">
+                            <div class="text">
+                                本周
+                                <span class="upDown"></span>
+                                {{agentData?.weekTeamNum }}
+                            </div>
+                        </div>
+                    </nz-col>
+                </nz-row>
+            </div>
+        </nz-col>
+    </nz-row>
+    <nz-row class="share-btn" nzGutter="10" style="margin: 0 !important;">
+        <nz-col nzSpan="12">
+            <a routerLink="/m/capital/proxy/invite">
+                <div class="share-bg">
+                    <h3>邀请方式</h3>
+                    <p>分享您的二维码或邀请链接</p>
+                </div>
+            </a>
+        </nz-col>
+        <nz-col nzSpan="12">
+            <a routerLink="/m/capital/proxy/record">
+                <div class="share-bg data-bg">
+                    <h3>数据统计</h3>
+                    <p>查看邀请、佣金记录与统计</p>
+                </div>
+            </a>
+        </nz-col>
+    </nz-row>
+</div>

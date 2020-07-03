@@ -1,0 +1,107 @@
+@import "../../../config/config-mobile";
+
+.news-content {
+  width: 100%;
+  text-align: center;
+
+  .empty-page {
+    text-align: center;
+    color: @font-color;
+    padding-top: 2rem;
+
+    p {
+      text-align: center;
+      /* padding-top: 0.3rem; */
+      font-size: 0.3rem;
+    }
+  }
+
+  .newstitle {
+    display: flex;
+    font-size: 0.28rem;
+    justify-content: space-between;
+    background: @main-color;
+    color: @font-color;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    border-bottom: 0.02rem solid @second-font-color;
+
+    .head-types {
+      width: 20%;
+    }
+
+    .head-title {
+      width: 40%;
+    }
+
+    .head-time {
+      flex-grow: 1;
+    }
+  }
+
+  .newslist {
+    background: @second-color;
+    border-bottom: 0.02rem solid @second-font-color;
+
+    .newsitem {
+      display: flex;
+      justify-content: space-around;
+      height: 1rem;
+      line-height: 1rem;
+      color: @font-color;
+
+      .content-types {
+        width: 20%;
+        font-size: 0.22rem;
+        position: relative;
+
+        .unread {
+          width: 0.2rem;
+          height: 0.2rem;
+          background: red;
+          display: inline-block;
+          position: absolute;
+          border-radius: 50%;
+          left: 0.2rem;
+          top: 0.4rem;
+        }
+      }
+
+      .content-title {
+        width: 40%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 0.2rem;
+      }
+
+      .content-time {
+        flex-grow: 1;
+        font-size: 0.2rem;
+      }
+    }
+
+  }
+
+  .newsinfo {
+    color: @second-font-color;
+    padding: 0.2rem .5rem;
+    box-sizing: border-box;
+    text-align: left;
+    background: #15161c;
+
+    .title {
+      font-weight: bold;
+      font-size: 0.28rem;
+      padding: .1rem 0;
+    }
+
+    .content {
+      width: 100%;
+      height: auto;
+      line-height: 0.45rem;
+      text-align: left;
+      font-size: 0.25rem;
+    }
+  }
+}

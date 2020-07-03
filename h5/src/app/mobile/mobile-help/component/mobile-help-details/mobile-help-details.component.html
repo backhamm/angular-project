@@ -1,0 +1,13 @@
+<div style="height: 100%">
+  <div class="issue-wrapper">
+    <p class="issue-title">{{issueTitle}}</p>
+    <div>
+      <div *ngFor="let items of issueDetails">
+        <p class="issue-title">{{items.title}}</p>
+        <div *ngFor="let item of items.main" [innerHTML]="item"></div>
+      </div>
+    </div>
+  </div>
+  <!--<div class="issue-button" (click)="back()">我知道了</div>-->
+</div>
+

@@ -1,0 +1,54 @@
+<div class="integral-bg">
+  <div class="integral-banner">
+
+  </div>
+  <div class="record-infor">
+    <div class="nav-title">
+      订单记录
+    </div>
+    <div class="record-nav-head">
+      <div class="recod-title">我的积分: <span>{{integral}}</span></div>
+      <nz-range-picker
+        nzSize="large"
+        nzFormat="yyyy/MM/dd"
+        [(ngModel)]="integralRecordTimes"
+        (ngModelChange)="onChange($event)">
+      </nz-range-picker>
+    </div>
+    <nz-table [nzData]="integralRecordData" [nzShowPagination]="false" [nzLoading]="integralRecordLoading">
+      <thead>
+      <tr>
+        <th>商品名称</th>
+        <th>兑换数量</th>
+        <th>生成订单时间</th>
+        <th>收货人手机号</th>
+        <th>收货人姓名</th>
+        <th>发货状态</th>
+        <th>审核</th>
+        <th>备注</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of integralRecordData">
+          <td>{{ record.pluname }}</td>
+          <td>{{ record.pluNumber }}</td>
+          <td>{{ record.orderTime }}</td>
+          <td>{{ record.deliverPhone }}</td>
+          <td>{{ record.deliverName }}</td>
+          <td [ngClass]="record.deliverStatus == 0 ? 'orange' : 'green'">{{ record.deliverStatus == 0 ? '待发货' : '已发货' }}</td>
+          <td [ngClass]="record.orderState == 0 ? 'orange' : record.orderState == 1 ? 'green' : 'red'">
+            {{ record.orderState == 0 ? '待审核' : record.orderState == 1 ? '审核通过' : '审核不通过' }}
+          </td>
+          <td>{{ record.rmk }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+    <div class="page-box">
+      <nz-pagination [(nzPageIndex)]="integralRecordPage.page" [nzPageSize]="integralRecordPage.size"
+                     [nzTotal]="integralRecordPage.total" [nzHideOnSinglePage]="true" (nzPageIndexChange)="getRecordData()">
+      </nz-pagination>
+    </div>
+  </div>
+  <div class="clearBox"></div>
+</div>
+

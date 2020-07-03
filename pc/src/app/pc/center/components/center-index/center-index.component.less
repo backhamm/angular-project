@@ -1,0 +1,69 @@
+@import '../../../../config/config.less';
+
+//用户中心公共样式
+.center {
+    //background: hsla(0, 0%, 94%, .329);
+    padding-top: 18px;
+    padding-bottom: 18px;
+    overflow: hidden;
+    color: @main-font-color;
+    .center-container {
+        width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        border: 1px solid #eaeaea;
+        .center-left {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 198px;
+            height: 100%;
+            background: @white-color;
+            min-height: 500px;
+        }
+        .center-right {
+            min-height: 1000px;
+            width: 1000px;
+            background: @white-color;
+            border-left: 1px solid #eaeaea;
+            font-size: 14px;
+            .center-notice {
+                width: 100%;
+                background: @center-personal-bg;
+                height: 50px;
+                line-height: 50px;
+                overflow: hidden;
+                padding-left: 20px;
+                padding-right: 20px;
+                position: relative;
+                color: #c2a77d;
+                .notice-volume{
+                  width: 30px;
+                  height: 30px;
+                  border-radius: 50%;
+                  background: @theme-color;
+                  text-align: center;
+                  line-height: 33px;
+                  margin: 10px 15px 0 0;
+                  i {
+                    font-size: 18px;
+                    color: @white-color;
+                  }
+                }
+                .notice-main{
+                  width: calc(100% - 45px);
+                  height: 50px;
+                }
+                li {
+                  height: 50px;
+                  line-height: 50px;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  color: @main-color;
+                  cursor: pointer;
+                }
+            }
+        }
+    }
+}

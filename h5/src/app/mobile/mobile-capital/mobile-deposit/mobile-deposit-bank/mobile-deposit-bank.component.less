@@ -1,0 +1,189 @@
+@import "../../../../config/config-mobile";
+
+.no-way {
+    text-align: center;
+    background: @second-color;
+    color: @second-font-color;
+    height: 2.4rem;
+    border-radius: .15rem;
+    margin: 0.3rem;
+    font-size: .3rem;
+    line-height: 2.4rem;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+.icon-customerservice, .customer {
+    color: @tooltip-color;
+}
+
+.exclamation {
+    color: red;
+    margin-right: .1rem;
+}
+
+.deposit-payer {
+    padding: .3rem 0.3rem 0;
+    background: @deep-main-color;
+
+    .lottery {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .deposit-list {
+        padding: 0.13rem 0 0.18rem 0.2rem;
+        width: 1.5rem;
+        border: 1px solid @border-color;
+        border-radius: .08rem;
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        margin-right: .3rem;
+        margin-bottom: .3rem;
+        font-size: 0.24rem;
+        color: @second-font-color;
+
+        &:nth-child(4n) {
+            margin-right: 0;
+        }
+    }
+    .circle {
+        border: 0.04rem solid @second-font-color;
+        width: .12rem;
+        height: .12rem;
+        border-radius: 0.1rem;
+        display: inline-block;
+        margin-left: -0.2rem;
+        margin-right: 0.1rem;
+    }
+    .active {
+        color: @btn-primary;
+        border: 1px solid @btn-primary;
+        .circle {
+            border: 0.04rem solid @btn-primary;
+        }
+    }
+}
+
+.title {
+    color: @font-color;
+    padding: .2rem 0.3rem;
+    font-size: .3rem;
+    box-sizing: border-box;
+}
+
+.deposit-amount {
+    border-bottom: 1px solid @main-color;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: auto;
+    background: @deep-main-color;
+
+    .deposit-item {
+        margin: .15rem 0;
+        height: .6rem;
+        .bank-group {
+            margin-top: .1rem;
+        }
+        .selected-bank {
+            color: @second-font-color;
+            text-align: right;
+            display: inline-block;
+            float: right;
+            margin-right: .2rem;
+        }
+    }
+    /*.fixed-amount {
+        box-sizing: border-box;
+        padding: 0 0 0.3rem 0.3rem;
+    }*/
+    .fixed-amount {
+        padding-bottom: .3rem;
+        box-sizing: border-box;
+        .amount {
+            text-align: center;
+            .btn-active {
+                color: @btn-primary;
+                border-color: @btn-primary;
+            }
+            .amount-btn {
+                width: 90%;
+            }
+        }
+    }
+}
+
+.deposit-submit {
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.next {
+    box-sizing: border-box;
+    padding: 0 1rem 0.3rem;
+}
+
+.select-deposit-way {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    box-sizing: border-box;
+    padding: 0 0.5rem 0.2rem;
+    border-bottom: 1px solid @border-color;
+    color: @font-color;
+    .checked {
+        display: none;
+    }
+}
+
+.select-active {
+    .checked {
+        display: block;
+        color: @font-color;
+        display: block;
+        line-height: 0.8rem;
+    }
+}
+
+.switch-container {
+    float: right;
+    margin-right: .2rem;
+}
+
+::ng-deep {
+    .ant-btn {
+        vertical-align: middle;
+    }
+    .ant-drawer-content, .ant-drawer-header, .ant-drawer-content-wrapper {
+        background: @second-color;
+    }
+    .ant-drawer-title, .ant-drawer-close {
+        color: @font-color !important;
+    }
+
+    .ant-drawer-body {
+        padding: 0;
+    }
+    .ant-drawer-content-wrapper {
+        height: auto !important;
+        min-height: 5rem;
+    }
+    .ant-radio {
+        color: @second-font-color;
+    }
+    .ant-radio-group {
+        float: right;
+    }
+    .ant-switch {
+        background: @second-font-color;
+    }
+    .ant-switch-checked {
+        background: @btn-primary;
+    }
+}

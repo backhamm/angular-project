@@ -1,0 +1,115 @@
+@import "../../config/config-mobile";
+
+body {
+  background: @main-color;
+  font-size: 0.24rem;
+  overflow-x: hidden;
+  width: 100%;
+  color: @font-color;
+}
+
+.mobile-layout-container {
+  width: 100%;
+  height: 100%;
+  padding-top: .85rem;
+}
+
+.ant-layout {
+  background: @main-color;
+  overflow: hidden;
+  width: 100%;
+}
+
+.top-header {
+  height: 100%;
+}
+
+@keyframes fade-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+:host ::ng-deep {
+  .btn-image-big {
+    background: url('@{base-url}image/common/shape_theme_btn_normal.png') no-repeat center / 100% 100% !important;
+  }
+
+  .btn-image-big2 {
+    background: url('@{base-url}image/common/shape_theme_btn_hover.png') no-repeat center / 100% 100% !important;
+  }
+
+  .btn-image-big:focus, .btn-image-big2:focus {
+    border: none;
+  }
+
+  .has-error .ant-input:focus {
+    box-shadow: none;
+  }
+
+	#loading-bar {
+		.bar {
+			background: @primary-color !important;
+		}
+	}
+  .fade-animation {
+    animation: fade-animation .3s;
+  }
+  .am-list-item .am-input-label {
+    color: @btn-primary;
+    font-size: .5rem;
+  }
+  .anticon-exclamation {
+    color: @tooltip-color;
+  }
+  .ant-input, .ant-input-group-addon {
+    border: none !important;
+    background: @deep-main-color;
+    color: @second-font-color;
+    outline: none !important;
+    box-shadow: none;
+    text-align: @text-align;
+    &:hover, &:focus {
+      border: none !important;
+      outline: none !important;
+    }
+    &::placeholder {
+      color: @second-font-color;
+    }
+  }
+  .ant-input-group-addon {
+    color: @btn-primary;
+    font-size: .3rem;
+  }
+  .ant-btn-primary {
+    color: @font-color;
+    background: @btn-primary;
+    border: none;
+  }
+  .ant-divider-inner-text {
+    color: @second-font-color;
+  }
+  .ant-spin-container::after {
+    background: @deep-main-color;
+  }
+  .ant-spin-nested-loading > div > .ant-spin {
+    position: fixed;
+  }
+  .has-error .ant-input, .has-error .ant-input {
+    &:focus {
+      // border: none !important;
+    }
+  }
+    @keyframes moveBottom {
+        0%{
+            transform: translateY(-40%);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+}

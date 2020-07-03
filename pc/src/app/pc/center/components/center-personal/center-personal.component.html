@@ -1,0 +1,87 @@
+<div class="center-right fl">
+    <div class="page-header">
+        个人资料
+    </div>
+    <div class="baseinfo">
+        <div class="avatar"></div>
+        <div class="baseInfoUser">
+            <div class="name">
+                <span>{{uerInfo.username}}</span>
+                <span>,欢迎您</span>
+                <a routerLink="/center/modify_password"><span class="change-login-psw">修改密码</span></a>
+            </div>
+            <div class="last">
+                上次登录时间:<span id="login_time">{{uerInfo.loginDate}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="title-content">账户安全</div>
+    <nz-spin nzTip="Loading..." [nzSpinning]="loading">
+        <table class="yjTabel">
+            <tr>
+                <td class="bg-color">真实姓名</td>
+                <td>
+                    <a class="txta"
+                       [routerLink]=" uerInfo.realname ? null : src.name">
+                      {{uerInfo.realname ? uerInfo.realname : '未设定'}}
+                    </a>
+                    <a [routerLink]="src.name" class="set" *ngIf="uerInfo.realname && !uerInfo.hasBankCard">修改</a>
+                </td>
+
+                <td class="bg-color">手机号码</td>
+                <td>
+                    <a class="txta" *ngIf="!uerInfo.mobile" [routerLink]="src.phone">
+                      绑定手机号
+                    </a>
+                    <a class="txta" *ngIf="uerInfo.mobile" href="javascript:void(0);">
+                      {{uerInfo.mobile}}
+                    </a>
+                    <a [routerLink]="src.phone" class="set" *ngIf="!uerInfo.hasMobile">修改</a>
+                </td>
+            </tr>
+            <tr>
+
+                <td class="bg-color">微信号</td>
+                <td>
+                    <a class="txta"
+                       [routerLink]="uerInfo.weixin ? null : src.weixin">
+                      {{uerInfo.weixin ? uerInfo.weixin : '未设定'}}
+                    </a>
+                    <a [routerLink]="src.weixin" class="set" *ngIf="uerInfo.weixin">修改</a>
+                </td>
+                <td class="bg-color">QQ号</td>
+                <td>
+                    <a class="txta" [routerLink]="uerInfo.qq ? null : src.qq">
+                      {{uerInfo.qq ? uerInfo.qq : '未设定'}}
+                    </a>
+                    <a [routerLink]="src.qq" class="set" *ngIf="uerInfo.qq">修改</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="bg-color">提款密码</td>
+                <td>
+                    <a class="txta" [routerLink]="uerInfo.hasWithdrawPassword ? null : src.withdrawal">
+                      {{uerInfo.hasWithdrawPassword ? "已完成设置" : "立即设定"}}
+                    </a>
+                    <a [routerLink]="src.withdrawal" class="set" *ngIf="uerInfo.hasWithdrawPassword">修改</a>
+                </td>
+                <td class="bg-color">银行卡号</td>
+                <td>
+                    <a class="txta" [routerLink]="!!bankInfo ? null : src.card">
+                      {{!!bankInfo ? bankInfo.cardNum : '未设定'}}
+                    </a>
+                    <!--<a [routerLink]="src.card" class="set" *ngIf="userCard">修改</a>-->
+                </td>
+            </tr>
+            <tr>
+                <td class="bg-color">注册时间</td>
+                <td colspan="3">
+                    <span class="txta">{{uerInfo.regDate}}</span>
+                </td>
+            </tr>
+        </table>
+    </nz-spin>
+
+    <hr class="bottom-line">
+</div>
+

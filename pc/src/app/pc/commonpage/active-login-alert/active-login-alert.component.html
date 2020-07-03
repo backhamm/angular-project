@@ -1,0 +1,65 @@
+<div id="index-dailog-bg"></div>
+<div id="index-dailog" *ngIf="auth.phoneLogin">
+  <div class="nav-tabs-header">
+    <p>登录验证</p>
+    <span (click) = 'cancleActive()'>×</span>
+  </div>
+  <div class="nav-tabs">
+    <p>平台系统升级，为保证您的账户安全，请验证您的绑定手机。</p>
+    <div class="mobile">
+      <nz-input-group [nzPrefix]="prefixTemplateUser">
+        <input type="text" nz-input [(ngModel)]="auth.loginData.mobile" [disabled]="true" />
+      </nz-input-group>
+      <ng-template #prefixTemplateUser><i nz-icon class="icon phoneIcon"></i></ng-template>
+    </div>
+    <div class="email">
+      <nz-input-group [nzPrefix]="prefixTemplateEmail">
+        <input nz-input placeholder="请输入短信验证码" maxlength="4"
+        appLimitInput
+        [limitType]="'number'" [(ngModel)]="msgCode"/>
+      </nz-input-group>
+      <ng-template #prefixTemplateEmail><i nz-icon class="icon emailIcon"></i></ng-template>
+      <div>
+          <span class="verification" (click) = 'sendCode()' *ngIf="!deadline">发送验证码</span>
+          <div class="countdown" *ngIf="deadline">
+            倒计时 {{deadline/1000}} s
+          </div>
+      </div>
+      
+    </div>
+    <p class="fz12">如有任何问题，请联系<a class="onlineService" [href]="platform.onlineService.href"
+        [target]="platform.onlineService.target">在线客服</a>。</p>
+    <div class="button">
+      <span class="cancle" (click) = 'cancleActive()'>取消</span>
+      <span class="sure" (click) = submitActive()>确定</span>
+    </div>
+  </div>
+</div>
+
+<div id="error-index" *ngIf="auth.errorLogin">
+  <div class="nav-tabs-header">
+    <p>提示</p>
+    <span (click)="auth.activeLogin = false;">×</span>
+  </div>
+  <div class="errorContent">
+    <p>平台系统升级，因您还未绑定手机，无法进行验证，请联系<a class="onlineService" [href]="platform.onlineService.href"
+        [target]="platform.onlineService.target">在线客服</a>。</p>
+    <div class="button">
+      <span class="sure" (click) = 'auth.activeLogin = false'>确定</span>
+    </div>
+  </div>
+
+</div>
+
+
+<div id="passwordInfo" *ngIf="auth.passwordInfo">
+  <div class="nav-tabs-header">
+    <p>提示</p>
+  </div>
+  <div class="errorContent">
+    <p><i class="errorIcon"></i>初始登录密码已通过短信发送给您，请您及时更改</p>
+    <div class="button">
+      <span class="sure" (click) = 'auth.activeLogin = false'>确定</span>
+    </div>
+  </div>
+</div>

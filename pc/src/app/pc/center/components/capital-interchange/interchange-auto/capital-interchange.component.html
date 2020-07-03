@@ -1,0 +1,67 @@
+<div class="capital">
+    <button class="switch-hand interchange-button-default" routerLink="/center/interchange-hand" nz-button
+            nzType="default">切换至手动转账
+    </button>
+    <div class="capital-title">我的资产</div>
+    <div class="refresh">
+        <button nz-button nzType="link" [nzLoading]="refreshLoading" (click)="refresh()">刷新</button>
+    </div>
+    <div class="capital-container clear">
+        <div class="left fl">
+            <h1>{{eyeShow?(userInfo?.totalBalance | number:'1.2-2'):'***'}}</h1>
+            <div class="buttons">
+                <button class="interchange-button-default" routerLink="/center/withdraw" nz-button nzType="default">
+                    提款
+                </button>
+                <button routerLink="/center/deposit" nz-button nzType="primary">存款</button>
+            </div>
+            <div class="eye">
+                <nz-switch
+                    [(ngModel)]="eyeShow"
+                    [nzCheckedChildren]="checkedTemplate"
+                    [nzUnCheckedChildren]="unCheckedTemplate"
+                ></nz-switch>
+                <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
+                <ng-template #unCheckedTemplate><i nz-icon nzType="eye-invisible"></i></ng-template>
+            </div>
+        </div>
+        <div class="right fl">
+            <!--<div class="proxy item">-->
+                <!--<div *ngIf="user.userInfo && user.userInfo.agencyStatus == 0">-->
+                    <!--<span>未结佣金</span>-->
+                    <!--<span *ngIf="eyeShow">￥{{capital?.outstandingCommissions| number:'1.2-2'}}</span>-->
+                    <!--<span *ngIf="!eyeShow">{{capital?.outstandingCommissions}}</span>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="wallet item">
+                <span>中心钱包</span>
+                <span>￥{{eyeShow?(userInfo?.wallet | number:'1.2-2'):'***'}}</span>
+                <button class="interchange-button-default" [disabled]="onClickState" [nzLoading]="onClickState"
+                        (click)="oneClickRecycling()" nz-button
+                        nzType="default">一键回收
+                </button>
+            </div>
+            <div class="integral item">
+                <span>积分总额</span>
+                <span>{{userInfo?.integral}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="assets">
+    <div class="capital-title">资产分布</div>
+    <nz-spin [nzSpinning]="refreshLoading" nzTip="Reloading...">
+        <ul *ngIf="service.playedGameList"
+            [class.assets-much]="service.playedGameList.length > 12" class="assets-container clear">
+            <li *ngFor="let item of service.playedGameList" class="assets-items fl clear">
+                <div (click)="recyclingByPlatCode(item.gameCode, item.balance)"
+                     [style.background-image]="'url('+item.gameImg+')'" class="logo fl"></div>
+                <div class="detail fl">
+                    <p>{{item.gameName}}</p>
+                    <p>{{eyeShow?(item.balance | number:'1.2-2'):'***'}}</p>
+                </div>
+            </li>
+        </ul>
+    </nz-spin>
+    <nz-empty *ngIf="!service.playedGameList?.length"></nz-empty>
+</div>

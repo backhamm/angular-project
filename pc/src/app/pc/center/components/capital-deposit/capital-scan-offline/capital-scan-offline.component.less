@@ -1,0 +1,85 @@
+@import '../../../../../config/config.less';
+.bank-pay-wrap {
+    width: 1000px;
+    .pay-steps {
+        padding: 40px 100px;
+        //text-align: center;
+    }
+    .forms {
+        min-height: 200px;
+        padding: 50px 80px;
+        white-space: normal;
+        ::ng-deep {
+            .ant-divider-horizontal.ant-divider-with-text-left{
+                // color: #e40000;
+            }
+            .ant-divider-horizontal.ant-divider-with-text-left::before,
+            .ant-divider-horizontal.ant-divider-with-text-left::after{
+                border-top: 1px solid #c5c5c5;
+            }
+            .ant-radio-group-large .ant-radio-button-wrapper{
+                img{
+                    display: block;
+                    height: 80%;
+                    margin-top: 10%;
+                }
+            }
+            .ant-radio-button-wrapper-checked{
+                border-color: red;
+                box-shadow: -1px 0 0 0 red;
+            }
+            .ant-divider-horizontal.ant-divider-with-text-left{
+                margin: 16px 0 20px;
+            }
+        }
+        .second{
+            margin-top: 40px;
+            p{
+                font-size: 16px;
+                font-weight: bold;
+                margin: 10px 0 20px;
+            }
+            img{
+                display: block;
+                background: @white-color;
+                width: 200px;
+                height: 200px;
+            }
+        }
+        .third{
+            margin-top: 40px;
+            .el {
+                margin-top: 20px;
+                line-height: 38px;
+                position: relative;
+                display: table;
+                .item-label {
+                    width: 70px;
+                    margin-right: 10px;
+                }
+                .content {
+                    input, nz-input-number {
+                        line-height: 38px;
+                        height: 38px;
+                        width: 200px;
+                    }
+                }
+                .tip-div {
+                    margin-left: 30px;
+                    color: #ff5454;
+                }
+                .submit {
+                    width: 200px;
+                    height: 40px;
+                    margin-left: 80px;
+                    margin-top: 10px;
+                }
+            }
+        }
+        .title{
+            font-size: 20px;
+            padding: 10px 0;
+        }
+    }
+}
+

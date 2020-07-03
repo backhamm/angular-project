@@ -1,0 +1,155 @@
+@import "../../../../../config/config";
+
+.online-wrap {
+    width: 1000px;
+    .pay-steps {
+        padding: 40px 100px;
+        //text-align: center;
+    }
+    .pay-channel {
+        padding: 10px 80px 20px;
+        //text-align: center;
+        span {
+            cursor: pointer;
+            display: inline-block;
+            border: 1px dashed #cacaca;
+            width: 145px;
+            height: 43px;
+            margin: 0 15px 20px 0;
+            float: none !important;
+            line-height: 41px;
+            text-indent: 70px;
+            font-size: 14px !important;
+            background-repeat: no-repeat;
+            background-size: auto 50%;
+            background-position: 28% center;
+        }
+        .list_on {
+            border: 1px red solid;
+        }
+    }
+    .form {
+        min-height: 200px;
+        padding: 50px 80px;
+        white-space: normal;
+        .el {
+            //height: 40px;
+            line-height: 40px;
+            margin-bottom: 22px;
+            .prefix {
+                margin-right: 12px;
+            }
+        }
+        .submit {
+            width: 200px;
+            height: 40px;
+            margin-left: 82px;
+            margin-top: 20px;
+        }
+        .banklist {
+            .content {
+                width: 750px;
+                .bank-type-item {
+                    width: 154px;
+                    height: 50px;
+                    border: 1px solid #cccccc;
+                    text-align: center;
+                    line-height: 45px;
+                    float: left;
+                    margin-right: 5px;
+                    cursor: pointer;
+                    margin-bottom: 5px;
+                    position: relative;
+                    img {
+                        width: 150px;
+                        height: 48px;
+                    }
+                }
+
+            }
+            .active {
+                color: #c8a675;
+                cursor: default;
+                border-color: @main-color;
+                &:after {
+                    position: absolute;
+                    right: 0;
+                    content: " ";
+                    bottom: 0;
+                    width: 0;
+                    height: 0;
+                    border-width: 0 0 25px 25px;
+                    border-style: solid;
+                    border-color: transparent transparent #c8a675;
+                }
+                &:before {
+                    position: absolute;
+                    right: 0;
+                    content: " ";
+                    bottom: 2px;
+                    background: url('@{base-url}/user_img/gou_bai.png') no-repeat;
+                    width: 14px;
+                    height: 11px;
+                    z-index: 1;
+                }
+            }
+        }
+        .amount {
+            display: table;
+            //margin: 0 auto;
+            position: relative;
+
+            nz-input-number {
+                height: 40px;
+                line-height: 40px;
+                width: 300px;
+                ::ng-deep .ant-input-number-handler-wrap {
+                    opacity: 1;
+                }
+                ::ng-deep .ant-input-number-input {
+                    text-align: center;
+                }
+            }
+            .tip-div {
+                border: 1px solid #fec6a0;
+                position: absolute;
+                top: 50%;
+                left: 428px;
+                transform: translateY(-50%);
+                padding: 7px 15px;
+                border-radius: 5px;
+                background: #fef5e3;
+                line-height: 24px;
+                width: 280px;
+                &:before, &:after {
+                    content: "";
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    left: -20px;
+                }
+                &:before {
+                    border: 11px solid transparent;
+                    border-right-color: #fef5e3;
+                    z-index: 1;
+                }
+                &:after {
+                    border: 10px solid transparent;
+                    border-right-color: #fec6a0;
+                }
+            }
+        }
+    }
+}
+
+::ng-deep{
+  .ant-drawer-header{
+    height: 60px;
+  }
+  .ant-drawer-body{
+    height: calc(100% - 60px);
+  }
+}

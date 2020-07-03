@@ -1,0 +1,180 @@
+@import "~src/app/config/config-mobile";
+
+@keyframes move-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% + 1.54rem));
+  }
+}
+
+.integral-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 .3rem;
+  line-height: .5rem;
+  border-bottom: 1px solid @btn-primary;
+  font-size: .2rem;
+  color: @font-color;
+
+  .right {
+    color: @second-font-color;
+  }
+
+  .img1 {
+    vertical-align: middle;
+    width: .2rem;
+    margin-top: -.03rem;
+  }
+
+  .img2 {
+    vertical-align: middle;
+    width: .25rem;
+    margin: -.02rem 0 0 0.2rem;
+  }
+}
+
+.container {
+  padding: 0 .3rem;
+
+  .title {
+    line-height: .7rem;
+    font-size: .32rem;
+    text-align: center;
+    color: @font-color;
+  }
+
+  .conversion-list {
+    height: 1.5rem;
+    line-height: .5rem;
+    text-align: center;
+    font-size: .26rem;
+    border: 1px solid @second-color;
+    font-weight: 500;
+    color: @second-font-color;
+    overflow: hidden;
+
+    .list {
+      animation-name: move-up;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+
+      li {
+        padding: 0 .3rem 0 .2rem;
+        text-align: left;
+        border-bottom: 1px solid @second-color;
+      }
+    }
+
+    .user {
+      float: right;
+    }
+  }
+
+  .ant-carousel {
+    height: 4.8rem;
+    margin-bottom: .2rem;
+  }
+
+  .boutique {
+    padding: .2rem .2rem 0;
+    border: 1px solid @second-color;
+
+    .boutique-image {
+      height: 3rem;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+
+    .boutique-title {
+      line-height: 2;
+      font-size: .3rem;
+      font-weight: bold;
+      color: @font-color;
+    }
+
+    .boutique-money {
+      font-size: .28rem;
+
+      p {
+        line-height: 1.5;
+        color: @font-color;
+
+        .money-color {
+          color: @btn-primary;
+        }
+      }
+    }
+    button {
+      width: 100%;
+      line-height: .5rem;
+      font-size: .26rem;
+      border-radius: 1rem;
+      border: none;
+      background: @btn-primary;
+      color: @font-color;
+    }
+  }
+
+  .goods {
+    display: inline-block;
+    padding: .16rem;
+    margin-bottom: .13rem;
+    width: 49%;
+    font-size: .24rem;
+    border: 1px solid @second-color;
+    text-align: center;
+
+    &:nth-child(odd) {
+      margin-right: 2%;
+    }
+
+    .goods-image {
+      padding-top: 100%;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+
+    .goods-title {
+      line-height: 1.6;
+      white-space: nowrap;
+      font-size: .3rem;
+      font-weight: bold;
+      color: @font-color;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    p {
+      line-height: 1.3;
+      color: @second-font-color;
+
+      .money-color {
+        color: @btn-primary;
+      }
+    }
+
+    button {
+      display: block;
+      margin: .1rem auto 0;
+      width: 1.8rem;
+      line-height: .42rem;
+      border-radius: 1rem;
+      border: none;
+      background: @btn-primary;
+      color: @font-color;
+    }
+  }
+
+  .isLoading {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  ::ng-deep {
+    .ant-empty-description {
+      color: @second-font-color;
+    }
+  }
+}

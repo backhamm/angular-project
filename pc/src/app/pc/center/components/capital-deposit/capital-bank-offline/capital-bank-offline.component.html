@@ -1,0 +1,23 @@
+<div class="bank-pay-wrap">
+    <div class="pay-steps">
+        <nz-steps  [nzCurrent]="deposit.currentStep" [nzSize]="'small'">
+            <nz-step nzTitle="填写订单"></nz-step>
+            <nz-step nzTitle="存款转账"></nz-step>
+            <nz-step nzTitle="生成订单"></nz-step>
+        </nz-steps>
+    </div>
+    <!--第一步-->
+    <app-deposit-bank-one-step *ngIf="deposit.currentStep === 0"
+                               (changeStep_1)="changeOneStep($event)">
+    </app-deposit-bank-one-step>
+    <!--第二步-->
+    <app-deposit-bank-two-step *ngIf="deposit.currentStep === 1"
+                               [depositInfo] = 'depositInfo'>
+    </app-deposit-bank-two-step>
+    <!--第三步-->
+    <div class="forms" *ngIf="deposit.currentStep === 2">
+        <h2 class="title">提交成功</h2>
+        <p>系统审核通过后，将会及时到账，请确保您的通讯畅通，以便客服与您联系。</p>
+    </div>
+    <app-deposit-reminder></app-deposit-reminder>
+</div>

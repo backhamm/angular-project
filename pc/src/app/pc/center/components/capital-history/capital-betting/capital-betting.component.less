@@ -1,0 +1,190 @@
+@import '../../../../../config/config.less';
+
+.content {
+    .title {
+        width: 30%;
+        height: 40px;
+        padding: 0 30px;
+        margin: 30px 0;
+        background: linear-gradient(90deg, #f2f2f2, #fff);
+        line-height: 40px;
+        font-weight: 700;
+        color: @color-second;
+    }
+
+    .search {
+        margin: 20px;
+        padding: 10px;
+        border-radius: 3px;
+
+        ::ng-deep {
+            .ant-calendar-range-picker-input {
+                font-size: 14px;
+            }
+
+        }
+
+        nz-select, button, nz-range-picker {
+            font-size: 14px;
+        }
+
+        .platform-box {
+            position: relative;
+            height: 35px;
+            padding-top: 14px;
+            border-top: 1px solid #e2e2e2;
+            margin-top: 14px;
+            .platform {
+                span {
+                    padding: 0 5px;
+                    font-size: 14px;
+                    &:last-child {
+                      color: @main-color
+                    }
+                }
+            }
+
+            .drop {
+                position: absolute;
+                display: none;
+                left: 0;
+                top: -1px;
+                width: 100%;
+                height: 0;
+                padding: 10px 16px;
+                transition: all .5s;
+                border: 1px solid @border-color-proxy;
+                background: @white-color;
+                box-shadow: 0 2px 5px @border-line;
+                border-radius: 5px;
+                z-index: 10;
+
+                &.show {
+                    display: block;
+                    height: auto;
+                }
+
+                .drop-title {
+                    overflow: hidden;
+                    line-height: 36px;
+                    padding-bottom: 5px;
+                    border-bottom: 1px solid @border-color-proxy;
+
+                    .close {
+                        margin: 13px;
+                        cursor: pointer;
+                    }
+                }
+
+                ul {
+                    padding: 20px 0 10px;
+                    font-size: 14px;
+
+                    li {
+                        overflow: hidden;
+                        margin-bottom: 8px;
+
+                        .type {
+                            width: 80px;
+
+                            i {
+                                display: inline-block;
+                                padding: 4px 9px;
+                                border-radius: 3px;
+                                margin: 4px 5px;
+                            }
+                        }
+
+                        .list {
+                            width: calc(100% - 88px);
+
+                            span {
+                                display: inline-block;
+                                padding: 4px 9px;
+                                border-radius: 3px;
+                                margin: 4px 5px;
+                                cursor: pointer;
+
+                                &:hover, &.active {
+                                    background: @main-color;
+                                    color: @white-color;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .btn-box {
+                    text-align: right;
+
+                    button {
+                        margin: 0 6px;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .table-box {
+        margin: 20px;
+        border: 1px solid #eee;
+    }
+
+    .show-all {
+        margin: 20px 0;
+        font-size: 14px;
+        color: @color-second;
+        text-align: center;
+
+        span {
+            position: relative;
+            padding-right: 10px;
+            margin-right: 10px;
+            border-right: 1px solid @background-second;
+
+            &:last-child {
+                padding-right: 10px;
+                margin-right: 10px;
+                border: none;
+            }
+        }
+    }
+
+    .page-box {
+        margin-top: 25px;
+        padding-bottom: 25px;
+        text-align: center;
+    }
+}
+
+.green {
+    color: @green-color;
+}
+
+.red {
+    color: @red-color;
+}
+
+:host {
+    ::ng-deep {
+        .ant-table-content {
+            min-height: 604px;
+        }
+
+        .ant-table-placeholder {
+            border-bottom: none;
+        }
+
+        .ant-empty-normal {
+            margin: 196px 0;
+        }
+        .ant-table-thead > tr > th {
+            font-weight: bold;
+            color: @color-second;
+        }
+        .ant-table-tbody td {
+            color: @color-second;
+        }
+    }
+}

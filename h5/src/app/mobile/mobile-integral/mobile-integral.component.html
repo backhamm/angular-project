@@ -1,0 +1,71 @@
+<div class="home-index">
+  <app-mobile-header [leftIcon]="true"></app-mobile-header>
+  <div class="h-container" style="font-size: 0;">
+    <img style="width: 100%;" [src]="config.baseMobileImgUrl + 'image/jfsc/banner01.png'" alt="">
+    <div class="integral-title">
+      <div class="left">
+        我的积分：<span style="color: #CDA469;">{{!!user.userInfo ? user.userInfo.integral : 0}}</span>
+      </div>
+      <div class="right">
+        <span (click)="goSubPage()">
+          <img class="img1" [src]="config.baseMobileImgUrl + 'image/jfsc/jfsc_icon_ddjl.png'" alt="">
+          订单记录
+        </span>
+        <span routerLink="/m/integral/subpage/1">
+          <img class="img2" [src]="config.baseMobileImgUrl + 'image/jfsc/jfsc_icon_dhgz.png'" alt="">
+          兑换规则
+        </span>
+      </div>
+    </div>
+    <div class="container fade-animation">
+      <div class="title">兑换热榜清单</div>
+      <div class="conversion-list">
+        <div style="height: 10000px">
+          <ul class="list" [ngStyle]="{animationDuration: conversionList.length + 's'}">
+            <li *ngFor="let item of conversionList">
+              【{{item.name}}】
+              <span class="user">**{{item.user}}**</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="title">精选商品</div>
+      <div *ngIf="hotGoods.length">
+        <nz-carousel nzAutoPlay nzDots="false">
+          <div class="boutique" *ngFor="let item of hotGoods" nz-carousel-content>
+            <div class="boutique-image" [ngStyle]="{backgroundImage: 'url('+ item.icon +')'}"></div>
+            <div class="boutique-title">{{item.pluname}}</div>
+            <div nz-row nzType="flex">
+              <div class="boutique-money" nz-col nzSpan="14">
+                <p>礼品价值：<span class="money-color">¥ {{item.cprice}}</span></p>
+                <p>兑换积分：<span class="money-color">{{item.price}}</span></p>
+              </div>
+              <div nz-col nzSpan="10">
+                <button *ngIf="auth.isAuth" [routerLink]="['/m/integral/subpage/2']"
+                        [queryParams]="{info: item.id +'_'+ item.pluname + '_' + item.cprice + '_' + item.price +'_'+ item.sketch}">
+                  立即兑换
+                </button>
+                <button *ngIf="!auth.isAuth" (click)="goLogin()">立即兑换</button>
+              </div>
+            </div>
+          </div>
+        </nz-carousel>
+      </div>
+      <ul *ngIf="goodsList.length">
+        <li class="goods" *ngFor="let item of goodsList">
+          <div class="goods-image" [ngStyle]="{backgroundImage: 'url('+ item.icon +')'}"></div>
+          <div class="goods-title">{{item.pluname}}</div>
+          <p>礼品价值：<span class="money-color">¥ {{item.cprice}}</span></p>
+          <p>兑换积分：<span class="money-color">{{item.price}}</span></p>
+          <button *ngIf="auth.isAuth" [routerLink]="['/m/integral/subpage/2']"
+                  [queryParams]="{info: item.id +'_'+ item.pluname +'_'+ item.cprice +'_'+ item.price +'_'+ item.sketch}">
+            立即兑换
+          </button>
+          <button *ngIf="!auth.isAuth" (click)="goLogin()">立即兑换</button>
+        </li>
+      </ul>
+      <nz-spin *ngIf="isLoading !== 2" class="isLoading" nzSimple></nz-spin>
+      <nz-list *ngIf="isLoading === 2 && !hotGoods.length && !goodsList.length" [nzDataSource]="[]"></nz-list>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<nz-spin [nzSpinning]="game.gameLoading" nzTip="加载中">
+  <div class="top-header">
+    <div class="top-header-container">
+      <div>
+        <a routerLink="/help/problem/agency" class="agent change-color"><em></em>代理合作</a>
+        <a routerLink="/home/download" class="download change-color"><em></em>下载中心</a>
+        <a class="phone connect change-color" href="javascript:void (0);"><em></em>{{plat.phoneValue}}</a>
+      </div>
+      <div class="header-right">
+        <a class="website connect" href="www.s1381.com"  target="_bank"><em></em>www.s1381.com</a><span></span>
+        <a class="online connect" [href]="plat.onlineService.href" [target]="plat.onlineService.target"><em></em>7X24在线客服</a><span></span>
+        <a class="free" routerLink="/home/free">免费试玩</a>
+      </div>
+    </div>
+  </div>
+  <nz-header>
+      <div class="container clear">
+          <a class="logo_container" routerLink="/home">
+              <div class="logo"></div>
+          </a>
+          <ul class="nav-list clear">
+              <li *ngFor="let list of navGameList" class="menu">
+                  <a [routerLink]="'/' + list.link" routerLinkActive="active"
+                     [class.nav-change]="list.url==='discount'"
+                     >
+                    {{list.menuNameCn}}
+                    <!-- <span class="new" *ngIf="list.url === 'live'"></span> -->
+                    <span class="hot" *ngIf="list.hot === 1"></span>
+                  </a>
+                  <ol class="subnav" *ngIf="list.subMenus && list.subMenus.length">
+                    <!--<li class="tooltip">天天反水最高1.5%</li>-->
+                      <ng-container *ngFor="let sub of list.subMenus.slice(0,8); let i = index;">
+                          <li *ngIf="sub.menuNameEn !== 'waitfor'" (click)="subClick(sub, list.link, i)">
+                              <i nz-icon nzType="double-right" nzTheme="outline" class="icon-double-right"></i>
+                              <a href="javascript:void(0);" class="subnav-menu">{{sub.menuNameCn}}</a>
+                          </li>
+                      </ng-container>
+
+                  </ol>
+
+                  <!--<img *ngIf="list.hot" class="img-hots" [src]="comfig.baseImgUrl+'/images/hot.gif'" alt="">-->
+              </li>
+          </ul>
+      </div>
+  </nz-header>
+</nz-spin>
+<app-game-login-alert *ngIf="common.loginModalVisible"></app-game-login-alert>
+<app-page-landing></app-page-landing>
+<!-- 用户激活弹窗 -->
+<app-active-login-alert [ngStyle]="{'display': auth.activeLogin? 'block':'none'}"></app-active-login-alert>
+

@@ -1,0 +1,45 @@
+<div class="home-index">
+  <app-mobile-header [leftIcon]="true"></app-mobile-header>
+  <div class="h-container">
+    <div class="search-container">
+      <div  nz-row style="width: 100%;">
+        <div nz-col nzSpan="12" class="game-pic">
+          <img [src]="logoImgUrl" alt="">
+        </div>
+        <div nz-col nzSpan="10" style="position:relative;">
+          <nz-input-group [nzSuffix]="suffixIconSearch">
+            <input type="text" nz-input placeholder="请输入游戏名称" [(ngModel)]="searchName"/>
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <i nz-icon nzType="search" (click)="getSearchForthList()"></i>
+          </ng-template>
+        </div>
+      </div>
+
+    </div>
+    <nz-tabset [nzSize]="'larget'"
+               class="tab-container"
+               [nzShowPagination]="true"
+               [nzTabPosition]="'top'"
+               [nzTabBarGutter]="10">
+      <nz-tab
+        *ngFor="let item of thirdList; let i = index;"
+        (nzSelect)="getforthList(item.id)"
+        [nzTitle]="item.menuNameCn">
+        <div class="game-container" *ngFor="let every of forthList">
+          <div (click)="loadGame(every)" class="game">
+            <p class="text">{{every.menuNameCn}}</p>
+            <div class="img-wrapper">
+              <img [src]="every.imgs.length ? every?.imgs[0].img : ''" alt="">
+            </div>
+            <!--<p class="bg-img"
+               [ngStyle]="{'background':'url('+every?.imgs[0].img+')  no-repeat', 'background-size': '100% 100%'}"
+               [ngClass]="{'lotteryClass': lotteryArr.indexOf(every.gameCode)>0}"></p>-->
+          </div>
+        </div>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+</div>
+
+

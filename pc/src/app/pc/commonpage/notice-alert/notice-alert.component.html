@@ -1,0 +1,13 @@
+<div id="notice-dailog-container">
+    <div id="notice-dailog">
+        <div class="nav-tabs-header">
+            <p>公告</p>
+            <span (click)="common.noticeConfig.show = false;"></span>
+        </div>
+        <div class="nav-tabs">
+            {{common.noticeConfig.content}}
+        </div>
+        <p class="bottom-btn"><button type="button" id="confirm-btn" (click)="common.noticeConfig.show = false;">确定</button></p>
+    </div>
+</div>
+

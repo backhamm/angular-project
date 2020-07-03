@@ -1,0 +1,21 @@
+<nz-spin [nzSpinning]="game.isSpinning" nzTip="加载中">
+<div class="home-index">
+  <app-mobile-header [leftIcon]="true"></app-mobile-header>
+  <div class="game-container h-container">
+    <div nz-row>
+      <ng-container *ngFor="let item of gameArr">
+        
+        <div nz-col [nzSpan]="currentNzSpan">
+          <div class="game-pic game-pic-margin" (click)="loadGame(item)">
+            <img *ngIf="item.hot===1" class="itemImg" [src]="configService.baseMobileImgUrl+'image/free/icon_hot.png'" alt="">
+            <img [src]="item.imgs && item.imgs.length && item.imgs[0].img" alt="">
+            <p class="game-title">{{item.menuNameCn}}</p>
+            <p class="game-introduce" *ngIf="item.remark">{{item.remark}}</p>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</div>
+</nz-spin>

@@ -1,0 +1,171 @@
+@import '../../../../config/config.less';
+.withdraw {
+    .withdraw-title {
+        height: 40px;
+        background: linear-gradient(90deg, #f2f2f2, #fff);
+        line-height: 40px;
+        padding: 0 30px;
+        width: 30%;
+        margin: 30px 0;
+        font-weight: 700;
+        color: #666;
+    }
+
+    .pay-steps {
+        padding: 40px 100px;
+    }
+
+    .withdraw-warp {
+        padding: 30px 0 50px;
+
+        .withdraw-main {
+            width: 700px;
+            min-height: 400px;
+            margin: 0 auto;
+
+            .el {
+                height: 40px;
+                line-height: 40px;
+                margin-bottom: 20px;
+
+                &.card {
+                    height: 104px;
+                    line-height: 104px;
+                }
+
+                ::ng-deep {
+                    .ant-card-head {
+                        padding: 0 50px;
+                    }
+
+                    .ant-card-head-title {
+                        padding: 0;
+                        line-height: 48px;
+                        text-align: center;
+                    }
+
+                    .ant-card-body {
+                        padding: 0 24px;
+                        line-height: 54px;
+                    }
+
+                    .ant-card {
+                        border-radius: 6px;
+                    }
+
+                    .ant-empty {
+                        height: 104px;
+                    }
+
+                    .ant-empty-image {
+                        height: 80px;
+                    }
+                }
+
+                .prefix {
+                    width: 80px;
+                    margin-right: 10px;
+                    text-align: right;
+                }
+
+                .content {
+                    display: table;
+                    position: relative;
+
+                    nz-input-number, input {
+                        height: 40px;
+                        line-height: 40px;
+                        width: 250px;
+
+                        ::ng-deep .ant-input-number-handler-wrap {
+                            opacity: 1;
+                        }
+                    }
+
+                    .tip-div {
+                        border: 1px solid #fec6a0;
+                        position: absolute;
+                        top: 50%;
+                        left: 286px;
+                        transform: translateY(-50%);
+                        padding: 7px 15px;
+                        border-radius: 5px;
+                        background: #fef5e3;
+                        line-height: 24px;
+                        font-size: 14px;
+                        width: 280px;
+
+                        &:before, &:after {
+                            content: "";
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            top: 0;
+                            bottom: 0;
+                            margin: auto;
+                            left: -20px;
+                        }
+
+                        &:before {
+                            border: 11px solid transparent;
+                            border-right-color: #fef5e3;
+                            z-index: 1;
+                        }
+
+                        &:after {
+                            border: 10px solid transparent;
+                            border-right-color: #fec6a0;
+                        }
+                    }
+                }
+
+                .forget {
+                    font-size: 14px;
+                    margin-left: 20px;
+                    color: #fd600e;
+                }
+
+                .submit {
+                    width: 250px;
+                    height: 46px;
+                    margin-left: 90px;
+                    margin-top: 10px;
+                }
+            }
+
+            .tips {
+                padding-top: 40px;
+                font-size: 14px;
+                line-height: 30px;
+
+                .title {
+                    font-size: 20px;
+                    padding: 25px 0;
+                }
+
+                p.text2 {
+                    margin-bottom: 20px;
+                    color: red;
+                }
+            }
+        }
+    }
+}
+
+::ng-deep .vertical-center-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+::ng-deep .vertical-center-modal .ant-modal {
+  top: 0;
+}
+//防止积分商城样式重叠
+::ng-deep .ant-modal-content {
+    background-color: @white-color !important;
+    background-clip: padding-box;
+  }
+  ::ng-deep .ant-modal{
+    background-color: @white-color !important; 
+  }

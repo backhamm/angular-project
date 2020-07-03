@@ -1,0 +1,92 @@
+<div id="set-bankcard">
+
+    <div *ngIf="user.user?.hasBankCard ;then hadCard else noCard"></div>
+    <nz-spin [nzSpinning]="isLoading" nzTip="加载中">
+        <ng-template #hadCard>
+            <div class="publicpage">
+                <div class="bankcard-infors">
+                    <h2>
+                        {{bank?.bankName}}
+                    </h2>
+                    <p>
+                        {{bank?.cardNum}}
+                    </p>
+                </div>
+                <div class="personal-lists infors-rule">
+                    <p>
+                        温馨提醒 ： 如需修改绑定银行卡信息，请联系<a [href]="platformService.onlineService"><span class="red-color">联系客服</span></a>
+                    </p>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template #noCard>
+            <div class="publicpage">
+                <div class="personal-lists infors-rule">
+                    <p *ngIf="isGoBack">
+                        为了您账户安全，真实姓名需要与绑定银行卡姓名一致
+                    </p>
+                    <p  *ngIf="!isGoBack">请先添加银行卡,添加后即可进行转出提款</p>
+                </div>
+                <div class="gameLimit publicpage_view">
+                    <div class="personal-lists">
+                        <div class="grid-content bg-purple-dark">
+                            <label class="white-colors">真实姓名</label>
+                            <input class="info" placeholder="请输入持卡人姓名" type="text" maxlength="10" appLimitInput [limitType]="'chinese'"
+                                   [(ngModel)]="bankInfo.cardUsername">
+                        </div>
+                    </div>
+                    <div class="personal-lists">
+                        <div class="grid-content bg-purple-dark">
+                            <label class="white-colors">银行卡号</label>
+                            <input class="info" placeholder="请输入储蓄银行卡号" type="text" maxlength="20" appLimitInput [limitType]="'number'"
+                                   [(ngModel)]="bankInfo.cardNum">
+                        </div>
+                    </div>
+                    <div class="personal-lists">
+                        <div class="grid-content bg-purple-dark">
+                            <nz-input-group nzAddOnBefore="银行类型" class="bank-group">
+                                <div class="selected-bank" (click)="openToggleDraw()">{{currentSelectItem}} <i nz-icon
+                                                                                                               nzType="right"
+                                                                                                               nzTheme="outline"></i>
+                                </div>
+                            </nz-input-group>
+                        </div>
+                    </div>
+                    <div class="personal-lists">
+                        <div class="grid-content bg-purple-dark">
+                            <label class="white-colors">开户行地址</label>
+                            <input class="info" placeholder="请输入开户行地址" type="text" [(ngModel)]="bankInfo.cardAddress">
+                        </div>
+                    </div>
+                    <div class="personal-lists">
+                        <div class="grid-content bg-purple-dark">
+                            <label class="white-colors">资金密码</label>
+                            <input class="info" placeholder="资金密码" type="password" maxlength="4" appLimitInput [limitType]="'number'"
+                                   [(ngModel)]="bankInfo.password">
+                        </div>
+                    </div>
+                    <div class="personal-lists infors-rule">
+                        <p>
+                            密码须为<span class="orangeColor">6~12为英文或数字</span>且符合a~z字元或0~9
+                        </p>
+                    </div>
+
+                    <div class="submit-btns">
+                        <button type="button" class="primary-btn btn-image-big" (click)="next()">立即设置</button>
+                    </div>
+
+                </div>
+            </div>
+        </ng-template>
+    </nz-spin>
+</div>
+
+<nz-drawer [nzVisible]="visible" [nzPlacement]="'bottom'" nzTitle="银行列表" (nzOnClose)="openToggleDraw()">
+
+    <ng-container *ngFor="let item of bankList, let i=index">
+        <p [ngClass]="{'select-deposit-way': true, 'select-active': i===currentIndex }"
+           (click)="changeSelectedBank(item,i)">{{item?.bankName}} <i nz-icon nzType="check" nzTheme="outline"
+                                                                     class="checked"></i></p>
+    </ng-container>
+</nz-drawer>

@@ -1,0 +1,5 @@
+<p *ngIf="!diff">活动进行中</p>
+<div *ngIf="diff">
+    <p>活动倒计时</p>
+    <p>{{days}}天&nbsp;{{hours}}时&nbsp;{{minutes}}分&nbsp;{{seconds}}秒</p>
+</div>

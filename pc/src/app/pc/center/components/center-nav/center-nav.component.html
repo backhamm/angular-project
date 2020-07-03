@@ -1,0 +1,29 @@
+<div class="user-detail">
+    <div class="avatar"></div>
+    <h2 class="username">{{username}},欢迎您!</h2>
+    <div class="verify">
+        <span>认证状态：</span>
+        <nz-avatar [class.verify-active]="user.userInfo?.hasMobile" nzIcon="mobile" nz-tooltip
+                   [nzTitle]="(user.userInfo?.hasMobile)?verifyText[2]:verifyText[0]"
+                   nzSize="small"></nz-avatar>
+        <nz-avatar [class.verify-active]="user.userInfo?.hasBankCard" nzIcon="credit-card"
+                   [nzTitle]="(user.userInfo?.hasBankCard)?verifyText[3]:verifyText[1]" nz-tooltip
+                   nzSize="small"></nz-avatar>
+    </div>
+</div>
+<div class="nav-meau">
+    <ul class="nav-list">
+        <li *ngFor="let item of navList,let i = index">
+            <a [routerLink]="item.link"
+               [class.active]="navJudge(item.link,i)"
+            >
+                <i nz-icon [nzType]="item.iconType" nzTheme="fill"></i>
+                <span>{{item.navName}}</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="qr-code">
+    <canvas id="canvas"></canvas>
+    <div class="text">扫码下载APP</div>
+</div>

@@ -1,0 +1,655 @@
+@import '../../../../../config/config.less';
+
+.content{
+    position: relative;
+    width: 100%;
+    min-width: 1200px;
+    height: 940px;
+    background: url("@{base-url}hongbao/hb_banner.jpg") center center no-repeat;
+    background-size: cover;
+
+    .time{
+       position: absolute;
+        width: 610px;
+        height: 120px;
+        left: calc(50% - 305px);
+        bottom: 178px;
+
+        p{
+            color: darkred;
+            text-align: center;
+            font-family: "SimSun";
+            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: bolder;
+        }
+
+        .count-time{
+            height: 70px;
+            padding: 15px 0 0 210px;
+            background: url("@{base-url}hongbao/countdown.png") no-repeat center center;
+
+            .time-item{
+                display: flex;
+                float: left;
+                height: 37px;
+                justify-content: center;
+                align-items: center;
+            }
+            .day{
+                margin-left: 10px;
+            }
+            .hours{
+                margin-left: 50px;
+
+            }
+            .minute{
+                margin-left: 42px;
+
+            }
+            .second{
+                margin-left: 40px;
+
+            }
+
+            img{
+                width: 26px;
+                height: 100%;
+                &.hideNum{
+                    animation: numHide 350ms linear;
+                    animation-fill-mode: forwards;
+                }
+                &.showNum{
+                    animation: numShow 350ms linear;
+                }
+            }
+        }
+
+        h3{
+            width: 280px;
+            height: 70px;
+            margin: 0 auto;
+            background: url("@{base-url}hongbao/qianghb.png") no-repeat center center;
+            cursor: pointer;
+        }
+    }
+
+    .winning{
+        position: absolute;
+        width: 820px;
+        height: 100px;
+        left: calc(50% - 410px);
+        bottom: 70px;
+        background: url("@{base-url}hongbao/scroll_bg.png") no-repeat center center;
+        background-size: 100% 100%;
+        box-sizing: border-box;
+        padding-left:105px;
+        .winning-box{
+            height: 80px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        .scroll-box{
+            animation: scrollVertical 6s linear infinite;
+
+            &:hover{
+                animation-play-state: paused;
+            }
+        }
+
+        ul{
+            overflow: hidden;
+            li{
+                float: left;
+                width: 50%;
+                height:26px;
+                line-height:26px;
+                color: #fff;
+                font-family:"微软雅黑";
+                font-size:16px;
+            }
+        }
+    }
+
+    .red-box{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 680px;
+        overflow: hidden;
+        img{
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .animate0{
+            animation: redAnimate0 5s linear infinite;
+        }
+
+        .animate1{
+            animation: redAnimate1 6s linear infinite;
+        }
+
+        .animate2{
+            animation: redAnimate2 4s linear infinite;
+        }
+
+        .animate3{
+            animation: redAnimate3 7s linear infinite;
+        }
+
+        .animate4{
+            animation: redAnimate4 5s linear infinite;
+        }
+
+        .animate5{
+            animation: redAnimate5 6s linear infinite;
+        }
+
+        .animate6{
+            animation: redAnimate6 7s linear infinite;
+        }
+
+        .animate7{
+            animation: redAnimate7 8s linear infinite;
+        }
+
+        .animate11{
+            animation: redAnimate11 5s linear infinite;
+        }
+
+        .animate8{
+            animation: redAnimate8 8s linear infinite;
+        }
+
+        .animate9{
+            animation: redAnimate9 5s linear infinite;
+        }
+
+        .animate10{
+            animation: redAnimate10 6s linear infinite;
+        }
+    }
+}
+
+.intr{
+    width: 100%;
+    min-width: 1200px;
+    overflow: hidden;
+    img{
+        float: left;
+        width: 100%;
+    }
+}
+
+.show-money{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding-top: 200px;
+    background: rgba(0,0,0,0.8);
+    z-index: 1200;
+
+    .money-cnt{
+        position: relative;
+        width: 700px;
+        height: 500px;
+        margin: 0 auto;
+        background: url("@{base-url}hongbao/hb_01.png") no-repeat center center;
+
+        p{
+            position: absolute;
+            bottom: 93px;
+            left: 26px;
+            width: 100%;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            font-size: 22px;
+            font-weight: bolder;
+        }
+    }
+    .close-money{
+        width: 700px;
+        margin: 0 auto;
+
+        span{
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin-left: 355px;
+            background: url("@{base-url}hongbao/back.png") no-repeat center center;
+            cursor: pointer;
+        }
+    }
+}
+
+
+@keyframes numHide{
+    0%{
+        height: 100%;
+    }
+    100%{
+        height: 0;
+    }
+}
+@keyframes numShow{
+    0%{
+        height: 0;
+    }
+    100%{
+        height: 100%;
+    }
+}
+@keyframes scrollVertical {
+    from {
+        transform: translateY( 0 );
+    }
+    to {
+        transform: translateY( -50% );
+    }
+}
+
+@red-top: -20px;
+@red-base:20px;
+@red-height:750px;
+
+@red-left1:400px;
+@keyframes redAnimate1{
+    0% {
+        opacity: 1;
+        top: @red-top;
+        left:@red-left1;
+    }
+    20% {
+        opacity: 1;
+        top: 0.2 * @red-height;
+        left: @red-left1 - @red-base;
+    }
+    40% {
+        opacity: 1;
+        top: 0.4 * @red-height;
+        left: @red-left1 + @red-base;
+    }
+    60% {
+        opacity: 1;
+        top: 0.6 * @red-height;
+        left: @red-left1 - @red-base;
+    }
+    80% {
+        opacity: .2;
+        top: 0.8 * @red-height;
+        left: @red-left1 + @red-base;
+    }
+    100% {
+        opacity: 0;
+        top: @red-height;
+        left: @red-left1;
+    }
+}
+@red-left2:500px;
+@keyframes redAnimate2{
+    0% {
+        opacity: 1;
+        top: @red-top;
+        left:@red-left2;
+    }
+    20% {
+        opacity: 1;
+        top: 0.2 * @red-height;
+        left: @red-left2 + @red-base;
+    }
+    40% {
+        opacity: 1;
+        top: 0.4 * @red-height;
+        left: @red-left2 - @red-base;
+    }
+    60% {
+        opacity: 1;
+        top: 0.6 * @red-height;
+        left: @red-left2 + @red-base;
+    }
+    80% {
+        opacity: .2;
+        top: 0.8 * @red-height;
+        left: @red-left2 - @red-base;
+    }
+    100% {
+        opacity: 0;
+        top: @red-height;
+        left: @red-left2;
+    }
+}
+@red-left3:600px;
+@keyframes redAnimate3{
+    0% {
+        opacity: 1;
+        top: @red-top;
+        left:@red-left3;
+    }
+    20% {
+        opacity: 1;
+        top: 0.2 * @red-height;
+        left: @red-left3 - @red-base;
+    }
+    40% {
+        opacity: 1;
+        top: 0.4 * @red-height;
+        left: @red-left3 + @red-base;
+    }
+    60% {
+        opacity: 1;
+        top: 0.6 * @red-height;
+        left: @red-left3 - @red-base;
+    }
+    80% {
+        opacity: .2;
+        top: 0.8 * @red-height;
+        left: @red-left3 + @red-base;
+    }
+    100% {
+        opacity: 0;
+        top: @red-height;
+        left: @red-left3;
+    }
+}
+@red-left4:700px;
+@keyframes redAnimate4{
+    0% {
+        opacity: 1;
+        top: @red-top;
+        left:@red-left4;
+    }
+    20% {
+        opacity: 1;
+        top: 0.2 * @red-height;
+        left: @red-left4 + @red-base;
+    }
+    40% {
+        opacity: 1;
+        top: 0.4 * @red-height;
+        left: @red-left4 - @red-base;
+    }
+    60% {
+        opacity: 1;
+        top: 0.6 * @red-height;
+        left: @red-left4 + @red-base;
+    }
+    80% {
+        opacity: .2;
+        top: 0.8 * @red-height;
+        left: @red-left4 - @red-base;
+    }
+    100% {
+        opacity: 0;
+        top: @red-height;
+        left: @red-left4;
+    }
+}
+@red-left5:800px;
+@keyframes redAnimate5{
+    0% {
+        opacity: 1;
+        top: @red-top;
+        left:@red-left5;
+    }
+    20% {
+        opacity: 1;
+        top: 0.2 * @red-height;
+        left: @red-left5 - @red-base;
+    }
+    40% {
+        opacity: 1;
+        top: 0.4 * @red-height;
+        left: @red-left5 + @red-base;
+    }
+    60% {
+        opacity: 1;
+        top: 0.6 * @red-height;
+        left: @red-left5 - @red-base;
+    }
+    80% {
+        opacity: .2;
+        top: 0.8 * @red-height;
+        left: @red-left5 + @red-base;
+    }
+    100% {
+        opacity: 0;
+        top: @red-height;
+        left: @red-left5;
+    }
+}
+@red-left6:900px;
+@keyframes redAnimate6{
+    0% {
+        opacity: 1;
+        top: @red-top;
+        left:@red-left6;
+    }
+    20% {
+        opacity: 1;
+        top: 0.2 * @red-height;
+        left: @red-left6 + @red-base;
+    }
+    40% {
+        opacity: 1;
+        top: 0.4 * @red-height;
+        left: @red-left6 - @red-base;
+    }
+    60% {
+        opacity: 1;
+        top: 0.6 * @red-height;
+        left: @red-left6 + @red-base;
+    }
+    80% {
+        opacity: .2;
+        top: 0.8 * @red-height;
+        left: @red-left6 - @red-base;
+    }
+    100% {
+        opacity: 0;
+        top: @red-height;
+        left: @red-left6;
+    }
+}
+@red-left7:1000px;
+@keyframes redAnimate7{
+    0% {
+        opacity: 1;
+        top: @red-top;
+        left:@red-left7;
+    }
+    20% {
+        opacity: 1;
+        top: 0.2 * @red-height;
+        left: @red-left7 - @red-base;
+    }
+    40% {
+        opacity: 1;
+        top: 0.4 * @red-height;
+        left: @red-left7 + @red-base;
+    }
+    60% {
+        opacity: 1;
+        top: 0.6 * @red-height;
+        left: @red-left7 - @red-base;
+    }
+    80% {
+        opacity: .2;
+        top: 0.8 * @red-height;
+        left: @red-left7 + @red-base;
+    }
+    100% {
+        opacity: 0;
+        top: @red-height;
+        left: @red-left7;
+    }
+}
+@red-left8:1100px;
+@keyframes redAnimate8{
+    0% {
+        opacity: 1;
+        top: @red-top;
+        left:@red-left8;
+    }
+    20% {
+        opacity: 1;
+        top: 0.2 * @red-height;
+        left: @red-left8 + @red-base;
+    }
+    40% {
+        opacity: 1;
+        top: 0.4 * @red-height;
+        left: @red-left8 - @red-base;
+    }
+    60% {
+        opacity: 1;
+        top: 0.6 * @red-height;
+        left: @red-left8 + @red-base;
+    }
+    80% {
+        opacity: .2;
+        top: 0.8 * @red-height;
+        left: @red-left8 - @red-base;
+    }
+    100% {
+        opacity: 0;
+        top: @red-height;
+        left: @red-left8;
+    }
+}
+@red-left9:1200px;
+@keyframes redAnimate9{
+    0% {
+        opacity: 1;
+        top: @red-top;
+        left:@red-left9;
+    }
+    20% {
+        opacity: 1;
+        top: 0.2 * @red-height;
+        left: @red-left9 - @red-base;
+    }
+    40% {
+        opacity: 1;
+        top: 0.4 * @red-height;
+        left: @red-left9 + @red-base;
+    }
+    60% {
+        opacity: 1;
+        top: 0.6 * @red-height;
+        left: @red-left9 - @red-base;
+    }
+    80% {
+        opacity: .2;
+        top: 0.8 * @red-height;
+        left: @red-left9 + @red-base;
+    }
+    100% {
+        opacity: 0;
+        top: @red-height;
+        left: @red-left9;
+    }
+}
+@red-left10:1300px;
+@keyframes redAnimate10{
+    0% {
+        opacity: 1;
+        top: @red-top;
+        left:@red-left10;
+    }
+    20% {
+        opacity: 1;
+        top: 0.2 * @red-height;
+        left: @red-left10 + @red-base;
+    }
+    40% {
+        opacity: 1;
+        top: 0.4 * @red-height;
+        left: @red-left10 - @red-base;
+    }
+    60% {
+        opacity: 1;
+        top: 0.6 * @red-height;
+        left: @red-left10 + @red-base;
+    }
+    80% {
+        opacity: .2;
+        top: 0.8 * @red-height;
+        left: @red-left10 - @red-base;
+    }
+    100% {
+        opacity: 0;
+        top: @red-height;
+        left: @red-left10;
+    }
+}
+@red-left11:1400px;
+@keyframes redAnimate11{
+    0% {
+        opacity: 1;
+        top: @red-top;
+        left:@red-left11;
+    }
+    20% {
+        opacity: 1;
+        top: 0.2 * @red-height;
+        left: @red-left11 - @red-base;
+    }
+    40% {
+        opacity: 1;
+        top: 0.4 * @red-height;
+        left: @red-left11 + @red-base;
+    }
+    60% {
+        opacity: 1;
+        top: 0.6 * @red-height;
+        left: @red-left11 - @red-base;
+    }
+    80% {
+        opacity: .2;
+        top: 0.8 * @red-height;
+        left: @red-left11 + @red-base;
+    }
+    100% {
+        opacity: 0;
+        top: @red-height;
+        left: @red-left11;
+    }
+}
+@red-left0:1500px;
+@keyframes redAnimate0{
+    0% {
+        opacity: 1;
+        top: @red-top;
+        left:@red-left0;
+    }
+    20% {
+        opacity: 1;
+        top: 0.2 * @red-height;
+        left: @red-left0 + @red-base;
+    }
+    40% {
+        opacity: 1;
+        top: 0.4 * @red-height;
+        left: @red-left0 - @red-base;
+    }
+    60% {
+        opacity: 1;
+        top: 0.6 * @red-height;
+        left: @red-left0 + @red-base;
+    }
+    80% {
+        opacity: .2;
+        top: 0.8 * @red-height;
+        left: @red-left0 - @red-base;
+    }
+    100% {
+        opacity: 0;
+        top: @red-height;
+        left: @red-left0;
+    }
+}

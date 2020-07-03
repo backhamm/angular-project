@@ -1,0 +1,40 @@
+
+<!-- content -->
+<div class="chess-dtqp-container">
+    <div class="chess-dtqp">
+        <div class="content-bg ">
+            <ul class="clearfix">
+                <!-- <h3 class="title">大唐棋牌</h3>
+                   <li *ngFor="let list of service.currentGameList | async">
+                       <div class="img">
+                           <img [src]="list.imgs[0]?.img" alt="">
+                       </div>
+                       <div class="txt">
+                           <h3>{{list.menuNameCn}}</h3>
+                           <h4>{{list.remark}}</h4>
+                           <div class="btn-box" *ngIf="list.gameCode !== 'WAITFOR'">
+                               <button nz-button nzType="primary"
+                                       (click)="service.loadGame({ gameCode: list.gameCode, gameId: list.gameId})">进入游戏</button>
+                             <button class="free-btn" nz-button nzType="primary"
+                                     (click)="service.tryGame({ gameCode: list.gameCode, gameId: list.gameId})">免费试玩</button>
+                           </div>
+                       </div>
+                   </li>-->
+                <li *ngFor="let list of service.currentGameList | async" [class.not-waitfor]="list.gameCode !== 'WAITFOR'">
+                    <img [src]="list.imgs[0]?.img" alt="" class="bg" >
+                    <img [src]="config.baseImgUrl + 'images/dtqp_btn_start.png'" alt="开始游戏" class="load-game"
+                         (click)="service.loadGame({ gameCode: list.gameCode, gameId: list.gameId})" >
+                    <img [src]="config.baseImgUrl + 'images/dtqp_btn_free.png'" alt="试玩" class="load-game free"
+                         (click)="service.tryGame({ gameCode: list.gameCode, gameId: list.gameId})" >
+                         <div class="game_zz">
+
+                        </div>
+                </li>
+                <!-- 数据为空 -->
+                <nz-empty *ngIf="service.currentGameListLength === 0"></nz-empty>
+            </ul>
+        </div>
+    </div>
+</div>
+
+

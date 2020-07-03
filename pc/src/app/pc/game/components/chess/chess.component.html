@@ -1,0 +1,23 @@
+<!-- banner -->
+<div class="banner" [style.background-image]="'url('+ bannerImage + ')'"></div>
+<!-- content -->
+<div class="content-bg">
+    <div class="content">
+        <ul class="clearfix content-left" >
+            <li class="gaming-content"
+                *ngFor="let list of service.currentGameList | async; let i = index;"
+                [class.two-col]="i<2"
+                (click)="list.gameCode !== 'WAITFOR' ? service.loadGame({ gameCode: list.gameCode, gameId: list.gameId}): null">
+                <div class="img">
+                    <img [src]="list.imgs[0]?.img">
+                </div>
+                <p class="top-bg">
+                    <img [src]="list.imgs[1]?.img" alt="">
+                </p>
+                <!--<p (click)="list.gameCode !== 'WAITFOR' ? service.loadGame({ gameCode: list.gameCode, gameId: list.gameId}): null">{{list.menuNameCn}}</p>-->
+            </li>
+            <!-- 数据为空 -->
+            <nz-empty *ngIf="service.currentGameListLength === 0"></nz-empty>
+        </ul>
+    </div>
+</div>

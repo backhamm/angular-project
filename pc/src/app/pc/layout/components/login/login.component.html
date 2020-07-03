@@ -1,0 +1,79 @@
+<div class="login">
+    <div class="close" (click)="commonService.toggleLoginModal()">
+        <i nz-icon nzType="close" nzTheme="outline" style="font-size: 14px;"></i>
+    </div>
+
+    <div class="login-logo">
+        <img [src]="config.baseImgUrl + 'images/zhuche/login_logo.png'" alt="">
+    </div>
+    <div class="login-title">
+        账号登录
+    </div>
+    <div class="login-content">
+        <form nz-form [formGroup]="loginValidateForm" (ngSubmit)="loginSubmit()">
+
+            <nz-form-item class="form-item clear">
+                <nz-form-label class="prepend">
+                    <i class="login-form-icon pre-icon" nz-icon nzType="user" nzTheme="outline"></i>
+                </nz-form-label>
+                <div class="after">
+                    <nz-form-control nzHasFeedback [nzErrorTip]="errorUser">
+                        <input nz-input type="text" formControlName="username"
+                               appLimitInput [limitType]="'number|letter'"
+                               [placeholder]="_Reg.username.placeholder" maxlength="11" required>
+                        <ng-template #errorUser let-control>
+                            <ng-container *ngIf="control.hasError('required')">
+                                <span class="form-item-error">请输入用户名</span>
+                            </ng-container>
+                            <ng-container *ngIf="control.hasError('pattern')">
+                                <span class="form-item-error">{{ _Reg.username.message }}</span>
+                            </ng-container>
+                        </ng-template>
+                    </nz-form-control>
+                </div>
+            </nz-form-item>
+
+
+            <nz-form-item class="form-item clear">
+                <nz-form-label class="prepend">
+                    <i class="login-form-icon pre-icon" nz-icon nzType="lock" nzTheme="outline"></i>
+                </nz-form-label>
+                <div class="after">
+                    <nz-form-control nzHasFeedback [nzErrorTip]="errorPass">
+                        <input nz-input formControlName="password"
+                               appLimitInput [limitType]="'number|letter'"
+                               [placeholder]="_Reg.password.placeholder" type="password" maxlength="12" required>
+                        <ng-template #errorPass let-control>
+                            <ng-container *ngIf="control.hasError('required')">
+                                <span class="form-item-error">请输入密码</span>
+                            </ng-container>
+                            <ng-container *ngIf="control.hasError('pattern')">
+                                <span class="form-item-error">{{ _Reg.password.message }}</span>
+                            </ng-container>
+                        </ng-template>
+                    </nz-form-control>
+                </div>
+
+            </nz-form-item>
+            <div class="form-item">
+                <button [disabled]="loginValidateForm.invalid"
+                        [nzLoading]="loading" class="login-submit" nz-button
+                        nzType="primary">立即登录
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="contact clear">
+        <span class="fl">
+            如您没有账户
+            <i (click)="toRegister()">点击注册>></i>
+        </span>
+        <a class="fr" [href]="platformService.onlineService.href" [target]="platformService.onlineService.target">忘记密码</a>
+
+    </div>
+    <div class="login-footer">
+        登录时有任何问题，请联系我们24小时
+        <a [href]="platformService.onlineService.href" [target]="platformService.onlineService.target">在线客服</a>
+        协助解决，本网站采用Global Trust最先进的128/256 bit SSL服务器加密机制
+    </div>
+</div>

@@ -1,0 +1,297 @@
+@import "../../../config/config-mobile.less";
+
+#filterBtn img {
+  width: 0.7rem;
+  position: absolute;
+  top: 9px;
+  right: 9px;
+}
+
+.success {
+  color: green;
+}
+
+.faild {
+  color: @btn-primary;
+}
+
+.funds-content {
+  .capital-record {
+    width: 100%;
+    box-sizing: border-box;
+    height: calc(100vh - 1.75rem); /*如设置bottom:50px,则需height:auto才能生效*/
+    font-size: .2rem;
+    color: @second-font-color;
+
+    .record {
+      height: 1.2rem;
+      padding: 0 .3rem;
+      border-bottom: 1px solid @border-color;
+
+      .status-img {
+        text-align: center;
+        padding-top: 0.3rem;
+
+        img {
+          width: .3rem;
+        }
+      }
+
+      .item-date p {
+        font-size: 0.25rem;
+      }
+
+      .item-date p:first-child {
+        color: @font-color;
+        line-height: 0.9rem;
+        height: 0.6rem;
+      }
+
+      .item-date p.date-time {
+        color: @second-font-color;
+        font-size: 0.2rem;
+        line-height: .6rem;
+      }
+
+      .item-first {
+        padding-left: 0.4rem;
+        padding-top: 0.08rem;
+      }
+
+      .item-last {
+        position: relative;
+        padding-right: .5rem;
+        text-align: right;
+
+        .icon {
+          position: absolute;
+          top: 0;
+          right: -.1rem;
+          width: .5rem;
+          height: 1.2rem;
+          line-height: 1.2rem;
+          font-size: .4rem;
+          color: #999;
+        }
+      }
+
+      .add {
+        color: @textColor-success;
+      }
+
+      .reduce {
+        color: @textColor-error;
+      }
+    }
+
+    .record-detail {
+      height: 0;
+      background: @second-color;
+      width: 100%;
+      margin-top: -1px;
+      border-bottom: 1px solid @border-color;
+      transition: all .3s;
+      overflow: hidden;
+
+      .detail-box {
+        padding: .1rem .2rem;
+
+        p {
+          line-height: .5rem;
+          color: @second-font-color;
+
+          span {
+            width: 1.5rem;
+            display: inline-block;
+          }
+        }
+      }
+
+      &.active {
+        height: 2.7rem;
+      }
+    }
+  }
+
+
+}
+
+.empty-page {
+  text-align: center;
+  color: @font-color;
+  padding-top: 2rem;
+
+  p {
+    text-align: center;
+    /* padding-top: 0.3rem; */
+    font-size: 0.3rem;
+  }
+}
+
+:host ::ng-deep {
+  .ant-calendar-picker {
+    width: 100%;
+    color: @font-color;
+  }
+
+  .ant-radio-group {
+    color: @font-color;
+  }
+
+  input.ant-calendar-picker-input.ant-input.ant-input-sm.ng-star-inserted {
+    background: none;
+  }
+
+  .ant-input-group-addon {
+    text-align: center !important;
+  }
+
+  .ant-input {
+    width: 75%;
+    text-align: center;
+    border: 1px solid @second-color !important;
+  }
+
+  .ant-input:focus {
+    border: 1px solid @second-color !important;
+  }
+
+  .ant-table-row {
+    td {
+      color: @font-color
+    }
+  }
+
+  .ant-table-thead > tr > th {
+    background: none !important;
+    color: @second-font-color;
+  }
+
+  .ant-table-thead > tr > th, .ant-table-tbody > tr > td {
+    padding: 16px 10px;
+  }
+
+  .ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
+  .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
+  .ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td, .ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
+    background: none;
+  }
+
+  .ant-table-placeholder {
+    background: none;
+    color: @second-font-color;
+    border-top: 1px solid @second-color;
+    border-bottom: 1px solid @second-color;
+
+    .ant-empty-description {
+      color: @second-font-color;
+    }
+  }
+
+  .ant-collapse {
+    background: @second-color;
+    border: none;
+  }
+
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    padding-left: 0;
+    padding-right: 35px;
+  }
+
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+    width: 93%;
+    text-align: right;
+    color: @btn-primary;
+    font-size: 0.3rem;
+  }
+
+  .ant-collapse-content {
+    background: @main-color;
+  }
+}
+
+::ng-deep {
+
+  div, ul, li {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul, li {
+    list-style: none outside none;
+  }
+
+  .fadeInUp .layer {
+    -webkit-animation: fadeInUp .5s;
+    animation: fadeInUp .5s;
+  }
+
+  .fadeOutDown .layer {
+    -webkit-animation: fadeOutDown .5s !important;
+    animation: fadeOutDown .5s !important;
+  }
+
+  @-webkit-keyframes loading-keyframe {
+    from {
+      -webkit-transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes loading-keyframe {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @-webkit-keyframes fadeInUp {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: none;
+    }
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @-webkit-keyframes fadeOutDown {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
+    }
+  }
+  @keyframes fadeOutDown {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+
+  .ant-calendar-input {
+    text-align: center;
+  }
+
+}
+

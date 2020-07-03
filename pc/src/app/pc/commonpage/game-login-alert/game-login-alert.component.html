@@ -1,0 +1,26 @@
+<div id="index-dailog" *ngIf="Pagehide">
+  <div class="nav-tabs-header">
+    <p>会员登录</p>
+    <span (click)="common.loginModalVisible = false;">x</span>
+  </div>
+  <div class="nav-tabs">
+    <div class="form-list">
+      <label>用户名:</label>
+      <input type="text" oninput="value=value.replace(/[\W]/g,'')"
+             [(ngModel)]="username"
+             maxlength="11" placeholder="输入账号">
+    </div>
+    <div class="form-list">
+      <label>密码: &nbsp;</label>
+      <input type="password" oninput="value=value.replace(/[\W]/g,'')"
+             [(ngModel)]="password"
+             maxlength="12" placeholder="输入新密码">
+    </div>
+    <button type="button" id="login-btn" (click)="login(username, password)">登录</button>
+    <div class="set-infors">
+      <span>还没有账户？</span>
+      <a class="red-color" routerLink="/register">直接开户</a>
+      <a class="red-color" routerLink="/home/free">免费试玩</a>
+    </div>
+  </div>
+</div>

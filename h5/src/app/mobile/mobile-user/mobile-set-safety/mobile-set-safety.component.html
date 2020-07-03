@@ -1,0 +1,82 @@
+<app-mobile-header [leftIcon]="true"></app-mobile-header>
+
+<div id="set-safety">
+  <div class="publicpage">
+    <div class="gameLimit publicpage_view">
+      <nz-spin [nzSpinning]="isLoading" nzTip="加载中">
+        <div class="persobal-title">
+          <span>安全设置</span>
+        </div>
+
+        <div class="personal-lists">
+          <div class="grid-content bg-purple-dark">
+            <span class="white-colors">登录密码</span>
+            <span class="info" routerLink='/m/user/modify-password'>
+              <span class="no-set">已设定
+                <i nz-icon nzType="right" nzTheme="outline"></i>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="personal-lists">
+          <div class="grid-content bg-purple-dark">
+            <span class="white-colors">提款密码</span>
+            <span class="info" [routerLink]="'../userWithdrawal'">
+              <span class="no-set">
+                {{user.user?.hasWithdrawPassword ? '已设置' : '未设置'}}
+                <i nz-icon nzType="right" nzTheme="outline"></i>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="personal-lists">
+          <div class="grid-content bg-purple-dark">
+            <span class="white-colors">手机号</span>
+            <div *ngIf="user.user?.hasMobile ;then suceessPhone else noPhone"></div>
+            <ng-template #suceessPhone>
+              <span class="info">
+                <span class="no-set">
+                  {{user.user?.mobile}} (已验证)
+                </span>
+              </span>
+            </ng-template>
+
+            <ng-template #noPhone>
+              <span class="info" [routerLink]="user.user?.loginmobile ? return : '../userPhone'">
+                <span class="no-set">
+                  {{user.user?.mobile}} (未验证)
+                  <i nz-icon nzType="right" nzTheme="outline"></i>
+                </span>
+              </span>
+            </ng-template>
+          </div>
+        </div>
+
+        <div class="personal-lists">
+          <div class="grid-content bg-purple-dark">
+            <span class="white-colors">银行卡</span>
+            <div *ngIf="user.user?.hasBankCard; then hadCard else noCard"></div>
+
+            <ng-template #hadCard>
+              <span class="info" [routerLink]="'../userBankCard'">
+                <span class="no-set">
+                  {{bankInfo?.bankName}} {{bankInfo?.cardNum?.slice(-4)}}
+                  <i nz-icon nzType="right" nzTheme="outline"></i>
+                </span>
+              </span>
+            </ng-template>
+
+            <ng-template #noCard>
+              <span class="info" [routerLink]="'../userBankCard'">
+                <span class="no-set">
+                  未验证
+                  <i nz-icon nzType="right" nzTheme="outline"></i>
+                </span>
+              </span>
+            </ng-template>
+          </div>
+        </div>
+      </nz-spin>
+    </div>
+  </div>
+</div>

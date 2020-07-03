@@ -1,0 +1,56 @@
+@import '../../../config/config-mobile.less';
+
+.set-Infors {
+	width: 100%;
+	color: @second-font-color;
+	margin-top: 0.5rem;
+}
+
+.submit-btns {
+	width: 5rem;
+	margin: .8rem auto;
+	font-size: 0;
+}
+
+button.primary-btn {
+	width: 5rem;
+	height: 0.8rem;
+	margin: 0 auto;
+	font-size: 0.32rem;
+	border-radius: 1rem;
+	color: @font-color;
+	background-color: @btn-primary;
+	border: none;
+}
+
+.set-input {
+	height: 1rem;
+	line-height: 1rem;
+  font-size: 0;
+}
+
+.set-input input {
+  height: 100%;
+	padding: 0 0.3rem;
+  font-size: 0.26rem;
+	background: @deep-main-color;
+}
+
+:host ::ng-deep {
+	.set-inputs {
+		text-align: left;
+	}
+}
+
+// ::ng-deep{
+//     button.primary-btn {
+//         width: 5rem;
+//         height: 0.8rem;
+//         margin: 15px auto;
+//         font-size: 16px;
+//         border-radius: 6px;
+//         color: @font-color;
+//         background-color: @btn-primary;
+//         border:none;
+//     }
+// }

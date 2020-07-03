@@ -1,0 +1,223 @@
+@import '../../../../config/config.less';
+
+.disc-bg{
+    width: 100%;
+    height: 1313px;
+    padding-top: 460px;
+    background: url("@{base-url}turntable/dzp-bg.jpg") center;
+}
+
+.disc{
+    position: relative;
+    width: 1240px;
+    height: 579px;
+    margin: 0 auto;
+    color: @main-color;
+
+    .disc-left{
+        float: left;
+        width: 320px;
+        height: 350px;
+        margin-top: 130px;
+        text-align: center;
+
+        &>h3{
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 30px;
+            color: @main-color;
+        }
+
+        .wraper{
+            overflow: hidden;
+            height: 300px;
+
+            li{
+                height: 30px;
+                line-height: 30px;
+                span{
+                    display: inline-block;
+
+                    &:first-child{
+                        width: 120px;
+                        text-align: left;
+                    }
+                    &:nth-child(2){
+                        width: 70px;
+                    }
+                    &:last-child{
+                        width: 100px;
+                    }
+                }
+            }
+        }
+    }
+
+    .disc-cnt{
+        position: absolute;
+        width: 580px;
+        height: 579px;
+        left: calc(50% - 290px);
+        top: 0;
+        background-position: center;
+
+        .dis-box{
+            width: 100%;
+            height: 100%;
+            background: url("@{base-url}turntable/dzp_zp_wk.png") center;
+        }
+
+        .btn{
+            position: absolute;
+            left: calc(50% - 71px);
+            top: calc(50% - 71px);
+            width: 142px;
+            height: 142px;
+            border: 0;
+            outline: none;
+            cursor: pointer;
+            background: url("@{base-url}turntable/default.png");
+
+            &.disabled{
+                background: url("@{base-url}turntable/begin.png");
+
+                &:hover{
+                    animation: none;
+                }
+            }
+            &:hover{
+                animation: shake .5s;
+            }
+        }
+    }
+
+    .disc-right{
+        float: right;
+        width: 310px;
+        height: 350px;
+        margin: 130px 10px 0 0;
+        text-align: center;
+        line-height: 30px;
+
+        &>h3{
+            font-size: 20px;
+            font-weight: 400;
+            color: @main-color;
+        }
+        ul{
+            max-height: 320px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            font-size: 12px;
+            background-color: @border-color-proxy;
+            li{
+                &.table-header{
+                    border-bottom: solid 1px @main-color;
+                }
+                span{
+                    display: inline-block;
+
+                    &:first-child{
+                        width: 100px;
+                        text-align: left;
+                        text-indent: 1em;
+                    }
+                    &:nth-child(2){
+                        width: 100px;
+                    }
+                    &:last-child{
+                        width: 60px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.disc-info{
+    padding: 25px 0 0;
+    color: @white-color;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.rule{
+    width: 100%;
+    height: 2090px;
+    background: url("@{base-url}turntable/dzp-rule.jpg") center;
+}
+
+.mask{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: @border-color-proxy;
+}
+.lottery{
+    position: absolute;
+    left:calc(50% - 222px);
+    top:calc(50% - 260px);
+    width: 445px;
+    height: 520px;
+
+    .close{
+        position: absolute;
+        right: 24px;
+        top: 46px;
+        display: block;
+        width: 33px;
+        height: 33px;
+        cursor: pointer;
+        background: url("@{base-url}turntable/close.png");
+    }
+
+    .show{
+        width: 449px;
+        height: 472px;
+
+        &.yes{
+            background: url("@{base-url}turntable/lottery.png");
+
+            .name{
+                position: absolute;
+                left: 0;
+                top: 236px;
+                width: 100%;
+                font-size: 22px;
+                font-weight: bold;
+                text-align: center;
+                letter-spacing: 8px;
+            }
+
+            .btn{
+                position: absolute;
+                bottom: 0;
+                left: 113px;
+                width: 223px;
+                height: 46px;
+                background: url("@{base-url}turntable/get-btn.png");
+                cursor: pointer;
+            }
+        }
+        &.no{
+            background: url("@{base-url}turntable/no-lottery.png");
+        }
+    }
+}
+
+
+@keyframes shake {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}

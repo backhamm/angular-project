@@ -1,0 +1,10 @@
+<app-mobile-header [leftIcon]="true"></app-mobile-header>
+<div class="transfer-success">
+  <div class="title">提交成功</div>
+  <div class="title-tips">请耐心等待平台审核，如有疑问，请联系客服</div>
+  <div class="middle-img">
+    <img class="img" [src]="config.baseMobileImgUrl+'image/common/agentIcon_success@2x.png'" alt="">
+  </div>
+  <div class="footer-btn btn-image-big" routerLink="/m">返回首页</div>
+  <div class="footer-btn btn-image-big2" (click)="location.back()">继续转账</div>
+</div>

@@ -1,0 +1,45 @@
+@import "../../../../config/config";
+
+.deposit {
+    .deposit-title {
+        height: 40px;
+        background: linear-gradient(90deg, #f2f2f2, #fff);
+        line-height: 40px;
+        padding: 0 30px;
+        width: 30%;
+        margin: 30px 0;
+        font-weight: 700;
+        color: #666;
+    }
+    .nav-tabs {
+        ::ng-deep .ant-tabs-bar {
+            padding: 0 30px;
+        }
+        .bank-ico {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+            border-radius: 10%;
+            background: no-repeat 50%/contain;
+
+        }
+        ::ng-deep .ant-tabs-nav .ant-tabs-tab {
+            padding: 12px 1px;
+            margin: 0 40px 0 0;
+            &:not(:last-child):after {
+                content: "";
+                position: absolute;
+                width: 1px;
+                height: 20px;
+                background: #ddd;
+                right: -20px;
+                top: 10px;
+            }
+        }
+      ::ng-deep i.anticon.ant-tabs-tab-prev-icon-target.anticon-left,::ng-deep i.anticon.ant-tabs-tab-next-icon-target.anticon-right {
+        font-size: 30px;
+      }
+    }
+}

@@ -1,0 +1,59 @@
+<div class="bank-pay-wrap">
+    <div class="pay-steps">
+        <nz-steps  [nzCurrent]="deposit.currentStep" [nzSize]="'small'">
+            <nz-step nzTitle="填写信息"></nz-step>
+            <nz-step nzTitle="提交成功"></nz-step>
+        </nz-steps>
+    </div>
+    <!--第一步-->
+    <div class="forms" *ngIf="deposit.currentStep === 0">
+        <div class="first">
+            <nz-divider nzText="第一步：选择支付方式" nzOrientation="left"></nz-divider>
+            <nz-radio-group [(ngModel)]="depositType" (ngModelChange)="changeCurrentInfo()" [nzSize]="'large'">
+                <label nz-radio-button *ngFor="let item of payList, let i= index" [nzValue]="i">
+                    <img [src]="item.icon" alt="">
+                </label>
+            </nz-radio-group>
+        </div>
+        <div class="second">
+            <nz-divider nzText="第二步：扫描二维码" nzOrientation="left"></nz-divider>
+            <img [src]="currentPayInfo?.accountimg" alt="">
+            <p>扫描二维码付款，存款限额{{currentPayInfo?.minquota}}-{{currentPayInfo?.maxquota}}元</p>
+        </div>
+        <div class="third">
+            <nz-divider nzText="第三步：扫描二维码付款成功后，请填写汇款信息提交！" nzOrientation="left"></nz-divider>
+            <div class="el clear">
+                <div class="item-label fl">存入金额:</div>
+                <div class="content fl">
+                    <nz-input-number
+                        [(ngModel)]="amountValue"
+                        [nzMin]="currentPayInfo?.minquota"
+                        [nzMax]="currentPayInfo?.maxquota"
+                        [nzStep]="10"
+                        [nzPlaceHolder]="'请输入金额'"
+                    ></nz-input-number>
+                </div>
+                <div class="tip-div fl">* 申请的存款金额与实际存款金额必须一致</div>
+            </div>
+            <div class="el clear">
+                <div class="item-label fl">订单号:</div>
+                <div class="content fl">
+                    <input nz-input
+                        [(ngModel)]="orderNo"
+                        placeholder="请输入订单号"
+                        maxlength="4"/>
+                </div>
+                <div class="tip-div fl">* 请填写您订单号的后四位</div>
+            </div>
+            <div class="el clear">
+                <button class="submit" nz-button nzType="primary" [nzLoading]="isLoading" (click)="validateSub()">提 交</button>
+            </div>
+        </div>
+    </div>
+    <!--第二步-->
+    <div class="forms" *ngIf="deposit.currentStep === 1">
+        <h2 class="title">提交成功</h2>
+        <p>系统审核通过后，将会及时到账，请确保您的通讯畅通，以便客服与您联系。</p>
+    </div>
+    <app-deposit-reminder></app-deposit-reminder>
+</div>

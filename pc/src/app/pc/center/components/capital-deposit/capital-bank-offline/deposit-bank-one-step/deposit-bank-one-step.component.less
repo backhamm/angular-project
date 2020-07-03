@@ -1,0 +1,63 @@
+@import '../../../../../../config/config.less';
+
+.forms {
+    min-height: 200px;
+    padding: 50px 80px;
+    white-space: normal;
+    .el {
+        margin-bottom: 20px;
+        line-height: 44px;
+        position: relative;
+        display: table;
+        padding-left: 100px;
+        //margin:  0 auto 20px;
+        .item-label {
+            width: 100px;
+            text-align: right;
+            margin-right: 12px;
+        }
+        .content {
+            input, nz-input-number {
+                line-height: 44px;
+                height: 44px;
+                width: 200px;
+            }
+            .tip-div {
+                border: 1px solid @main-color1;
+                position: absolute;
+                top: 50%;
+                left: 428px;
+                transform: translateY(-50%);
+                padding: 7px 15px;
+                border-radius: 5px;
+                background: @border-right-color;
+                line-height: 24px;
+                width: 280px;
+                &:before, &:after {
+                    content: "";
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                    left: -20px;
+                }
+                &:before {
+                    border: 11px solid transparent;
+                    border-right-color: @border-right-color;
+                    z-index: 1;
+                }
+                &:after {
+                    border: 10px solid transparent;
+                    border-right-color: @main-color1;
+                }
+            }
+        }
+        .submit {
+            width: 200px;
+            height: 40px;
+            margin-left: 112px;
+        }
+    }
+}

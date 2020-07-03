@@ -1,0 +1,68 @@
+@import '../../../../config/config.less';
+
+@color: #cec5bc;
+@base-left: 24px;
+
+.collapse {
+    .collapse-item {
+        margin-bottom: 4px;
+        font-size: @f-12;
+        p {
+            text-indent: @base-left;
+        }
+        ul {
+            padding-left: @base-left;
+            li {
+                text-indent: @base-left;
+            }
+        }
+    }
+}
+
+.common {
+    font-size: @f-12;
+    color: @main-font-color;
+    line-height: 18px;
+    .common-item {
+        h3 {
+            font-size: 16px;
+            line-height: 40px;
+            color: @main-font-color;
+        }
+        & > p {
+            margin-bottom: 12px;
+            //text-indent: @base-left;
+        }
+        ul {
+            margin-bottom: 12px;
+            //text-indent: @base-left;
+            & > li {
+                margin-bottom: 4px;
+                font-size: 13px;
+                ol {
+                    padding-left: @base-left;
+                }
+            }
+        }
+    }
+}
+:host {
+    ::ng-deep {
+        .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+            color: @main-font-color;
+        }
+        .ant-collapse-content {
+            color: @main-font-color;
+        }
+        .ant-collapse {
+            background: transparent;
+            border: none;
+        }
+        .ant-collapse > .ant-collapse-item {
+          background-color: @white-color;
+          border-radius: 3px;
+          border: 1px solid @border-line;
+          margin-top: 12px;
+        }
+    }
+}

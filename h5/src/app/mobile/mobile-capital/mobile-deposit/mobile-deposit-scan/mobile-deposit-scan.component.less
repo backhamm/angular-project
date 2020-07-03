@@ -1,0 +1,132 @@
+@import "../../../../config/config-mobile";
+
+.no-way {
+    text-align: center;
+    background: @second-color;
+    color: @second-font-color;
+    height: 2.4rem;
+    border-radius: .15rem;
+    margin: 0.3rem;
+    font-size: .3rem;
+    line-height: 2.4rem;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+.icon-customerservice, .customer {
+    color: @tooltip-color;
+}
+
+.exclamation {
+    color: red;
+    margin-right: .1rem;
+}
+
+.online-customer {
+    background: @second-color;
+    color: @second-font-color;
+    padding: .2rem 0.4rem;
+    font-size: .24rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid @border-color;
+}
+
+.qr-code {
+    height: 3.5rem;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid @border-color;
+    img {
+        width: 3rem;
+        height: 3rem;
+        margin: 0.25rem;
+
+    }
+}
+
+.deposit-amount {
+    border-bottom: 1px solid @main-color;
+    padding: 0 .3rem 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: @deep-main-color;
+
+    .deposit-item {
+        margin: .15rem 0;
+        height: .6rem;
+        .bank-group {
+            margin-top: .1rem;
+        }
+        .selected-bank {
+            color: @second-font-color;
+            text-align: right;
+            display: inline-block;
+            float: right;
+            margin-right: .2rem;
+        }
+    }
+}
+
+.deposit-submit {
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.next {
+    box-sizing: border-box;
+    padding: 0 1rem 0.3rem;
+}
+
+.payment-name {
+    display: flex;
+    div {
+        height: .8rem;
+        widht: 100%;
+        text-align: center;
+        line-height: .8rem;
+        font-size: 0.26rem;
+        color: @second-font-color;
+        border-bottom: 2px solid @second-font-color;
+    }
+    .active {
+        color: @btn-primary;
+        border-bottom: 2px solid @btn-primary;
+    }
+}
+
+::ng-deep {
+    .ant-btn {
+        vertical-align: middle;
+    }
+    .ant-drawer-content, .ant-drawer-header {
+        background: @second-color;
+    }
+    .ant-drawer-title, .ant-drawer-close {
+        color: @font-color !important;
+    }
+
+    .ant-drawer-body {
+        padding: 0;
+    }
+    .ant-drawer-content-wrapper {
+        height: auto !important;
+    }
+    .ant-radio {
+        color: @second-font-color;
+    }
+    .ant-radio-group {
+        float: right;
+    }
+    .ant-switch {
+        background: @second-font-color;
+    }
+    .ant-switch-checked {
+        background: @btn-primary;
+    }
+    .anticon-customer-service {
+        color: @tooltip-color
+    }
+}

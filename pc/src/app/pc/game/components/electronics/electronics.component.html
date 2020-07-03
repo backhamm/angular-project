@@ -1,0 +1,96 @@
+<!-- banner -->
+<div class="banner" [style.background-image]="'url('+ bannerImage + ')'">
+    <!--  -->
+    <!-- <div class="number-bg">
+        <div class="number-box">
+            <div class="number-top"></div>
+            <div class="number">￥{{ showNum }}</div>
+            <div class="number-bottom"></div>
+        </div>
+    </div> -->
+</div>
+<!-- content -->
+<div class="content-bg">
+    <div class="content">
+        <!--<div class="recommend">
+            <div class="recommend-box">
+                <nz-carousel [nzDotPosition]="'left'" [nzEnableSwipe]="false" [nzAutoPlay]="true" [nzDots]="false">
+                    <ul nz-carousel-content *ngFor="let item of noticeList">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </nz-carousel>
+            </div>
+        </div>-->
+        <div class="tab">
+            <div class="tab-left" (click)="updateOffsetLeft(1)">
+                <img [src]="prev_left" />
+            </div>
+            <div class="tab-box">
+                <ul id="tab-ul" [ngStyle]="{left: offset + 'px',width: ulWidth + 'px'}">
+                    <li *ngFor="let list of secondTab; let i = index" (click)="secondClick(i, list)"
+                        [ngClass]="i == service.elecIndex ? 'active-bg' : '' ">
+                        <div [ngClass]="i == service.elecIndex ? 'active-li-bg' : '' ">
+                            <img [src]="list.imgs[0]?.img" alt="" />
+                            <p>{{list.menuNameCn}}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-right" (click)="updateOffsetLeft(2)">
+                <img [src]="prev_right" />
+            </div>
+        </div>
+        <div class="search">
+            <div class="search-left">
+                <ul>
+                    <li *ngFor="let list of thirdTab; let i = index" [ngClass]="i == thirdTabState ? 'active' : '' "
+                        (click)="thirdClick(i,list)">{{list.menuNameCn}}</li>
+
+                </ul>
+
+            </div>
+            <div class="search-right">
+                <div class="search-btn" (click)="searchGame()">搜索</div>
+                <div class="search-input">
+                    <nz-input-group [nzPrefix]="prefixTemplateUser">
+                        <input type="text" [(ngModel)]="keyWord" (ngModelChange)="changeKeyWord($event)" nz-input
+                            placeholder="输入搜索内容" />
+                    </nz-input-group>
+                    <ng-template #prefixTemplateUser><i nz-icon nzType="search"></i></ng-template>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="game">
+            <ul>
+                <li *ngFor="let list of fourthTab; let i = index">
+                    <div class="center">
+                        <img [src]="list.imgs[0]?.img" alt="" />
+                    </div>
+                    <div class="game-name">{{list.menuNameCn}}</div>
+                    <div class="paly-game" [ngClass]="{}">
+                        <div class="paly" (click)="service.loadGame({ gameCode: list.gameCode, gameId: list.gameId})">
+                            开始游戏</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <nz-empty *ngIf="fourthTab.length == 0"></nz-empty>
+        <div class="page">
+            <a href="javascript:;" [ngClass]="pageData.current == 1 ? 'active' : '' " (click)="pageNext(2)">上一页</a>
+            <span>{{pageData.current}}/{{pageData.pageNum}}</span>
+            <a href="javascript:;" [ngClass]="pageData.current == pageData.pageNum ? 'active' : '' "
+                (click)="pageNext(1)">下一页</a>
+        </div>
+    </div>
+    <div class="content-right">
+        <app-game-hot></app-game-hot>
+    </div>
+</div>

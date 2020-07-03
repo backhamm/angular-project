@@ -1,0 +1,179 @@
+@import "../../../config/config-mobile";
+
+.selct-params {
+  pointer-events: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  font-size: 0.2rem;
+  transition: left .5s;
+
+  .select-container {
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    display: flex;
+  }
+
+  .scree-left {
+    width: 35%;
+    height: 100%;
+  }
+
+  .time.start-time {
+    margin: .2rem 0;
+  }
+
+  .scree-right {
+    width: 65%;
+    padding: 0.25rem;
+    box-sizing: border-box;
+    background: @second-color;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+
+    .scree-select {
+      width: 100%;
+      height: 82%;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    h3, h4 {
+      color: @font-color;
+      height: .6rem;
+      font-size: .3rem;
+    }
+
+    .right-title {
+      height: .6rem;
+      line-height: .6rem;
+      font-size: .3rem;
+      color: @font-color;
+    }
+
+    .status, .type {
+      text-align: center;
+      overflow: hidden;
+
+      div {
+        width: 1.25rem;
+        padding: 0.15rem 0;
+        margin: 0.08rem 0.3rem 0.2rem 0;
+        font-size: 0.2rem;
+        border-radius: .1rem;
+        float: left;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        border: 1px solid @btn-primary;
+        color: @btn-primary;
+
+        &.active {
+          color: @font-color;
+          background: @btn-primary;
+        }
+      }
+    }
+
+    .status {
+      div {
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .type {
+      div {
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .footer {
+      /* position: absolute;
+       left: 0;
+       right: 0;
+       bottom: 0;*/
+      text-align: center;
+
+      .reset {
+        margin: 0.15rem;
+        width: 4rem;
+        color: @font-color;
+        font-size: .3rem;
+        padding: .2rem .3rem;
+        border-radius: 1rem;
+        background: @second-color;
+        display: inline-block;
+      }
+
+      .confirm {
+        margin-top: .2rem;
+        color: @font-color;
+        background: @btn-primary;
+      }
+    }
+  }
+}
+
+.search {
+  background: @second-color;
+
+  .time {
+    width: 50%;
+    display: inline-block;
+    color: @font-color;
+    padding-bottom: 0.1rem;
+
+    .label-txt {
+      color: @second-font-color;
+      line-height: .6rem;
+      width: 0.8rem;
+      font-size: .3rem;
+      display: inline-block;
+      text-align: center;
+      margin-left: 0.1rem;
+    }
+  }
+
+  .line-date {
+    height: 15px;
+    width: 10%;
+    display: inline-block;
+    border-bottom: 1px solid @font-color;
+  }
+
+  .time-tables {
+    display: flex;
+    width: 100%;
+    margin: 0.2rem 0;
+    justify-content: start;
+
+    div {
+      color: @font-color;
+      padding: 0.12rem 0.3rem;
+      margin: 0 .2rem;
+      border-radius: .1rem;;
+      font-size: 0.2rem;
+      float: left;
+
+      &.active {
+        background: @btn-primary;
+        //color: @main-color;
+      }
+    }
+  }
+}
+
+::ng-deep {
+  .ant-calendar-picker-icon, .ant-calendar-picker-clear {
+    display: none;
+  }
+}

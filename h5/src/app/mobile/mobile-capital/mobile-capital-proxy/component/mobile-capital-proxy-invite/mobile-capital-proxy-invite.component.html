@@ -1,0 +1,28 @@
+<nz-spin [nzSpinning]="isLoading" nzTip="加载中">
+    <app-mobile-header [leftIcon]="true">
+    </app-mobile-header>
+    <div class="invite">
+        <header class="link-header">您的专属邀请二维码</header>
+        <nz-row class="top-qr-code">
+
+            <qr-code [value]="inviteType?.inviteLink" size="190" class="my-qr-code"></qr-code>
+        </nz-row>
+        <header>您的专属邀请链接</header>
+        <nz-row class="link">
+
+            <nz-row class="domainName" ngxClipboard [cbContent]="inviteType?.inviteLink"
+                    (cbOnSuccess)="copied($event)"> {{inviteType.inviteLink}}
+            </nz-row>
+            <nz-row class="others" ngxClipboard [cbContent]="inviteType?.agencyShare"
+                    (cbOnSuccess)="copied($event)"> {{inviteType.agencyShare}}
+            </nz-row>
+            <nz-row class="others txt"> 点击复制链接或推广文案发送给好友、QQ群、微信群、微博、贴吧等社交平台。</nz-row>
+        </nz-row>
+        <nz-row>
+            <button (click)="refresh()" class="refresh" nzType="primary" nz-button  nzSize="large"> <i nz-icon nzType="sync"
+                                                                                      nzTheme="outline"></i>刷新链接&二维码
+            </button>
+        </nz-row>
+    </div>
+
+</nz-spin>

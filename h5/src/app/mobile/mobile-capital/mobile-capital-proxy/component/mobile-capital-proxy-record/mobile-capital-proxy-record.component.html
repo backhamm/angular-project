@@ -1,0 +1,103 @@
+<app-mobile-header [leftIcon]="true"></app-mobile-header>
+
+<div class="record-content">
+    <nz-spin [nzSpinning]="isLoading" nzTip="加载中">
+    <nz-row class="header-tab" (click)="changeData">
+        <nz-col nzSpan="8"
+                *ngFor="let item of tabArr; let i = index;"
+                [ngClass]="{'active': i == currentIndex, 'title-tab': true}"
+                (click)="changeData(item)"
+        >{{item.name}}
+        </nz-col>
+    </nz-row>
+    </nz-spin>
+    <div class="mescroll" id="mescroll0" [hidden]="currentIndex !==0">
+        <div>
+            <nz-table  [nzData]="tableData.list" class="content" [nzShowPagination]="false"
+                      *ngIf="currentIndex ===0">
+                <thead>
+                <tr>
+                    <th nzWidth="30%">注册时间</th>
+                    <th nzWidth="23%">账号</th>
+                    <th nzWidth="25%">产出佣金</th>
+                    <th nzWidth="22%">推荐会员数</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of tableData.list">
+                    <td>{{data.registTime}}</td>
+                    <td>{{data.agencyUserName}}</td>
+                    <td>{{data.accumulatedCommission}}</td>
+                    <td>{{data.teamNum}}</td>
+                </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+    <div class="mescroll" id="mescroll1" [hidden]="currentIndex !==1">
+        <div>
+            <nz-table [nzData]="tableData.list" class="content" [nzShowPagination]="false"
+                      *ngIf="currentIndex ===1">
+                <thead>
+                <tr>
+                    <th nzWidth="25%">日期</th>
+                    <th nzWidth="25%">直属佣金</th>
+                    <th nzWidth="25%">团队佣金</th>
+                    <th nzWidth="25%">合计佣金</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of tableData.list">
+                    <td>{{data.date}}</td>
+                    <td>{{data.directCommissions}}</td>
+                    <td>{{data.teamCommissions}}</td>
+                    <td>{{data.outstandingCommissions}}</td>
+                </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+    <div class="mescroll" id="mescroll2" [hidden]="currentIndex !==2">
+        <div>
+            <nz-collapse  nzAccordion>
+                <nz-collapse-panel
+                    #records
+                    *ngFor="let record of tableData.list"
+                    [nzHeader]="headerRef"
+                    [nzShowArrow]="true"
+                >
+                    <p class="collapse-explain"><span class="collapse-explain-detail">提取状态</span>{{record.status == 1 ?
+                        '已提款' : '审核中'}}</p>
+                    <p class="collapse-explain"><span class="collapse-explain-detail">提取时间</span>{{record.issuedTime}}
+                    </p>
+                    <p class="collapse-explain"><span class="collapse-explain-detail">提取金额</span>{{record.amount}}</p>
+                    <p class="collapse-explain"><span class="collapse-explain-detail">操作人</span>{{record.operator}}</p>
+                    <ng-template #headerRef let-registTime let-agencyUserName let-teamNum>
+                        <div nz-row class="header-ref">
+                            <nz-col nzSpan="4"
+                                    [ngClass]="{'types': true, 'success': record.status == 1, 'error': record.status == 0 }">
+                                {{record.status == 1 ? '已提款' : '审核中'}}
+                            </nz-col>
+                            <nz-col nzSpan="13" nzOffset="1">
+                                <div class="date"> 计佣周期</div>
+                                <div class="time">{{record.registTime}}</div>
+                                <!--<div class="time"> {{records.registTime}} {{records}}</div>-->
+                                <!--<div class="time"> 2019.08.02-至今</div>-->
+                                <!--<div class="time">  2019-08-12~2019-08-12</div>-->
+                            </nz-col>
+                            <nz-col nzSpan="6">
+                                <div class="amount">{{record.amount}}</div>
+                            </nz-col>
+                        </div>
+                    </ng-template>
+                </nz-collapse-panel>
+
+            </nz-collapse>
+            <div class="empty-page" *ngIf="tableData?.list && tableData?.list.length ==  ''">
+                <img
+                    src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNjRweCIgaGVpZ2h0PSI0MXB4IiB2aWV3Qm94PSIwIDAgNjQgNDEiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDUyLjUgKDY3NDY5KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDxnIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00NzIuMDAwMDAwLCAtMTMzNS4wMDAwMDApIj4KICAgICAgICAgICAgPGcgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY0LjAwMDAwMCwgMTExNC4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnICB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MC4wMDAwMDAsIDc4LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgIDxnICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNjguMDAwMDAwLCAxNDQuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxnID4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxlbGxpcHNlICBmaWxsPSIjRjVGNUY1IiBjeD0iMzIiIGN5PSIzMyIgcng9IjMyIiByeT0iNyI+PC9lbGxpcHNlPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPGcgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5LjAwMDAwMCwgMC4wMDAwMDApIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0iI0Q5RDlEOSI+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTQ2LDEyLjc2MDU2MDQgTDM1Ljg1NDMwNDcsMS4yNTczOTYzMyBDMzUuMzY3NDQxNCwwLjQ3MzgyNjYwNSAzNC42NTU4Nzg5LDAgMzMuOTA2NzYxNywwIEwxMi4wOTMyMzgzLDAgQzExLjM0NDEyMTEsMCAxMC42MzI1NTg2LDAuNDczOTUwMjU1IDEwLjE0NTY5NTMsMS4yNTczOTYzMyBMMi42MTQ3OTcyN2UtMTIsMTIuNzYwNTYwNCBMMCwyMiBMNDYsMjIgTDQ2LDEyLjc2MDU2MDQgWiIgID48L3BhdGg+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTMyLjYxMzI4MTMsMTUuOTMxNSBDMzIuNjEzMjgxMywxNC4zMjU4NTExIDMzLjYwNjk1MzEsMTMuMDAwMjM0IDM0LjgzOTY5OTIsMTMgTDQ2LDEzIEw0NiwzMS4xMzcxMjc3IEM0NiwzMy4yNTg5NTc0IDQ0LjY3OTM4NjcsMzUgNDMuMDUwNDI5NywzNSBMMi45NDk1NzAzMSwzNSBDMS4zMjA1MjM0NCwzNSAwLDMzLjI1ODg0MDQgMCwzMS4xMzcxMjc3IEwwLDEzIEwxMS4xNjAzMDA4LDEzIEMxMi4zOTMwNDY5LDEzIDEzLjM4NjcxODgsMTQuMzIyODA4NSAxMy4zODY3MTg4LDE1LjkyODQ1NzQgTDEzLjM4NjcxODgsMTUuOTQ5NjM4MyBDMTMuMzg2NzE4OCwxNy41NTUyODcyIDE0LjM5MTcxMDksMTguODUxMTgwOSAxNS42MjQ0NTcsMTguODUxMTgwOSBMMzAuMzc1NTQzLDE4Ljg1MTE4MDkgQzMxLjYwODI4OTEsMTguODUxMTgwOSAzMi42MTMyODEzLDE3LjU0MzM1MTEgMzIuNjEzMjgxMywxNS45Mzc3MDIxIEwzMi42MTMyODEzLDE1LjkzMTUgWiIgIGZpbGw9IiNGQUZBRkEiPjwvcGF0aD4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+">
+                <p>暂无数据</p>
+            </div>
+        </div>
+    </div>
+</div>

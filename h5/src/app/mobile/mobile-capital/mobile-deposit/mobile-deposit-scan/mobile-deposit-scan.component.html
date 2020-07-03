@@ -1,0 +1,52 @@
+<div class="depost-animation">
+    <div class="no-way flex" *ngIf="!payList.length">
+        <i nz-icon nzType="exclamation" nzTheme="outline"></i>
+        暂无可选二维码，联系管理员配置! <i nz-icon nzType="customer-service" nzTheme="outline"></i>
+        <a [href]="plat.onlineService" class="customer">在线客服</a>
+
+    </div>
+    <div *ngIf="payList.length">
+        <div nz-row class="payment-name">
+            <ng-container *ngFor="let item of payList, let i = index">
+                <div nz-col [nzSpan]="6" [ngClass]="{'active': i === deposit.payIndex}"
+                     (click)="dealPayment(i)">{{item.scanname}}
+                </div>
+            </ng-container>
+        </div>
+        <div class="online-customer">只能扫描支付哦，如有疑问请联系
+            <i nz-icon nzType="customer-service" nzTheme="outline"></i>
+            <a [href]="plat.onlineService" class="customer">在线客服</a>
+        </div>
+        <div class="qr-code">
+            <img [src]="payList[deposit.payIndex]?.accountimg" alt="">
+        </div>
+        <section class="deposit-amount">
+            <div class="deposit-item">
+                <div>
+                    <nz-input-group nzAddOnBefore="金额">
+                        <input type="text" nz-input [(ngModel)]="params.amount"
+                               [placeholder]="'单笔限额'+payList[deposit.payIndex].minquota+ '-'
+                               +payList[deposit.payIndex].maxquota+ '(元)'" maxlength="7" [nzSize]="'large'"/>
+                    </nz-input-group>
+                </div>
+            </div>
+        </section>
+        <section class="deposit-amount">
+            <div class="deposit-item">
+                <div>
+                    <nz-input-group nzAddOnBefore="订单号">
+                        <input type="text" nz-input [(ngModel)]="params.orderNo" placeholder="请输入订单后四位" maxlength="7" appLimitInput [limitType]="'number|letter'"
+                               [nzSize]="'large'"/>
+                    </nz-input-group>
+                </div>
+            </div>
+        </section>
+        <div class="next">
+            <button class="deposit-submit btn-image-big" nz-button (click)="submit()" nzSize="large"
+                    nzType="primary">下一步
+            </button>
+        </div>
+
+        <app-mobile-deposit-text-tooltip></app-mobile-deposit-text-tooltip>
+    </div>
+</div>

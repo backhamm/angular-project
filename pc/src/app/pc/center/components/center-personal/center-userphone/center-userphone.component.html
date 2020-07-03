@@ -1,0 +1,46 @@
+<div class="center-right fl">
+    <div class="page-header">
+       手机号码
+    </div>
+
+    <div class="setting">
+        <nz-steps [nzCurrent]="current" nzSize="small">
+            <nz-step nzTitle="手机号设定"></nz-step>
+            <nz-step nzTitle="设定成功"></nz-step>
+        </nz-steps>
+    </div>
+    <div *ngIf="current === 0">
+        <div class="set-input">
+            <span>登陆密码：</span>
+          <input nz-input placeholder="请输入登陆密码" nzSize="large"
+                 appLimitInput [limitType]="'number|letter'"
+                 type="password" maxlength="12" [(ngModel)]="params.password"/>
+        </div>
+        <div class="set-input">
+            <span>手机号：</span>
+            <nz-select [ngModel]="'+86'" [nzSize]="'large'">
+                <nz-option [nzLabel]="'+86'" [nzValue]=" '+86'"></nz-option>
+            </nz-select>
+            <input nz-input placeholder="请输入手机号" nzSize="large"
+                   appLimitInput [limitType]="'number'"
+                   type="text" class="phone" maxlength="11" [(ngModel)]="params.mobileNo"/>
+        </div>
+        <div class="set-input">
+            <span>验证码：</span>
+            <input nz-input placeholder="请输入验证码" nzSize="large"
+                   appLimitInput [limitType]="'number'"
+                   type="text" maxlength="4" class="sendcode" [(ngModel)]="params.msgCode"/>
+            <button nz-button nzSize="large" nzType="primary"
+                    [disabled]="isGetting"
+                    (click)="getPhoneCode()" class="sendcode_btn">
+              {{isGetting ? "倒计时"+ timeCount + "秒" : '发送验证码'}}</button>
+        </div>
+        <button nz-button nzType="primary" class="submit" nzSize="large"  (click)="next()" >下一步</button>
+    </div>
+    <div class="set-success" *ngIf="current === 1">
+        <p class="big-title">恭喜您已经成功修改登录密码!</p>
+        <p>贴心提醒</p>
+        <p>当您完成设定后,若有疑问,可联系<a [href]="platform.onlineService.href" [target]="platform.onlineService.target">线上客服</a>获得帮助</p>
+    </div>
+
+</div>

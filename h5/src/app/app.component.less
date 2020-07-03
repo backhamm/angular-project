@@ -1,0 +1,69 @@
+@import "config/config-mobile";
+
+nz-layout {
+  background-color: #ffffff;
+}
+
+:host ::ng-deep {
+  nz-spin {
+    height: 100%;
+  }
+
+  .home-index {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+
+    .h-container {
+      flex: 1;
+      overflow: auto;
+    }
+  }
+
+  .ant-spin-container {
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  .ant-form-item-label > label::after {
+    content: '';
+  }
+
+  /* 重置拖拽按钮样式 */
+
+  #verify-warp {
+    margin-bottom: 22px;
+    border-radius: 4px;
+
+    p {
+      font-size: 14px !important;
+    }
+
+    &.sliding {
+      #slider {
+        background: @primary-color !important;
+        border: 1px solid @second-font-color !important;
+
+        #slider-btn {
+          background-color: @slide-color !important;
+        }
+      }
+    }
+
+    &.slided {
+      #slider {
+        background: @primary-color !important;
+        border: 1px solid @primary-color !important;
+
+        #slider-btn {
+          background-color: @deep-btn-primary !important;
+        }
+
+        .success {
+          color: @font-color;
+        }
+      }
+    }
+  }
+}

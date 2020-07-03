@@ -1,0 +1,157 @@
+@import "~src/app/config/config-mobile";
+
+@keyframes roll-text {
+  form {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% + 360px));
+  }
+}
+
+.index-wrapper {
+  font-size: 0;
+
+  img {
+    width: 100%;
+  }
+
+  .notice {
+    height: .6rem;
+
+    .left-ico {
+      vertical-align: top;
+      margin-top: .1rem;
+      width: 12vw;
+      font-size: 0.42rem;
+      color: @btn-primary;
+    }
+
+    .notice-wrapper {
+      display: inline-block;
+      width: 88vw;
+      height: 100%;
+      overflow: hidden;
+
+      .notice-list {
+        display: inline-block;
+        font-size: .2rem;
+        height: 100%;
+        color: @font-color;
+        animation-name: roll-text;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+
+        .notice-item {
+          float: left;
+          width: 180px;
+          line-height: .6rem;
+        }
+      }
+
+    }
+  }
+
+  .title-detail {
+    padding: .4rem .2rem;
+    text-align: center;
+    font-size: .26rem;
+    background-color: @second-color;
+
+    .item {
+      margin: 0 auto;
+      width: 90%;
+      border: 1px solid @border-color;
+      box-sizing: border-box;
+      padding: 0 .1rem;
+
+      p {
+        line-height: .62rem;
+        font-size: .26rem;
+        border-bottom: 1px solid @border-color;
+        color: @btn-primary;
+
+        i {
+          margin-left: .1rem;
+          color: lawngreen;
+        }
+      }
+
+      .name {
+        border: none;
+        color: @font-color;
+      }
+    }
+  }
+
+  h1 {
+    line-height: .86rem;
+    font-size: .28rem;
+    font-weight: 700;
+    color: @font-color;
+  }
+
+  h2 {
+    padding-bottom: .3rem;
+    font-size: .23rem;
+    color: @second-font-color;
+  }
+
+  .pl3 {
+    padding-left: .3rem;
+  }
+
+  .p3 {
+    padding: .3rem;
+  }
+
+  .join-btn {
+    display: block;
+    margin: .5rem auto;
+    width: 75%;
+    height: .86rem;
+    background: @btn-primary;
+    border: 1px solid @btn-primary;
+    color: @font-color;
+  }
+
+  .formula-mode {
+    padding: .4rem .3rem .2rem;
+    font-size: .2rem;
+    background: @second-color;
+    color: @second-font-color;
+
+    .main, .other {
+      border: 1px solid @border-color;
+      padding: .3rem 0 .4rem;
+      margin-bottom: .2rem;
+    }
+
+    .main {
+      .title {
+        text-align: center;
+
+        img {
+          width: 80%;
+        }
+      }
+
+      .mode-img {
+        margin: 0 auto .2rem;
+        width: 90%;
+      }
+    }
+
+    .detail-text {
+      padding: 0 0.3rem 0 .5rem;
+      line-height: .36rem;
+      text-align: justify;
+      text-indent: -.2rem;
+    }
+
+    .red-text {
+      color: @tooltip-color;
+    }
+  }
+}

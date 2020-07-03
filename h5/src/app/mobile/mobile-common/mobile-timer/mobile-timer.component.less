@@ -1,0 +1,112 @@
+@import "../../../config/config-mobile.less";
+
+.search{
+    background: @second-color;
+}
+.search .time {
+    width: 50%;
+    display: inline-block;
+    color: @font-color;
+    padding-bottom: 0.1rem;
+}
+.search .time .label-txt {
+    color: @second-font-color;
+    line-height: .6rem;
+    width: 0.8rem;
+    font-size: .3rem;
+    display: inline-block;
+    text-align: center;
+    margin-left: 0.1rem;
+}
+.search .line-date {
+    height: 15px;
+    width: 10%;
+    display: inline-block;
+    border-bottom: 1px solid @font-color;
+}
+
+.search .time-tables{
+    display: block;
+    width: 100%;
+    margin-top: 0.3rem;
+}
+.search .time-tables button {
+    color: @font-color;
+    padding: 10px 0.2rem;
+    border: none;
+    border-radius: .1rem;;
+    font-size: 0.2rem;
+    float: left;
+    margin-left: 0.2rem;
+    background: none;
+    outline: none;
+}
+
+.search .time-tables button.active {
+    background: @font-color;
+    color: @main-color;
+}
+
+:host ::ng-deep{
+    .ant-calendar-picker{
+        width: 76%;
+        color: @font-color;
+    }
+    .ant-radio-group{
+        color: @font-color;
+    }
+    input.ant-calendar-picker-input.ant-input.ant-input-sm.ng-star-inserted{
+        background: none;
+    }
+    .ant-calendar-picker-small{
+        border-bottom: 1px solid @font-color;
+        text-align: center;
+    }
+    .ant-input,.ant-input-group-addon{
+        text-align: center!important;
+    }
+
+    .ant-table-row {
+        td {
+            color: @font-color
+        }
+    }
+    .ant-table-thead > tr > th {
+        background: none!important;
+        color: @second-font-color;
+    }
+    .ant-table-thead > tr > th, .ant-table-tbody > tr > td {
+        padding: 16px 10px;
+    }
+    .ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
+    .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
+    .ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td, .ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
+        background: none;
+    }
+    .ant-table-placeholder {
+        background: none;
+        color: @second-font-color;
+        border-top: 1px solid @second-color;
+        border-bottom: 1px solid @second-color;
+        .ant-empty-description {
+            color: @second-font-color;
+        }
+    }
+    .ant-collapse {
+        background: @second-color;
+        border: none;
+    }
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+        padding-left: 0;
+        padding-right: 35px;
+    }
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+        width: 93%;
+        text-align: right;
+        color:@btn-primary;
+        font-size: 0.3rem;
+    }
+    .ant-collapse-content {
+        background: @main-color;
+    }
+}

@@ -1,0 +1,89 @@
+@import "../../../../config/config.less";
+
+.downContent {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 460px;
+}
+
+.down_1 {
+  float: left;
+  background: url("@{base-url}images/download/app_down_content.png") no-repeat;
+  width: 1117px;
+  height: calc(100vh - 242px);
+  min-height: 705px;
+}
+
+.android_stup_btn {
+  position: absolute;
+  width: 145px;
+  height: 40px;
+  cursor: pointer;
+  left: 185px;
+  top: 252px;
+  display: inline-block;
+
+  &:hover~.android_content_img {
+    display: block;
+  }
+}
+
+.ios_stup_btn {
+  width: 145px;
+  height: 40px;
+  position: absolute;
+  left: 0;
+  top: 252px;
+  cursor: pointer;
+  display: inline-block;
+
+  &:hover~.ios_content_img {
+    display: block;
+  }
+}
+
+.android_content_img {
+  position: absolute;
+  top: 85px;
+  left: 330px;
+  display: none;
+  z-index: 99999;
+}
+
+.ios_content_img {
+  display: none;
+  position: absolute;
+  top: 28px;
+  left: 145px;
+  z-index: 99999;
+}
+
+.downloadImg {
+  position: absolute;
+  bottom: 33px;
+  left: 0;
+
+  span {
+    display: inline-block;
+    width: 140px;
+    height: 170px;
+    margin-right: 17px;
+  }
+
+  .IOSImg {
+    background: url('@{base-url}images/download/code_ios.png') no-repeat;
+    background-size: 100%;
+  }
+
+  .IOS_BY_Img {
+    background: url('@{base-url}images/download/code_ios_backup.png') no-repeat;
+    background-size: 100%;
+  }
+
+  .androidImg {
+    background: url('@{base-url}images/download/code_android.png') no-repeat;
+    background-size: 100%;
+    margin-left: 40px;
+  }
+}

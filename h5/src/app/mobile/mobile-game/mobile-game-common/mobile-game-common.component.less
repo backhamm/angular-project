@@ -1,0 +1,88 @@
+@import "../../../config/config-mobile";
+
+.game-container {
+  width: 100%;
+  padding-bottom: 1rem;
+  box-sizing: border-box;
+  font-size: 0;
+
+  .sidebar {
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    overflow: auto;
+    background: @second-color;
+
+    li {
+      line-height: 1.1rem;
+      border-bottom: 1px solid @main-color;
+      font-size: .3rem;
+      color: @font-color;
+
+      .active {
+        background: @main-color;
+      }
+    }
+
+    li:last-child {
+      border: none;
+    }
+  }
+
+  .gamelist-main {
+    display: inline-block;
+    padding-bottom: .3rem;
+    width: 80%;
+    height: 100%;
+    overflow: auto;
+    background: @main-color;
+
+    .game-pic {
+      padding: .2rem .2rem 0;
+      height: 1.9rem;
+      box-sizing: border-box;
+
+      .game-img {
+        display: inline-block;
+        vertical-align: top;
+        width: 2.3rem;
+        height: 100%;
+      }
+
+      .game-info {
+        display: inline-block;
+        padding-left: .25rem;
+        width: calc(100% - 2.3rem);
+        height: 100%;
+        color: @btn-primary;
+      }
+    }
+    img {
+      width: 100%;
+    }
+    .game-title {
+      color: @btn-primary;
+      height: .4rem;
+      line-height: 0.4rem;
+      font-size: .3rem;
+    }
+    .game-introduce {
+      height: .7rem;
+      line-height: 0.6rem;
+      font-size: .22rem;
+      color: @font-color;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .start-game {
+      width: 1.4rem;
+    }
+
+    .image-template {
+      padding: 0.2rem 0.2rem 0;
+    }
+  }
+}

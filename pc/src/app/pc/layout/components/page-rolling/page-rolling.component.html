@@ -1,0 +1,38 @@
+<!-- 滚动公告 -->
+<!-- <div class="marquee_bg">
+        <div class="center-notice clear">
+            <div class="notice-main fl">
+                <marquee direction="left" height="26" scrollamount="10" scrolldelay="10">
+                    <ul class="news-container">
+                        <li nz-carousel-content *ngFor="let item of noticeList" (click)="noticeAlert(item)">
+                            {{item.data}}
+                        </li>
+                    </ul>
+                </marquee>
+            </div>
+        </div>
+    </div> -->
+<!-- 滚动公告结束 -->
+
+<div class="notice-content" *ngIf="PageRoll">
+    <div class="index-notice clear" >
+        <div class="notice-news fl">
+            <marquee scrollamount="4" scrolldelay="10" direction="left" onmouseover="this.stop();"
+                     onmouseout="this.start();">
+                <span *ngIf="noticeList.length > 0" (click)="noticeAlert(noticeList[noticeIndex])">{{noticeList[noticeIndex].data}}</span>
+               <!-- <ul>
+                <li *ngFor="let item of noticeList">
+                    <span *ngIf="noticeList.length > 0" (click)="noticeAlert(item)">{{item.data}}</span>
+                </li>
+            </ul>-->
+
+            </marquee>
+
+        </div>
+        <div class="marquee-dots fr">
+            <ul>
+                <li *ngFor="let list of noticeList; let i = index" (click)="noticeClick(list,i)" [ngClass]="noticeIndex === i ? 'active-bg' : ''"></li>
+            </ul>
+        </div>
+    </div>
+</div>

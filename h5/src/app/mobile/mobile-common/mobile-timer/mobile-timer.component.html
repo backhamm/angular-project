@@ -1,0 +1,31 @@
+
+    <div class="search" nz-row>
+        <!-- 快捷选时 -->
+        <div class="time-tables">
+            <div *ngFor="let quick of quickArr">
+                <button (click)="quickChange(quick.value)"  [ngClass]="dateTimeSelect == quick.value ? 'active' : '' ">{{quick.date}}</button>
+            </div>
+        </div>
+        <!-- 时间段选择 -->
+        <div class="time">
+            <div class="label-txt">起始: </div>
+            <nz-date-picker
+                [nzDisabledDate]="disabledStartDate"
+                nzSize="small"
+                nzFormat="yyyy/MM/dd"
+                [(ngModel)]="starTimes"
+                (ngModelChange)="startChange($event)">
+            </nz-date-picker>
+        </div>
+        <!--<div class="time line-date"></div>-->
+        <div class="time">
+            <div class="label-txt">结束: </div>
+            <nz-date-picker
+                [nzDisabledDate]="disabledEndDate"
+                nzSize="small"
+                nzFormat="yyyy/MM/dd"
+                [(ngModel)]="endTimes"
+                (ngModelChange)="endChange($event)">
+            </nz-date-picker>
+        </div>
+    </div>

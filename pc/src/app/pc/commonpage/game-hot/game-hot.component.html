@@ -1,0 +1,7 @@
+<div class="hot-container">
+    <a [href]="plat.onlineService.href" [target]="plat.onlineService.target" class="online-chat"></a>
+    <div class="hot-game"></div>
+    <ng-container *ngFor="let list of hotArr">
+        <p class="cur-game"  (click)="subClick(list, list.herf)">{{list.menuNameCn}}</p>
+    </ng-container>
+</div>
