@@ -1,0 +1,43 @@
+@import "~src/app/config/config-mobile";
+
+.commissions {
+  color: @font-color;
+  font-size: 0;
+
+  .options {
+    line-height: .9rem;
+    padding: 0 .3rem;
+    border-bottom: 1px solid @second-color;
+    font-size: .28rem;
+
+    .placeholder {
+      text-align: right;
+      color: @second-font-color;
+
+      &:first-child {
+        color: @btn-primary;
+      }
+    }
+  }
+  .tips {
+    padding: .3rem .3rem .5rem;
+    line-height: 1.3;
+    font-size: .22rem;
+    color: @second-font-color;
+  }
+
+  .submit {
+    width: 5rem;
+    margin: 0 auto;
+    line-height: .86rem;
+    text-align: center;
+    font-size: .32rem;
+    border-radius: .1rem;
+    font-weight: bold;
+    background: @primary-color;
+  }
+
+  .red-text {
+    color: @tooltip-color;
+  }
+}

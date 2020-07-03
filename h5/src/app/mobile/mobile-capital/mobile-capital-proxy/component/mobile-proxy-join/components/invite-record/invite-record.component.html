@@ -1,0 +1,34 @@
+<div class="home-index">
+  <app-mobile-header leftIcon="true"></app-mobile-header>
+  <div class="h-container">
+    <div class="record-content">
+      <div class="header" nz-row nzType="flex" nzJustify="space-around">
+        <div class="header-item" *ngFor="let item of dateOptions; let i = index" (click)="changeTime(i, item.day)" [ngClass]="{active: i === dateIndex}" nz-col>
+          {{item.name}} <span class="num">{{item.count}}</span>
+        </div>
+      </div>
+      <div class="list-title" nz-row nzType="flex" nzJustify="space-between">
+        <div nz-col nzSpan="8">会员ID</div>
+        <div class="text-center" nz-col nzSpan="8">旗下会员</div>
+        <div class="text-right" nz-col nzSpan="8">累计产出佣金</div>
+      </div>
+      <app-drop-down class="list-content" [isLoading]="isLoading" (moveEnd)="moveEnd($event)">
+        <div *ngIf="recordList.length">
+          <div class="item-wrapper" *ngFor="let item of recordList">
+            <div class="list-item" nz-row>
+              <div nz-col nzSpan="8">
+                <img class="icon" [src]="config.baseMobileImgUrl + 'image/wxdl/agentIcon_zs.png'" alt="">
+                {{item.username}}
+              </div>
+              <div class="text-center" [ngClass]="{isAgency: item.isAgency}" nz-col nzSpan="8">{{item.isAgency ? item.totalNum : '未开通代理'}}</div>
+              <div class="text-right" nz-col nzSpan="8">{{item.provideCommission | number:'1.2-2'}}</div>
+            </div>
+            <div class="item-tips">{{item.registTime}}</div>
+          </div>
+        </div>
+        <nz-spin class="loading" *ngIf="isLoading" nzSimple></nz-spin>
+        <nz-list *ngIf="!isLoading && !recordList.length" [nzDataSource]="[]"></nz-list>
+      </app-drop-down>
+    </div>
+  </div>
+</div>

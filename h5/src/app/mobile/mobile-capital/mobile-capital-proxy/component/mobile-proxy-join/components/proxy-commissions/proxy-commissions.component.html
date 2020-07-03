@@ -1,0 +1,18 @@
+<div class="commissions">
+  <app-mobile-header leftIcon="true" [headerText]="type === '1' ? '佣金提取' : '佣金转存'"></app-mobile-header>
+  <div class="content">
+    <div class="options" nz-row *ngFor="let item of optionsList">
+      <div nz-col nzSpan="5">{{item.title}}</div>
+      <div class="placeholder" nz-col nzSpan="19">{{item.info}}</div>
+    </div>
+    <div *ngIf="type === '1'" class="tips">
+      将佣金提现到银行卡，需先提交平台审核，审核完成后将于X个工作日内 存入您提供的银行卡账户内，若有任何疑问，请联系
+      <a class="red-text" [href]="platform.onlineService">在线客服</a>
+    </div>
+    <div *ngIf="type === '2'" class="tips">
+      将佣金提现到钱包余额，需先提交平台审核，审核完成后将立即转入您的中心钱包，可直接用于游戏，且不要求打码量，若有任何疑问，请联系
+      <a class="red-text" [href]="platform.onlineService">在线客服</a>
+    </div>
+    <div class="submit" (click)="getWithdrawlComm()">确认提交</div>
+  </div>
+</div>

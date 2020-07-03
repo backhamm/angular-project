@@ -66,7 +66,7 @@ export class CommonService {
     if (args['p']) {
       this.proxy = args['p'];
       sessionStorage.setItem('proxyName', this.proxy);
-      this.router.navigateByUrl('/register');
+      this.router.navigateByUrl('/m/register');
     }
   }
 }

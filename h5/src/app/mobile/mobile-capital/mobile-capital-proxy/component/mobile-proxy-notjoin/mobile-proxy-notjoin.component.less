@@ -11,6 +11,7 @@
 }
 
 .index-wrapper {
+  line-height: 1.5;
   font-size: 0;
 
   img {
@@ -19,15 +20,20 @@
 
   .notice {
     height: .6rem;
+    background-color: @second-color;
 
     .left-ico {
+      display: inline-block;
       vertical-align: top;
-      margin-top: .1rem;
       width: 12vw;
-      font-size: 0.42rem;
-      color: @btn-primary;
-    }
+      height: 100%;
+      padding-top: .15rem;
+      text-align: center;
 
+      .icon {
+        width: .32rem;
+      }
+    }
     .notice-wrapper {
       display: inline-block;
       width: 88vw;
@@ -49,7 +55,6 @@
           line-height: .6rem;
         }
       }
-
     }
   }
 
@@ -57,7 +62,6 @@
     padding: .4rem .2rem;
     text-align: center;
     font-size: .26rem;
-    background-color: @second-color;
 
     .item {
       margin: 0 auto;
@@ -66,30 +70,31 @@
       box-sizing: border-box;
       padding: 0 .1rem;
 
-      p {
+      .count, .name {
         line-height: .62rem;
         font-size: .26rem;
         border-bottom: 1px solid @border-color;
         color: @btn-primary;
 
-        i {
-          margin-left: .1rem;
-          color: lawngreen;
+        .icon {
+          vertical-align: middle;
+          width: .16rem;
+          margin: -.08rem 0 0 .1rem;
         }
       }
 
       .name {
         border: none;
-        color: @font-color;
+        color: @second-font-color;
       }
     }
   }
 
   h1 {
-    line-height: .86rem;
+    line-height: .8rem;
     font-size: .28rem;
     font-weight: 700;
-    color: @font-color;
+    color: @second-font-color;
   }
 
   h2 {
@@ -99,7 +104,29 @@
   }
 
   .pl3 {
-    padding-left: .3rem;
+    text-align: center;
+  }
+
+  .middle-line {
+    position: relative;
+    color: @font-color;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 2.1rem;
+      height: 1px;
+      background: #333;
+    }
+
+    &:before {
+      left: .7rem;
+    }
+
+    &:after {
+      right: .7rem;
+    }
   }
 
   .p3 {
@@ -117,15 +144,11 @@
   }
 
   .formula-mode {
-    padding: .4rem .3rem .2rem;
     font-size: .2rem;
-    background: @second-color;
     color: @second-font-color;
 
     .main, .other {
-      border: 1px solid @border-color;
-      padding: .3rem 0 .4rem;
-      margin-bottom: .2rem;
+      margin-bottom: .4rem;
     }
 
     .main {
@@ -143,11 +166,19 @@
       }
     }
 
+    .detail-title {
+      padding-left: .3rem;
+    }
+
     .detail-text {
-      padding: 0 0.3rem 0 .5rem;
+      padding: 0 .4rem 0 .6rem;
       line-height: .36rem;
       text-align: justify;
       text-indent: -.2rem;
+
+      &.indent0 {
+        text-indent: 0;
+      }
     }
 
     .red-text {

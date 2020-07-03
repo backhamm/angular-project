@@ -1,0 +1,67 @@
+<div class="home-index">
+  <app-mobile-header leftIcon="true">
+    <div class="right-ico" (click)="showSidebar = true">
+      <img class="img" [src]="config.baseMobileImgUrl + 'image/user_img/more.png'" alt="">
+    </div>
+  </app-mobile-header>
+  <div class="h-container">
+    <div class="record-content">
+      <div class="header" nz-row nzType="flex" nzJustify="space-between">
+        <div class="header-item" nz-col>
+          <div>{{extendBean?.unSettledCommission | number:'1.2-2'}}</div>
+          <div class="num">当前未结</div>
+        </div>
+        <div class="header-item" nz-col>
+          <div>{{extendBean?.extractedTimes}}次</div>
+          <div class="num">已提取</div>
+        </div>
+        <div class="header-item" nz-col>
+          <div>{{extendBean?.totalExtractedCommissions | number:'1.2-2'}}</div>
+          <div class="num">累计提取</div>
+        </div>
+      </div>
+      <div class="list-title" nz-row nzType="flex" nzJustify="space-between">
+        <div nz-col nzSpan="8">
+          <div>提取时间</div>
+          <div>提取类型</div>
+        </div>
+        <div class="text-center" nz-col nzSpan="8">
+          <div>操作人</div>
+          <div>记佣周期</div>
+        </div>
+        <div class="text-right" nz-col nzSpan="8">
+          <div>提取金额</div>
+        </div>
+      </div>
+      <app-drop-down class="list-content" [isLoading]="isLoading" (moveEnd)="moveEnd($event)">
+        <div *ngIf="!isLoading && recordList.length">
+          <div class="item-wrapper" *ngFor="let item of recordList">
+            <div class="list-item" nz-row>
+              <div nz-col nzSpan="8">
+                <div class="item-title">
+                  <img class="icon" [src]="getImage(item.issuedStatus)" alt="">{{item.createTime}}
+                </div>
+                <div>{{item.orderType == 1 ? '提佣' : '转存'}}</div>
+              </div>
+              <div class="text-center" nz-col nzSpan="8">
+                <div class="item-title operator">{{item.username}}</div>
+                <div>{{item.commissionCircle}}</div>
+              </div>
+              <div class="text-right" [ngClass]="{success: item.issuedStatus < 2}" nz-col nzSpan="8">
+                {{item.amount | number:'1.2-2'}}
+              </div>
+            </div>
+            <div class="item-tips" *ngIf="item.issuedStatus == 1">审核已通过，请注意查收，如有疑问，请联系<span class="red-text">客服</span></div>
+            <div class="item-tips" *ngIf="item.issuedStatus == 2">审核未通过，原因请查看<span class="red-text">站内信或联系客服</span></div>
+          </div>
+        </div>
+        <nz-spin class="loading" *ngIf="isLoading" nzSimple></nz-spin>
+        <nz-list *ngIf="!isLoading && !recordList.length" [nzDataSource]="[]"></nz-list>
+      </app-drop-down>
+    </div>
+  </div>
+</div>
+
+<app-record-sidebar [(isShow)]="showSidebar" [btnList]="btnList" (cancel)="handleCancel()" (confirm)="handleOk($event)"></app-record-sidebar>
+
+

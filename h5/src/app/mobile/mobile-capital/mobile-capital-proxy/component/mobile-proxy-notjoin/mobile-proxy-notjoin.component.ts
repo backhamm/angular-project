@@ -1,4 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {CapitalService} from "@service/capital.service";
+import {Router} from "@angular/router";
+import {NzMessageService} from "ng-zorro-antd";
+import {UserService} from "@service/user.service";
+import {ConfigService} from "@src/app/config/config.service";
 
 @Component({
   selector: 'app-mobile-proxy-notjoin',
@@ -7,24 +12,38 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MobileProxyNotjoinComponent implements OnInit {
 
-  carouselList = [
-    {username: "erq***01", amount: 1369.07},
-    {username: "erq***03", amount: 9081.92},
-    {username: "tes***22", amount: 3111.19},
-    {username: "ttx***03", amount: 143.06},
-    {username: "erq***02", amount: 3922.30},
-    {username: "erq***01", amount: 3079.42},
-    {username: "bin***23", amount: 110.00},
-    {username: "bin***23", amount: 300.00},
-    {username: "bin***23", amount: 300.00},
-    {username: "bin***23", amount: 200.00}
-  ];
+  carouselList = [];
 
-  constructor() {
+  constructor(
+    public capital: CapitalService,
+    public router: Router,
+    public message: NzMessageService,
+    public user: UserService,
+    public config: ConfigService
+  ) {
   }
 
   ngOnInit() {
-    this.carouselList = [...this.carouselList, ...this.carouselList.slice(0, 2)];
+    this.init();
+  }
+
+  joinAgent() {
+    this.capital.joinAgent().subscribe(res => {
+      if (res.status === 10000) {
+        this.message.success(res.msg);
+        this.user.userInfo.hasJoin = 0;
+      } else {
+        this.message.error(res.msg);
+      }
+    });
+  }
+
+  init() {
+    this.capital.getAgencyCarousel().subscribe(res => {
+      if (res.status === 10000) {
+        this.carouselList = [...res.data, ...res.data.slice(0, 2)];
+      }
+    });
   }
 
 }

@@ -1,0 +1,114 @@
+@import "~src/app/config/config-mobile";
+
+.right-ico {
+  position: absolute;
+  right: .3rem;
+  top: 0;
+  width: .52rem;
+
+  .img {
+    vertical-align: middle;
+    width: 100%;
+  }
+}
+
+.record-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 0;
+  overflow: hidden;
+
+  .header {
+    align-items: center;
+    height: .86rem;
+    text-align: center;
+    border-bottom: 1px solid @border-color2;
+    color: @font-color;
+
+    .header-item {
+      width: 1.2rem;
+      height: .54rem;
+      line-height: .54rem;
+      font-size: .24rem;
+      border-radius: .1rem;
+      border: 1px solid @second-color;
+
+      &.active {
+        background: @btn-primary;
+      }
+
+      &.last-item {
+        border: 1px solid #D62F27;
+        color: #D62F27;
+      }
+    }
+  }
+
+  .list-title {
+    height: .86rem;
+    line-height: .86rem;
+    padding: 0 .3rem;
+    font-size: .28rem;
+    border-bottom: 1px solid @deep-main-color;
+    color: @font-color;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .list-content {
+    flex: 1;
+    overflow: auto;
+
+    ::ng-deep {
+      .item-wrapper {
+        height: 1.1rem;
+        line-height: 1.1rem;
+        padding: 0 .3rem;
+        border-bottom: 1px solid @deep-main-color;
+        color: @second-font-color;
+
+        .list-item {
+          height: 100%;
+          white-space: nowrap;
+          font-size: .28rem;
+
+          .text-left {
+            line-height: .65rem;
+
+            .item-tips {
+              line-height: 1;
+              font-size: .24rem;
+            }
+          }
+
+          .icon {
+            vertical-align: middle;
+            width: .22rem;
+            margin-right: .1rem;
+          }
+
+          .text-right {
+            color: @btn-primary;
+
+            .ico {
+              vertical-align: middle;
+              font-size: .45rem;
+              color: @font-color;
+            }
+          }
+
+          .text-center.isAgency {
+            color: @btn-primary;
+          }
+        }
+      }
+    }
+  }
+}

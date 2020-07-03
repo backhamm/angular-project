@@ -90,7 +90,7 @@ export class ActivityService {
     }
 
     getMobileDiscWining(): Observable<any> {
-        return this.http.get('gglActivity/getRouletteActivityRecord');
+        return this.http.get('activity/roulette/all/recode');
     }
 
     /**
@@ -98,7 +98,7 @@ export class ActivityService {
      * @author: table
      */
     getDiscRecive(): Observable<any> {
-        return this.http.get('gglActivity/currentRouletteActivityRecord').pipe(
+        return this.http.get('activity/roulette/user/recode').pipe(
             map(res => {
                 if (res.status === 10000) {
                     this.discRecive = res.data;
@@ -130,7 +130,7 @@ export class ActivityService {
      * @author: table
      */
     discLottery(): Observable<ResponseBody> {
-        return this.http.get('gglActivity/getRouletteResult');
+        return this.http.get('activity/roulette/prize');
     }
 
 

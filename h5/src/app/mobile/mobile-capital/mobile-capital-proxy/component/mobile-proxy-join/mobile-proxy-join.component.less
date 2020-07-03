@@ -17,9 +17,21 @@
       font-size: .28rem;
 
       .money {
+        position: relative;
         font-weight: 700;
         font-size: .4rem;
         margin-bottom: .1rem;
+
+        .commissions {
+          position: absolute;
+          margin-left: .3rem;
+          padding: 0 .2rem;
+          line-height: .32rem;
+          font-size: .24rem;
+          font-weight: 500;
+          border: 1px solid @font-color;
+          border-radius: 1rem;
+        }
       }
     }
 
@@ -44,7 +56,7 @@
       text-align: center;
       font-size: .28rem;
       border-radius: 1rem;
-      box-shadow: 1px 5px 7px @deep-main-color;
+      box-shadow: 0 4px 13px 0 rgba(255, 255, 255, 0.41);;
       background: @second-color;
 
       .link-icon {
@@ -77,7 +89,7 @@
       margin-top: .3rem;
       height: 2rem;
 
-      &>div {
+      & > div {
         vertical-align: top;
       }
 
@@ -85,6 +97,14 @@
         display: inline-block;
         width: 29%;
         height: 100%;
+        background: white;
+
+        .qr-code {
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+        }
       }
 
       .right-wrapper {
@@ -100,7 +120,7 @@
           color: @btn-primary;
         }
 
-        &>div {
+        & > div {
           padding-left: .2rem;
           background: @second-color;
         }
@@ -127,6 +147,10 @@
     }
   }
 
+  .green-text {
+    color: #4ECB73;
+  }
+
   .tips {
     padding: .3rem;
     line-height: .32rem;
@@ -136,14 +160,13 @@
   }
 
   .chart-wrapper {
-    padding: .3rem .3rem 0;
+    padding: .3rem .3rem 1rem;
     font-size: .28rem;
-    background: @second-color;
 
     .team-form {
       height: 4.5rem;
 
-      &>div {
+      & > div {
         height: 100%;
       }
 
@@ -152,12 +175,71 @@
         width: 3.2rem;
         height: 3.2rem;
       }
-    }
 
-    .brokerage {
-      margin-top: .5rem;
-      height: 8rem;
+      .team-info {
+        padding-top: 1rem;
+
+        .item {
+          font-size: .22rem;
+          color: @second-font-color;
+
+          .icon {
+            width: .22rem;
+          }
+
+          .special-color {
+            color: #E45A47;
+          }
+
+          .increase-data {
+            margin-top: .35rem;
+          }
+        }
+
+        .team-member {
+          margin-top: .6rem;
+
+          .special-color {
+            color: #CDA469;
+          }
+        }
+      }
     }
+  }
+}
+
+.mask {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(7, 17, 27, .5);
+}
+.commissions-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: .5rem .3rem;
+  background: @main-color;
+
+  .btn1, .btn2 {
+    line-height: .86rem;
+    text-align: center;
+    font-size: .32rem;
+    font-weight: bold;
+    border: 1px solid @btn-primary;
+    border-radius: .1rem;
+    color: @btn-primary;
+  }
+
+  .btn1 {
+    margin-bottom: .1rem;
+    background: @btn-primary;
+    color: @font-color;
   }
 }
 

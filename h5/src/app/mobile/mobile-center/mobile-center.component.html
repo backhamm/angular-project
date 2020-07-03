@@ -46,29 +46,30 @@
                 </ng-template>
               </div>
             </div>
-            <div class="myInfo" *ngIf="user.userInfo?.agencyStatus !==2 && user.userInfo?.agencyLevel">代理等级:&nbsp;&nbsp;&nbsp;
-              <span *ngIf="user.userInfo?.agencyStatus == 0">{{user.userInfo?.agencyLevel}}</span>
-              <span [hidden]="user.userInfo?.agencyStatus == 0" style="color: red;">已停用</span>
-            </div>
+            <!--<div class="myInfo" *ngIf="user.userInfo?.hasJoin !== 2">代理等级:&nbsp;&nbsp;&nbsp;-->
+              <!--<span *ngIf="user.userInfo?.hasJoin == 0">{{user.userInfo?.agencyLevel}}</span>-->
+              <!--<span [hidden]="user.userInfo?.hasJoin == 0" style="color: red;">已停用</span>-->
+            <!--</div>-->
             <div class="myInfo">当前积分:&nbsp;&nbsp;&nbsp;{{user.userInfo?.integral | number:'1.2-2'}}</div>
             <div class="myInfo">上次登录时间:&nbsp;&nbsp;&nbsp;{{user.userInfo?.loginDate}}</div>
           </div>
         </div>
       </div>
-      <div class="G-MemberCentre-Nav-capital" nz-row [hidden]="!user.userInfo?.agencyStatus || user.userInfo?.agencyStatus === 2">
+      <div class="G-MemberCentre-Nav-capital" nz-row [hidden]="user.userInfo?.hasJoin === 2">
         <div class="G-M-N-L" nz-col [nzSpan]="8">
           <div class="grid-content G-M-N-L-sup"> ¥&nbsp;{{user.userInfo?.wallet | number:'1.2-2'}}&nbsp;</div>
           <div class="grid-content G-M-N-L-sub">钱包余额(元)</div>
         </div>
         <div class="G-M-N-L" nz-col [nzSpan]="8">
-          <div class="grid-content G-M-N-L-sup"> ¥&nbsp;{{user.userInfo?.outstandingCommissions | number:'1.2-2'}}&nbsp;
-          </div>
-          <div *ngIf="user.userInfo?.withdraw; then withdraw else noWithdraw"></div>
+          <div *ngIf="user.userInfo?.hasJoin !== 0; then withdraw else noWithdraw"></div>
           <ng-template #noWithdraw>
-            <div class="grid-content G-M-N-L-sub">未结佣金(元)</div>
+            <div class="grid-content G-M-N-L-sup"> ¥&nbsp;{{capitalService.proxyInfo?.unSettledCommission | number:'1.2-2'}}&nbsp;
+            </div>
+            <div class="grid-content G-M-N-L-sub">代理佣金</div>
           </ng-template>
           <ng-template #withdraw>
-            <span class="grid-content G-M-N-L-sub drawing" (click)="withdrawlCommission()">提取佣金(元)</span>
+            <div class="grid-content G-M-N-L-sup">已停用</div>
+            <span class="grid-content G-M-N-L-sub drawing" (click)="withdrawlCommission()">代理状态</span>
           </ng-template>
         </div>
         <div class="G-M-N-R" nz-col [nzSpan]="8">
@@ -83,8 +84,8 @@
           </div>
         </div>
       </div>
-      <!--|| typeof user.userInfo?.agencyStatus =='undefined'-->
-      <div class="G-MemberCentre-Nav-capital" nz-row *ngIf="!user.userInfo?.agencyStatus || user.userInfo?.agencyStatus === 2">
+      <!--|| typeof user.userInfo?.hasJoin =='undefined'-->
+      <div class="G-MemberCentre-Nav-capital" nz-row *ngIf="user.userInfo?.hasJoin === 2">
         <div class="G-M-N-L" nz-col [nzSpan]="12">
           <div class="grid-content G-M-N-L-sup"> ¥&nbsp;{{user.userInfo?.wallet | number:'1.2-2'}}&nbsp;</div>
           <div class="grid-content G-M-N-L-sub">钱包余额(元)</div>
@@ -103,10 +104,10 @@
       </div>
 
 
-      <div *ngIf="user.userInfo?.agencyStatus ==2">
-        <a routerLink="/m/capital/proxy">
+      <div *ngIf="user.userInfo?.hasJoin === 2 && capitalService.proxyImage?.userCenterBanner">
+        <a routerLink="/m/capital/proxy" [queryParams]="{type: user.userInfo?.hasJoin}">
           <div class="unlimit-agency">
-            <img [src]="agentSrc" alt="" *ngIf="agentSrc">
+            <img [src]="capitalService.proxyImage?.userCenterBanner" alt="">
           </div>
         </a>
       </div>
@@ -135,17 +136,17 @@
   <app-mobile-footer></app-mobile-footer>
   <!-- 提取佣金弹窗 -->
   <nz-modal
+    class="center-modal"
     [(nzVisible)]="commissionVisible"
     nzTitle="佣金提取申请"
     (nzOnCancel)="commissionVisible = false;"
     (nzOnOk)="getWithdrawlComm()"
     [nzStyle]="{ top: '25vh'}"
   >
-    <div class="get-item">当前未结佣金&nbsp;:&nbsp;&nbsp;<span>￥{{ user.userInfo?.outstandingCommissions | number:'1.2-2'}}</span>
+    <div class="get-item">当前未结佣金&nbsp;:&nbsp;&nbsp;<span class="red-text">￥{{ capitalService.proxyInfo?.unSettledCommission | number:'1.2-2'}}</span>
     </div>
-    <div class="get-item">计佣周期&nbsp;:&nbsp;&nbsp;<i>{{ user.userInfo?.commissionBeginDate + '~' + user.userInfo?.commissionEndDate
+    <div class="get-item get-item2">计佣周期&nbsp;:&nbsp;&nbsp;<i>{{ capitalService.proxyInfo?.commissionBeginDate + '~' + capitalService.proxyInfo?.commissionEndDate
       }}</i></div>
-    <p>需先提交平台审核，审核通过后将下发到您提供的银行卡内，详情请咨询客
-      服，是否确认提交？</p>
+    <p class="tips">需先提交平台审核，审核通过后将下发到您提供的银行卡内，详情请咨询客服，是否确认提交？</p>
   </nz-modal>
 </div>

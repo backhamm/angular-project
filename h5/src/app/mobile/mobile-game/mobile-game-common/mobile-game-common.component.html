@@ -2,9 +2,14 @@
   <app-mobile-header leftIcon="true"></app-mobile-header>
   <div class="h-container">
     <ul class="sidebar" *ngIf="gameService.navGameList.length">
+      <li>
+        <div class="left-drawer" (click)="routerLink('adventures')">
+          大转盘
+        </div>
+      </li>
       <li *ngFor="let item of gameService.navGameList;">
         <div *ngIf="!isKeep(item.url)"
-             [routerLink]="routerLink(item.url)"
+             (click)="routerLink(item.url)"
              class="left-drawer">
           {{item.menuNameCn}}
         </div>
@@ -25,9 +30,10 @@
           <div class="game-info">
             <p class="game-title">{{item.menuNameCn}}</p>
             <p class="game-introduce">{{item.remark}}</p>
-            <!--<span class="start-game" (click)="loadGame(item)">开始游戏</span>-->
-            <img class="start-game" (click)="loadGame(item)" [src]="config.baseMobileImgUrl+'image/common/games_star.png'" alt="">
+            <span class="start-game-span" (click)="loadGame(item)">开始游戏</span>
+            <!--<img class="start-game" (click)="loadGame(item)" [src]="config.baseMobileImgUrl+'image/common/games_star.png'" alt="">-->
           </div>
+
         </div>
       </ng-container>
       <ng-template #imageTemplate>

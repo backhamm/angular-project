@@ -1,0 +1,32 @@
+<div>
+  <div *ngIf="isShow" class="mask" [@showMask] (click)="isShowChange.emit(false);"></div>
+  <div *ngIf="isShow" class="content" [@showContent]>
+    <div class="container">
+      <div class="header">筛选排序</div>
+      <div class="title">注册日期</div>
+      <div class="date-selector">
+        <nz-date-picker nzSize="small" nzPlaceHolder="开始日期" [nzDisabledDate]="disabledStartDate" [(ngModel)]="startTime"></nz-date-picker>
+        ~
+        <nz-date-picker nzSize="small" nzPlaceHolder="结束日期" [nzDisabledDate]="disabledEndDate" [(ngModel)]="endTime"></nz-date-picker>
+      </div>
+      <div *ngIf="typeList">
+        <div class="title">层级类型</div>
+        <div nz-row nzType="flex" nzJustify="space-between">
+          <div class="type-btn-item" nz-col nzSpan="7" *ngFor="let item of typeList; let i = index" (click)="type = i" [ngClass]="{active: type === i}">
+            {{item.name}}
+          </div>
+        </div>
+      </div>
+      <div class="sort-type">
+        <div class="title">排序方式</div>
+        <div class="btn-wrapper">
+          <div class="btn-item" *ngFor="let item of btnList" [ngClass]="{active: btnIndex === item.type}" (click)="btnIndex = item.type">{{item.name}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="submit-wrapper">
+      <div class="cancel" (click)="cancelFun()">重置并取消</div>
+      <div class="confirm" (click)="confirmFun()">筛选</div>
+    </div>
+  </div>
+</div>

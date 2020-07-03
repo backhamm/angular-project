@@ -1,26 +1,29 @@
 <div class="proxy-index">
   <div class="header">
-    <div>欢迎您！</div>
+    <div>欢迎您！ {{user.userInfo.username}}</div>
     <div class="unclaimed-money">
-      <p class="money">¥ 0</p>
+      <p class="money">
+        ¥ {{capital.proxyInfo?.unSettledCommission | number:'1.2-2'}}
+        <span *ngIf="capital.proxyInfo?.withdraw" class="commissions" (click)="showModel = true">提取佣金</span>
+      </p>
       未结佣金
     </div>
     <div class="header-intro" nz-row nzType="flex" nzJustify="space-around">
       <div nz-col nzSpan="8">
-        <p class="intro-info">青铜代理</p>
-        <p class="intro-name">代理等级</p>
+        <p class="intro-info">{{capital.proxyInfo?.topUsername}}</p>
+        <p class="intro-name">我的上级</p>
       </div>
       <div nz-col nzSpan="8">
-        <p class="intro-info">0</p>
+        <p class="intro-info">{{capital.proxyInfo?.teamNum}}</p>
         <p class="intro-name">团队人数</p>
       </div>
       <div nz-col nzSpan="8">
-        <p class="intro-info">0</p>
+        <p class="intro-info">{{capital.proxyInfo?.totalCommission | number:'1.2-2'}}</p>
         <p class="intro-name">累计提佣</p>
       </div>
     </div>
     <div class="link-menu" nz-row nzType="flex" nzJustify="space-around">
-      <div nz-col nzSpan="6" *ngFor="let item of headerLink">
+      <div nz-col nzSpan="6" *ngFor="let item of headerLink" [routerLink]="item.link">
         <div class="link-icon">
           <img [src]="config.baseMobileImgUrl + item.icon" alt="">
         </div>
@@ -33,16 +36,18 @@
     <p class="title">邀请方式</p>
     <div class="invite-main">
       <div class="left-wrapper">
-        <div class="qr-code"></div>
+        <qr-code class="qr-code" [value]="invited?.inviteLink" level="L" [size]="qrCodeSize"></qr-code>
       </div>
       <div class="right-wrapper">
         <div class="invite-link">
           <span class="name">推广链接：</span>
-          <span>http://192.168.107.144:1888/?p=N22ATXWA686284</span>
+          <span ngxClipboard [cbContent]="invited?.inviteLink"
+                (cbOnSuccess)="copySuccess(invited?.inviteLink)">{{invited?.inviteLink}}</span>
         </div>
         <div class="invite-text">
           <span class="name">推广文案：</span>
-          <span>超爽游戏,流畅手感,极致体验,赶紧注册和我一起玩吧! 点击链接直接注册:http://192.168.107.144:1888/?p=N22ATXWA686284</span>
+          <span ngxClipboard [cbContent]="invited?.shareText"
+                (cbOnSuccess)="copySuccess(invited?.shareText)">{{invited?.shareText}}</span>
         </div>
       </div>
     </div>
@@ -55,18 +60,53 @@
   <div class="chart-wrapper">
     <p class="title">
       团队组成
-      <span>详情<i nz-icon nzType="right" nzTheme="outline"></i></span>
+      <span routerLink="/m/capital/proxy/teamManagement">详情<i nz-icon nzType="right" nzTheme="outline"></i></span>
     </p>
     <div class="team-form" nz-row nzType="flex" nzJustify="start">
       <div nz-col nzSpan="13">
         <div class="teamCanvas" echarts [options]="teamOption"></div>
       </div>
-      <div nz-col nzSpan="11">col-4</div>
+      <div nz-col nzSpan="11" class="team-info">
+        <div class="item">
+          <div nz-row>
+            <div nz-col nzSpan="4">
+              <img class="icon" [src]="config.baseMobileImgUrl + 'image/wxdl/agentIcon_zs.png'" alt="">
+            </div>
+            <div nz-col nzSpan="9">直属会员</div>
+            <div class="special-color" nz-col nzSpan="6">{{percentageFun(teamChartInfo?.directNum)}}</div>
+            <div nz-col nzSpan="5">{{teamChartInfo?.directNum}}人</div>
+          </div>
+          <div class="increase-data" nz-row>
+            <div nz-col nzSpan="14">今日 <span [ngClass]="{'green-text': teamChartInfo?.directAddNum}"> +{{teamChartInfo?.directAddNum}}</span></div>
+            <div nz-col nzSpan="10">本周 <span [ngClass]="{'green-text': teamChartInfo?.weekDirectAddNum}"> +{{teamChartInfo?.weekDirectAddNum}}</span></div>
+          </div>
+        </div>
+        <div class="item team-member">
+          <div nz-row>
+            <div nz-col nzSpan="4">
+              <img class="icon" [src]="config.baseMobileImgUrl + 'image/wxdl/agentIcon_td.png'" alt="">
+            </div>
+            <div nz-col nzSpan="9">团队会员</div>
+            <div class="special-color" nz-col nzSpan="6">{{percentageFun(teamChartInfo?.teamNum)}}</div>
+            <div nz-col nzSpan="5">{{teamChartInfo?.teamNum}}人</div>
+          </div>
+          <div class="increase-data" nz-row>
+            <div nz-col nzSpan="14">今日 <span [ngClass]="{'green-text': teamChartInfo?.teamAddNum}"> +{{teamChartInfo?.teamAddNum}}</span></div>
+            <div nz-col nzSpan="10">本周 <span [ngClass]="{'green-text': teamChartInfo?.weekTeamAddNum}"> +{{teamChartInfo?.weekTeamAddNum}}</span></div>
+          </div>
+        </div>
+      </div>
     </div>
     <p class="title">
       近期佣金
-      <span>详情<i nz-icon nzType="right" nzTheme="outline"></i></span>
+      <span routerLink="/m/capital/proxy/brokerageRecord">详情<i nz-icon nzType="right" nzTheme="outline"></i></span>
     </p>
     <div class="brokerage" echarts [options]="brokerageOption"></div>
   </div>
+</div>
+
+<div *ngIf="showModel" class="mask" (click)="showModel = false" [@showMask]></div>
+<div *ngIf="showModel" class="commissions-btn" [@showBtn]>
+  <div class="btn1" (click)="goCommission(2)">转存至中心钱包</div>
+  <div class="btn2" (click)="goCommission(1)">提现至银行卡</div>
 </div>

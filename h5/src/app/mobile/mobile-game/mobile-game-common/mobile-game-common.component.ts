@@ -4,6 +4,7 @@ import {GameService} from "../../../service/game.service";
 import {CommonService} from "../../../service/common.service";
 import {AuthenticationService} from "../../../service/authentication.service";
 import {ConfigService} from "@src/app/config/config.service";
+import {NzMessageService} from "ng-zorro-antd";
 
 @Component({
   selector: 'app-mobile-game-common',
@@ -14,17 +15,7 @@ export class MobileGameCommonComponent implements OnInit {
   //当前路由二级菜单
   public gameArr: Array<any> = [];
   //不需要跳转的游戏列表
-  public gameKeep: Array<any> = [
-    'chess',
-    'dtqp',
-    'live',
-    'electronic',
-    'sports',
-    'electricContest',
-    'lottery',
-    'esports',
-    'fish'
-  ];
+  public gameKeep: Array<any> = ['chess', 'dtqp', 'live', 'electronic', 'sports', 'electricContest', 'lottery', 'esports', 'fish'];
   public link: string = sessionStorage.getItem('gameLink') || '';
 
   constructor(
@@ -33,7 +24,8 @@ export class MobileGameCommonComponent implements OnInit {
     public router: Router,
     public commonService: CommonService,
     public auth: AuthenticationService,
-    public config: ConfigService
+    public config: ConfigService,
+    public message: NzMessageService
   ) {
 
   }
@@ -73,7 +65,6 @@ export class MobileGameCommonComponent implements OnInit {
   }
 
   loadGame(item): any {
-      console.log(item)
       // hasSub 验证判断是否有下级
     const {gameCode, gameId, hasSub, id} = item;
     if (hasSub) {
@@ -88,7 +79,7 @@ export class MobileGameCommonComponent implements OnInit {
 
   // 侧边栏切换游戏时不跳转路由，其他跳转
   isKeep(val: string) {
-    return this.gameKeep.some(item => val === item);
+    return this.gameKeep.includes(val);
   }
 
   // 需要跳转的路由
@@ -98,14 +89,21 @@ export class MobileGameCommonComponent implements OnInit {
       mall: '/m/integral',
       help: '/m/help',
       about: '/m/help/about',
-      coupon: this.auth.isAuth ? '/m/activity/coupons' : '/m/login'
+      coupon: '/m/activity/coupons',
+      adventures: '/m/activity/adventures'
     };
-    return linkList[url];
+    let list = ['coupon', 'adventures'];
+    if (!this.auth.isAuth && list.includes(url)) {
+      this.message.warning('请先登录！');
+      this.router.navigate(['/m/login']);
+    } else {
+      this.router.navigate([linkList[url]]);
+    }
   }
 
   // 游戏排列样式
   gameTemplate() {
     const type = ['live', 'electronic', 'dtqp'];
-    return type.some(item => this.link === item);
+    return type.includes(this.link);
   }
 }

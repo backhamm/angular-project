@@ -1,0 +1,132 @@
+@import "~src/app/config/config-mobile";
+
+.mask {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(7, 17, 27, .5);
+}
+
+.content {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  width: 4.6rem;
+  height: 100%;
+  padding: 0 .3rem;
+  font-size: 0;
+  background: @main-color;
+  color: @font-color;
+
+  .container {
+    height: calc(100% - 3rem);
+  }
+
+  .title {
+    line-height: .86rem;
+    font-size: .28rem;
+    font-weight: bold;
+  }
+
+  .header {
+    line-height: 1rem;
+    font-size: .34rem;
+    font-weight: bold;
+  }
+
+  .date-selector {
+    font-size: .24rem;
+    color: @second-font-color;
+
+    ::ng-deep {
+      .ant-calendar-picker {
+        width: 1.5rem;
+      }
+
+      .ant-calendar-picker-clear, .ant-calendar-picker-icon {
+        display: none;
+      }
+
+      .ant-input {
+        padding: 0;
+        font-size: .24rem;
+        text-align: center;
+        background: transparent;
+      }
+    }
+  }
+
+  .type-btn-item {
+    line-height: .54rem;
+    margin-bottom: .3rem;
+    text-align: center;
+    border: 1px solid @btn-primary;
+    font-size: .24rem;
+    border-radius: .05rem;
+    color: @btn-primary;
+
+    &.active {
+      background: @btn-primary;
+      color: @font-color;
+    }
+  }
+
+  .btn-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .btn-item {
+      width: 1.8rem;
+      line-height: .54rem;
+      margin-bottom: .3rem;
+      text-align: center;
+      border: 1px solid @btn-primary;
+      font-size: .24rem;
+      border-radius: .05rem;
+      color: @btn-primary;
+
+      &.active {
+        background: @btn-primary;
+        color: @font-color;
+      }
+    }
+  }
+
+  .submit-wrapper {
+    height: 3rem;
+    padding-top: .4rem;
+    font-size: .32rem;
+    font-weight: bold;
+    color: @btn-primary;
+
+    .cancel, .confirm {
+      width: 100%;
+      line-height: .86rem;
+      text-align: center;
+      border: 1px solid @btn-primary;
+      border-radius: .1rem;
+    }
+
+    .confirm {
+      margin-top: .3rem;
+      background: @btn-primary;
+      color: @font-color;
+    }
+  }
+}
+
+::ng-deep {
+  .cdk-overlay-pane {
+    right: 12% !important;
+    left: 12% !important;
+
+    .ant-calendar {
+      width: 100%;
+    }
+  }
+}

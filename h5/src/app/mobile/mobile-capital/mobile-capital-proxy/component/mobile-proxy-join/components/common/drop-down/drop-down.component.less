@@ -1,0 +1,38 @@
+@import "../../../../../../../../config/config-mobile";
+
+.drop-content {
+  height: 100%;
+  overflow: auto;
+
+  .drop-down {
+    height: 0;
+    text-align: center;
+    font-size: .24rem;
+    color: @font-color;
+    overflow: hidden;
+
+    .icon {
+      margin-right: .3rem;
+      transition: all .3s;
+
+      &.reversal {
+        transform: rotate(180deg);
+      }
+    }
+
+    .icon2 {
+      margin-right: .3rem;
+    }
+  }
+}
+
+::ng-deep {
+  .ant-empty-description {
+    color: @second-font-color;
+  }
+
+  .loading {
+    padding-top: 1rem;
+    text-align: center;
+  }
+}

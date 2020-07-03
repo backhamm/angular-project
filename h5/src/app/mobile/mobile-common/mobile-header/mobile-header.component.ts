@@ -93,7 +93,7 @@ export class MobileHeaderComponent implements OnInit {
       sessionStorage.removeItem('GoHomeKey');
       this.router.navigateByUrl('/m/home');
     } else {
-      this.goHome || this.needGoHome ? this.router.navigateByUrl('/m/home') : this.location.back();
+      this.goHome || this.needGoHome ? this.router.navigateByUrl('/m/home') : history.go(-1);
     }
   }
 }

@@ -1,0 +1,8 @@
+<div class="drop-content" (touchstart)="touchDown($event)" (touchmove)="touchMove($event)" (touchend)="touchEnd()" #listContent>
+  <div class="drop-down" [ngStyle]="{height: moveVal + 'px', lineHeight: moveVal + 'px',transition: isEnd ? 'all .2s' : ''}">
+    <i *ngIf="isRequest <= 1" class="icon" nz-icon [ngClass]="{reversal: moveVal > 50}" nzType="arrow-down" nzTheme="outline"></i>
+    <i *ngIf="isRequest > 1" class="icon2" nz-icon [nzType]="icoList[isRequest - 2]" nzTheme="outline"></i>
+    {{step[isRequest]}}
+  </div>
+  <ng-content></ng-content>
+</div>

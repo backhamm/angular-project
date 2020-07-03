@@ -35,7 +35,7 @@
           <div class="adv-winners">
             <ul [style.transform]="'translateY(-' + scroll + 'px)'" [class.winnersList]="isTransition" id="winnersList">
               <li *ngFor="let val of arr">
-                <span>{{val.username}}</span>
+                <span>{{val.name}}</span>
                 <span>抽中</span>
                 <span>{{val.prizeName}}</span>
               </li>

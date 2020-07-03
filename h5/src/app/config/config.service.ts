@@ -6,8 +6,8 @@ export const config = {
     "title": "太阳城",
     "AGENT": "TYXB",
     "PLATFORM_IDENTITY": "TYXB",
-    // "BASE_IMG_MOBILE_URL": "//192.168.106.140:82/Project_3.0/mobileTYXC/",
-    "BASE_IMG_MOBILE_URL": "//mobile.beike188.com/mobileTYXC/",
+    "BASE_IMG_MOBILE_URL": "//192.168.106.140:82/demo3.0/mobileTXWL_2.0/",
+    // "BASE_IMG_MOBILE_URL": "//mobile.beike188.com/mobileTYXC/",
     "DOWN_LOAD_APP": "https://www.load-code.com/2code_php/jump.html?id=231",
     "DOWN_LOAD_APP_SPARE": "http://tx-down.com/tyxc/index.html"
   }
